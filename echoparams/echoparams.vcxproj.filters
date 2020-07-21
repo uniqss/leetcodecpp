@@ -15,37 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="3.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="stl.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="4.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="6.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="5_dp.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="5_expand_center.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="6_nomem.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="7.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="8.inl">
-      <Filter>Source Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

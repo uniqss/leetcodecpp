@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a941128f-1548-4aed-ab52-67b4a96e4985}</ProjectGuid>
-    <RootNamespace>leetcodecpp</RootNamespace>
+    <ProjectGuid>{0ad19c3b-0e3e-4a70-8878-89b54a42eee2}</ProjectGuid>
+    <RootNamespace>echoparams</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,18 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="3.h" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="4.h" />
-    <ClInclude Include="5_dp.h" />
-    <ClInclude Include="5_expand_center.h" />
-    <ClInclude Include="6.h" />
-    <ClInclude Include="6_nomem.h" />
-    <ClInclude Include="7.h" />
-    <ClInclude Include="8.inl" />
-    <ClInclude Include="stl.h" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

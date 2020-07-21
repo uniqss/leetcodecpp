@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "leetcodecpp", "leetcodecpp.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OtherAlgorithms", "OtherAlgorithms\OtherAlgorithms.vcxproj", "{28BFB9E0-9D13-48AE-AE88-227AB6987828}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "echoparams", "echoparams\echoparams.vcxproj", "{0AD19C3B-0E3E-4A70-8878-89B54A42EEE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{28BFB9E0-9D13-48AE-AE88-227AB6987828}.Release|x64.Build.0 = Release|x64
 		{28BFB9E0-9D13-48AE-AE88-227AB6987828}.Release|x86.ActiveCfg = Release|Win32
 		{28BFB9E0-9D13-48AE-AE88-227AB6987828}.Release|x86.Build.0 = Release|Win32
+		{0AD19C3B-0E3E-4A70-8878-89B54A42EEE2}.Debug|x64.ActiveCfg = Debug|x64
+		{0AD19C3B-0E3E-4A70-8878-89B54A42EEE2}.Debug|x64.Build.0 = Debug|x64
+		{0AD19C3B-0E3E-4A70-8878-89B54A42EEE2}.Debug|x86.ActiveCfg = Debug|Win32
+		{0AD19C3B-0E3E-4A70-8878-89B54A42EEE2}.Debug|x86.Build.0 = Debug|Win32
+		{0AD19C3B-0E3E-4A70-8878-89B54A42EEE2}.Release|x64.ActiveCfg = Release|x64
+		{0AD19C3B-0E3E-4A70-8878-89B54A42EEE2}.Release|x64.Build.0 = Release|x64
+		{0AD19C3B-0E3E-4A70-8878-89B54A42EEE2}.Release|x86.ActiveCfg = Release|Win32
+		{0AD19C3B-0E3E-4A70-8878-89B54A42EEE2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -152,6 +152,14 @@
     <ClInclude Include="8.inl" />
     <ClInclude Include="stl.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="10.inl" />
+    <None Include="10_1.inl" />
+    <None Include="11.inl" />
+    <None Include="12.inl" />
+    <None Include="13.inl" />
+    <None Include="9.inl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

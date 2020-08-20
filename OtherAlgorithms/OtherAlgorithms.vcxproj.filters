@@ -24,5 +24,8 @@
     <ClCompile Include="dp_moneyproblem3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="for2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

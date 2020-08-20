@@ -48,4 +48,24 @@
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="9.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="10.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="10_1.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="11.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="12.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="13.inl">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

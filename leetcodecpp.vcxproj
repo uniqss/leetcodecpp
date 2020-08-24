@@ -158,6 +158,8 @@
     <None Include="11.inl" />
     <None Include="12.inl" />
     <None Include="13.inl" />
+    <None Include="14.inl" />
+    <None Include="15.inl" />
     <None Include="9.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

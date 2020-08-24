@@ -13,8 +13,12 @@
 //#include "10_1.inl"
 //#include "11.inl"
 //#include "12.inl"
-#include "13.inl"
+//#include "13.inl"
+//#include "14.inl"
+#include "15.inl"
 
+
+#define TESTID 15
 
 
 int main() {
@@ -22,10 +26,13 @@ int main() {
 	string str;
 	string str1;
 	string str2;
+	vector<string> vs;
+	vector<string> vs2;
+	vector<int> vi;
+	vector<int> vi2;
 	int i;
 	int i1;
 	int i2;
-#define TESTID 13
 #if TESTID == 3
 	string str = "";
 	str = "abcabcbb";
@@ -79,7 +86,7 @@ int main() {
 	auto ret = s.isMatch(str1, str2);
 
 #elif TESTID == 11
-	vector<int> vi { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+	vector<int> vi{ 1, 8, 6, 2, 5, 4, 8, 3, 7 };
 	auto ret = s.maxArea(vi);
 #elif TESTID == 12
 	i = 1994;
@@ -87,9 +94,25 @@ int main() {
 #elif TESTID == 13
 	str = "MCMXCIV";
 	auto ret = s.romanToInt(str);
+#elif TESTID == 14
+	//vs = { "flower","flow","flight" };
+	vs = { "abca", "abc" };
+	auto ret = s.longestCommonPrefix(vs);
+#elif TESTID == 15
+	//vs = { "flower","flow","flight" };
+	vi = { -1, -1, 0, 1, 1, 2, 4 };
+	auto ret = s.threeSum(vi);
+	for (int iiii = 0; iiii < ret.size(); iiii++)
+	{
+		const auto& tmp = ret[iiii];
+		for (int j = 0;j < tmp.size();j++)
+		{
+			cout << tmp[j] << " ";
+		}
+		cout << endl;
+	}
 #endif
 
-	cout << ret << endl;
 
 	cout << "done" << endl;
 }

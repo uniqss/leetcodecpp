@@ -67,5 +67,11 @@
     <None Include="13.inl">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="14.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="15.inl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

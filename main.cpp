@@ -1,24 +1,58 @@
 #include "stl.h"
 
-//#include "3.h"
-//#include "4.h"
-//#include "5_dp.h"
+#define TESTID 10
+
+#if TESTID == 3
+#include "3.h"
+#endif
+#if TESTID == 4
+#include "4.h"
+#endif
+#if TESTID == 5
+#include "5_dp.h"
 //#include "5_expand_center.h"
-//#include "6.h"
+#endif
+#if TESTID == 6
+#include "6.h"
 //#include "6_nomem.h"
-//#include "7.h"
-//#include "8.inl"
-//#include "9.inl"
-//#include "10.inl"
-//#include "10_1.inl"
-//#include "11.inl"
-//#include "12.inl"
-//#include "13.inl"
-//#include "14.inl"
+#endif
+#if TESTID == 7
+#include "7.h"
+#endif
+#if TESTID == 8
+#include "8.inl"
+#endif
+#if TESTID == 9
+#include "9.inl"
+#endif
+#if TESTID == 10
+#if 0
+#include "10.inl"
+#else
+#include "10_1.inl"
+#endif
+#endif
+#if TESTID == 11
+#include "11.inl"
+#endif
+#if TESTID == 12
+#include "12.inl"
+#endif
+#if TESTID == 13
+#include "13.inl"
+#endif
+#if TESTID == 14
+#include "14.inl"
+#endif
+#if TESTID == 15
+#if 0
 #include "15.inl"
-
-
-#define TESTID 15
+#else
+#include "15_1.inl"
+#endif
+#endif
+#if TESTID == 16
+#endif
 
 
 int main() {
@@ -100,7 +134,7 @@ int main() {
 	auto ret = s.longestCommonPrefix(vs);
 #elif TESTID == 15
 	//vs = { "flower","flow","flight" };
-	vi = { -1, -1, 0, 1, 1, 2, 4 };
+	vi = { -1, 4, 0, 1, 1, 2, -1 };
 	auto ret = s.threeSum(vi);
 	for (int iiii = 0; iiii < ret.size(); iiii++)
 	{

@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 256
+#define TESTID 32
 
 #if TESTID == 3
 #include "3.h"
@@ -53,8 +53,11 @@
 #endif
 #if TESTID == 16
 #endif
+#if TESTID == 32
+#include "32_LongestValidParentheses.inl"
+#endif
 #if TESTID == 256
-#if 0
+#if 1
 #include "256_PaintHouse_dp.inl"
 #else
 #include "256_PaintHouse_dp_const.inl"
@@ -157,11 +160,16 @@ int main() {
 		}
 		cout << endl;
 	}
+#elif TESTID == 32
+	str = ")()())";
+	//str = "()(()";
+	auto ret = s.longestValidParentheses(str);
+	cout << ret << endl;
 #elif TESTID == 256
 	i0 = 3;
 	i1 = 5;
 	i2 = 7;
-	i = 10;
+	i = 11;
 	for (j = 0;j < i;j++)
 	{
 		vvi.push_back({ i0, i1, i2 });

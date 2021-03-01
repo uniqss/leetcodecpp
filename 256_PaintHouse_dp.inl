@@ -16,6 +16,9 @@ color green, and so on... Find the minimum cost to paint all houses.
 数量为偶数 (n/2) * A + n/2 * B
 
 也可简化为： (n+1) / 2 * A + n/2 * B
+
+参考：
+https://www.programcreek.com/2014/05/leetcode-paint-house-java/
 */
 class Solution
 {
@@ -26,13 +29,15 @@ public:
 		{
 			return 0;
 		}
-		for (auto i = 1; i < costs.size(); i++)
+		auto i = 1;
+		for (; i < costs.size(); i++)
 		{
 			costs[i][0] += std::min(costs[i - 1][1], costs[i - 1][2]);
 			costs[i][1] += std::min(costs[i - 1][0], costs[i - 1][2]);
 			costs[i][2] += std::min(costs[i - 1][0], costs[i - 1][1]);
 		}
-		auto j = costs.size() - 1;
-		return std::min(std::min(costs[j][0], costs[j][1]), costs[j][2]);
+
+		--i;
+		return std::min(std::min(costs[i][0], costs[i][1]), costs[i][2]);
 	}
 };

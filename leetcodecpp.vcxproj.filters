@@ -82,5 +82,8 @@
     <None Include="256_PaintHouse_dp_const.inl">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="32_LongestValidParentheses.inl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

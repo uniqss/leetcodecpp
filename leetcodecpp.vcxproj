@@ -163,6 +163,7 @@
     <None Include="15_1.inl" />
     <None Include="256_PaintHouse_dp.inl" />
     <None Include="256_PaintHouse_dp_const.inl" />
+    <None Include="32_LongestValidParentheses.inl" />
     <None Include="9.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

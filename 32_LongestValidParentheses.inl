@@ -1,3 +1,12 @@
+/*
+1. s[i] = ')' and s[i - 1] = '(' =>
+	dp[i] = dp[i - 2] + 2
+2. s[i] = ')' and s[i - 1] = ')' =>
+	if s[i - dp[i - 1] - 1] = '(' then
+		dp[i] = dp[i - 1] + 2 + dp[i - dp[i - 1] - 2]
+*/
+
+
 class Solution {
 public:
 	int longestValidParentheses(string s) {

@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 32
+#define TESTID 42
 
 #if TESTID == 3
 #include "3.h"
@@ -55,6 +55,13 @@
 #endif
 #if TESTID == 32
 #include "32_LongestValidParentheses.inl"
+#endif
+#if TESTID == 42
+#if 0
+#include "42_TrappingRainWater.inl"
+#else
+#include "42_TrappingRainWater_dp.inl"
+#endif
 #endif
 #if TESTID == 256
 #if 1
@@ -165,6 +172,13 @@ int main() {
 	//str = "()(()";
 	auto ret = s.longestValidParentheses(str);
 	cout << ret << endl;
+#elif TESTID == 42
+	//vi = { 0,1,0,2,1,0,1,3,2,1,2,1 };
+	//vi = { 4,2,0,3,2,5 };
+	vi = { 2,0,2 };
+	//vi = { 4,2,3 };
+	auto result = s.trap(vi);
+	cout << result << endl;
 #elif TESTID == 256
 	i0 = 3;
 	i1 = 5;

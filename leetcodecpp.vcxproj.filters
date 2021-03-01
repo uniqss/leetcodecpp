@@ -85,5 +85,11 @@
     <None Include="32_LongestValidParentheses.inl">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="42_TrappingRainWater.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="42_TrappingRainWater_dp.inl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

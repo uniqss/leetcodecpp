@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 10
+#define TESTID 256
 
 #if TESTID == 3
 #include "3.h"
@@ -45,13 +45,20 @@
 #include "14.inl"
 #endif
 #if TESTID == 15
-#if 0
+#if 1
 #include "15.inl"
 #else
 #include "15_1.inl"
 #endif
 #endif
 #if TESTID == 16
+#endif
+#if TESTID == 256
+#if 0
+#include "256_PaintHouse_dp.inl"
+#else
+#include "256_PaintHouse_dp_const.inl"
+#endif
 #endif
 
 
@@ -64,9 +71,14 @@ int main() {
 	vector<string> vs2;
 	vector<int> vi;
 	vector<int> vi2;
+	vector<vector<int>> vvi;
+	vector<vector<int>> vvi2;
 	int i;
+	int i0;
 	int i1;
 	int i2;
+	int i4;
+	int j;
 #if TESTID == 3
 	string str = "";
 	str = "abcabcbb";
@@ -145,8 +157,18 @@ int main() {
 		}
 		cout << endl;
 	}
+#elif TESTID == 256
+	i0 = 3;
+	i1 = 5;
+	i2 = 7;
+	i = 10;
+	for (j = 0;j < i;j++)
+	{
+		vvi.push_back({ i0, i1, i2 });
+	}
+	auto ret = s.minCost(vvi);
+	cout << ret << endl;
 #endif
-
 
 	cout << "done" << endl;
 }

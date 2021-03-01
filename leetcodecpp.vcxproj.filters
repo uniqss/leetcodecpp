@@ -76,5 +76,11 @@
     <None Include="15_1.inl">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="256_PaintHouse_dp.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="256_PaintHouse_dp_const.inl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

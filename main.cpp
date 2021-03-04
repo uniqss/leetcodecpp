@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 42
+#define TESTID 44
 
 #if TESTID == 3
 #include "3.h"
@@ -62,6 +62,9 @@
 #else
 #include "42_TrappingRainWater_dp.inl"
 #endif
+#endif
+#if TESTID == 44
+#include "44_WildcardMatching.inl"
 #endif
 #if TESTID == 256
 #if 1
@@ -178,6 +181,11 @@ int main() {
 	vi = { 2,0,2 };
 	//vi = { 4,2,3 };
 	auto result = s.trap(vi);
+	cout << result << endl;
+#elif TESTID == 44
+	str1 = "abc";
+	str2 = "*bc";
+	auto result = s.isMatch(str1, str2);
 	cout << result << endl;
 #elif TESTID == 256
 	i0 = 3;

@@ -94,5 +94,11 @@
     <None Include="44_WildcardMatching.inl">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="53_MaximumSubarray_dp.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="53_MaximumSubarray.inl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 44
+#define TESTID 53
 
 #if TESTID == 3
 #include "3.h"
@@ -65,6 +65,13 @@
 #endif
 #if TESTID == 44
 #include "44_WildcardMatching.inl"
+#endif
+#if TESTID == 53
+#if 1
+#include "53_MaximumSubarray.inl"
+#else
+#include "53_MaximumSubarray_dp.inl"
+#endif
 #endif
 #if TESTID == 256
 #if 1
@@ -186,6 +193,10 @@ int main() {
 	str1 = "abc";
 	str2 = "*bc";
 	auto result = s.isMatch(str1, str2);
+	cout << result << endl;
+#elif TESTID == 53
+	vi = { -2,1,-3,4,-1,2,1,-5,4 };
+	auto result = s.maxSubArray(vi);
 	cout << result << endl;
 #elif TESTID == 256
 	i0 = 3;

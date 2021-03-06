@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 62
+#define TESTID 63
 
 #if TESTID == 3
 #include "3.h"
@@ -81,6 +81,9 @@
 #else
 #include "62_UniquePaths_dp3.inl"
 #endif
+#endif
+#if TESTID == 63
+#include "63_UniquePathsII_dp.inl"
 #endif
 #if TESTID == 256
 #if 1
@@ -210,6 +213,10 @@ int main() {
 #elif TESTID == 62
 	i1 = 3, i2 = 7;
 	auto result = s.uniquePaths(i1, i2);
+	cout << result << endl;
+#elif TESTID == 63
+	vvi = { {0, 0, 0}, {0, 1, 0}, {0, 0, 0} };
+	auto result = s.uniquePathsWithObstacles(vvi);
 	cout << result << endl;
 #elif TESTID == 256
 	i0 = 3;

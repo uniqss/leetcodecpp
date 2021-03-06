@@ -21,6 +21,9 @@
     <ClCompile Include="3.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="63_UniquePathsII_dp.inl">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stl.h">

@@ -143,6 +143,9 @@
     <None Include="42_TrappingRainWater_dp.inl">
       <FileType>Document</FileType>
     </None>
+    <None Include="63_UniquePathsII_dp.inl">
+      <FileType>Document</FileType>
+    </None>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

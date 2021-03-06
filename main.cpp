@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 63
+#define TESTID 70
 
 #if TESTID == 3
 #include "3.h"
@@ -84,6 +84,16 @@
 #endif
 #if TESTID == 63
 #include "63_UniquePathsII_dp.inl"
+#endif
+#if TESTID == 64
+#include "64_MinimumPathSum_dp.inl"
+#endif
+#if TESTID == 70
+#if 0
+#include "70_ClimbingStairs_dp.inl"
+#else
+#include "70_ClimbingStairs_dp2.inl"
+#endif
 #endif
 #if TESTID == 256
 #if 1
@@ -217,6 +227,14 @@ int main() {
 #elif TESTID == 63
 	vvi = { {0, 0, 0}, {0, 1, 0}, {0, 0, 0} };
 	auto result = s.uniquePathsWithObstacles(vvi);
+	cout << result << endl;
+#elif TESTID == 64
+	vvi = { {1, 3, 1}, {1, 5, 1}, {4, 2, 1} };
+	auto result = s.minPathSum(vvi);
+	cout << result << endl;
+#elif TESTID == 70
+	i = 3;
+	auto result = s.climbStairs(i);
 	cout << result << endl;
 #elif TESTID == 256
 	i0 = 3;

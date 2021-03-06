@@ -24,6 +24,9 @@
     <ClCompile Include="63_UniquePathsII_dp.inl">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="64_MinimumPathSum_dp.inl">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stl.h">
@@ -110,6 +113,12 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="62_UniquePaths_dp3.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="70_ClimbingStairs_dp.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="70_ClimbingStairs_dp2.inl">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

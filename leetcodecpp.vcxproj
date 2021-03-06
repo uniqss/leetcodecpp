@@ -171,6 +171,9 @@
     <None Include="44_WildcardMatching.inl" />
     <None Include="53_MaximumSubarray.inl" />
     <None Include="53_MaximumSubarray_dp.inl" />
+    <None Include="62_UniquePaths_dp.inl" />
+    <None Include="62_UniquePaths_dp2.inl" />
+    <None Include="62_UniquePaths_dp3.inl" />
     <None Include="9.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

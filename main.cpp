@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 53
+#define TESTID 62
 
 #if TESTID == 3
 #include "3.h"
@@ -71,6 +71,15 @@
 #include "53_MaximumSubarray.inl"
 #else
 #include "53_MaximumSubarray_dp.inl"
+#endif
+#endif
+#if TESTID == 62
+#if 0
+#include "62_UniquePaths_dp.inl"
+#elif 0
+#include "62_UniquePaths_dp2.inl"
+#else
+#include "62_UniquePaths_dp3.inl"
 #endif
 #endif
 #if TESTID == 256
@@ -171,7 +180,7 @@ int main() {
 	for (int iiii = 0; iiii < ret.size(); iiii++)
 	{
 		const auto& tmp = ret[iiii];
-		for (int j = 0;j < tmp.size();j++)
+		for (int j = 0; j < tmp.size(); j++)
 		{
 			cout << tmp[j] << " ";
 		}
@@ -198,12 +207,16 @@ int main() {
 	vi = { -2,1,-3,4,-1,2,1,-5,4 };
 	auto result = s.maxSubArray(vi);
 	cout << result << endl;
+#elif TESTID == 62
+	i1 = 3, i2 = 7;
+	auto result = s.uniquePaths(i1, i2);
+	cout << result << endl;
 #elif TESTID == 256
 	i0 = 3;
 	i1 = 5;
 	i2 = 7;
 	i = 11;
-	for (j = 0;j < i;j++)
+	for (j = 0; j < i; j++)
 	{
 		vvi.push_back({ i0, i1, i2 });
 	}

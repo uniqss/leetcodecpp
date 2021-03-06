@@ -100,5 +100,14 @@
     <None Include="53_MaximumSubarray.inl">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="62_UniquePaths_dp.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="62_UniquePaths_dp2.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="62_UniquePaths_dp3.inl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

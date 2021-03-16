@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 70
+#define TESTID 72
 
 #if TESTID == 3
 #include "3.h"
@@ -94,6 +94,9 @@
 #else
 #include "70_ClimbingStairs_dp2.inl"
 #endif
+#endif
+#if TESTID == 72
+#include "72_EditDistance.inl"
 #endif
 #if TESTID == 256
 #if 1
@@ -236,6 +239,11 @@ int main() {
 	i = 3;
 	auto result = s.climbStairs(i);
 	cout << result << endl;
+#elif TESTID == 72
+	str1 = "horse";
+	str2 = "ros";
+	auto result = s.minDistance(str1, str2);
+	cout << result << endl;
 #elif TESTID == 256
 	i0 = 3;
 	i1 = 5;
@@ -244,7 +252,7 @@ int main() {
 	for (j = 0; j < i; j++)
 	{
 		vvi.push_back({ i0, i1, i2 });
-	}
+}
 	auto ret = s.minCost(vvi);
 	cout << ret << endl;
 #endif

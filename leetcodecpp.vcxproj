@@ -149,6 +149,9 @@
     <None Include="64_MinimumPathSum_dp.inl">
       <FileType>Document</FileType>
     </None>
+    <None Include="72_EditDistance.inl">
+      <FileType>Document</FileType>
+    </None>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

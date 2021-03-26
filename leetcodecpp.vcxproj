@@ -152,6 +152,9 @@
     <None Include="72_EditDistance.inl">
       <FileType>Document</FileType>
     </None>
+    <None Include="84_LargestRectangleInHistogram.inl">
+      <FileType>Document</FileType>
+    </None>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +188,8 @@
     <None Include="62_UniquePaths_dp3.inl" />
     <None Include="70_ClimbingStairs_dp.inl" />
     <None Include="70_ClimbingStairs_dp2.inl" />
+    <None Include="85_MaximalRectangle.inl" />
+    <None Include="85_MaximalRectangle2.inl" />
     <None Include="9.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

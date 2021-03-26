@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 72
+#define TESTID 84
 
 #if TESTID == 3
 #include "3.h"
@@ -97,6 +97,12 @@
 #endif
 #if TESTID == 72
 #include "72_EditDistance.inl"
+#endif
+#if TESTID == 84
+#include "84_LargestRectangleInHistogram.inl"
+#endif
+#if TESTID == 85
+#include "85_MaximalRectangle.inl"
 #endif
 #if TESTID == 256
 #if 1
@@ -244,6 +250,18 @@ int main() {
 	str2 = "ros";
 	auto result = s.minDistance(str1, str2);
 	cout << result << endl;
+#elif TESTID == 84
+	vi = { 2,1,5,6,2,3 };
+	auto result = s.largestRectangleArea(vi);
+	cout << result << endl;
+#elif TESTID == 85
+	vector<vector<char>> Matrix = {
+		{'1','0','1','0','0'},
+		{'1','0','1','1','1'},
+		{'1','1','1','1','1'},
+		{'1','0','0','1','0'} };
+	auto result = s.maximalRectangle(Matrix);
+	cout << result << endl;
 #elif TESTID == 256
 	i0 = 3;
 	i1 = 5;
@@ -252,7 +270,7 @@ int main() {
 	for (j = 0; j < i; j++)
 	{
 		vvi.push_back({ i0, i1, i2 });
-}
+	}
 	auto ret = s.minCost(vvi);
 	cout << ret << endl;
 #endif

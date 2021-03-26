@@ -124,5 +124,14 @@
     <None Include="72_EditDistance.inl">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="85_MaximalRectangle.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="85_MaximalRectangle2.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="84_LargestRectangleInHistogram.inl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

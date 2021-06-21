@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 84
+#define TESTID 24
 
 #if TESTID == 3
 #include "3.h"
@@ -52,6 +52,13 @@
 #endif
 #endif
 #if TESTID == 16
+#endif
+#if TESTID == 24
+#if 0
+#include "24.inl"
+#else
+#include "24_1.inl"
+#endif
 #endif
 #if TESTID == 32
 #include "32_LongestValidParentheses.inl"
@@ -207,6 +214,19 @@ int main() {
 			cout << tmp[j] << " ";
 		}
 		cout << endl;
+	}
+#elif TESTID == 24
+	ListNode* pList = new ListNode(1);
+	pList->next = new ListNode(2);
+	pList->next->next = new ListNode(3);
+	pList->next->next->next = new ListNode(4);
+	pList->next->next->next->next = nullptr;
+	ListNode* pNewList = s.swapPairs(pList);
+	while (pNewList)
+	{
+		ListNode* pNext = pNewList->next;
+		delete pNewList;
+		pNewList = pNext;
 	}
 #elif TESTID == 32
 	str = ")()())";

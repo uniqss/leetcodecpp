@@ -133,5 +133,11 @@
     <None Include="84_LargestRectangleInHistogram.inl">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="24.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="24_1.inl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 #include "stl.h"
 
-#define TESTID 24
+#define TESTID 1903
 
 #if TESTID == 3
 #include "3.h"
@@ -117,6 +117,9 @@
 #else
 #include "256_PaintHouse_dp_const.inl"
 #endif
+#endif
+#if TESTID == 1903
+#include "1903_LargestOddNumberinString.inl"
 #endif
 
 
@@ -292,6 +295,10 @@ int main() {
 		vvi.push_back({ i0, i1, i2 });
 	}
 	auto ret = s.minCost(vvi);
+	cout << ret << endl;
+#elif TESTID == 1903
+	str1 = "52";
+	auto ret = s.largestOddNumber(str1);
 	cout << ret << endl;
 #endif
 

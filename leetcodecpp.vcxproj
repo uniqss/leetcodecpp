@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="3.h" />
     <None Include="1903_LargestOddNumberinString.inl" />
+    <None Include="1958_CheckIfMoveIsLegal.inl" />
     <None Include="24.inl" />
     <None Include="24_1.inl" />
     <None Include="42_TrappingRainWater_dp.inl">

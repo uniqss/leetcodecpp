@@ -142,5 +142,8 @@
     <None Include="1903_LargestOddNumberinString.inl">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="1958_CheckIfMoveIsLegal.inl">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

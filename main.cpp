@@ -1,86 +1,67 @@
 #include "stl.h"
 
-#define TESTID 1903
+#define TESTID 1824
 
 #if TESTID == 3
 #include "3.h"
-#endif
-#if TESTID == 4
+#elif TESTID == 4
 #include "4.h"
-#endif
-#if TESTID == 5
+#elif TESTID == 5
 #include "5_dp.h"
 //#include "5_expand_center.h"
-#endif
-#if TESTID == 6
+#elif TESTID == 6
 #include "6.h"
 //#include "6_nomem.h"
-#endif
-#if TESTID == 7
+#elif TESTID == 7
 #include "7.h"
-#endif
-#if TESTID == 8
+#elif TESTID == 8
 #include "8.inl"
-#endif
-#if TESTID == 9
+#elif TESTID == 9
 #include "9.inl"
-#endif
-#if TESTID == 10
+#elif TESTID == 10
 #if 0
 #include "10.inl"
 #else
 #include "10_1.inl"
 #endif
-#endif
-#if TESTID == 11
+#elif TESTID == 11
 #include "11.inl"
-#endif
-#if TESTID == 12
+#elif TESTID == 12
 #include "12.inl"
-#endif
-#if TESTID == 13
+#elif TESTID == 13
 #include "13.inl"
-#endif
-#if TESTID == 14
+#elif TESTID == 14
 #include "14.inl"
-#endif
-#if TESTID == 15
+#elif TESTID == 15
 #if 1
 #include "15.inl"
 #else
 #include "15_1.inl"
 #endif
-#endif
-#if TESTID == 16
-#endif
-#if TESTID == 24
+#elif TESTID == 16
+#elif TESTID == 24
 #if 0
 #include "24.inl"
 #else
 #include "24_1.inl"
 #endif
-#endif
-#if TESTID == 32
+#elif TESTID == 32
 #include "32_LongestValidParentheses.inl"
-#endif
-#if TESTID == 42
+#elif TESTID == 42
 #if 0
 #include "42_TrappingRainWater.inl"
 #else
 #include "42_TrappingRainWater_dp.inl"
 #endif
-#endif
-#if TESTID == 44
+#elif TESTID == 44
 #include "44_WildcardMatching.inl"
-#endif
-#if TESTID == 53
+#elif TESTID == 53
 #if 1
 #include "53_MaximumSubarray.inl"
 #else
 #include "53_MaximumSubarray_dp.inl"
 #endif
-#endif
-#if TESTID == 62
+#elif TESTID == 62
 #if 0
 #include "62_UniquePaths_dp.inl"
 #elif 0
@@ -88,38 +69,34 @@
 #else
 #include "62_UniquePaths_dp3.inl"
 #endif
-#endif
-#if TESTID == 63
+#elif TESTID == 63
 #include "63_UniquePathsII_dp.inl"
-#endif
-#if TESTID == 64
+#elif TESTID == 64
 #include "64_MinimumPathSum_dp.inl"
-#endif
-#if TESTID == 70
+#elif TESTID == 70
 #if 0
 #include "70_ClimbingStairs_dp.inl"
 #else
 #include "70_ClimbingStairs_dp2.inl"
 #endif
-#endif
-#if TESTID == 72
+#elif TESTID == 72
 #include "72_EditDistance.inl"
-#endif
-#if TESTID == 84
+#elif TESTID == 84
 #include "84_LargestRectangleInHistogram.inl"
-#endif
-#if TESTID == 85
+#elif TESTID == 85
 #include "85_MaximalRectangle.inl"
-#endif
-#if TESTID == 256
+#elif TESTID == 256
 #if 1
 #include "256_PaintHouse_dp.inl"
 #else
 #include "256_PaintHouse_dp_const.inl"
 #endif
-#endif
-#if TESTID == 1903
+#elif TESTID == 1824
+#include "1824_MinimumSidewayJumps.inl"
+#elif TESTID == 1903
 #include "1903_LargestOddNumberinString.inl"
+#elif TESTID == 1958
+#include "1958_CheckIfMoveIsLegal.inl"
 #endif
 
 
@@ -296,9 +273,27 @@ int main() {
 	}
 	auto ret = s.minCost(vvi);
 	cout << ret << endl;
+#elif TESTID == 1824
+	vi = {0,1,2,3,0};
+	// vi = {0,1,1,3,3,0};
+	// vi = {0,2,1,0,3,0};
+	auto ret = s.minSideJumps(vi);
+	cout << ret << endl;
 #elif TESTID == 1903
 	str1 = "52";
 	auto ret = s.largestOddNumber(str1);
+	cout << ret << endl;
+#elif TESTID == 1958
+vector<vector<char>> board = {
+	{'.','.','.','.','.','.','.','.'},
+	{'.','B','.','.','W','.','.','.'},
+	{'.','.','W','.','.','.','.','.'},
+	{'.','.','.','W','B','.','.','.'},
+	{'.','.','.','.','.','.','.','.'},
+	{'.','.','.','.','B','W','.','.'},
+	{'.','.','.','.','.','.','W','.'},
+	{'.','.','.','.','.','.','.','B'}};
+	auto ret = s.checkMove(board, 4, 4, 'W');
 	cout << ret << endl;
 #endif
 

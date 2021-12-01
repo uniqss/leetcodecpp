@@ -13,3 +13,12 @@
 
 using namespace std;
 
+void pvvi(const vector<vector<int>>& vvi) {
+    for (const auto& it : vvi) {
+        for (const auto& it2 : it) {
+            cout << it2 << "\t";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}

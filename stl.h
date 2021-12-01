@@ -1,17 +1,22 @@
 #pragma once
 
-#include <vector>
+#include <algorithm>
+#include <iostream>
 #include <list>
 #include <map>
 #include <set>
+#include <stack>
+#include <string>
 #include <unordered_map>
 #include <unordered_set>
-#include <string>
-#include <iostream>
-#include <algorithm>
-#include <stack>
+#include <vector>
 
 using namespace std;
+
+void pvi(const vector<int>& vi) {
+    std::for_each(vi.begin(), vi.end(), [](int i) { cout << i << " "; });
+    cout << endl;
+}
 
 void pvvi(const vector<vector<int>>& vvi) {
     for (const auto& it : vvi) {

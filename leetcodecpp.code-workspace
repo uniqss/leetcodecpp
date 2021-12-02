@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.controller": "yaml",
+			"*.anim": "yaml",
+			"*.playable": "yaml",
+			"*.asset": "yaml",
+			"*.mat": "yaml",
+			"vector": "cpp",
+			"ostream": "cpp"
+		}
+	}
+}

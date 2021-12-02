@@ -1,23 +1,5 @@
 #include "stl.h"
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
-
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
    public:
     ListNode *reverseList1(ListNode *head) {
@@ -69,34 +51,6 @@ class Solution {
     }
 };
 
-ListNode *constructList(const vector<int> &vi) {
-    if (vi.empty()) {
-        return new ListNode();
-    }
-    ListNode *next = nullptr;
-    ListNode *curr = nullptr;
-    for (int i = vi.size() - 1; i >= 0; --i) {
-        curr = new ListNode(vi[i], next);
-        next = curr;
-    }
-    return curr;
-}
-void plist(const ListNode *head) {
-    while (head != nullptr) {
-        cout << head->val << " ";
-        head = head->next;
-    }
-    cout << endl;
-}
-void freelist(ListNode *head) {
-    ListNode *temp = nullptr;
-    while (head != nullptr) {
-        temp = head;
-        head = head->next;
-        delete temp;
-    }
-}
-
 void test_vi(const vector<int> &vi) {
     Solution s;
     ListNode *head = nullptr;
@@ -104,8 +58,8 @@ void test_vi(const vector<int> &vi) {
 
     head = constructList(vi);
     ret = s.reverseList(head);
-    plist(ret);
-    freelist(ret);
+    pLinkedList(ret);
+    releaseLinkedList(ret);
 }
 
 int main(int argc, char const *argv[]) {

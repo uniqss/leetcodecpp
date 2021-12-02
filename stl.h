@@ -13,32 +13,7 @@
 
 using namespace std;
 
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode* next) : val(x), next(next) {}
-};
-
-void pLinkedList(const ListNode* head) {
-    while (head != nullptr)
-    {
-        cout << head->val << "\t";
-        head = head->next;
-    }
-    cout << endl;
-}
-
-void releaseLinkedList(ListNode* head) {
-    ListNode* next = nullptr;
-    while (head != nullptr)
-    {
-        next = head->next;
-        delete head;
-        head = next;
-    }
-}
+#include "LinkedListHelper.h"
 
 void pvi(const vector<int>& vi) {
     std::for_each(vi.begin(), vi.end(), [](int i) { cout << i << " "; });

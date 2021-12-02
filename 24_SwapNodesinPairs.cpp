@@ -1,31 +1,63 @@
 #include "stl.h"
 
 /*
+prev=>left=>right(=>savedNext)
+exchange:
+    savedNext = right->next
+    left->next = savedNext
+    right->next = left
+    prev->next = right
 
+prev=>right=>left
+move:
+oldPrev=>oldRight=>oldLeft=>left=>right
+oldPrev=>oldRight=>prev=>left=>right
+
+    prev = left
+    left = savedNext
+    right = left->next
 */
-
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
    public:
     ListNode* swapPairs(ListNode* head) {
-        if (head == nullptr) return head;
-        ListNode temp(0, head);
+        ListNode temp;
+        temp.next = head;
         ListNode* prev = &temp;
-        ListNode* curr = head;
-        while (curr != nullptr && curr->next != nullptr)
-        {
-            prev->next = curr->next;
-            prev = 
+        ListNode* left = head;
+        ListNode* right = left != nullptr ? left->next : nullptr;
+        while (left != nullptr && right != nullptr) {
+            ListNode* savedNext = right->next;
+            left->next = savedNext;
+            right->next = left;
+            prev->next = right;
+
+            prev = left;
+            left = savedNext;
+            right = left != nullptr ? left->next : nullptr;
         }
         return temp.next;
     }
 };
+
+void test(const std::vector<int>& vi) {
+    ListNode* head = nullptr;
+    Solution s;
+    ListNode* ret = nullptr;
+
+    head = constructList(vi);
+    pLinkedList(head);
+    ret = s.swapPairs(head);
+    pLinkedList(ret);
+    releaseLinkedList(ret);
+}
+
+int main(int argc, char const* argv[]) {
+    test({});
+    test({1});
+    test({1, 2});
+    test({1, 2, 3});
+    test({1, 2, 3, 4});
+    test({1, 2, 3, 4, 5});
+
+    return 0;
+}

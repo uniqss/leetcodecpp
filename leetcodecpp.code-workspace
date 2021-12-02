@@ -12,7 +12,8 @@
 			"*.asset": "yaml",
 			"*.mat": "yaml",
 			"vector": "cpp",
-			"ostream": "cpp"
+			"ostream": "cpp",
+			"iostream": "cpp"
 		}
 	}
 }

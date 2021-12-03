@@ -15,6 +15,10 @@ using namespace std;
 
 #include "LinkedListHelper.h"
 
+void pi(int i) {
+    cout << i << endl;
+}
+
 void pvi(const vector<int>& vi) {
     std::for_each(vi.begin(), vi.end(), [](int i) { cout << i << " "; });
     cout << endl;

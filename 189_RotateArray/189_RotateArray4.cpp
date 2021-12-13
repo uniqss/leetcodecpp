@@ -4,29 +4,9 @@ class Solution {
    public:
     void rotate(vector<int>& nums, int k) {
         k = k % nums.size();
-        if (k == 0 || nums.size() == 1) return;
-        int left = nums.size() - k;
-        // x x x x x x x x . . .    left > k
-        // . . . x x x x x x x x    nums[0..k] = nums[left..end]   nums[k+1..end] = nums[0..left]
-        // x x x x . . . . . . .
-        // . . . . . . . x x x x
-        for (int i = 0; i < min(left, k); ++i) {
-
-        }
-
-        vector<int> tmp;
-        int left = nums.size() - k;
-        if (left < k) {
-            tmp.resize(left);
-            std::copy(nums.begin(), nums.begin() + left, tmp.begin());
-            std::copy(nums.begin() + left, nums.end(), nums.begin());
-            std::copy(tmp.begin(), tmp.end(), nums.begin() + k);
-        } else {
-            tmp.resize(k);
-            std::copy(nums.begin() + left, nums.end(), tmp.begin());
-            std::copy(nums.begin(), nums.begin() + left, nums.begin() + k);
-            std::copy(tmp.begin(), tmp.end(), nums.begin());
-        }
+        reverse(nums.begin(), nums.end());
+        reverse(nums.begin(), nums.begin() + k);
+        reverse(nums.begin() + k, nums.end());
     }
 };
 

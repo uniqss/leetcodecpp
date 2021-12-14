@@ -33,3 +33,8 @@ void pvvi(const vector<vector<int>>& vvi) {
     }
     cout << endl;
 }
+
+void pnewline() {
+    cout << "###############################################" << endl
+         << endl;
+}

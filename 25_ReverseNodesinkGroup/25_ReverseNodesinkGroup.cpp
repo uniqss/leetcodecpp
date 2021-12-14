@@ -22,6 +22,7 @@ int main(int argc, char const* argv[]) {
     test({1, 2, 3, 4, 5}, 2);
     test({1, 2, 3, 4, 5}, 3);
     test({1, 2, 3, 4, 5}, 1);
+    test({1, 2}, 2);
     test({1}, 1);
     return 0;
 }

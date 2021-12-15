@@ -1,39 +1,20 @@
 #include "../stl.h"
 
-template <class T>
-class StackElement {
-   public:
-    T data;
-    StackElement* next;
-    StackElement() : data(0), next(nullptr) {}
-    StackElement(const T& _data) : data(_data), next(nullptr) {}
-};
-
 class MinStack {
-    StackElement<int>* m_etop;
-
    public:
-    MinStack() : m_etop(nullptr) {
+    MinStack() {
     }
 
     void push(int val) {
-        StackElement<int>* e = new StackElement(val);
-        e->next = m_etop;
-        m_etop = e;
     }
 
     void pop() {
-        auto tmp = m_etop;
-        m_etop = m_etop->next;
-        delete tmp;
     }
 
     int top() {
-        return m_etop->data;
     }
 
     int getMin() {
-        return 0;
     }
 };
 
@@ -49,6 +30,8 @@ int test(const string& op, const vector<int>& args) {
         ret = g_mstack->getMin();
     } else if (op == "pop") {
         g_mstack->pop();
+    } else if (op == "top") {
+        ret = g_mstack->top();
     }
     return ret;
 }

@@ -19,6 +19,14 @@ void pi(int i) {
     cout << i << endl;
 }
 
+void ps(const char* str) {
+    cout << str << endl;
+}
+
+void ps(const string& str) {
+    cout << str << endl;
+}
+
 void pvi(const vector<int>& vi) {
     std::for_each(vi.begin(), vi.end(), [](int i) { cout << i << " "; });
     cout << endl;

@@ -13,12 +13,15 @@ void test(const std::vector<int>& vi, int k) {
 
     head = constructList(vi);
     pLinkedList(head);
+    pi(k);
     ret = s.reverseKGroup(head, k);
     pLinkedList(ret);
     releaseLinkedList(ret);
+    pnewline();
 }
 
 int main(int argc, char const* argv[]) {
+    test({1, 2, 3, 4, 5, 6}, 2);
     test({1, 2, 3, 4, 5}, 2);
     test({1, 2, 3, 4, 5}, 3);
     test({1, 2, 3, 4, 5}, 1);

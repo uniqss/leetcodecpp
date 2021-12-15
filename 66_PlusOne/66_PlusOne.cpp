@@ -1,15 +1,12 @@
 #include "../stl.h"
 
-class Solution
-{
+class Solution {
    public:
-    vector<int> plusOne(vector<int>& digits)
-    {
+    vector<int> plusOne(vector<int>& digits) {
     }
 };
 
-void test(vector<int>&& vi)
-{
+void test(vector<int>&& vi) {
     pvi(vi);
     Solution s;
     auto ret = s.plusOne(vi);
@@ -17,8 +14,7 @@ void test(vector<int>&& vi)
     pnewline();
 }
 
-int main()
-{
+int main() {
     test({1, 2, 3});
     test({4, 3, 2, 1});
     test({0});

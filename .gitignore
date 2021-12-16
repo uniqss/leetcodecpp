@@ -2,5 +2,6 @@
 /Debug
 /OtherAlgorithms/Debug
 /x64
-a.*
+*.exe
+a.out
 core.*

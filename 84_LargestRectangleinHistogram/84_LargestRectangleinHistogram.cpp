@@ -1,4 +1,4 @@
-#include "stl.h"
+#include "../stl.h"
 
 class Solution {
    public:
@@ -17,9 +17,12 @@ void test(vector<int>&& vi, int expect) {
     pnewline();
 }
 
-void main() {
+int main() {
     test({2, 1, 5, 6, 2, 3}, 10);
     test({2, 4}, 4);
+    test({2, 1, 2}, 3);
+    test({5}, 5);
+    return 0;
 }
 
 /*

@@ -12,7 +12,7 @@ class Solution {
             // move right foot
             right += left;
         }
-        // we need to move one more step if tha last is the left foot.
+        // we need to move one more step if the last is the left foot.
         return n % 2 == 0 ? (left + right) : right;
     }
 };

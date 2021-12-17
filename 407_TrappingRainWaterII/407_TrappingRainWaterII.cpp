@@ -1,0 +1,33 @@
+#include "../stl.h"
+
+class Solution {
+   public:
+    int trapRainWater(vector<vector<int>>& heightMap) {
+    }
+};
+
+void test(vector<vector<int>>&& vvi, int expect) {
+    pvvi(vvi);
+    Solution s;
+    int ret = s.trapRainWater(vvi);
+    if (ret == expect) {
+        ps("ok");
+    } else {
+        ps("### not ok ");
+        pi(expect);
+        pi(ret);
+    }
+}
+
+int main() {
+    test({{1, 4, 3, 1, 3, 2}, {3, 2, 1, 3, 2, 4}, {2, 3, 3, 2, 3, 1}}, 4);
+    test({{3, 3, 3, 3, 3}, {3, 2, 2, 2, 3}, {3, 2, 1, 2, 3}, {3, 2, 2, 2, 3}, {3, 3, 3, 3, 3}}, 10);
+    return 0;
+}
+
+/*
+{{1,4,3,1,3,2},{3,2,1,3,2,4},{2,3,3,2,3,1}}
+4
+{{3,3,3,3,3},{3,2,2,2,3},{3,2,1,2,3},{3,2,2,2,3},{3,3,3,3,3}}
+10
+*/

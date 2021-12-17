@@ -6,7 +6,7 @@ public:
 			return 0;
 		}
 
-		// ÎÊÌâÈı·Ö£¬Ôö³¤¶Î¡¢Æ½»¬¶Î¡¢¼õÉÙ¶Î
+		// é—®é¢˜ä¸‰åˆ†ï¼Œå¢é•¿æ®µã€å¹³æ»‘æ®µã€å‡å°‘æ®µ
 		int maxIdxL = 0;
 		int maxIdxR = 0;
 		int max = 0;
@@ -28,7 +28,7 @@ public:
 			}
 		}
 		int ret = 0;
-		// ÔöÇø¼ä
+		// å¢åŒºé—´
 		int currMax = 0;
 		for (int i = 0; i < maxIdxL; i++)
 		{
@@ -41,7 +41,7 @@ public:
 				currMax = height[i];
 			}
 		}
-		// Æ½Çø¼ä
+		// å¹³åŒºé—´
 		for (int i = maxIdxL + 1; i < maxIdxR; i++)
 		{
 			if (height[i] < max)
@@ -49,7 +49,7 @@ public:
 				ret += max - height[i];
 			}
 		}
-		// ¼õÇø¼ä
+		// å‡åŒºé—´
 		currMax = 0;
 		for (int i = height.size() - 1; i > maxIdxR; i--)
 		{

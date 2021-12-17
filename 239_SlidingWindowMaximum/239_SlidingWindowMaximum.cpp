@@ -1,9 +1,30 @@
 #include "../stl.h"
 
-// force
 class Solution {
    public:
     vector<int> maxSlidingWindow(const vector<int>& nums, int k) {
+        deque<pair<int, int>> mq;
+        vector<int> ret;
+        for (size_t i = 0; i < nums.size(); ++i) {
+            int count = 0;
+            while (!mq.empty() && mq.back().first < nums[i]) {
+                count += mq.back().second + 1;
+                mq.pop_back();
+            }
+            mq.push_back({nums[i], count});
+
+            if ((int)i >= k) {
+                if (mq.front().second > 0)
+                    --mq.front().second;
+                else
+                    mq.pop_front();
+            }
+
+            if ((int)i >= k - 1) {
+                ret.push_back(mq.front().first);
+            }
+        }
+        return ret;
     }
 };
 

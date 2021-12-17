@@ -1,7 +1,7 @@
 /*
-把整个堆当作一个模型往右推，留下阴影left_max
-把整个堆当作一个模型往左推，留下阴影right_max
-循环取积 min(left_max[i], right_max[i]) - height[i]
+鎶婃暣涓爢褰撲綔涓�涓ā鍨嬪線鍙虫帹锛岀暀涓嬮槾褰眑eft_max
+鎶婃暣涓爢褰撲綔涓�涓ā鍨嬪線宸︽帹锛岀暀涓嬮槾褰眗ight_max
+寰幆鍙栫Н min(left_max[i], right_max[i]) - height[i]
 */
 class Solution {
 public:

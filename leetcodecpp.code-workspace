@@ -61,7 +61,8 @@
 			"streambuf": "cpp",
 			"typeinfo": "cpp",
 			"queue": "cpp",
-			"chrono": "cpp"
+			"chrono": "cpp",
+			"ranges": "cpp"
 		}
 	}
 }

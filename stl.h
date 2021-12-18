@@ -33,6 +33,11 @@ void ps(const string& str) {
     cout << str << endl;
 }
 
+void pvs(const vector<string>& vs) {
+    std::for_each(vs.begin(), vs.end(), [](const string& s) { cout << s << " "; });
+    cout << endl;
+}
+
 void pvi(const vector<int>& vi) {
     std::for_each(vi.begin(), vi.end(), [](int i) { cout << i << " "; });
     cout << endl;

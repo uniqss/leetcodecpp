@@ -104,6 +104,7 @@ void test(const vector<string>& oplist, const vector<vector<int>>& argslist, con
     }
     if (ret != expected) {
         ps("### not ok");
+        pvs(oplist);
         pvcomplex(expected);
         pvcomplex(ret);
     } else {

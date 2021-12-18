@@ -45,13 +45,13 @@ class Solution {
 
 void test(const vector<int>& nums, int k, const vector<int>& expect) {
     pvi(nums);
-    pi(k);
+    praw(k);
     Solution s;
     auto ret = s.maxSlidingWindow(nums, k);
     if (ret == expect) {
-        ps("ok");
+        praw("ok");
     } else {
-        ps("##### not ok");
+        praw("##### not ok");
         pvi(expect);
         pvi(ret);
     }

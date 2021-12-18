@@ -31,9 +31,9 @@ void test(std::vector<int>& v1, int m, std::vector<int>& v2, int n)
 {
     Solution s;
     pvi(v1);
-    pi(m);
+    praw(m);
     pvi(v2);
-    pi(n);
+    praw(n);
     s.merge(v1, m, v2, n);
     pvi(v1);
     pnewline();

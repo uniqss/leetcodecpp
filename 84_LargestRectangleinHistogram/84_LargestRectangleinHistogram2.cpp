@@ -56,11 +56,11 @@ void test(vector<int>&& vi, int expect) {
     Solution s;
     int ret = s.largestRectangleArea(vi);
     if (ret != expect) {
-        ps("###### not ok");
-        pi(expect);
-        pi(ret);
+        praw("###### not ok");
+        praw(expect);
+        praw(ret);
     } else {
-        ps("ok");
+        praw("ok");
     }
     pnewline();
 }

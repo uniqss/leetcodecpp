@@ -36,11 +36,11 @@ void test(vector<vector<int>>&& vvi, int expect) {
     Solution s;
     int ret = s.trapRainWater(vvi);
     if (ret == expect) {
-        ps("ok");
+        praw("ok");
     } else {
-        ps("### not ok ");
-        pi(expect);
-        pi(ret);
+        praw("### not ok ");
+        praw(expect);
+        praw(ret);
     }
 }
 

@@ -55,7 +55,7 @@ ComplexVal testop(const string& op, const vector<int>& args) {
         ret = g_cdq->getFront();
     } else {
         ps("unknown command!!!");
-        ps(op);
+        praw(op);
     }
     return ret;
 }

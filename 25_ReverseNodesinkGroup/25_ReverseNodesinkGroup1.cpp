@@ -37,7 +37,7 @@ void test(const std::vector<int>& vi, int k) {
 
     head = constructList(vi);
     pLinkedList(head);
-    pi(k);
+    praw(k);
     ret = s.reverseKGroup(head, k);
     pLinkedList(ret);
     releaseLinkedList(ret);

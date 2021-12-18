@@ -21,16 +21,19 @@ using namespace std;
 
 #include "LinkedListHelper.h"
 
-void pi(int i) {
-    cout << i << endl;
+template <class T>
+void praw(const T& raw) {
+    cout << raw << endl;
 }
 
 void ps(const char* str) {
     cout << str << endl;
 }
 
-void ps(const string& str) {
-    cout << str << endl;
+template <class T>
+void pvraw(const vector<T>& vr) {
+    std::for_each(vr.begin(), vr.end(), [](const T& s) { cout << s << " "; });
+    cout << endl;
 }
 
 void pvs(const vector<string>& vs) {

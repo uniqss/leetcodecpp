@@ -28,12 +28,12 @@ class Solution {
 
 void test(const string& s, bool expected) {
     Solution so;
-    ps(s);
+    praw(s);
     bool ret = so.isValid(s);
     if (expected != ret) {
-        ps("!!!!!!! not ok");
+        praw("!!!!!!! not ok");
     } else {
-        ps("ok");
+        praw("ok");
     }
     pnewline();
 }

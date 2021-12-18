@@ -25,11 +25,11 @@ void test(vector<int>&& vi, int expect) {
     Solution s;
     int ret = s.trap(vi);
     if (ret == expect) {
-        ps("ok");
+        praw("ok");
     } else {
-        ps("### not ok ");
-        pi(expect);
-        pi(ret);
+        praw("### not ok ");
+        praw(expect);
+        praw(ret);
     }
 }
 

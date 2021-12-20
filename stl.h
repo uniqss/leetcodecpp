@@ -36,6 +36,14 @@ void pvraw(const vector<T>& vr) {
     cout << endl;
 }
 
+template <class T>
+void pvvraw(const vector<vector<T>>& vvr) {
+    std::for_each(vvr.begin(), vvr.end(), [](const vector<T>& vr) {
+        pvraw(vr);
+    });
+    cout << endl;
+}
+
 void pvs(const vector<string>& vs) {
     std::for_each(vs.begin(), vs.end(), [](const string& s) { cout << s << " "; });
     cout << endl;

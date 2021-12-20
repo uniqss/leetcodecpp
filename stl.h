@@ -16,6 +16,7 @@
 #include <thread>
 #include <random>
 #include <functional>
+#include <array>
 
 using namespace std;
 

@@ -3,24 +3,26 @@
 class Solution {
    public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        vector<vector<string>> ret;
-        vector<pair<unordered_map<char, size_t>, size_t>> strCount(strs.size());
+        unordered_map<string, vector<int>> mp;
+
         for (size_t i = 0; i < strs.size(); ++i) {
-            strCount[i].second = i;
+            string strKey(26, 'a');
             for (size_t j = 0; j < strs[i].size(); ++j) {
-                ++strCount[i].first[strs[i][j]];
+                size_t kidx = strs[i][j] - 'a';
+                ++strKey[kidx];
             }
+            mp[strKey].emplace_back(i);
         }
-        std::sort(strCount.begin(), strCount.end(), [](pair<unordered_map<char, size_t>, size_t>& lhs, pair<unordered_map<char, size_t>, size_t>& rhs) {
-            return lhs.first == rhs.first;
-        });
-        for (size_t i = 0; i < strCount.size(); ++i) {
-            if (i == 0 || strCount[i].first != strCount[i - 1].first) {
-                ret.push_back({strs[strCount[i].second]});
-            } else {
-                ret[ret.size() - 1].push_back(strs[strCount[i].second]);
+
+        vector<vector<string>> ret(mp.size());
+        int idx = 0;
+        for (const auto& it : mp) {
+            for (size_t i = 0; i < it.second.size(); ++i) {
+                ret[idx].push_back(strs[it.second[i]]);
             }
+            ++idx;
         }
+
         return ret;
     }
 };
@@ -28,7 +30,24 @@ class Solution {
 void test(vector<string>&& strs, const vector<vector<string>>& expect) {
     Solution s;
     auto ret = s.groupAnagrams(strs);
-    if (ret != expect) {
+    set<set<string>> mapexpect;
+    set<set<string>> mapret;
+    for (const auto& it : expect) {
+        set<string> ss;
+        for (const auto& iti : it) {
+            ss.insert(iti);
+        }
+        mapexpect.insert(ss);
+    }
+    for (const auto& it : ret) {
+        set<string> ss;
+        for (const auto& iti : it) {
+            ss.insert(iti);
+        }
+        mapret.insert(ss);
+    }
+
+    if (mapret != mapexpect) {
         praw("not ok.");
         pvraw(strs);
         pvvraw(expect);
@@ -39,7 +58,7 @@ void test(vector<string>&& strs, const vector<vector<string>>& expect) {
 }
 
 int main() {
-    test({"eat","tea","tan","ate","nat","bat"}, {{"bat"}, {"nat","tan"}, {"ate","eat","tea"}});
+    test({"eat", "tea", "tan", "ate", "nat", "bat"}, {{"bat"}, {"nat", "tan"}, {"ate", "eat", "tea"}});
     test({""}, {{""}});
     test({"a"}, {{"a"}});
     return 0;

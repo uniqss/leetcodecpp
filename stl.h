@@ -17,10 +17,12 @@
 #include <random>
 #include <functional>
 #include <array>
+#include <string.h>
 
 using namespace std;
 
 #include "LinkedListHelper.h"
+#include "TreeHelper.h"
 
 template <class T>
 void praw(const T& raw) {

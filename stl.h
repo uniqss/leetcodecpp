@@ -18,6 +18,7 @@
 #include <functional>
 #include <array>
 #include <string.h>
+#include <bitset>
 
 using namespace std;
 

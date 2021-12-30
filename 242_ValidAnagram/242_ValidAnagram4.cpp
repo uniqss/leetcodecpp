@@ -1,5 +1,6 @@
 #include "../stl.h"
 
+// array[26] diff
 class Solution {
    public:
     bool isAnagram(const string& s, const string& t) {

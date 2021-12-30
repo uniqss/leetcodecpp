@@ -1,5 +1,6 @@
 #include "../stl.h"
 
+// two pointer
 class Solution {
    public:
     int trap(vector<int>& height) {

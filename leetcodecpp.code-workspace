@@ -63,7 +63,13 @@
 			"queue": "cpp",
 			"chrono": "cpp",
 			"ranges": "cpp",
-			"sstream": "cpp"
+			"sstream": "cpp",
+			"ctime": "cpp",
+			"ratio": "cpp",
+			"iomanip": "cpp",
+			"semaphore": "cpp",
+			"stop_token": "cpp",
+			"thread": "cpp"
 		}
 	}
 }

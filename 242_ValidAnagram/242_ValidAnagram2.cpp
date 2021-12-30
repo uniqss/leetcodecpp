@@ -1,5 +1,6 @@
 #include "../stl.h"
 
+// map count
 class Solution {
    public:
     bool isAnagram(const string& s, const string& t) {

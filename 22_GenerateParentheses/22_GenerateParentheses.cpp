@@ -3,6 +3,23 @@
 class Solution {
    public:
     vector<string> generateParenthesis(int n) {
+        unordered_set<string> ss;
+        ss.insert("()");
+        for (int i = 2; i <= n; ++i) {
+            unordered_set<string> last = ss;
+            ss.clear();
+            for (const string& str : last) {
+                for (size_t i = 0; i < str.size(); ++i) {
+                    string tmp = str.substr(0, i) + "()" + str.substr(i, str.size());
+                    ss.insert(tmp);
+                }
+            }
+        }
+        vector<string> ret;
+        for (const auto& str : ss) {
+            ret.push_back(str);
+        }
+        return ret;
     }
 };
 

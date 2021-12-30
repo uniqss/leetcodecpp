@@ -1,32 +1,65 @@
 #include "../stl.h"
 
 class MyCircularDeque {
+    vector<int> vals;
+    size_t nextFrontIdx;
+    size_t nextRearIdx;
+    int count;
+
    public:
     MyCircularDeque(int k) {
+        vals.resize(k);
+        nextFrontIdx = k - 1;
+        nextRearIdx = 0;
+        count = 0;
     }
 
     bool insertFront(int value) {
+        if (count == vals.size()) return false;
+        vals[nextFrontIdx] = value;
+        nextFrontIdx = (nextFrontIdx + vals.size() - 1) % vals.size();
+        ++count;
+        return true;
     }
 
     bool insertLast(int value) {
+        if (count == vals.size()) return false;
+        vals[nextRearIdx] = value;
+        nextRearIdx = (nextRearIdx + 1) % vals.size();
+        ++count;
+        return true;
     }
 
     bool deleteFront() {
+        if (count == 0) return false;
+        nextFrontIdx = (nextFrontIdx + 1) % vals.size();
+        --count;
+        return true;
     }
 
     bool deleteLast() {
+        if (count == 0) return false;
+        nextRearIdx = (nextRearIdx + vals.size() - 1) % vals.size();
+        --count;
+        return true;
     }
 
     int getFront() {
+        if (count == 0) return -1;
+        return vals[(nextFrontIdx + 1) % vals.size()];
     }
 
     int getRear() {
+        if (count == 0) return -1;
+        return vals[(nextRearIdx + vals.size() - 1) % vals.size()];
     }
 
     bool isEmpty() {
+        return count == 0;
     }
 
     bool isFull() {
+        return count == (int)vals.size();
     }
 };
 

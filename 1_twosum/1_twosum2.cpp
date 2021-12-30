@@ -1,5 +1,6 @@
 #include "../stl.h"
 
+// hash
 class Solution {
    public:
     vector<int> twoSum(vector<int>& nums, int target) {

@@ -1,5 +1,6 @@
 #include "../stl.h"
 
+// dp
 class Solution {
    public:
     int trap(vector<int>& height) {

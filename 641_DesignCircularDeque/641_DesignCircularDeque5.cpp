@@ -1,32 +1,69 @@
 #include "../stl.h"
 
+// 相对4性能有明显提升，说明vector的size()频繁调用性能是比较差的
+
 class MyCircularDeque {
+    vector<int> vals;
+    size_t nextFrontIdx;
+    size_t nextRearIdx;
+    int count;
+    size_t cap;
+
    public:
     MyCircularDeque(int k) {
+        vals.resize(k);
+        nextFrontIdx = k - 1;
+        nextRearIdx = 0;
+        count = 0;
+        cap = k;
     }
 
     bool insertFront(int value) {
+        if (count == vals.size()) return false;
+        vals[nextFrontIdx] = value;
+        nextFrontIdx = (nextFrontIdx + cap - 1) % cap;
+        ++count;
+        return true;
     }
 
     bool insertLast(int value) {
+        if (count == vals.size()) return false;
+        vals[nextRearIdx] = value;
+        nextRearIdx = (nextRearIdx + 1) % cap;
+        ++count;
+        return true;
     }
 
     bool deleteFront() {
+        if (count == 0) return false;
+        nextFrontIdx = (nextFrontIdx + 1) % cap;
+        --count;
+        return true;
     }
 
     bool deleteLast() {
+        if (count == 0) return false;
+        nextRearIdx = (nextRearIdx + cap - 1) % cap;
+        --count;
+        return true;
     }
 
     int getFront() {
+        if (count == 0) return -1;
+        return vals[(nextFrontIdx + 1) % cap];
     }
 
     int getRear() {
+        if (count == 0) return -1;
+        return vals[(nextRearIdx + cap - 1) % cap];
     }
 
     bool isEmpty() {
+        return count == 0;
     }
 
     bool isFull() {
+        return count == (int)cap;
     }
 };
 

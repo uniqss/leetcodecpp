@@ -1,23 +1,8 @@
 #include "../stl.h"
 
-// threaded binary tree
 class Solution {
    public:
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> ret;
-        stack<TreeNode*> stk;
-        TreeNode* curr = root;
-        while (curr != nullptr || !stk.empty()) {
-            while (curr != nullptr) {
-                stk.push(curr);
-                curr = curr->left;
-            }
-            curr = stk.top();
-            stk.pop();
-            ret.push_back(curr->val);
-            curr = curr->right;
-        }
-        return ret;
     }
 };
 

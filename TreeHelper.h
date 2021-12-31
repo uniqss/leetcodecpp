@@ -43,32 +43,74 @@ TreeNode *constructTree(const vector<int> &vi) {
     return root;
 }
 
-void toVector(TreeNode *root, vector<TreeNode *> ret) {
+TreeNode *constructIntTree(const vector<ComplexVal> &vi) {
+    if (vi.empty() || vi[0].IsNullptr()) {
+        return nullptr;
+    }
+    TreeNode *root = new TreeNode(vi[0].vali);
+    vector<TreeNode *> parents{root};
+
+    int trimed = 1;
+    int layer = 0;
+    while (trimed < vi.size()) {
+        vector<TreeNode *> currLayer;
+        int parentNodeCount = 1 << layer;
+        for (int i = 0; i < parentNodeCount; ++i) {
+            if (parents[i] == nullptr) {
+                currLayer.push_back(nullptr);
+                currLayer.push_back(nullptr);
+            } else {
+                if (vi[trimed].IsNullptr()) {
+                    currLayer.push_back(nullptr);
+                } else {
+                    TreeNode *node = new TreeNode(vi[trimed].vali);
+                    parents[i]->left = node;
+                    currLayer.push_back(node);
+                }
+                ++trimed;
+                if (trimed >= vi.size()) break;
+                if (vi[trimed].IsNullptr()) {
+                    currLayer.push_back(nullptr);
+                } else {
+                    TreeNode *node = new TreeNode(vi[trimed].vali);
+                    parents[i]->right = node;
+                    currLayer.push_back(node);
+                }
+                ++trimed;
+                if (trimed >= vi.size()) break;
+            }
+        }
+        parents = currLayer;
+        ++layer;
+    }
+
+    return root;
+}
+
+void treeToVector(TreeNode *root, vector<TreeNode *> ret) {
     if (root == nullptr) return;
 
     queue<TreeNode *> nodes;
     nodes.push(root);
     while (!nodes.empty()) {
         TreeNode *curr = nodes.front();
-        if (curr == nullptr) continue;
-        cout << curr->val << "\t";
         nodes.pop();
+        if (curr == nullptr) continue;
         ret.push_back(curr);
         if (curr->left != nullptr) nodes.push(curr->left);
         if (curr->right != nullptr) nodes.push(curr->right);
     }
 }
 
-void toVector(const TreeNode *root, vector<const TreeNode *> ret) {
+void treeToVector(const TreeNode *root, vector<const TreeNode *> ret) {
     if (root == nullptr) return;
 
     queue<const TreeNode *> nodes;
     nodes.push(root);
     while (!nodes.empty()) {
         const TreeNode *curr = nodes.front();
-        if (curr == nullptr) continue;
-        cout << curr->val << "\t";
         nodes.pop();
+        if (curr == nullptr) continue;
         ret.push_back(curr);
         if (curr->left != nullptr) nodes.push(curr->left);
         if (curr->right != nullptr) nodes.push(curr->right);
@@ -77,7 +119,7 @@ void toVector(const TreeNode *root, vector<const TreeNode *> ret) {
 
 void pTree(const TreeNode *root) {
     vector<const TreeNode *> vec;
-    toVector(root, vec);
+    treeToVector(root, vec);
 
     std::for_each(vec.begin(), vec.end(), [](const TreeNode *node) {
         cout << node->val << "\t";
@@ -87,11 +129,18 @@ void pTree(const TreeNode *root) {
 
 void releaseTree(TreeNode *root) {
     vector<TreeNode *> vec;
-    toVector(root, vec);
+    treeToVector(root, vec);
 
     std::for_each(vec.begin(), vec.end(), [](TreeNode *node) {
         delete node;
     });
 
     cout << endl;
+}
+
+void releaseAllTreeNodes(vector<TreeNode *> &vec) {
+    std::for_each(vec.begin(), vec.end(), [](TreeNode *node) {
+        delete node;
+    });
+    vec.clear();
 }

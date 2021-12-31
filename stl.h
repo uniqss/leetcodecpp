@@ -22,6 +22,7 @@
 
 using namespace std;
 
+#include "complexval.h"
 #include "LinkedListHelper.h"
 #include "TreeHelper.h"
 
@@ -71,40 +72,6 @@ void pvvi(const vector<vector<int>>& vvi) {
 void pnewline() {
     cout << "###############################################" << endl
          << endl;
-}
-
-class ComplexVal {
-   public:
-    int valtype;  // 0:nullptr 1:int 2:bool 3:string
-    int vali;
-    bool valb;
-    string vals;
-    // ptr must be nullptr
-    ComplexVal() : valtype(-1) {}
-    ComplexVal(void* ptr) : valtype(0) {}
-    ComplexVal(int val) : valtype(1), vali(val) {}
-    ComplexVal(bool val) : valtype(2), valb(val) {}
-    ComplexVal(const string& str) : valtype(3), vals(str) {}
-};
-
-bool operator==(const ComplexVal& lhs, const ComplexVal& rhs) {
-    if (lhs.valtype != rhs.valtype) return false;
-    switch (lhs.valtype) {
-        case 0:
-            return true;
-        case 1:
-            return lhs.vali == rhs.vali;
-        case 2:
-            return lhs.valb == rhs.valb;
-        case 3:
-            return lhs.vals == rhs.vals;
-        case -1:
-            return true;
-
-        default:
-            return false;
-    }
-    return false;
 }
 
 void pvcomplex(const vector<ComplexVal>& vc) {

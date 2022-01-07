@@ -2,7 +2,7 @@
 
 class Solution {
    public:
-    void addPath(vector<int>& ret, TreeNode* root) {
+    vector<int> postorderTraversal(TreeNode* root) {
     }
 };
 

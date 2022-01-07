@@ -1,6 +1,6 @@
 #include "../stl.h"
 
-// threaded binary tree
+// threaded binary tree--不建议，会破坏结构，建议用下一种 threaded binary tree 解法
 class Solution {
    public:
     vector<int> inorderTraversal(TreeNode* root) {

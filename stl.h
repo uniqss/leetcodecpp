@@ -25,6 +25,7 @@ using namespace std;
 #include "complexval.h"
 #include "LinkedListHelper.h"
 #include "TreeHelper.h"
+#include "NArrayTreeHelper.h"
 
 template <class T>
 void praw(const T& raw) {

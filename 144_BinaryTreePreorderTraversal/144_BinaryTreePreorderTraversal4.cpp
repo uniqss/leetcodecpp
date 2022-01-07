@@ -1,29 +1,30 @@
 #include "../stl.h"
 
-// threaded binary tree ---- 不建议，会破坏树结构，非标准 morris 解法
+// threaded-binary-tree (morris) 中文官方解法，非常完美，不破坏树的任何结构
 class Solution {
    public:
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> ret;
-        TreeNode* curr = root;
-        TreeNode* prev = nullptr;
-        while (curr != nullptr) {
-            ret.push_back(curr->val);
-            if (curr->right != nullptr) {
-                if (curr->left == nullptr) {
-                    curr->left = curr->right;
-                    prev = curr->right;
-                    curr->right = nullptr;
-                } else {
-                    prev = curr->left;
-                    while (prev->right != nullptr) {
-                        prev = prev->right;
-                    }
-                    prev->right = curr->right;
-                    curr->right = nullptr;
+        TreeNode* predecessor = nullptr;
+        while (root != nullptr) {
+            predecessor = root->left;
+            if (predecessor != nullptr) {
+                while (predecessor->right != nullptr && predecessor->right != root) {
+                    predecessor = predecessor->right;
                 }
+                if (predecessor->right == nullptr) {
+                    predecessor->right = root;
+                    ret.emplace_back(root->val);
+                    root = root->left;
+                    continue;
+                } else {
+                    root = root->right;
+                    predecessor->right = nullptr;
+                }
+            } else {
+                ret.emplace_back(root->val);
+                root = root->right;
             }
-            curr = curr->left;
         }
 
         return ret;

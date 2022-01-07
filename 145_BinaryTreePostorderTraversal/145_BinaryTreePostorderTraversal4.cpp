@@ -3,7 +3,33 @@
 // threaded binary tree 中文官方题解极为经典，居然一点都没动树的结构，连指针都还原的一模一样，简直完美！
 class Solution {
    public:
-    void addPath(TreeNode* root, vector<int>& ret) {
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> ret;
+        TreeNode* curr = root;
+        TreeNode* predecessor = nullptr;
+        while (curr != nullptr) {
+            predecessor = curr->left;
+            if (predecessor != nullptr) {
+                while (predecessor->right != nullptr && predecessor->right != curr) {
+                    predecessor = predecessor->right;
+                }
+                if (predecessor->right == nullptr) {
+                    predecessor->right = curr;
+                    curr = curr->left;
+                } else {
+                    predecessor->right = nullptr;
+                    addRightReverse(ret, curr->left);
+                    curr = curr->right;
+                }
+            } else {
+                curr = curr->right;
+            }
+        }
+        addRightReverse(ret, root);
+
+        return ret;
+    }
+    void addRightReverse(vector<int>& ret, TreeNode* root) {
         size_t count = 0;
         while (root != nullptr) {
             ret.emplace_back(root->val);
@@ -11,32 +37,6 @@ class Solution {
             ++count;
         }
         std::reverse(ret.end() - count, ret.end());
-    }
-    vector<int> postorderTraversal(TreeNode* root) {
-        vector<int> ret;
-        TreeNode* p1 = root;
-        TreeNode* p2 = nullptr;
-        while (p1 != nullptr) {
-            p2 = p1->left;
-            if (p2 != nullptr) {
-                while (p2->right != nullptr && p2->right != p1) {
-                    p2 = p2->right;
-                }
-                if (p2->right == nullptr) {
-                    p2->right = p1;
-                    p1 = p1->left;
-                    continue;
-                } else {
-                    // p2->right == p1
-                    p2->right = nullptr;
-                    addPath(p1->left, ret);
-                }
-            }
-            p1 = p1->right;
-        }
-        addPath(root, ret);
-
-        return ret;
     }
 };
 

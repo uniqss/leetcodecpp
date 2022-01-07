@@ -87,7 +87,7 @@ TreeNode *constructIntTree(const vector<ComplexVal> &vi) {
     return root;
 }
 
-void treeToVector(TreeNode *root, vector<TreeNode *> ret) {
+void treeToVector(TreeNode *root, vector<TreeNode *>& ret) {
     if (root == nullptr) return;
 
     queue<TreeNode *> nodes;
@@ -102,7 +102,7 @@ void treeToVector(TreeNode *root, vector<TreeNode *> ret) {
     }
 }
 
-void treeToVector(const TreeNode *root, vector<const TreeNode *> ret) {
+void treeToVector(const TreeNode *root, vector<const TreeNode *>& ret) {
     if (root == nullptr) return;
 
     queue<const TreeNode *> nodes;

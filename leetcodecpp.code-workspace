@@ -11,6 +11,7 @@
 			"*.playable": "yaml",
 			"*.asset": "yaml",
 			"*.mat": "yaml",
+			"*.inc": "cpp",
 			"vector": "cpp",
 			"ostream": "cpp",
 			"iostream": "cpp",
@@ -70,7 +71,8 @@
 			"semaphore": "cpp",
 			"stop_token": "cpp",
 			"thread": "cpp",
-			"bitset": "cpp"
+			"bitset": "cpp",
+			"forward_list": "cpp"
 		}
 	}
 }

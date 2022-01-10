@@ -1,8 +1,19 @@
 #include "../stl.h"
 
+// recursive
 class Solution {
    public:
     vector<int> postorder(Node* root) {
+        vector<int> ret;
+        helper(ret, root);
+        return ret;
+    }
+    void helper(vector<int>& ret, Node* root) {
+        if (root == nullptr) return;
+        for (auto child : root->children) {
+            helper(ret, child);
+        }
+        ret.push_back(root->val);
     }
 };
 

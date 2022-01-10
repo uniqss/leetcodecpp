@@ -19,6 +19,7 @@
 #include <array>
 #include <string.h>
 #include <bitset>
+#include <forward_list>
 
 using namespace std;
 
@@ -37,17 +38,24 @@ void ps(const char* str) {
 }
 
 template <class T>
-void pvraw(const vector<T>& vr) {
-    std::for_each(vr.begin(), vr.end(), [](const T& s) { cout << s << " "; });
-    cout << endl;
+void pvraw(const vector<T>& vr, bool new_line = true) {
+    cout << "[";
+    for (int i = 0; i < vr.size(); ++i) {
+        cout << vr[i];
+        if (i < vr.size() - 1) cout << " ";
+    }
+    cout << "]";
+    if (new_line) cout << endl;
 }
 
 template <class T>
-void pvvraw(const vector<vector<T>>& vvr) {
-    std::for_each(vvr.begin(), vvr.end(), [](const vector<T>& vr) {
-        pvraw(vr);
-    });
-    cout << endl;
+void pvvraw(const vector<vector<T>>& vvr, bool new_line = true) {
+    cout << "[";
+    for (int i = 0; i < vvr.size(); ++i) {
+        pvraw(vvr[i], false);
+    }
+    cout << "]";
+    if (new_line) cout << endl;
 }
 
 void pvs(const vector<string>& vs) {

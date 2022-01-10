@@ -1,8 +1,23 @@
 #include "../stl.h"
 
+// stack
 class Solution {
    public:
     vector<int> postorder(Node* root) {
+        if (root == nullptr) return {};
+        vector<int> ret;
+        stack<Node*> stk;
+        stk.push(root);
+        Node* curr = root;
+        while (!stk.empty()) {
+            curr = stk.top();
+            stk.pop();
+            ret.emplace_back(curr->val);
+            std::for_each(curr->children.begin(), curr->children.end(), [&](Node* node) { stk.push(node); });
+        }
+        std::reverse(ret.begin(), ret.end());
+
+        return ret;
     }
 };
 

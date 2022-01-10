@@ -21,89 +21,53 @@ Node *constructNArrayTree(const vector<ComplexVal> &vi) {
     if (vi.empty() || vi[0].IsNullptr()) {
         return nullptr;
     }
-    Node *root = new Node(vi[0].vali);
-    deque<Node *> parents = {root};
-
-    int trimed = 1;
-    int layer = 0;
+    size_t trimed = 0;
+    Node *root = new Node(vi[trimed].vali);
+    ++trimed;
+    if (!vi[trimed].IsNullptr()) throw std::logic_error("val second must be null");
+    ++trimed;
+    vector<Node *> parents = {root};
     while (trimed < vi.size()) {
-        deque<Node *> currLayer;
-        size_t parentNodeCount = parents.size();
-        auto it_parent = parents.begin();
-
-        bool is_heading = true;
-        while (it_parent != parents.end() && trimed < vi.size()) {
-            const ComplexVal &vcurr = vi[trimed];
-            if (*it_parent == nullptr) {
-                if (vcurr.IsNullptr()) {
-                    if (!is_heading) {
-                        currLayer.push_back(nullptr);
-                    }
-                    ++it_parent;
-                    ++trimed;
-                    continue;
-                } else {
-                    if (is_heading) {
-                        throw std::logic_error("null fater has son");
-                    }
-                    
-                }
-            }
-        }
-        if (trimed >= vi.size()) {
-        }
-
-        for (auto &parent : parents) {
-            while (trimed < vi.size()) {
-            }
-        }
-
-        size_t trimedParentCount = 0;
-        auto it_parent = parents.begin();
-        while (trimed < vi.size() && it_parent != parents.end()) {
-            const ComplexVal &vcurr = vi[trimed];
-            if (*it_parent == nullptr) {
-                if (vcurr.IsNullptr()) {
-                    currLayer.push_back(nullptr);
-                } else {
-                    throw std::logic_error("a null fater have some son, last name is Wang? (姓王?)");
-                }
-            } else {
-                if (vcurr.IsNullptr()) {
-                    currLayer.push_back(nullptr);
-                } else {
-                }
-            }
-        }
-
-        for (size_t i = 0; i < parentNodeCount; ++i) {
-            if (parents[i] == nullptr) {
-                currLayer.push_back(nullptr);
-                currLayer.push_back(nullptr);
-            } else {
-                if (vi[trimed].IsNullptr()) {
-                    currLayer.push_back(nullptr);
-                } else {
-                    Node *node = new Node(vi[trimed].vali);
-                    parents[i]->left = node;
-                    currLayer.push_back(node);
-                }
+        // 处理一层
+        vector<Node *> children;
+        for (size_t pidx = 0; pidx < parents.size() && trimed < vi.size(); ++pidx) {
+            // 处理一个父节点
+            Node *parent = parents[pidx];
+            if (children.empty() && vi[trimed].IsNullptr()) {
                 ++trimed;
-                if (trimed >= vi.size()) break;
-                if (vi[trimed].IsNullptr()) {
-                    currLayer.push_back(nullptr);
-                } else {
-                    Node *node = new Node(vi[trimed].vali);
-                    parents[i]->right = node;
-                    currLayer.push_back(node);
-                }
-                ++trimed;
-                if (trimed >= vi.size()) break;
+                continue;
             }
+            bool parent_has_child = false;
+            while (trimed < vi.size() && !vi[trimed].IsNullptr()) {
+                parent_has_child = true;
+                Node *node = new Node(vi[trimed].vali);
+                parent->children.push_back(node);
+                children.push_back(node);
+                ++trimed;
+            }
+
+            if (!parent_has_child) {
+                children.push_back(nullptr);
+            }
+            ++trimed;
         }
-        parents = currLayer;
-        ++layer;
+        parents = children;
     }
+
+    /*
+    处理一层
+        处理一个父节点
+            定位父节点
+            如果是最前端，且子值直接空，无需加入子节点列表
+            子值为空
+                结束父节点处理并跳出到下一父节点
+            子值不为空
+                增加一个子值
+        已处理完所有父节点
+            结束本层处理并跳出到下一层
+    层结束
+        跳出处理逻辑
+    */
 
     return root;
 }
@@ -123,12 +87,36 @@ void NArrayTreeToVector(Node *root, vector<Node *> &ret) {
 }
 
 void pNArrayTree(Node *root) {
-    vector<Node *> vec;
-    NArrayTreeToVector(root, vec);
+    if (root == nullptr) return;
 
-    std::for_each(vec.begin(), vec.end(), [](const Node *node) {
-        cout << node->val << "\t";
-    });
+    queue<pair<Node *, int>> nodes;
+    nodes.push({nullptr, 1});
+    nodes.push({root, 100});
+    nodes.push({nullptr, 2});
+    while (!nodes.empty()) {
+        auto curr = nodes.front();
+        nodes.pop();
+        if (curr.second == 1) {
+            cout << "{";
+            continue;
+        } else if (curr.second == 2) {
+            cout << "}";
+            continue;
+        }
+
+        if (curr.first == nullptr) continue;
+        cout << curr.first->val;
+        if (curr.second == 0) cout << "\t";
+
+        if (curr.first->children.empty()) continue;
+        nodes.push({nullptr, 1});
+        for (size_t i = 0; i < curr.first->children.size(); ++i) {
+            nodes.push({curr.first->children[i], i == curr.first->children.size() - 1 ? 100 : 0});
+        }
+
+        nodes.push({nullptr, 2});
+    }
+
     cout << endl;
 }
 

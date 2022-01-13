@@ -144,3 +144,16 @@ void releaseAllTreeNodes(vector<TreeNode *> &vec) {
     });
     vec.clear();
 }
+
+class TreeAutoReleaser {
+    TreeNode *root_;
+    vector<TreeNode *> all_nodes_;
+
+   public:
+    TreeAutoReleaser(TreeNode *root) : root_(root) {
+        treeToVector(root, all_nodes_);
+    }
+    ~TreeAutoReleaser() {
+        releaseAllTreeNodes(all_nodes_);
+    }
+};

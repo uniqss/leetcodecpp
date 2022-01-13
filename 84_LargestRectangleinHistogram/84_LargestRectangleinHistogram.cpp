@@ -11,7 +11,7 @@ void test(vector<int>&& vi, int expect) {
     int ret = s.largestRectangleArea(vi);
     if (ret != expect) {
         praw("###### not ok");
-        pvi(vi);
+        pvraw(vi);
         praw(expect);
         praw(ret);
     } else {

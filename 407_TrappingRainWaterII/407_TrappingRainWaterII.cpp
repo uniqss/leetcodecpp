@@ -7,7 +7,7 @@ class Solution {
 };
 
 void test(vector<vector<int>>&& vvi, int expect) {
-    pvvi(vvi);
+    pvvraw(vvi);
     Solution s;
     int ret = s.trapRainWater(vvi);
     if (ret == expect) {

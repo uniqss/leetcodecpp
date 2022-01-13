@@ -1,24 +1,8 @@
 #include "../stl.h"
 
-// recursive
 class Solution {
    public:
     vector<vector<int>> levelOrder(Node* root) {
-        if (root == nullptr) return {};
-
-        vector<vector<int>> ret;
-        helper(ret, root, 0);
-
-        return ret;
-    }
-    void helper(vector<vector<int>>& ret, Node* root, size_t level) {
-        if (ret.size() <= level) {
-            ret.resize(ret.size() + 1);
-        }
-        ret[level].push_back(root->val);
-        for (Node* child : root->children) {
-            helper(ret, child, level + 1);
-        }
     }
 };
 

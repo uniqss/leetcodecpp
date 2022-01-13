@@ -7,7 +7,7 @@ class Solution {
 };
 
 void test(const vector<int>& nums, int k, const vector<int>& expect) {
-    pvi(nums);
+    pvraw(nums);
     praw(k);
     Solution s;
     auto ret = s.maxSlidingWindow(nums, k);
@@ -15,8 +15,8 @@ void test(const vector<int>& nums, int k, const vector<int>& expect) {
         praw("ok");
     } else {
         praw("##### not ok");
-        pvi(expect);
-        pvi(ret);
+        pvraw(expect);
+        pvraw(ret);
     }
     pnewline();
 }

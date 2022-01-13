@@ -79,17 +79,17 @@ int main() {
         vi.push_back(result);
     }
 
-    pvi(vi);
+    pvraw(vi);
     vector<int> val1;
     vector<int> val2;
     vector<int> del1;
     vector<int> del2;
     test(vi, val1, del1, val2, del2);
-    pvi(val1);
-    pvi(del1);
+    pvraw(val1);
+    pvraw(del1);
     pnewline();
-    pvi(val2);
-    pvi(del2);
+    pvraw(val2);
+    pvraw(del2);
 
     return 0;
 }

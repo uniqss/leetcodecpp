@@ -39,11 +39,7 @@ int main()
 {
 	vector<unsigned> moneys = { 1, 5, 11 };
 	vector<int> cost = getLeastCountMoney3(moneys, 15);
-	for (auto i : cost)
-	{
-		cout << i << "\t";
-	}
-	cout << endl;
+	pvraw(cost);
 
 	return 0;
 }

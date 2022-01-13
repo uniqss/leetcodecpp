@@ -1,6 +1,5 @@
 #include "../stl.h"
 
-// threaded-binary-tree (morris) 中文官方解法，非常完美，不破坏树的任何结构
 class Solution {
    public:
     vector<int> preorderTraversal(TreeNode* root) {

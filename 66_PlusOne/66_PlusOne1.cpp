@@ -23,10 +23,10 @@ class Solution {
 };
 
 void test(vector<int>&& vi) {
-    pvi(vi);
+    pvraw(vi);
     Solution s;
     auto ret = s.plusOne(vi);
-    pvi(ret);
+    pvraw(ret);
     pnewline();
 }
 

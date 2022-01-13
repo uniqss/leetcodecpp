@@ -65,7 +65,7 @@ int main() {
         const vector<int>& arg = argslist[i];
         ret.push_back(test(op, arg));
     }
-    pvi(ret);
+    pvraw(ret);
 
     if (g_testintstack != nullptr) {
         delete g_testintstack;

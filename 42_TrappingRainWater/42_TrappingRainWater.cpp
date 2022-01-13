@@ -7,7 +7,7 @@ class Solution {
 };
 
 void test(vector<int>&& vi, int expect) {
-    pvi(vi);
+    pvraw(vi);
     Solution s;
     int ret = s.trap(vi);
     if (ret == expect) {

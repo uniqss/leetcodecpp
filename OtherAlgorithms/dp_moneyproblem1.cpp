@@ -31,6 +31,7 @@ int getLeastCountMoney1(int n) {
 int main()
 {
 	int cost = getLeastCountMoney1(15);
+	praw(cost);
 	cout << cost << endl;
 
 	return 0;

@@ -30,6 +30,6 @@ int main() {
     vector<int> vi = {-1, 0, 1, 2, -1, -4};
     Solution s;
     auto ret = s.threeSum(vi);
-    pvvi(ret);
+    pvvraw(ret);
     return 0;
 }

@@ -23,11 +23,7 @@ vector<int> getLeastCountMoney2(int n) {
 int main()
 {
 	vector<int> cost = getLeastCountMoney2(17);
-	for (auto i : cost)
-	{
-		cout << i << "\t";
-	}
-	cout << endl;
+	pvraw(cost);
 
 	return 0;
 }

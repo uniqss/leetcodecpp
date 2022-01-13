@@ -9,38 +9,22 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-TreeNode *constructTree(const vector<int> &vi) {
+TreeNode *constructIntBinaryTreeLayerOrder(const vector<int> &vi) {
     if (vi.empty()) {
-        return new TreeNode();
+        return nullptr;
     }
-    TreeNode *root = new TreeNode(vi[0]);
-    list<TreeNode *> parents{root};
+    vector<TreeNode *> all_nodes(vi.size());
 
-    int size = vi.size();
-    int count = 0;
-    do {
-        list<TreeNode *> currLayer;
-        for (auto &parent : parents) {
-            if (++count < vi.size()) {
-                TreeNode *node = new TreeNode(count);
-                currLayer.push_back(node);
-                parent->left = node;
-            } else {
-                break;
-            }
-            if (++count < vi.size()) {
-                TreeNode *node = new TreeNode(count);
-                currLayer.push_back(node);
-                parent->right = node;
-            } else {
-                break;
-            }
-        }
-        parents = currLayer;
-
-    } while ((size >> 1) > 0);
-
-    return root;
+    for (size_t i = 0; i < vi.size(); ++i) {
+        all_nodes[i] = new TreeNode(vi[i]);
+    }
+    for (size_t i = 0; i < all_nodes.size(); ++i) {
+        size_t left = i * 2 + 1;
+        if (left < all_nodes.size()) all_nodes[i]->left = all_nodes[left];
+        size_t right = i * 2 + 2;
+        if (right < all_nodes.size()) all_nodes[i]->right = all_nodes[right];
+    }
+    return all_nodes[0];
 }
 
 TreeNode *constructIntTree(const vector<ComplexVal> &vi) {
@@ -50,7 +34,7 @@ TreeNode *constructIntTree(const vector<ComplexVal> &vi) {
     TreeNode *root = new TreeNode(vi[0].vali);
     vector<TreeNode *> parents{root};
 
-    int trimed = 1;
+    size_t trimed = 1;
     int layer = 0;
     while (trimed < vi.size()) {
         vector<TreeNode *> currLayer;
@@ -87,7 +71,7 @@ TreeNode *constructIntTree(const vector<ComplexVal> &vi) {
     return root;
 }
 
-void treeToVector(TreeNode *root, vector<TreeNode *>& ret) {
+void treeToVector(TreeNode *root, vector<TreeNode *> &ret) {
     if (root == nullptr) return;
 
     queue<TreeNode *> nodes;
@@ -102,7 +86,23 @@ void treeToVector(TreeNode *root, vector<TreeNode *>& ret) {
     }
 }
 
-void treeToVector(const TreeNode *root, vector<const TreeNode *>& ret) {
+void treeToIntVecLevelOrder(const TreeNode *root, vector<int> &ret) {
+    if (root == nullptr) return;
+    queue<const TreeNode *> q;
+    q.emplace(root);
+    while (!q.empty()) {
+        auto qsize = q.size();
+        for (size_t i = 0; i < qsize; ++i) {
+            const TreeNode *curr = q.front();
+            q.pop();
+            ret.emplace_back(curr->val);
+            if (curr->left != nullptr) q.push(curr->left);
+            if (curr->right != nullptr) q.push(curr->right);
+        }
+    }
+}
+
+void treeToVector(const TreeNode *root, vector<const TreeNode *> &ret) {
     if (root == nullptr) return;
 
     queue<const TreeNode *> nodes;

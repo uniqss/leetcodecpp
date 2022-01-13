@@ -13,12 +13,12 @@ int main() {
 
     vi = {1, 1, 2};
     ret = s.removeDuplicates(vi);
-    pvi(vi);
+    pvraw(vi);
     praw(ret);
 
     vi = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
     ret = s.removeDuplicates(vi);
-    pvi(vi);
+    pvraw(vi);
     praw(ret);
 
     return 0;

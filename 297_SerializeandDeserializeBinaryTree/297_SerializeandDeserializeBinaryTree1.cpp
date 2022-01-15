@@ -1,6 +1,6 @@
 #include "../stl.h"
 
-// bfs
+// bfs 其实很简单，也不用递归。就是代码有点长
 class Codec {
    public:
     int split_str(const char* str, int str_len, char delim, vector<pair<const char*, int>>& ret, int max_part_num) {

@@ -1,13 +1,29 @@
 #include "../stl.h"
 
-// recursive 性能应该也还行，不会重复计算
+// dfs
 class Solution {
    public:
     int minDepth(TreeNode* root) {
         if (root == nullptr) return 0;
-        if (root->left == nullptr) return minDepth(root->right) + 1;
-        if (root->right == nullptr) return minDepth(root->left) + 1;
-        return min(minDepth(root->left), minDepth(root->right)) + 1;
+        int ret = INT_MAX;
+        stack<pair<TreeNode*, int>> stk;
+        int depth = 1;
+        while (root != nullptr || !stk.empty()) {
+            while (root != nullptr) {
+                stk.push({root, depth});
+                root = root->left;
+                ++depth;
+            }
+            root = stk.top().first;
+            depth = stk.top().second;
+            stk.pop();
+
+            if (root->left == nullptr && root->right == nullptr) ret = min(ret, depth);
+
+            root = root->right;
+            if (root != nullptr) ++depth;
+        }
+        return ret;
     }
 };
 

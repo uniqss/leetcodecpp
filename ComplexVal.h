@@ -10,7 +10,7 @@ enum EComplexValType {
 
 class ComplexVal {
    public:
-    int valtype;  // 0:nullptr 1:int 2:bool 3:string
+    EComplexValType valtype;  // 0:nullptr 1:int 2:bool 3:string
     int vali;
     bool valb;
     string vals;
@@ -22,20 +22,47 @@ class ComplexVal {
     ComplexVal(const string& str) : valtype(EComplexValType_string), vals(str) {}
 
     bool IsNullptr() const { return valtype == EComplexValType_nullptr; }
+    std::string ToString() const {
+        switch (valtype) {
+            case EComplexValType_nullptr:
+                return "null";
+            case EComplexValType_int:
+                return std::to_string(vali);
+            case EComplexValType_bool:
+                return std::to_string(valb);
+            case EComplexValType_string:
+                return vals;
+            case EComplexValType_Invalid:
+                return "invalid";
+
+            default:
+                break;
+        }
+        return "unknown";
+    }
+    void FromString(const std::string& s){
+        if (s == "null"){
+            valtype = EComplexValType_nullptr;
+        } else {
+            // 目前只有int
+            valtype = EComplexValType_int;
+            vali = atoi(s.c_str());
+        }
+    }
 };
 
 bool operator==(const ComplexVal& lhs, const ComplexVal& rhs) {
     if (lhs.valtype != rhs.valtype) return false;
     switch (lhs.valtype) {
-        case 0:
+        case EComplexValType_nullptr:
             return true;
-        case 1:
+        case EComplexValType_int:
             return lhs.vali == rhs.vali;
-        case 2:
+        case EComplexValType_bool:
             return lhs.valb == rhs.valb;
-        case 3:
+        case EComplexValType_string:
             return lhs.vals == rhs.vals;
-        case -1:
+        case EComplexValType_Invalid:
             return true;
 
         default:

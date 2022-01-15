@@ -23,6 +23,7 @@
 
 using namespace std;
 
+#include "StringHelper.h"
 #include "complexval.h"
 #include "LinkedListHelper.h"
 #include "TreeHelper.h"
@@ -88,3 +89,26 @@ void pvcomplex(const vector<ComplexVal>& vc) {
 }
 
 #define null nullptr
+
+void vcomplexToString(string& ret, const vector<ComplexVal>& vals) {
+    ret = "[";
+    for (size_t i = 0; i < vals.size(); ++i) {
+        const ComplexVal& val = vals[i];
+        if (i > 0) ret += ",";
+        ret += val.ToString();
+    }
+    ret += "]";
+}
+
+void vcomplexFromString(vector<ComplexVal>& vals, const std::string& str) {
+    vector<Slice> vstrs;
+    splitStr(str.c_str() + 1, str.size() - 2, ',', vstrs, INT_MAX);
+
+    vals.resize(vstrs.size());
+    for (size_t i = 0; i < vstrs.size(); ++i) {
+        const Slice& vstr = vstrs[i];
+        string s = vstr.str;
+        s = s.substr(0, vstr.len);
+        vals[i].FromString(s);
+    }
+}

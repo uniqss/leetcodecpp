@@ -7,7 +7,7 @@ class Solution {
         int ret = 0;
         if (root == nullptr) return ret;
         queue<TreeNode*> q;
-        q.push(root);
+        q.emplace(root);
         while (!q.empty()) {
             auto qsize = q.size();
             ++ret;
@@ -15,8 +15,8 @@ class Solution {
                 root = q.front();
                 q.pop();
                 if (root->left == nullptr && root->right == nullptr) return ret;
-                if (root->left != nullptr) q.push(root->left);
-                if (root->right != nullptr) q.push(root->right);
+                if (root->left != nullptr) q.emplace(root->left);
+                if (root->right != nullptr) q.emplace(root->right);
             }
         }
         return -1;
@@ -42,6 +42,7 @@ void test(const vector<ComplexVal>& vals, int expect) {
 int main() {
     test({3, 9, 20, null, null, 15, 7}, 2);
     test({2, null, 3, null, 4, null, 5, null, 6}, 5);
+    test({}, 0);
     return 0;
 }
 

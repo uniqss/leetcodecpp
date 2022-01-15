@@ -1,14 +1,14 @@
 #include "../stl.h"
 
-// morris traverse.  This solution will break the tree's structure, left some tree node's right point to some ancestor(lead to infinite loop).
-// 4 is better.
-// Keep in mind: we SHOULD NOT break tree structure in some function only when we mean it!
+// morris traverse. This is ok, the tree will not be broken.
 class Solution {
    public:
     bool isValidBST(TreeNode* root) {
         int64_t vlast = INT64_MIN;
         TreeNode* curr = root;
         TreeNode* predecessor = nullptr;
+        int changed = 0;
+        bool ret = true;
         while (curr != nullptr) {
             predecessor = curr->left;
             if (predecessor != nullptr) {
@@ -18,23 +18,29 @@ class Solution {
                 if (predecessor->right == nullptr) {
                     predecessor->right = curr;
                     curr = curr->left;
+                    ++changed;
                 } else {
                     predecessor->right = nullptr;
+                    --changed;
+                    if (curr->val <= vlast) ret = false;
+                    if (changed == 0 && !ret) return ret;
 
-                    if (curr->val <= vlast) return false;
                     vlast = curr->val;
 
                     curr = curr->right;
                 }
             } else {
-                if (curr->val <= vlast) return false;
+                if (curr->val <= vlast) {
+                    ret = false;
+                    if (changed == 0) return ret;
+                }
                 vlast = curr->val;
 
                 curr = curr->right;
             }
         }
 
-        return true;
+        return ret;
     }
 };
 

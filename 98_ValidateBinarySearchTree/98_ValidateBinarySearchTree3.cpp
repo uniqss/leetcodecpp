@@ -1,7 +1,7 @@
 #include "../stl.h"
 
 // morris traverse.  This solution will break the tree's structure, left some tree node's right point to some ancestor(lead to infinite loop).
-// 4 is better.
+// 3.1 is better.
 // Keep in mind: we SHOULD NOT break tree structure in some function only when we mean it!
 class Solution {
    public:

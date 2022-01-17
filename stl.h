@@ -20,6 +20,7 @@
 #include <string.h>
 #include <bitset>
 #include <forward_list>
+#include <sstream>
 
 using namespace std;
 

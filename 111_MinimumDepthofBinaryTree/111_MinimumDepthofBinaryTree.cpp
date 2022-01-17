@@ -25,6 +25,7 @@ void test(const vector<ComplexVal>& vals, int expect) {
 int main() {
     test({3, 9, 20, null, null, 15, 7}, 2);
     test({2, null, 3, null, 4, null, 5, null, 6}, 5);
+    test({1, 2, 3, 4, 5}, 2);
     test({}, 0);
     return 0;
 }

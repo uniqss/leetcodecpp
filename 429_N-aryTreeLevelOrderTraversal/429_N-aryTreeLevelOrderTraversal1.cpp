@@ -24,7 +24,7 @@ while(!queue.empty()){
     }
 }
 */
-// queue
+// queue 我想出来的最原始的办法，需要两个queue不停的换来换去，一层换一把，有点浪费。事实上可以记一下queue的数量利用在queue尾加节点同时queue头出节点互不影响的特性
 class Solution {
    public:
     vector<vector<int>> levelOrder(Node* root) {

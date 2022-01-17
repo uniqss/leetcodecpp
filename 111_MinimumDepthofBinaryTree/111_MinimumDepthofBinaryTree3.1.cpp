@@ -1,19 +1,20 @@
 #include "../stl.h"
 
-// dfs 这一题不建议用dfs，如果这棵树足够倾斜，比如右边第一个子节点就是空，而左子树非常壮大，则性能会差很多倍
-// dfs 可否剪枝？如何剪枝？参见3.1
+// 对dfs的优化  这样剪枝如果左子树比较少，性能会有显著提升，越左越明显，但仍然没有bfs性能高
 class Solution {
    public:
     int minDepth(TreeNode* root) {
         if (root == nullptr) return 0;
-        int ret = INT_MAX;
         stack<pair<TreeNode*, int>> stk;
+        int ret = INT_MAX;
         int depth = 1;
         while (root != nullptr || !stk.empty()) {
             while (root != nullptr) {
                 stk.push({root, depth});
                 root = root->left;
                 ++depth;
+                // 剪枝策略1：向下延伸最多不超过已经探测过的最小深度
+                if (depth >= ret) break;
             }
             root = stk.top().first;
             depth = stk.top().second;
@@ -23,6 +24,8 @@ class Solution {
 
             root = root->right;
             if (root != nullptr) ++depth;
+            // 剪枝策略2：向右子树扩展时，如已超过最小探测深度，剪掉整个右子树
+            if (depth >= ret) root = nullptr;
         }
         return ret;
     }
@@ -47,6 +50,7 @@ void test(const vector<ComplexVal>& vals, int expect) {
 int main() {
     test({3, 9, 20, null, null, 15, 7}, 2);
     test({2, null, 3, null, 4, null, 5, null, 6}, 5);
+    test({1, 2, 3, 4, 5}, 2);
     test({}, 0);
     return 0;
 }

@@ -2,11 +2,11 @@
 
 // 自己figure out
 class Solution {
-   public:
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+  public:
+    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
         return helper(preorder, 0, preorder.size(), inorder, 0, inorder.size());
     }
-    TreeNode* helper(vector<int>& preorder, size_t pstart, size_t pend, vector<int>& inorder, size_t istart, size_t iend) {
+    TreeNode *helper(vector<int> &preorder, size_t pstart, size_t pend, vector<int> &inorder, size_t istart, size_t iend) {
         if (pend <= pstart || iend <= istart) return nullptr;
         int vcurr = preorder[pstart];
         size_t idx_inorder = istart;
@@ -14,18 +14,18 @@ class Solution {
             if (inorder[idx_inorder] == vcurr) break;
         }
 
-        TreeNode* curr = new TreeNode(preorder[pstart]);
+        TreeNode *curr = new TreeNode(preorder[pstart]);
         curr->left = helper(preorder, pstart + 1, pstart + 1 + idx_inorder - istart, inorder, istart, idx_inorder);
         curr->right = helper(preorder, pend - (iend - idx_inorder - 1), pend, inorder, idx_inorder + 1, iend);
         return curr;
     }
 };
 
-void test(vector<int>&& preorder, vector<int>&& inorder, vector<ComplexVal>&& expect) {
+void test(vector<int> &&preorder, vector<int> &&inorder, vector<ComplexVal> &&expect) {
     Solution so;
-    TreeNode* ret = so.buildTree(preorder, inorder);
+    TreeNode *ret = so.buildTree(preorder, inorder);
     TreeAutoReleaser _(ret);
-    TreeNode* expect_tree = constructIntTree(expect);
+    TreeNode *expect_tree = constructIntTree(expect);
     TreeAutoReleaser _etree(expect_tree);
     vector<int> vret;
     vector<int> vexpect;

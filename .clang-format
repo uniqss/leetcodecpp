@@ -1,13 +1,12 @@
 ---
 BasedOnStyle: LLVM
 AllowShortBlocksOnASingleLine: 'true'
-AllowShortCaseLabelsOnASingleLine: 'true'
 AllowShortFunctionsOnASingleLine: All
-AllowShortIfStatementsOnASingleLine: Always
+AllowShortIfStatementsOnASingleLine: WithoutElse
 AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: 'true'
 BreakBeforeBraces: Custom
-ColumnLimit: '0'
+ColumnLimit: '173'
 FixNamespaceComments: 'false'
 IndentWidth: '4'
 MaxEmptyLinesToKeep: '5'

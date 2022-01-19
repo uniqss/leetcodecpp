@@ -2,8 +2,7 @@
 
 class Solution {
   public:
-    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
-    }
+    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {}
 };
 
 void test(vector<int> &&preorder, vector<int> &&inorder, vector<ComplexVal> &&expect) {

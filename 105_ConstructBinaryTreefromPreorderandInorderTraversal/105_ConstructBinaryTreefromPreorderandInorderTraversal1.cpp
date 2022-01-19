@@ -2,10 +2,8 @@
 
 // 自己figure out
 class Solution {
-  public:
-    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
-        return helper(preorder, 0, preorder.size(), inorder, 0, inorder.size());
-    }
+   public:
+    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) { return helper(preorder, 0, preorder.size(), inorder, 0, inorder.size()); }
     TreeNode *helper(vector<int> &preorder, size_t pstart, size_t pend, vector<int> &inorder, size_t istart, size_t iend) {
         if (pend <= pstart || iend <= istart) return nullptr;
         int vcurr = preorder[pstart];

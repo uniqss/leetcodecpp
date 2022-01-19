@@ -1,7 +1,7 @@
 #include "../stl.h"
 
 class Solution {
-  public:
+   public:
     TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {}
 };
 

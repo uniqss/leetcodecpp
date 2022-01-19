@@ -71,6 +71,21 @@ TreeNode *constructIntTree(const vector<ComplexVal> &vi) {
     return root;
 }
 
+TreeNode *treeFindUniqueNodeByVal(TreeNode *root, int val) {
+    stack<TreeNode *> stk;
+    while (root != nullptr || !stk.empty()) {
+        while (root != nullptr) {
+            stk.emplace(root);
+            root = root->left;
+        }
+        root = stk.top();
+        stk.pop();
+        if (root->val == val) return root;
+        root = root->right;
+    }
+    return nullptr;
+}
+
 void treeToVector(TreeNode *root, vector<TreeNode *> &ret) {
     if (root == nullptr) return;
 

@@ -1,9 +1,8 @@
 #include "../stl.h"
 
 class Solution {
-  public:
-    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
-    }
+   public:
+    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {}
 };
 
 void test(vector<ComplexVal> &&vals, int vp, int vq, int vexpect) {
@@ -28,6 +27,7 @@ void test(vector<ComplexVal> &&vals, int vp, int vq, int vexpect) {
 }
 
 int main() {
+    test({-1, 0, 3, -2, 4, null, null, 8}, 8, 4, 0);
     test({3, 5, 1, 6, 2, 0, 8, null, null, 7, 4}, 0, 8, 1);
     test({3, 5, 1, 6, 2, 0, 8, null, null, 7, 4}, 5, 1, 3);
     test({3, 5, 1, 6, 2, 0, 8, null, null, 7, 4}, 5, 4, 5);
@@ -36,6 +36,10 @@ int main() {
 }
 
 /*
+[-1,0,3,-2,4,null,null,8]
+8
+4
+
 [3,5,1,6,2,0,8,null,null,7,4]
 5
 1

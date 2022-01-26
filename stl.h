@@ -57,8 +57,7 @@ void pvvraw(const vector<vector<T>>& vvr, bool new_line = true) {
 }
 
 void pnewline() {
-    cout << "###############################################" << endl
-         << endl;
+    cout << "###############################################" << endl << endl;
 }
 
 void pvcomplex(const vector<ComplexVal>& vc) {
@@ -112,4 +111,26 @@ void vcomplexFromString(vector<ComplexVal>& vals, const std::string& str) {
         s = s.substr(0, vstr.len);
         vals[i].FromString(s);
     }
+}
+
+template <class T>
+void sortvvrawInner(vector<vector<T>>& vals) {
+    std::for_each(vals.begin(), vals.end(), [](vector<T>& v) { std::sort(v.begin(), v.end()); });
+}
+
+template <class T>
+void sortvvrawOuter(vector<vector<T>>& vals) {
+    std::sort(vals.begin(), vals.end(), [](const vector<T>& lhs, const vector<T>& rhs) {
+        for (size_t i = 0; i < lhs.size() && i < rhs.size(); ++i) {
+            if (lhs[i] < rhs[i]) return true;
+            if (lhs[i] > rhs[i]) return false;
+        }
+        return false;
+    });
+}
+
+template <class T>
+void sortvvrawInnerAndOuter(vector<vector<T>>& vals) {
+    sortvvrawInner(vals);
+    sortvvrawOuter(vals);
 }

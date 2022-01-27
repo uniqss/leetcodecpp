@@ -1,19 +1,19 @@
 #include <cstring>
 #include <stdexcept>
 
-template<class T>
+template <class T>
 class Node {
-public:
+   public:
     Node(const T& d) : data(d), next(nullptr), prev(nullptr) {}
-    Node() : next(nullptr), prev(nullptr) {memset(&data, 0, sizeof(data));}
+    Node() : next(nullptr), prev(nullptr) { memset(&data, 0, sizeof(data)); }
     T data;
     Node<T>* next;
     Node<T>* prev;
 };
 
-template<class T>
+template <class T>
 class LinkedList {
-    public:
+   public:
     LinkedList() {
         head = new Node<T>();
         tail = new Node<T>();
@@ -33,12 +33,8 @@ class LinkedList {
         pos->next = node;
         node->next->prev = node;
     }
-    void Append(const T& d) {
-        InsertAfter(tail->prev, d);
-    }
-    void PreAppend(const T& d) {
-        InsertAfter(head, d);
-    }
+    void Append(const T& d) { InsertAfter(tail->prev, d); }
+    void PreAppend(const T& d) { InsertAfter(head, d); }
     void Delete(Node<T>* node) {
         // warning
         if (node == nullptr) return;
@@ -49,8 +45,7 @@ class LinkedList {
     Node<T>* Find(const T& data) {
         Node<T>* curr = head;
         // 有头有尾这里也可不判空
-        while (curr != tail && curr != nullptr)
-        {
+        while (curr != tail && curr != nullptr) {
             if (curr->data == data) return curr;
             curr = curr->next;
         }

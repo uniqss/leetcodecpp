@@ -1,13 +1,12 @@
 #include "linkedlist.h"
 
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
 void pilist(const LinkedList<int>& li) {
     Node<int>* curr = li.head;
-    while (curr != li.tail)
-    {
+    while (curr != li.tail) {
         cout << curr->data << " ";
         curr = curr->next;
     }
@@ -16,8 +15,7 @@ void pilist(const LinkedList<int>& li) {
 
 int main() {
     LinkedList<int> li;
-    for (int i = 0; i < 5; i++)
-    {
+    for (int i = 0; i < 5; i++) {
         li.Append(i);
     }
     pilist(li);
@@ -29,7 +27,6 @@ int main() {
     elem = li.Find(4);
     elem->data = 1024;
     pilist(li);
-    
+
     return 0;
 }
-

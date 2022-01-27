@@ -8,12 +8,12 @@ struct ListNode {
     ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
-ListNode *constructList(const vector<int> &vi) {
+ListNode* constructList(const vector<int>& vi) {
     if (vi.empty()) {
         return new ListNode();
     }
-    ListNode *next = nullptr;
-    ListNode *curr = nullptr;
+    ListNode* next = nullptr;
+    ListNode* curr = nullptr;
     for (int i = vi.size() - 1; i >= 0; --i) {
         curr = new ListNode(vi[i], next);
         next = curr;
@@ -22,8 +22,7 @@ ListNode *constructList(const vector<int> &vi) {
 }
 
 void pLinkedList(const ListNode* head) {
-    while (head != nullptr)
-    {
+    while (head != nullptr) {
         cout << head->val << "\t";
         head = head->next;
     }
@@ -32,12 +31,9 @@ void pLinkedList(const ListNode* head) {
 
 void releaseLinkedList(ListNode* head) {
     ListNode* next = nullptr;
-    while (head != nullptr)
-    {
+    while (head != nullptr) {
         next = head->next;
         delete head;
         head = next;
     }
 }
-
-

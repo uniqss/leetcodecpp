@@ -40,8 +40,8 @@ class ComplexVal {
         }
         return "unknown";
     }
-    void FromString(const std::string& s){
-        if (s == "null"){
+    void FromString(const std::string& s) {
+        if (s == "null") {
             valtype = EComplexValType_nullptr;
         } else {
             // 目前只有int

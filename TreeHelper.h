@@ -136,9 +136,7 @@ void pTree(const TreeNode *root) {
     vector<const TreeNode *> vec;
     treeToVector(root, vec);
 
-    std::for_each(vec.begin(), vec.end(), [](const TreeNode *node) {
-        cout << node->val << "\t";
-    });
+    std::for_each(vec.begin(), vec.end(), [](const TreeNode *node) { cout << node->val << "\t"; });
     cout << endl;
 }
 
@@ -146,17 +144,13 @@ void releaseTree(TreeNode *root) {
     vector<TreeNode *> vec;
     treeToVector(root, vec);
 
-    std::for_each(vec.begin(), vec.end(), [](TreeNode *node) {
-        delete node;
-    });
+    std::for_each(vec.begin(), vec.end(), [](TreeNode *node) { delete node; });
 
     cout << endl;
 }
 
 void releaseAllTreeNodes(vector<TreeNode *> &vec) {
-    std::for_each(vec.begin(), vec.end(), [](TreeNode *node) {
-        delete node;
-    });
+    std::for_each(vec.begin(), vec.end(), [](TreeNode *node) { delete node; });
     vec.clear();
 }
 
@@ -165,10 +159,6 @@ class TreeAutoReleaser {
     vector<TreeNode *> all_nodes_;
 
    public:
-    TreeAutoReleaser(TreeNode *root) : root_(root) {
-        treeToVector(root, all_nodes_);
-    }
-    ~TreeAutoReleaser() {
-        releaseAllTreeNodes(all_nodes_);
-    }
+    TreeAutoReleaser(TreeNode *root) : root_(root) { treeToVector(root, all_nodes_); }
+    ~TreeAutoReleaser() { releaseAllTreeNodes(all_nodes_); }
 };

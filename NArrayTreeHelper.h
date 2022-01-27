@@ -7,9 +7,7 @@ struct Node {
 
     Node() {}
 
-    Node(int _val) {
-        val = _val;
-    }
+    Node(int _val) { val = _val; }
 
     Node(int _val, vector<Node *> _children) {
         val = _val;
@@ -124,16 +122,12 @@ void releaseNArrayTree(Node *root) {
     vector<Node *> vec;
     NArrayTreeToVector(root, vec);
 
-    std::for_each(vec.begin(), vec.end(), [](Node *node) {
-        delete node;
-    });
+    std::for_each(vec.begin(), vec.end(), [](Node *node) { delete node; });
 
     cout << endl;
 }
 
 void releaseAllNArrayTreeNodes(vector<Node *> &vec) {
-    std::for_each(vec.begin(), vec.end(), [](Node *node) {
-        delete node;
-    });
+    std::for_each(vec.begin(), vec.end(), [](Node *node) { delete node; });
     vec.clear();
 }

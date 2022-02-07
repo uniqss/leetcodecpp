@@ -2,7 +2,26 @@
 
 class Solution {
    public:
-    TreeNode* invertTree(TreeNode* root) {}
+    TreeNode* invertTree(TreeNode* root) {
+        if (root == nullptr) return nullptr;
+        stack<TreeNode*> stk;
+        TreeNode* curr = root;
+        while (curr != nullptr || !stk.empty()) {
+            while (curr != nullptr) {
+                stk.emplace(curr);
+                curr = curr->left;
+            }
+            curr = stk.top();
+            stk.pop();
+            TreeNode* tmp = curr->left;
+            curr->left = curr->right;
+            curr->right = tmp;
+
+            curr = curr->left;
+        }
+
+        return root;
+    }
 };
 
 void test(const vector<int>& vals, const vector<int>& expect) {

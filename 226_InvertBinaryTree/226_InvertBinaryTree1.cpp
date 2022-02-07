@@ -19,8 +19,7 @@ class Solution {
 
 void test(const vector<int>& vals, const vector<int>& expect) {
     TreeNode* root = constructIntBinaryTreeLayerOrder(vals);
-    vector<TreeNode*> allnodes;
-    treeToVector(root, allnodes);
+    TreeAutoReleaser _(root);
 
     Solution so;
     TreeNode* ret = so.invertTree(root);
@@ -34,8 +33,6 @@ void test(const vector<int>& vals, const vector<int>& expect) {
     } else {
         praw("ok.");
     }
-
-    releaseAllTreeNodes(allnodes);
 }
 
 int main() {

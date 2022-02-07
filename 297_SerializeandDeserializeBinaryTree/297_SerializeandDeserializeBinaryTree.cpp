@@ -22,6 +22,7 @@ void test(const vector<ComplexVal>& vals, const string& expect) {
         praw(expect);
         praw(ret);
         pTree(root);
+        pnewline();
     }
 }
 

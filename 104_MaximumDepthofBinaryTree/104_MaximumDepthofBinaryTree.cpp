@@ -2,8 +2,7 @@
 
 class Solution {
    public:
-    int maxDepth(TreeNode* root) {
-    }
+    int maxDepth(TreeNode* root) {}
 };
 
 void test(const vector<ComplexVal>& vals, int expected) {

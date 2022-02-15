@@ -40,8 +40,7 @@ class Solution {
 
 void test(const vector<ComplexVal>& vals, bool expect) {
     TreeNode* root = constructIntTree(vals);
-    std::vector<TreeNode*> all_nodes;
-    treeToVector(root, all_nodes);
+    TreeAutoReleaser _(root);
 
     Solution so;
     bool ret = so.isValidBST(root);
@@ -53,8 +52,6 @@ void test(const vector<ComplexVal>& vals, bool expect) {
         praw(expect);
         praw(ret);
     }
-
-    releaseAllTreeNodes(all_nodes);
 }
 
 int main() {

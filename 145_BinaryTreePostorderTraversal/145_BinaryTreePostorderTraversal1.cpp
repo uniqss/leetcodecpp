@@ -19,8 +19,7 @@ class Solution {
 void test(const vector<ComplexVal>& root, const vector<int>& expect) {
     Solution so;
     TreeNode* tree = constructIntTree(root);
-    vector<TreeNode*> allNodes;
-    treeToVector(tree, allNodes);
+    TreeAutoReleaser _(tree);
 
     auto ret = so.postorderTraversal(tree);
     if (ret != expect) {
@@ -31,8 +30,6 @@ void test(const vector<ComplexVal>& root, const vector<int>& expect) {
     } else {
         praw("ok.");
     }
-
-    releaseAllTreeNodes(allNodes);
 }
 
 int main() {

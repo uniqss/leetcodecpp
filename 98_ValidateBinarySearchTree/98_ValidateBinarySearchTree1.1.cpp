@@ -1,25 +1,12 @@
 #include "../stl.h"
 
-// in-order traverse
 class Solution {
    public:
-    bool isValidBST(TreeNode* root) {
-        int64_t vlast = INT64_MIN;
-        stack<TreeNode*> stk;
-        while (root != nullptr || !stk.empty()) {
-            while (root != nullptr) {
-                stk.push(root);
-                root = root->left;
-            }
-            root = stk.top();
-            stk.pop();
-
-            if (root->val <= vlast) return false;
-            vlast = root->val;
-
-            root = root->right;
-        }
-        return true;
+    bool isValidBST(TreeNode* root) { return isValidBSTRange(root, INT64_MIN, INT64_MAX); }
+    bool isValidBSTRange(TreeNode* root, int64_t min, int64_t max) {
+        if (root == nullptr) return true;
+        if (root->val <= min || root->val >= max) return false;
+        return isValidBSTRange(root->left, min, root->val) && isValidBSTRange(root->right, root->val, max);
     }
 };
 
@@ -42,6 +29,7 @@ void test(const vector<ComplexVal>& vals, bool expect) {
 int main() {
     test({2, 1, 3}, true);
     test({5, 1, 4, null, null, 3, 6}, false);
+    test({2147483647}, true);
     return 0;
 }
 

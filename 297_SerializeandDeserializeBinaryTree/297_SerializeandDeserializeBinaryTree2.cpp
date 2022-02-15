@@ -109,13 +109,15 @@ void test(const vector<ComplexVal>& vals, const string& expect) {
         praw(expect);
         praw(ret);
         pTree(root);
+        pnewline();
     }
 }
 
 int main() {
     test({1, 2, 3, null, null, 4, 5}, "[1,2,3,null,null,4,5]");
     test({1, 2, 3, null, null, 4, 5, 6, 7}, "[1,2,3,null,null,4,5,6,7]");
-    test({4, -7, -3, null, null, -9, -3, 9, -7, -4, null, 6, null, -6, -6, null, null, 0, 6, 5, null, 9, null, null, -1, -4, null, null, null, -2}, "[4,-7,-3,null,null,-9,-3,9,-7,-4,null,6,null,-6,-6,null,null,0,6,5,null,9,null,null,-1,-4,null,null,null,-2]");
+    test({4, -7, -3, null, null, -9, -3, 9, -7, -4, null, 6, null, -6, -6, null, null, 0, 6, 5, null, 9, null, null, -1, -4, null, null, null, -2},
+         "[4,-7,-3,null,null,-9,-3,9,-7,-4,null,6,null,-6,-6,null,null,0,6,5,null,9,null,null,-1,-4,null,null,null,-2]");
     test({}, "[]");
     return 0;
 }

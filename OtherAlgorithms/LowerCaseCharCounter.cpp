@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <iostream>
+#include <array>
 
 struct LowerCaseCharCounter {
     std::array<int, 26> counter;

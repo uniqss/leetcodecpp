@@ -9,14 +9,20 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
+
+            // linux
             // "program": "${workspaceFolder}/a.out",
+
+            // msys2 or cygwin with gdb 9.*
             "program": "${workspaceFolder}/a.exe",
+
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
+            "miDebuggerPath": "D:\\cygwin64\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

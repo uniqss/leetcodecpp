@@ -21,6 +21,7 @@
 #include <bitset>
 #include <forward_list>
 #include <sstream>
+#include <limits.h>
 
 using namespace std;
 

@@ -3,9 +3,7 @@
 // recursive
 class Solution {
    public:
-    bool isValidBST(TreeNode* root) {
-        return helper(root, INT64_MIN, INT64_MAX);
-    }
+    bool isValidBST(TreeNode* root) { return helper(root, INT64_MIN, INT64_MAX); }
     bool helper(TreeNode* node, int64_t vmin, int64_t vmax) {
         if (node == nullptr) return true;
         if (node->val <= vmin) return false;
@@ -18,8 +16,7 @@ class Solution {
 
 void test(const vector<ComplexVal>& vals, bool expect) {
     TreeNode* root = constructIntTree(vals);
-    std::vector<TreeNode*> all_nodes;
-    treeToVector(root, all_nodes);
+    TreeAutoReleaser _(root);
 
     Solution so;
     bool ret = so.isValidBST(root);
@@ -31,8 +28,6 @@ void test(const vector<ComplexVal>& vals, bool expect) {
         praw(expect);
         praw(ret);
     }
-
-    releaseAllTreeNodes(all_nodes);
 }
 
 int main() {

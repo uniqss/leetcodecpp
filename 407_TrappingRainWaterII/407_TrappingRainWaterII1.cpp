@@ -1,6 +1,6 @@
 #include "../stl.h"
 
-// 效仿I里面推模型，往四个方向推
+// 效仿I里面推模型，往四个方向推----静态模型推动的形式这里行不通，因为水会拐弯
 class Solution {
    public:
     int trapRainWater(vector<vector<int>>& heightMap) {
@@ -23,7 +23,6 @@ class Solution {
         // 持w移l
         for (size_t idxl = 1; idxl < l; ++idxl) {
             for (size_t idxw = 0; idxw < w; ++idxw) {
-                
             }
         }
 

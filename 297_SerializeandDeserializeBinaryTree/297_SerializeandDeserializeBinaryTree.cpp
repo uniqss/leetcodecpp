@@ -48,12 +48,55 @@ class Codec {
             ret.emplace_back(make_pair(cstr + istart, iend - istart));
         }
     }
+    bool spliceValInt(int& val, const char* pszVal, std::size_t len) {
+        if (strncmp(pszVal, "null", 4) == 0) return false;
+        char szTmp[32];
+        strncpy(szTmp, pszVal, len);
+        val = atoi(szTmp);
+        return true;
+    }
+    bool spliceValInt(int& val, const std::pair<const char*, std::size_t>& vpair) { return spliceValInt(val, vpair.first, vpair.second); }
 
     TreeNode* deserialize(string data) {
         if (data == "[]" || data == "[null]") return nullptr;
         vector<pair<const char*, std::size_t>> nodevals;
         strSplice(data, ',', 1, data.size() - 2, nodevals);
+
         TreeNode* root = new TreeNode();
+        if (nodevals.empty() || !spliceValInt(root->val, nodevals[0])) return nullptr;
+        queue<TreeNode*> q;
+        q.emplace(root);
+        auto trimed = q.size();
+        int tmpVal = 0;
+        TreeNode* tmpNode = nullptr;
+        while (!q.empty() && trimed < nodevals.size()) {
+            auto qsize = q.size();
+            for (size_t i = 0; i < qsize && trimed < nodevals.size(); ++i) {
+                tmpNode = q.front();
+                q.pop();
+                if (tmpNode != nullptr && trimed < nodevals.size()) {
+                    if (spliceValInt(tmpVal, nodevals[trimed])) {
+                        tmpNode->left = new TreeNode(tmpVal);
+                        q.emplace(tmpNode);
+                    } else {
+                        q.emplace(nullptr);
+                    }
+                    ++trimed;
+                }
+                if (tmpNode != nullptr && trimed < nodevals.size()) {
+                    if (spliceValInt(tmpVal, nodevals[trimed])) {
+                        tmpNode->right = new TreeNode(tmpVal);
+                        q.emplace(tmpNode);
+                    } else {
+                        q.emplace(nullptr);
+                    }
+                    ++trimed;
+                }
+            }
+        }
+
+
+        return root;
     }
 };
 

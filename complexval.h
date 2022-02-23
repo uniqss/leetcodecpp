@@ -10,7 +10,7 @@ enum EComplexValType {
 
 class ComplexVal {
    public:
-    EComplexValType valtype;  // 0:nullptr 1:int 2:bool 3:string
+    EComplexValType valtype;
     int vali;
     bool valb;
     string vals;

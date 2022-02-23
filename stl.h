@@ -64,19 +64,19 @@ void pnewline() {
 void pvcomplex(const vector<ComplexVal>& vc) {
     std::for_each(vc.begin(), vc.end(), [](const ComplexVal& cv) {
         switch (cv.valtype) {
-            case 0:
+            case EComplexValType_nullptr:
                 cout << "null";
                 break;
-            case 1:
+            case EComplexValType_int:
                 cout << cv.vali;
                 break;
-            case 2:
+            case EComplexValType_bool:
                 if (cv.valb)
                     cout << "true";
                 else
                     cout << "false";
                 break;
-            case 3:
+            case EComplexValType_string:
                 cout << cv.vals;
                 break;
 

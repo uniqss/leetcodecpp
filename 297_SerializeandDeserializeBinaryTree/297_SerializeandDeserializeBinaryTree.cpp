@@ -22,7 +22,7 @@ class Codec {
         }
         std::size_t end = nodes.size() - 1;
         while (nodes[end] == nullptr) --end;
-        for (size_t i = 0; i < end; ++i) {
+        for (size_t i = 0; i <= end; ++i) {
             if (nodes[i] == nullptr) {
                 ret += "null,";
             } else {
@@ -77,7 +77,7 @@ class Codec {
                 if (tmpNode != nullptr && trimed < nodevals.size()) {
                     if (spliceValInt(tmpVal, nodevals[trimed])) {
                         tmpNode->left = new TreeNode(tmpVal);
-                        q.emplace(tmpNode);
+                        q.emplace(tmpNode->left);
                     } else {
                         q.emplace(nullptr);
                     }
@@ -86,7 +86,7 @@ class Codec {
                 if (tmpNode != nullptr && trimed < nodevals.size()) {
                     if (spliceValInt(tmpVal, nodevals[trimed])) {
                         tmpNode->right = new TreeNode(tmpVal);
-                        q.emplace(tmpNode);
+                        q.emplace(tmpNode->right);
                     } else {
                         q.emplace(nullptr);
                     }
@@ -114,12 +114,13 @@ void test(const vector<ComplexVal>& vals, const string& expect) {
         pvcomplex(vals);
         praw(expect);
         praw(ret);
-        pTree(root);
+        pTreeLevelOrder(root);
         pnewline();
     }
 }
 
 int main() {
+    test({1, 3, null, null, 4}, "[1,3,null,null,4]");
     test({1, 2, 3, null, null, 4, 5}, "[1,2,3,null,null,4,5]");
     test({1, 2, 3, null, null, 4, 5, 6, 7}, "[1,2,3,null,null,4,5,6,7]");
     test({4, -7, -3, null, null, -9, -3, 9, -7, -4, null, 6, null, -6, -6, null, null, 0, 6, 5, null, 9, null, null, -1, -4, null, null, null, -2},

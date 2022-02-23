@@ -140,6 +140,37 @@ void pTree(const TreeNode *root) {
     cout << endl;
 }
 
+void pTreeLevelOrder(const TreeNode *root, bool printNull = true) {
+    if (root == nullptr) return;
+    cout << "__________ pTreeLevelOrder begin " << endl;
+
+    queue<const TreeNode *> q;
+    q.emplace(root);
+    while (!q.empty()) {
+        auto qsize = q.size();
+        bool have_valid = false;
+        std::string line = "";
+        for (size_t i = 0; i < qsize; ++i) {
+            root = q.front();
+            q.pop();
+            if (root == nullptr) {
+                line += " null";
+                continue;
+            }
+            line += " " + std::to_string(root->val);
+            have_valid = true;
+
+            if (root->left != nullptr) q.emplace(root->left);
+            if (printNull && root->left == nullptr) q.emplace(nullptr);
+            if (root->right != nullptr) q.emplace(root->right);
+            if (printNull && root->right == nullptr) q.emplace(nullptr);
+        }
+        if (have_valid) cout << line << endl;
+    }
+
+    cout << "__________ pTreeLevelOrder end " << endl;
+}
+
 void releaseTree(TreeNode *root) {
     vector<TreeNode *> vec;
     treeToVector(root, vec);

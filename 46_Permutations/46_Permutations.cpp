@@ -3,46 +3,6 @@
 class Solution {
    public:
     vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> ret;
-        size_t nsize = nums.size();
-        vector<int> vidx(nsize);
-        for (size_t i = 0; i < nsize; ++i) {
-            vidx[i] = i;
-        }
-
-        vector<int> val(nsize);
-        for (size_t i = 0; i < nsize; ++i) {
-            val[i] = nums[vidx[i]];
-        }
-        ret.emplace_back(val);
-
-        while (true) {
-            int pos = -1;
-            for (int i = nsize - 1; i > 0; --i) {
-                if (vidx[i] > vidx[i - 1]) {
-                    pos = i - 1;
-                    break;
-                }
-            }
-            if (pos == -1) break;
-            int larger_right = nsize - 1;
-            int larger_val = INT_MAX;
-            for (int i = nsize - 1; i >= pos; --i) {
-                if (vidx[i] > vidx[pos] && vidx[i] < larger_val) {
-                    larger_right = i;
-                    larger_val = vidx[i];
-                }
-            }
-
-            swap(vidx[pos], vidx[larger_right]);
-            if (pos < (int)nsize - 2) std::sort(vidx.begin() + pos + 1, vidx.end());
-
-            for (size_t i = 0; i < nsize; ++i) {
-                val[i] = nums[vidx[i]];
-            }
-            ret.emplace_back(val);
-        }
-        return ret;
     }
 };
 

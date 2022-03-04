@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // 暴力
 class Solution {

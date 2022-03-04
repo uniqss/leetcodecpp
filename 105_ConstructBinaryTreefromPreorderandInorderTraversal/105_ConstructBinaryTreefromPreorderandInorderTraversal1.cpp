@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // 自己figure out
 class Solution {
@@ -45,6 +45,7 @@ int main() {
     test({1, 2, 3}, {2, 3, 1}, {1, 2, null, null, 3});
     test({3, 9, 20, 15, 7}, {9, 3, 15, 20, 7}, {3, 9, 20, null, null, 15, 7});
     test({-1}, {-1}, {-1});
+    test({4, 2, 1, 3, 6, 5, 7}, {1, 2, 3, 4, 5, 6, 7}, {4, 2, 6, 1, 3, 5, 7});
     return 0;
 }
 

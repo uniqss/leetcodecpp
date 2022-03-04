@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // dp
 class Solution {

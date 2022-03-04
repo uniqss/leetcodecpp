@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // 这题其实so easy，随便抓个树的遍历，只要保证每个节点只访问一次即可
 class Solution {

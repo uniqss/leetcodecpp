@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // threaded binary tree--不建议，会破坏结构，建议用下一种 threaded binary tree 解法
 class Solution {

@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // 大同小异
 class Solution {

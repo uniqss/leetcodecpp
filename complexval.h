@@ -1,5 +1,7 @@
 #pragma once
 
+#include "StringHelper.h"
+
 enum EComplexValType {
     EComplexValType_Invalid = -1,
     EComplexValType_nullptr,
@@ -69,4 +71,58 @@ bool operator==(const ComplexVal& lhs, const ComplexVal& rhs) {
             return false;
     }
     return false;
+}
+
+
+
+void pvcomplex(const vector<ComplexVal>& vc) {
+    std::for_each(vc.begin(), vc.end(), [](const ComplexVal& cv) {
+        switch (cv.valtype) {
+            case EComplexValType_nullptr:
+                cout << "null";
+                break;
+            case EComplexValType_int:
+                cout << cv.vali;
+                break;
+            case EComplexValType_bool:
+                if (cv.valb)
+                    cout << "true";
+                else
+                    cout << "false";
+                break;
+            case EComplexValType_string:
+                cout << cv.vals;
+                break;
+
+            default:
+                cout << "not initialized";
+                break;
+        }
+        cout << " ";
+    });
+    cout << endl;
+}
+
+
+void vcomplexToString(string& ret, const vector<ComplexVal>& vals) {
+    ret = "[";
+    for (size_t i = 0; i < vals.size(); ++i) {
+        const ComplexVal& val = vals[i];
+        if (i > 0) ret += ",";
+        ret += val.ToString();
+    }
+    ret += "]";
+}
+
+void vcomplexFromString(vector<ComplexVal>& vals, const std::string& str) {
+    std::vector<Slice> vstrs;
+    splitStr(str.c_str() + 1, str.size() - 2, ',', vstrs, INT_MAX);
+
+    vals.resize(vstrs.size());
+    for (size_t i = 0; i < vstrs.size(); ++i) {
+        const Slice& vstr = vstrs[i];
+        string s = vstr.str;
+        s = s.substr(0, vstr.len);
+        vals[i].FromString(s);
+    }
 }

@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // brute-force bitset
 // 1 <= n <= 8 无非就是最多16个 ( 或者 ) 最多65536个，要做的是想办法剪枝

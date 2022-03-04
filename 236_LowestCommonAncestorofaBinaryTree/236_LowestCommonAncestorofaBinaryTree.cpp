@@ -1,8 +1,49 @@
-#include "../stl.h"
+#include "../inc.h"
 
 class Solution {
+    std::unordered_map<TreeNode *, TreeNode *> fa_;
+
    public:
-    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {}
+    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
+        int dp = bfs(root, p);
+        int dq = bfs(root, q);
+        while (dp < dq) {
+            q = fa_[q];
+            --dq;
+        }
+        while (dq < dp) {
+            p = fa_[p];
+            --dp;
+        }
+        while (p != q) {
+            p = fa_[p];
+            q = fa_[q];
+        }
+        return p;
+    }
+    int bfs(TreeNode *root, TreeNode *n) {
+        int depth = 1;
+        std::queue<TreeNode *> q;
+        q.emplace(root);
+        while (!q.empty()) {
+            auto qsize = q.size();
+            for (size_t i = 0; i < qsize; ++i) {
+                root = q.front();
+                q.pop();
+                if (root->left != nullptr) {
+                    fa_[root->left] = root;
+                    q.emplace(root->left);
+                }
+                if (root->right != nullptr) {
+                    fa_[root->right] = root;
+                    q.emplace(root->right);
+                }
+                if (root == n) return depth;
+            }
+            ++depth;
+        }
+        return depth;
+    }
 };
 
 void test(vector<ComplexVal> &&vals, int vp, int vq, int vexpect) {

@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // array[26] diff
 class Solution {

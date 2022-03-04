@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // 对dfs的优化  这样剪枝如果左子树比较少，性能会有显著提升，越左越明显，但仍然没有bfs性能高
 class Solution {

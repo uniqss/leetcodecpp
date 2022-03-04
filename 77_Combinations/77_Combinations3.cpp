@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // 中文官方 dfs
 class Solution {

@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // 本质上还是dp，只不过没有保存所有结果
 class Solution {

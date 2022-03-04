@@ -1,27 +1,9 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // 中文官方字典序法
 class Solution {
    public:
     vector<vector<int>> combine(int n, int k) {
-        vector<vector<int>> ret;
-        vector<int> temp;
-        for (int i = 1; i <= k; ++i) {
-            temp.emplace_back(i);
-        }
-        temp.emplace_back(n + 1);
-
-        int j = 0;
-        while (j < k) {
-            ret.emplace_back(temp.begin(), temp.begin() + k);
-            j = 0;
-            while (j < k && temp[j] + 1 == temp[j + 1]) {
-                temp[j] = j + 1;
-                ++j;
-            }
-            ++temp[j];
-        }
-        return ret;
     }
 };
 

@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // recursive 这是中文站上看到的，非常经典。但是这里有很多取巧
 class Solution {
@@ -10,6 +10,7 @@ class Solution {
         TreeNode* right = lowestCommonAncestor(root->right, p, q);
         if (left == nullptr) return right;
         if (right == nullptr) return left;
+        // left != nullptr && right != nullptr     one left, one right, just return root.
         return root;
     }
 };

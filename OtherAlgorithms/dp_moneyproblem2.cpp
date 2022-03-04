@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 
 vector<int> getLeastCountMoney2(int n) {

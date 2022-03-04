@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 // stack
 class Solution {

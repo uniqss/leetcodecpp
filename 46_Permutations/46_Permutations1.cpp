@@ -1,5 +1,8 @@
 #include "../inc.h"
 
+/*
+这个算法自己 搞出来的，恐怕整个 网上独一份了，不过太容易出错了，还是官方的递归和人的思路更近
+*/
 class Solution {
    public:
     vector<vector<int>> permute(vector<int>& nums) {
@@ -49,20 +52,19 @@ class Solution {
 void test(vector<int>&& nums, vector<vector<int>>&& expect) {
     Solution so;
     auto ret = so.permute(nums);
-    std::for_each(expect.begin(), expect.end(), [](auto& v) { std::sort(v.begin(), v.end()); });
-    std::sort(expect.begin(), expect.end(), [](const vector<int>& lhs, const vector<int>& rhs) {
-        for (size_t i = 0; i < lhs.size(); ++i) {
-            if (lhs[i] < rhs[i]) return true;
-        }
-        return false;
-    });
-    std::for_each(ret.begin(), ret.end(), [](vector<int>& v) { std::sort(v.begin(), v.end()); });
-    std::sort(ret.begin(), ret.end(), [](const vector<int>& lhs, const vector<int>& rhs) {
-        for (size_t i = 0; i < lhs.size(); ++i) {
-            if (lhs[i] < rhs[i]) return true;
-        }
-        return false;
-    });
+
+    auto _sort = [](vector<vector<int>>& vvi) {
+        std::sort(vvi.begin(), vvi.end()), [](const vector<int>& lhs, const vector<int>& rhs) {
+            size_t len = std::min(lhs.size(), rhs.size());
+            for (size_t i = 0; i < len; ++i) {
+                if (lhs[i] < rhs[i]) return true;
+            }
+            return false;
+        };
+    };
+    _sort(expect);
+    _sort(ret);
+
     if (ret == expect) {
         praw("ok.");
     } else {

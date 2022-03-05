@@ -1,28 +1,45 @@
 #include "../inc.h"
+/*
 
+*/
 class Solution {
+    vector<int> vis;
+
    public:
+    void backtrack(vector<int>& nums, vector<vector<int>>& ans, int start, int len, vector<int>& perm) {
+        if (start == len) {
+            ans.emplace_back(perm);
+            return;
+        }
+        for (int i = 0; i < len; ++i) {
+            if (vis[i]) {
+                continue;
+            }
+            if (i > 0 && nums[i] == nums[i - 1] && !vis[i - 1]) {
+                continue;
+            }
+            perm.emplace_back(nums[i]);
+            vis[i] = 1;
+            backtrack(nums, ans, start + 1, len, perm);
+            vis[i] = 0;
+            perm.pop_back();
+        }
+    }
     vector<vector<int>> permuteUnique(vector<int>& nums) {
+        vector<vector<int>> ans;
+        vector<int> perm;
+        vis.resize(nums.size());
+        sort(nums.begin(), nums.end());
+        backtrack(nums, ans, 0, nums.size(), perm);
+        return ans;
     }
 };
 
 void test(vector<int>&& nums, vector<vector<int>>&& expect) {
     Solution so;
     auto ret = so.permuteUnique(nums);
-    std::for_each(expect.begin(), expect.end(), [](auto& v) { std::sort(v.begin(), v.end()); });
-    std::sort(expect.begin(), expect.end(), [](const vector<int>& lhs, const vector<int>& rhs) {
-        for (size_t i = 0; i < lhs.size(); ++i) {
-            if (lhs[i] < rhs[i]) return true;
-        }
-        return false;
-    });
-    std::for_each(ret.begin(), ret.end(), [](vector<int>& v) { std::sort(v.begin(), v.end()); });
-    std::sort(ret.begin(), ret.end(), [](const vector<int>& lhs, const vector<int>& rhs) {
-        for (size_t i = 0; i < lhs.size(); ++i) {
-            if (lhs[i] < rhs[i]) return true;
-        }
-        return false;
-    });
+    std::sort(expect.begin(), expect.end());
+    std::sort(ret.begin(), ret.end());
     if (ret == expect) {
         praw("ok.");
     } else {

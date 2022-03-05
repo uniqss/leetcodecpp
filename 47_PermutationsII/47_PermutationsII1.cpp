@@ -37,20 +37,8 @@ class Solution {
 void test(vector<int>&& nums, vector<vector<int>>&& expect) {
     Solution so;
     auto ret = so.permuteUnique(nums);
-    std::for_each(expect.begin(), expect.end(), [](auto& v) { std::sort(v.begin(), v.end()); });
-    std::sort(expect.begin(), expect.end(), [](const vector<int>& lhs, const vector<int>& rhs) {
-        for (size_t i = 0; i < lhs.size(); ++i) {
-            if (lhs[i] < rhs[i]) return true;
-        }
-        return false;
-    });
-    std::for_each(ret.begin(), ret.end(), [](vector<int>& v) { std::sort(v.begin(), v.end()); });
-    std::sort(ret.begin(), ret.end(), [](const vector<int>& lhs, const vector<int>& rhs) {
-        for (size_t i = 0; i < lhs.size(); ++i) {
-            if (lhs[i] < rhs[i]) return true;
-        }
-        return false;
-    });
+    std::sort(expect.begin(), expect.end());
+    std::sort(ret.begin(), ret.end());
     if (ret == expect) {
         praw("ok.");
     } else {

@@ -1,10 +1,8 @@
 #include "../inc.h"
 
-// 中文官方字典序法
 class Solution {
    public:
-    vector<vector<int>> combine(int n, int k) {
-    }
+    vector<vector<int>> combine(int n, int k) {}
 };
 
 void test(int n, int k, vector<vector<int>>&& expect) {

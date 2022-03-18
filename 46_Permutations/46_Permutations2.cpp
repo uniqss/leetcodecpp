@@ -19,6 +19,7 @@ class Solution {
             return;
         }
         for (int i = start; i < len; ++i) {
+            // 锁定start位，进行start+1位
             std::swap(nums[i], nums[start]);
             dfs(ret, nums, start + 1, len);
             std::swap(nums[i], nums[start]);

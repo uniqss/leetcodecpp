@@ -2,22 +2,7 @@
 
 class Solution {
    public:
-    vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> ret;
-        dfs(ret, nums, 0, nums.size());
-        return ret;
-    }
-    void dfs(vector<vector<int>>& ret, vector<int>& nums, int start, int len) {
-        if (start == len) {
-            ret.emplace_back(nums);
-            return;
-        }
-        for (int i = start; i < len; ++i) {
-            std::swap(nums[i], nums[start]);
-            dfs(ret, nums, start + 1, len);
-            std::swap(nums[i], nums[start]);
-        }
-    }
+    vector<vector<int>> permute(vector<int>& nums) {}
 };
 
 void test(vector<int>&& nums, vector<vector<int>>&& expect) {

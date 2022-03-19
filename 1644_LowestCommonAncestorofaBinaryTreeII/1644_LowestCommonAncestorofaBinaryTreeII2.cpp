@@ -9,11 +9,27 @@ Constraints:
 Follow up: Can you find the LCA traversing the tree, without checking nodes existence?
 */
 
+/*
+这个破网站给出的解，注意这个解法要遍历整棵树，，，  当pq均出现在左的子树中时，有很大的优化空间(不用搜索右子树)，详见21的解
+*/
+
 #include "../inc.h"
 
 class Solution {
    public:
-    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {}
+    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
+        auto ret = dfs(root, p, q);
+        if (ret.second < 2) return nullptr;
+        return ret.first;
+    }
+    pair<TreeNode *, int> dfs(TreeNode *root, TreeNode *p, TreeNode *q) {
+        if (root == nullptr) return {nullptr, 0};
+        auto retl = dfs(root->left, p, q);
+        auto retr = dfs(root->right, p, q);
+        if (root == p || root == q) return {root, 1 + retl.second + retr.second};
+        if (retl.second + retr.second == 2) return {root, 2};
+        return retl.first ? retl : retr;
+    }
 };
 
 void test(vector<ComplexVal> &&vals, int vp, int vq, ComplexVal vexpect) {

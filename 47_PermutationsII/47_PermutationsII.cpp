@@ -1,8 +1,6 @@
 #include "../inc.h"
 
 class Solution {
-    vector<bool> vis;
-
    public:
     vector<vector<int>> permuteUnique(vector<int>& nums) {}
 };

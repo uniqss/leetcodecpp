@@ -2,8 +2,7 @@
 
 class Solution {
    public:
-    string getPermutation(int n, int k) {
-    }
+    string getPermutation(int n, int k) {}
 };
 
 void test(int n, int k, const string& expect) {

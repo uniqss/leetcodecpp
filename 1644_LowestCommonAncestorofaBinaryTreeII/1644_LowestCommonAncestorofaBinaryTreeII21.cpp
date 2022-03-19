@@ -9,11 +9,26 @@ Constraints:
 Follow up: Can you find the LCA traversing the tree, without checking nodes existence?
 */
 
+/*
+这里做了一点优化，搜索完左子树的时候判定一下，如果已经找到2个了，就不用管直接return，同时如果已经找到1个且当前root又找到一个，直接return root了
+右子树也一样
+*/
+
 #include "../inc.h"
 
 class Solution {
    public:
     TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {}
+    pair<TreeNode *, int> dfs(TreeNode *root, TreeNode *p, TreeNode *q) {
+        if (root == nullptr) return {nullptr, 0};
+        auto retl = dfs(root->left, p, q);
+        if (retl.second == 2) return retl;
+        if (retl.second == 1 && (root == p || root == q)) return {root, 2};
+        auto retr = dfs(root->right, p, q);
+        if (retr.second == 2) return retr;
+        if (retr.second == 1 && (root == p || root == q)) return {root, 2};
+        return retl.first ? retl : retr;
+    }
 };
 
 void test(vector<ComplexVal> &&vals, int vp, int vq, ComplexVal vexpect) {

@@ -1,5 +1,8 @@
 #include "../inc.h"
 
+/*
+backtrace和dfs看看的角度，其实有时候是一样的
+*/
 class Solution {
    public:
     vector<string> generateParenthesis(int n) {

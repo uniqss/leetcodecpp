@@ -97,6 +97,7 @@ void test(vector<ComplexVal> &&vals, int vp, int vq, ComplexVal vexpect) {
 }
 
 int main() {
+    test({3, 5, 1, 6, 2, 0, 8, null, null, 7, 4}, 5, 3, 3);
     test({3, 5, 1, 6, 2, 0, 8, null, null, 7, 4}, 5, 1, 3);
     test({3, 5, 1, 6, 2, 0, 8, null, null, 7, 4}, 5, 4, 5);
     test({3, 5, 1, 6, 2, 0, 8, null, null, 7, 4}, 5, 10, null);

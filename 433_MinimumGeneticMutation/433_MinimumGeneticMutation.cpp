@@ -22,6 +22,8 @@ void test(string&& start, string&& end, vector<string>&& bank, int expected) {
 }
 
 int main() {
+    test("AACCGGTT", "AACCGCAA", {"AACCGGTA", "AACCGGAA", "AACCGCAA"}, 3);
+    test("AACCGGTT", "AACCGGTA", {}, -1);
     test("AACCGGTT", "AACCGGTA", {"AACCGGTA"}, 1);
     test("AACCGGTT", "AAACGGTA", {"AACCGGTA", "AACCGCTA", "AAACGGTA"}, 2);
     test("AAAAACCC", "AACCCCCC", {"AAAACCCC", "AAACCCCC", "AACCCCCC"}, 3);

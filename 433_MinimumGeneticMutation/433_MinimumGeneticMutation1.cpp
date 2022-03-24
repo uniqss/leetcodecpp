@@ -3,18 +3,20 @@
 class Solution {
    public:
     int minMutation(string start, string end, vector<string>& bank) {
+        if (start == end) return 0;
+
         queue<string> q;
         q.emplace(start);
         vector<char> vc = {'A', 'C', 'G', 'T'};
         std::unordered_set<string> dict;
-        std::for_each(bank.begin(), bank.end(), [&](const std::string& str) { dict.insert(str); });
+        dict.insert(bank.begin(), bank.end());
         if (dict.count(end) == 0) return -1;
 
         int depth = 0;
         while (!q.empty()) {
             auto qsize = q.size();
             for (size_t i = 0; i < qsize; ++i) {
-                string start = q.front();
+                start = q.front();
                 if (start == end) return depth;
                 q.pop();
                 string tmp = start;
@@ -53,6 +55,8 @@ void test(string&& start, string&& end, vector<string>&& bank, int expected) {
 }
 
 int main() {
+    test("AACCGGTT", "AACCGCAA", {"AACCGGTA", "AACCGGAA", "AACCGCAA"}, 3);
+    test("AACCGGTT", "AACCGGTA", {}, -1);
     test("AACCGGTT", "AACCGGTA", {"AACCGGTA"}, 1);
     test("AACCGGTT", "AAACGGTA", {"AACCGGTA", "AACCGCTA", "AAACGGTA"}, 2);
     test("AAAAACCC", "AACCCCCC", {"AAAACCCC", "AAACCCCC", "AACCCCCC"}, 3);

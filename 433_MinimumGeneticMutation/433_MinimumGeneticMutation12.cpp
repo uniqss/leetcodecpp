@@ -1,36 +1,30 @@
 #include "../inc.h"
 
-/*
-没有本质的区别，只是稍稍优化了一丢丢，少搜索一层
-*/
 class Solution {
    public:
     int minMutation(string start, string end, vector<string>& bank) {
+        std::unordered_set<string> dict(bank.begin(), bank.end());
+        std::unordered_set<string> existed;
+        vector<char> vc = {'A', 'C', 'G', 'T'};
         queue<string> q;
         q.emplace(start);
-        vector<char> vc = {'A', 'C', 'G', 'T'};
-        std::unordered_set<string> dict;
-        dict.insert(bank.begin(), bank.end());
-        if (dict.count(end) == 0) return -1;
-
-        if (start == end) return 0;
-
         int depth = 0;
         while (!q.empty()) {
-            auto qsize = q.size();
             ++depth;
-            for (size_t i = 0; i < qsize; ++i) {
+            auto qsize = q.size();
+            for (size_t idx = 0; idx < qsize; ++idx) {
                 start = q.front();
                 q.pop();
                 string tmp = start;
-                for (size_t i = 0; i < start.size(); ++i) {
+                for (size_t i = 0; i < tmp.size(); ++i) {
                     for (char c : vc) {
-                        if (start[i] == c) continue;
+                        if (tmp[i] == c) continue;
                         tmp[i] = c;
-                        if (dict.count(tmp) > 0) {
-                            if (tmp == end) return depth;
-                            q.emplace(tmp);
-                        }
+                        if (dict.count(tmp) == 0) continue;
+                        if (existed.count(tmp) > 0) continue;
+                        existed.insert(tmp);
+                        if (tmp == end) return depth;
+                        q.emplace(tmp);
                     }
                     tmp[i] = start[i];
                 }

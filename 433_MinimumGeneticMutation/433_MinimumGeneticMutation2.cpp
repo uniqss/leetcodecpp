@@ -1,41 +1,42 @@
 #include "../inc.h"
 
 /*
-没有本质的区别，只是稍稍优化了一丢丢，少搜索一层
+用层的思想做，有点绕。本质上还是bfs
+这个例子也能看出，unordered_set在频繁增删的情况下，性能和queue的对比，是要差很多的
 */
 class Solution {
    public:
     int minMutation(string start, string end, vector<string>& bank) {
-        queue<string> q;
-        q.emplace(start);
+        if (start == end) return 0;
         vector<char> vc = {'A', 'C', 'G', 'T'};
         std::unordered_set<string> dict;
         dict.insert(bank.begin(), bank.end());
-        if (dict.count(end) == 0) return -1;
-
-        if (start == end) return 0;
-
+        std::unordered_set<string> last_layer;
+        std::unordered_set<string> curr_layer;
+        std::unordered_set<string> existed;
+        curr_layer.insert(start);
+        int ssize = (int)start.size();
         int depth = 0;
-        while (!q.empty()) {
-            auto qsize = q.size();
-            ++depth;
-            for (size_t i = 0; i < qsize; ++i) {
-                start = q.front();
-                q.pop();
-                string tmp = start;
-                for (size_t i = 0; i < start.size(); ++i) {
+        for (depth = 0; depth < ssize; ++depth) {
+            last_layer = curr_layer;
+            curr_layer.clear();
+            for (auto it : last_layer) {
+                for (int i = 0; i < ssize; ++i) {
+                    char last_c = it[i];
                     for (char c : vc) {
-                        if (start[i] == c) continue;
-                        tmp[i] = c;
-                        if (dict.count(tmp) > 0) {
-                            if (tmp == end) return depth;
-                            q.emplace(tmp);
-                        }
+                        if (last_c == c) continue;
+                        it[i] = c;
+                        if (dict.count(it) == 0) continue;
+                        if (existed.count(it) > 0) continue;
+                        existed.insert(it);
+                        if (it == end) return depth + 1;
+                        curr_layer.insert(it);
                     }
-                    tmp[i] = start[i];
+                    it[i] = last_c;
                 }
             }
         }
+
         return -1;
     }
 };

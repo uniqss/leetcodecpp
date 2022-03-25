@@ -1,5 +1,8 @@
 #include "../inc.h"
 
+/*
+双搜
+*/
 class Solution {
     vector<char> vc;
 
@@ -58,7 +61,6 @@ void test(string&& start, string&& end, vector<string>&& bank, int expected) {
 }
 
 int main() {
-    test("AACCTTGG", "AATTCCGG", {"AATTCCGG", "AACCTGGG", "AACCCCGG", "AACCTACC"}, -1);
     test("AACCGGTT", "AACCGCAA", {"AACCGGTA", "AACCGGAA", "AACCGCAA"}, 3);
     test("AACCGGTT", "AACCGGTA", {}, -1);
     test("AACCGGTT", "AACCGGTA", {"AACCGGTA"}, 1);

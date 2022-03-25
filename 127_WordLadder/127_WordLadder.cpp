@@ -3,16 +3,6 @@
 class Solution {
    public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {}
-
-    bool strOneDifferent(const string& lhs, const string& rhs) {
-        int count = 0;
-        for (size_t i = 0; i < lhs.size(); ++i) {
-            if (lhs[i] != rhs[i]) {
-                if (++count > 1) return false;
-            }
-        }
-        return count == 1;
-    }
 };
 
 void test(string&& beginWord, string&& endWord, vector<string>&& wordList, int expect) {

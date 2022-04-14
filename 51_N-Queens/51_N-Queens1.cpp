@@ -2,6 +2,19 @@
 
 /*
 参考官方思路，hash方式比较灵活，用的内存也相对较少。在n确定且比较小的情况下，可以做一定的优化，参见11的实现
+
+row1 (col_idx1)  (col_idx2)  (col_idx3)    ........................row
+row2 (col_idx1)  (col_idx2)  (col_idx3)
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    .
+    col
+
 */
 class Solution {
     std::unordered_set<int> columns;

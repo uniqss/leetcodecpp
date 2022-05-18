@@ -1,8 +1,25 @@
 #include "../stl.h"
 
+/*
+[left, right]
+注意 mid - 1 和 mid + 1
+*/
+
 class Solution {
    public:
-    int search(vector<int>& nums, int target) {}
+    int search(vector<int>& nums, int target) {
+        int left = 0, right = nums.size() - 1, mid = 0, vmid = 0;
+        while (right >= left) {
+            mid = (left + right) / 2;
+            vmid = nums[mid];
+            if (vmid == target) return mid;
+            if (vmid < target)
+                left = mid + 1;
+            else
+                right = mid - 1;
+        }
+        return -1;
+    }
 };
 
 void test(vector<int>&& nums, int target, int expect) {

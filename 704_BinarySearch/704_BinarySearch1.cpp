@@ -37,6 +37,7 @@ void test(vector<int>&& nums, int target, int expect) {
 }
 
 int main() {
+    test({-1, 0, 3, 5, 9, 12}, 0, 1);
     test({-1, 0, 3, 5, 9, 12}, 9, 4);
     test({-1, 0, 3, 5, 9, 12}, 2, -1);
     test({5}, 5, 0);

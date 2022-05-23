@@ -3,21 +3,21 @@
 class Solution {
    public:
     ListNode* detectCycle(ListNode* head) {
-        ListNode* slow = head;
-        ListNode* fast = head;
-        while (fast != nullptr && fast->next != nullptr) {
+        ListNode *slow = head, *fast = head;
+        while (fast != nullptr) {
             slow = slow->next;
+            if (fast->next == nullptr) return nullptr;
             fast = fast->next->next;
-            if (slow == fast) {
-                fast = head;
-                while (slow != fast) {
-                    slow = slow->next;
-                    fast = fast->next;
-                }
-                return fast;
-            }
+            if (slow == fast) break;
         }
-        return nullptr;
+        if (fast == nullptr) return nullptr;
+        fast = head;
+        while (slow != fast) {
+            slow = slow->next;
+            fast = fast->next;
+        }
+
+        return fast;
     }
 };
 

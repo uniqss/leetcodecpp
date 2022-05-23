@@ -2,7 +2,18 @@
 
 class Solution {
    public:
-    ListNode *reverseList(ListNode *head) {}
+    ListNode *reverseList(ListNode *head) {
+        if (head == nullptr || head->next == nullptr) return head;
+        ListNode *curr = head, *next = head->next;
+        while (next != nullptr) {
+            ListNode *nnext = next->next;
+            next->next = curr;
+            curr = next;
+            next = nnext;
+        }
+        head->next = nullptr;
+        return curr;
+    }
 };
 
 void test_vi(const vector<int> &vi, const vector<int> &expect) {

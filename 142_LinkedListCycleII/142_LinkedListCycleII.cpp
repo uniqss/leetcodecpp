@@ -2,32 +2,20 @@
 
 class Solution {
    public:
-    ListNode* detectCycle(ListNode* head) {
-        ListNode* slow = head;
-        ListNode* fast = head;
-        while (fast != nullptr && fast->next != nullptr) {
-            slow = slow->next;
-            fast = fast->next->next;
-            if (slow == fast) {
-                fast = head;
-                while (slow != fast) {
-                    slow = slow->next;
-                    fast = fast->next;
-                }
-                return fast;
-            }
-        }
-        return nullptr;
-    }
+    ListNode* detectCycle(ListNode* head) {}
 };
 
-void test(ListNode* head) {
+void test(ListNode* head, int expected) {
     Solution s;
     ListNode* node = s.detectCycle(head);
-    if (node != nullptr) {
-        cout << node->val << endl;
+    int ret = node ? node->val : -1;
+    if (ret == expected) {
+        praw("ok.");
     } else {
-        cout << -1 << endl;
+        praw("no ok.");
+        praw(expected);
+        praw(ret);
+        pnewline();
     }
 }
 
@@ -35,36 +23,38 @@ int main(int argc, char const* argv[]) {
     ListNode* head = nullptr;
 
     head = constructList({});
-    test(head);
+    test(head, -1);
     releaseLinkedList(head);
 
     head = constructList({1});
-    test(head);
+    test(head, -1);
     releaseLinkedList(head);
 
     head = constructList({1});
     head->next = head;
-    test(head);
+    test(head, 1);
     head->next = nullptr;
     releaseLinkedList(head);
 
     head = constructList({1, 2});
     head->next->next = head;
-    test(head);
+    test(head, 1);
     head->next->next = nullptr;
     releaseLinkedList(head);
 
     head = constructList({1, 2});
-    test(head);
+    test(head, -1);
+    releaseLinkedList(head);
 
     head = constructList({1, 2, 3});
     head->next->next->next = head->next;
-    test(head);
+    test(head, 2);
     head->next->next->next = nullptr;
     releaseLinkedList(head);
 
     head = constructList({1, 2, 3});
-    test(head);
+    test(head, -1);
+    releaseLinkedList(head);
 
     return 0;
 }

@@ -10,7 +10,7 @@ struct ListNode {
 
 ListNode* constructList(const vector<int>& vi) {
     if (vi.empty()) {
-        return new ListNode();
+        return nullptr;
     }
     ListNode* next = nullptr;
     ListNode* curr = nullptr;
@@ -36,4 +36,23 @@ void releaseLinkedList(ListNode* head) {
         delete head;
         head = next;
     }
+}
+
+vector<int> list2vals(const ListNode* head) {
+    vector<int> ret;
+    while (head != nullptr) {
+        ret.emplace_back(head->val);
+        head = head->next;
+    }
+
+    return ret;
+}
+
+bool listEqual(const ListNode* lhs, const ListNode* rhs) {
+    while (lhs != nullptr && rhs != nullptr) {
+        if (lhs->val != rhs->val) return false;
+        lhs = lhs->next;
+        rhs = rhs->next;
+    }
+    return lhs == nullptr && rhs == nullptr;
 }

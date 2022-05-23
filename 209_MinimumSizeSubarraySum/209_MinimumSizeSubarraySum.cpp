@@ -1,29 +1,8 @@
 #include "../inc.h"
 
-/*
-滑动窗口：
-    窗口内的元素是什么？
-    如何移动起始位置？
-    如何移动终止位置？
-*/
-
 class Solution {
    public:
-    int minSubArrayLen(int target, vector<int>& nums) {
-        int ret = INT_MAX;
-        int begin = 0, sum = 0, windowSize = 0;
-        for (int end = 0; end < nums.size(); ++end) {
-            sum += nums[end];
-            while (sum >= target) {
-                windowSize = end - begin + 1;
-                ret = min(ret, windowSize);
-                sum -= nums[begin++];
-            }
-        }
-
-        if (ret == INT_MAX) ret = 0;
-        return ret;
-    }
+    int minSubArrayLen(int target, vector<int>& nums) {}
 };
 
 void test(int target, vector<int>&& nums, int expect) {

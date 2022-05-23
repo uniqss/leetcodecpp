@@ -2,7 +2,13 @@
 
 class Solution {
    public:
-    ListNode *reverseList(ListNode *head) {}
+    ListNode *reverseList(ListNode *head) { return helper(nullptr, head); }
+    ListNode *helper(ListNode *prev, ListNode *curr) {
+        if (curr == nullptr) return prev;
+        ListNode *tmp = curr->next;
+        curr->next = prev;
+        return helper(curr, tmp);
+    }
 };
 
 void test_vi(const vector<int> &vi, const vector<int> &expect) {

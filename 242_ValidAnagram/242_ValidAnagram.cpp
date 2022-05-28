@@ -2,8 +2,7 @@
 
 class Solution {
    public:
-    bool isAnagram(const string& s, const string& t) {
-    }
+    bool isAnagram(const string& s, const string& t) {}
 };
 
 void test(const string& s, const string& t, bool expect) {

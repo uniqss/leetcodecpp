@@ -31,6 +31,10 @@ void praw(const T& raw) {
     cout << raw << endl;
 }
 
+void praw(const bool& raw) {
+    cout << (raw ? "true" : "false") << endl;
+}
+
 template <class T>
 void pvraw(const vector<T>& vr, bool new_line = true) {
     cout << "[";

@@ -17,9 +17,11 @@ class Solution {
     }
 };
 
-void test(vector<int>&& nums, int target, const vector<int>& expect) {
+void test(vector<int>&& nums, int target, vector<int>&& expect) {
     Solution so;
     auto ret = so.twoSum(nums, target);
+    std::sort(expect.begin(), expect.end());
+    std::sort(ret.begin(), ret.end());
     if (ret == expect) {
         praw("ok");
     } else {

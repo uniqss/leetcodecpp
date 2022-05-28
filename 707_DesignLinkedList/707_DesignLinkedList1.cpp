@@ -71,6 +71,15 @@ class MyLinkedList {
 
 #define null nullptr
 
+void plist(MyLinkedList* list) {
+    for (int i = 0; i < 20; ++i) {
+        int val = list->get(i);
+        if (val == -1) break;
+        cout << val << "\t";
+    }
+    cout << "|" << endl;
+}
+
 MyLinkedList* g_list = nullptr;
 void test(const vector<string>& ops, const vector<vector<int>>& params, const vector<ComplexVal>& expect) {
     int idx = 0;
@@ -97,8 +106,8 @@ void test(const vector<string>& ops, const vector<vector<int>>& params, const ve
             g_list->deleteAtIndex(param[0]);
             ret.emplace_back(null);
         }
-        // if (g_list) g_list->print();
         ++idx;
+        plist(g_list);
     }
 
     if (expect == ret) {
@@ -123,6 +132,8 @@ void test(const vector<string>& ops, const vector<vector<int>>& params, const ve
 [[],[1],[3],[1,2],[1],[1],[1]]
 */
 int main() {
+    test({"MyLinkedList", "addAtIndex", "get"}, {{}, {0, 0}, {0}}, {null, null, 0});
+    test({"MyLinkedList", "addAtIndex", "get"}, {{}, {1, 0}, {0}}, {null, null, -1});
     test({"MyLinkedList", "addAtHead", "addAtTail", "addAtIndex", "get", "deleteAtIndex", "get"}, {{}, {1}, {3}, {1, 2}, {1}, {1}, {1}},
          {null, null, null, null, 2, null, 3});
 

@@ -3,12 +3,25 @@
 class Solution {
    public:
     vector<int> twoSum(vector<int>& nums, int target) {
+        std::unordered_map<int, int> num2idx;
+        int numsi = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+            numsi = nums[i];
+            auto it = num2idx.find(numsi);
+            if (it != num2idx.end()) {
+                return {i, it->second};
+            }
+            num2idx[target - numsi] = i;
+        }
+        return {-1, -1};
     }
 };
 
-void test(vector<int>&& nums, int target, const vector<int>& expect) {
+void test(vector<int>&& nums, int target, vector<int>&& expect) {
     Solution so;
     auto ret = so.twoSum(nums, target);
+    std::sort(expect.begin(), expect.end());
+    std::sort(ret.begin(), ret.end());
     if (ret == expect) {
         praw("ok");
     } else {

@@ -2,18 +2,60 @@
 #include "../complexval.h"
 
 class MyLinkedList {
+    struct MyInnerNode {
+        MyInnerNode* next;
+        int val;
+        MyInnerNode() : next(nullptr), val(0) {}
+        MyInnerNode(int _val, MyInnerNode* _next = nullptr) : next(_next), val(_val) {}
+    };
+    MyInnerNode* head;
+
    public:
-    MyLinkedList() {}
+    MyLinkedList() : head(new MyInnerNode()) {}
 
-    int get(int index) {}
+    int get(int index) {
+        MyInnerNode* curr = head;
+        while (index-- >= 0 && curr != nullptr) {
+            curr = curr->next;
+        }
+        return curr == nullptr ? -1 : curr->val;
+    }
 
-    void addAtHead(int val) {}
+    void addAtHead(int val) {
+        MyInnerNode* node = new MyInnerNode(val, head->next);
+        head->next = node;
+    }
 
-    void addAtTail(int val) {}
+    void addAtTail(int val) {
+        MyInnerNode* node = new MyInnerNode(val);
+        MyInnerNode* prev = head;
+        while (prev->next != nullptr) {
+            prev = prev->next;
+        }
+        prev->next = node;
+    }
 
-    void addAtIndex(int index, int val) {}
+    void addAtIndex(int index, int val) {
+        MyInnerNode* node = new MyInnerNode(val);
+        MyInnerNode* prev = head;
+        for (int i = 0; i < index; ++i) {
+            if (prev->next == nullptr) return;
+            prev = prev->next;
+        }
 
-    void deleteAtIndex(int index) {}
+        node->next = prev->next;
+        prev->next = node;
+    }
+
+    void deleteAtIndex(int index) {
+        MyInnerNode* prev = head;
+        while (--index >= 0 && prev->next != nullptr) prev = prev->next;
+        if (prev->next != nullptr) {
+            MyInnerNode* tmp = prev->next;
+            prev->next = prev->next->next;
+            delete tmp;
+        }
+    }
 };
 
 #define null nullptr

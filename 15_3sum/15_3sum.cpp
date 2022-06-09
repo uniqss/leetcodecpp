@@ -2,24 +2,32 @@
 
 class Solution {
    public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-    }
+    vector<vector<int>> threeSum(vector<int>& nums) {}
 };
 
+void test(vector<int>&& nums, vector<vector<int>>&& expect) {
+    Solution so;
+    auto ret = so.threeSum(nums);
+    std::for_each(ret.begin(), ret.end(), [](vector<int>& vi) { std::sort(vi.begin(), vi.end()); });
+    std::sort(ret.begin(), ret.end());
+    std::for_each(expect.begin(), expect.end(), [](vector<int>& vi) { std::sort(vi.begin(), vi.end()); });
+    std::sort(expect.begin(), expect.end());
+    if (ret == expect) {
+        praw("ok.");
+    } else {
+        praw("not ok.");
+        pvraw(nums);
+        pvvraw(expect);
+        pvvraw(ret);
+    }
+}
+
 int main() {
-    vector<int> vi;
-    Solution s;
-    vector<vector<int>> ret;
-
-    vi = {-1, 0, 1, 2, -1, -4};
-    pvraw(vi);
-    ret = s.threeSum(vi);
-    pvvraw(ret);
-
-    vi = {3, 0, -2, -1, 1, 2};
-    pvraw(vi);
-    ret = s.threeSum(vi);
-    pvvraw(ret);
+    test({-2, 0, 0, 2, 2}, {{-2, 0, 2}});
+    test({-1, 0, 1, 2, -1, -4}, {{-1, -1, 2}, {-1, 0, 1}});
+    test({}, {});
+    test({0}, {});
+    test({3, 0, -2, -1, 1, 2}, {{3, -1, -2}, {2, -2, 0}, {1, -1, 0}});
 
     return 0;
 }

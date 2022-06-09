@@ -2,19 +2,7 @@
 
 class Solution {
    public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        std::unordered_map<int, int> num2idx;
-        int numsi = 0;
-        for (int i = 0; i < nums.size(); ++i) {
-            numsi = nums[i];
-            auto it = num2idx.find(numsi);
-            if (it != num2idx.end()) {
-                return {i, it->second};
-            }
-            num2idx[target - numsi] = i;
-        }
-        return {-1, -1};
-    }
+    vector<int> twoSum(vector<int>& nums, int target) {}
 };
 
 void test(vector<int>&& nums, int target, vector<int>&& expect) {

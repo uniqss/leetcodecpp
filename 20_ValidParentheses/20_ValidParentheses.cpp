@@ -2,20 +2,21 @@
 
 class Solution {
    public:
-    bool isValid(string s) {
-    }
+    bool isValid(string s) {}
 };
 
 void test(const string& s, bool expected) {
     Solution so;
-    praw(s);
     bool ret = so.isValid(s);
     if (expected != ret) {
         praw("!!!!!!! not ok");
+        praw(s);
+        praw(expected);
+        praw(ret);
+        pnewline();
     } else {
         praw("ok");
     }
-    pnewline();
 }
 
 int main() {

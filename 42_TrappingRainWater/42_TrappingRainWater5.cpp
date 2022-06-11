@@ -1,31 +1,20 @@
 #include "../inc.h"
 
-// two pointer
+// stk 解法
 class Solution {
    public:
     int trap(vector<int>& height) {
-        if (height.size() < 2) return 0;
-        int l = 1;
-        int r = height.size() - 2;
-        int lmax = height[0];
-        int rmax = height[r + 1];
+        stack<int> stk;
         int ret = 0;
-        while (l <= r) {
-            if (lmax < rmax) {
-                if (height[l] < lmax) {
-                    ret += lmax - height[l];
-                } else {
-                    lmax = height[l];
+        for (int i = 0; i < height.size(); ++i) {
+            while (!stk.empty() && height[stk.top()] < height[i]) {
+                int idxlow = stk.top();
+                stk.pop();
+                if (!stk.empty()) {
+                    ret += (min(height[stk.top()], height[i]) - height[idxlow]) * (i - stk.top() - 1);
                 }
-                ++l;
-            } else {
-                if (height[r] < rmax) {
-                    ret += rmax - height[r];
-                } else {
-                    rmax = height[r];
-                }
-                --r;
             }
+            stk.push(i);
         }
         return ret;
     }

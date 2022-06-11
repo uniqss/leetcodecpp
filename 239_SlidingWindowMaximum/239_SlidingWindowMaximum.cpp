@@ -2,23 +2,22 @@
 
 class Solution {
    public:
-    vector<int> maxSlidingWindow(const vector<int>& nums, int k) {
-    }
+    vector<int> maxSlidingWindow(const vector<int>& nums, int k) {}
 };
 
 void test(const vector<int>& nums, int k, const vector<int>& expect) {
-    pvraw(nums);
-    praw(k);
     Solution s;
     auto ret = s.maxSlidingWindow(nums, k);
     if (ret == expect) {
         praw("ok");
     } else {
         praw("##### not ok");
+        pvraw(nums);
+        praw(k);
         pvraw(expect);
         pvraw(ret);
+        pnewline();
     }
-    pnewline();
 }
 
 int main() {

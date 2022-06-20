@@ -3,6 +3,28 @@
 class Solution {
    public:
     vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ret;
+        TreeNode* predecessor = nullptr;
+        while (root != nullptr) {
+            if (root->left != nullptr) {
+                predecessor = root->left;
+                while (predecessor->right != nullptr && predecessor->right != root) {
+                    predecessor = predecessor->right;
+                }
+                if (predecessor->right == nullptr) {
+                    predecessor->right = root;
+                    root = root->left;
+                } else {
+                    predecessor->right = nullptr;
+                    ret.emplace_back(root->val);
+                    root = root->right;
+                }
+            } else {
+                ret.emplace_back(root->val);
+                root = root->right;
+            }
+        }
+        return ret;
     }
 };
 

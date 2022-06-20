@@ -2,8 +2,7 @@
 
 class Solution {
    public:
-    vector<int> preorderTraversal(TreeNode* root) {
-    }
+    vector<int> preorderTraversal(TreeNode* root) {}
 };
 
 void test(const vector<ComplexVal>& root, const vector<int>& expect) {

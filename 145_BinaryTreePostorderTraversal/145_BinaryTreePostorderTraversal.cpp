@@ -3,6 +3,38 @@
 class Solution {
    public:
     vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> ret;
+        TreeNode* curr = root;
+        TreeNode* predecessor;
+        while (curr != nullptr) {
+            if (curr->left != nullptr) {
+                predecessor = curr->left;
+                while (predecessor->right != nullptr && predecessor->right != curr) {
+                    predecessor = predecessor->right;
+                }
+                if (predecessor->right == nullptr) {
+                    predecessor->right = curr;
+                    curr = curr->left;
+                } else {
+                    predecessor->right = nullptr;
+                    addReverse(curr->left, ret);
+                    curr = curr->right;
+                }
+            } else {
+                // ret.emplace_back(curr->val);
+                curr = curr->right;
+            }
+        }
+        addReverse(root, ret);
+        return ret;
+    }
+    void addReverse(TreeNode* root, vector<int>& ret) {
+        auto size = ret.size();
+        while (root != nullptr) {
+            ret.emplace_back(root->val);
+            root = root->right;
+        }
+        reverse(ret.begin() + size, ret.end());
     }
 };
 

@@ -33,6 +33,7 @@ void test(const vector<ComplexVal>& vals, bool expect) {
 }
 
 int main() {
+    test({1, 2, 3}, false);
     test({1, 2, 2, 3, 4, 4, 3}, true);
     test({1, 2, 2, null, 3, null, 3}, false);
     return 0;

@@ -1,6 +1,15 @@
 #include "../inc.h"
 
 // threaded binary tree 中文官方题解极为经典，居然一点都没动树的结构，连指针都还原的一模一样，简直完美！
+// 有点倒切西瓜的感觉，刀法轨迹：
+/*
+        55
+      44  54
+    33  43  53
+  22  32  42  52
+11  21  31  41  51
+说明：切了5条 第一条 11  第二条 21 22  第三条 31 32 33  第四条 41 42 43 44  第五条 51 52 53 54 55   是从下向上斜切的西瓜
+*/
 class Solution {
    public:
     vector<int> postorderTraversal(TreeNode* root) {

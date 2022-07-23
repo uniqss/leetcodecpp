@@ -3,30 +3,31 @@
 class Solution {
    public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        ListNode tmp(0, head);
-        ListNode* prev = &tmp;
+        if (head == nullptr || head->next == nullptr || k <= 1) return head;
+        ListNode dummy(0, head);
+        ListNode* prev = &dummy;
         while (true) {
-            ListNode* n1 = prev->next;
-            ListNode* nk = prev;
+            head = prev->next;
+            ListNode* tail = prev;
             for (int i = 0; i < k; ++i) {
-                nk = nk->next;
-                if (nk == nullptr) return tmp.next;
+                if (tail == nullptr || tail->next == nullptr) return dummy.next;
+                tail = tail->next;
             }
-
-            // all n1..nk is ready
-            ListNode* next = nk->next;
-            ListNode* nprev = n1;
-            ListNode* ncurr = nprev->next;
-            while (nprev != nk) {
-                ListNode* nnext = ncurr->next;
-                ncurr->next = nprev;
-                nprev = ncurr;
-                ncurr = nnext;
+            ListNode* next = tail->next;
+            // reverse
+            ListNode* rprev = head;
+            ListNode* rcurr = rprev->next;
+            while (rcurr != next) {
+                ListNode* rnext = rcurr->next;
+                rcurr->next = rprev;
+                rprev = rcurr;
+                rcurr = rnext;
             }
-            prev->next = nk;
-            n1->next = next;
-            prev = n1;
+            head->next = next;
+            prev->next = tail;
+            prev = head;
         }
+        return dummy.next;
     }
 };
 

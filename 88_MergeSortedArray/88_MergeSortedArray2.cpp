@@ -3,19 +3,21 @@
 class Solution {
    public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-        int mi = m - 1;
-        int ni = n - 1;
-        int idx = m + n - 1;
         nums1.resize(m + n);
-        while (mi >= 0 && ni >= 0) {
-            if (nums1[mi] > nums2[ni]) {
-                nums1[idx--] = nums1[mi--];
+        --m;
+        --n;
+        while (m >= 0 && n >= 0) {
+            if (nums1[m] >= nums2[n]) {
+                nums1[m + n + 1] = nums1[m];
+                --m;
             } else {
-                nums1[idx--] = nums2[ni--];
+                nums1[m + n + 1] = nums2[n];
+                --n;
             }
         }
-        while (ni >= 0) {
-            nums1[idx--] = nums2[ni--];
+        while (n >= 0) {
+            nums1[n] = nums2[n];
+            --n;
         }
     }
 };

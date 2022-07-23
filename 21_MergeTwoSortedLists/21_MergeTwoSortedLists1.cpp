@@ -21,36 +21,32 @@ class Solution {
     }
 };
 
-void test(const std::vector<int>& v1, const std::vector<int>& v2) {
+void test(const std::vector<int>& v1, const std::vector<int>& v2, const std::vector<int>& expect) {
     ListNode* head1 = nullptr;
     ListNode* head2 = nullptr;
     Solution s;
     ListNode* ret = nullptr;
 
     head1 = constructList(v1);
-    pLinkedList(head1);
     head2 = constructList(v2);
-    pLinkedList(head2);
     ret = s.mergeTwoLists(head1, head2);
-    pLinkedList(ret);
+    auto retval = list2vals(ret);
+    if (retval == expect) {
+        praw("ok.");
+    } else {
+        praw("not ok.");
+        pLinkedList(head1);
+        pLinkedList(head2);
+        pLinkedList(ret);
+        pnewline();
+    }
     releaseLinkedList(ret);
 }
 
 int main() {
-    vector<int> vi1;
-    vector<int> vi2;
-
-    vi1 = {1, 2, 4};
-    vi2 = {1, 3, 4};
-    test(vi1, vi2);
-
-    vi1 = {};
-    vi2 = {};
-    test(vi1, vi2);
-
-    vi1 = {};
-    vi2 = {0};
-    test(vi1, vi2);
+    test({1, 2, 4}, {1, 3, 4}, {1, 1, 2, 3, 4, 4});
+    test({}, {}, {});
+    test({}, {0}, {0});
 
     return 0;
 }

@@ -9,9 +9,7 @@ class Solution {
         backtrace(ret, n, k, data, 0);
         return ret;
     }
-    void backtrace(vector<vector<int>>& ret, int n, int k, vector<int>& data, int curr) {
-        
-    }
+    void backtrace(vector<vector<int>>& ret, int n, int k, vector<int>& data, int curr) {}
 };
 
 void test(int n, int k, vector<vector<int>>&& expect) {

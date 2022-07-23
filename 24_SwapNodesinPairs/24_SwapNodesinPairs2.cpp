@@ -1,41 +1,24 @@
 #include "../inc.h"
 
-/*
-prev=>left=>right(=>savedNext)
-exchange:
-    savedNext = right->next
-    left->next = savedNext
-    right->next = left
-    prev->next = right
-
-prev=>right=>left
-move:
-oldPrev=>oldRight=>oldLeft=>left=>right
-oldPrev=>oldRight=>prev=>left=>right
-
-    prev = left
-    left = savedNext
-    right = left->next
-*/
+// code optimize.
 class Solution {
    public:
     ListNode* swapPairs(ListNode* head) {
-        ListNode temp;
-        temp.next = head;
-        ListNode* prev = &temp;
-        ListNode* left = head;
-        ListNode* right = left != nullptr ? left->next : nullptr;
-        while (left != nullptr && right != nullptr) {
-            ListNode* savedNext = right->next;
-            left->next = savedNext;
-            right->next = left;
+        if (head == nullptr || head->next == nullptr) return head;
+        ListNode dummy(0, head);
+        ListNode* prev = &dummy;
+        ListNode *left = nullptr, *right = nullptr;
+        while (prev->next != nullptr && prev->next->next != nullptr) {
+            left = prev->next;
+            right = left->next;
+            ListNode* next = right->next;
             prev->next = right;
-
+            right->next = left;
+            left->next = next;
             prev = left;
-            left = savedNext;
-            right = left != nullptr ? left->next : nullptr;
         }
-        return temp.next;
+
+        return dummy.next;
     }
 };
 

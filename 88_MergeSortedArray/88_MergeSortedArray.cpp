@@ -2,44 +2,34 @@
 
 class Solution {
    public:
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-    }
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {}
 };
 
-void test(std::vector<int>& v1, int m, std::vector<int>& v2, int n) {
+void test(std::vector<int>&& v1, int m, std::vector<int>&& v2, int n, const vector<int>& expect) {
     Solution s;
-    pvraw(v1);
-    praw(m);
-    pvraw(v2);
-    praw(n);
     s.merge(v1, m, v2, n);
-    pvraw(v1);
-    pnewline();
+    auto pv1 = v1;
+    auto pv2 = v2;
+
+    if (v1 == expect) {
+        praw("ok.");
+    } else {
+        praw("not ok.");
+        pvraw(pv1);
+        praw(m);
+        pvraw(pv2);
+        praw(n);
+        pvraw(expect);
+        pvraw(v1);
+        pnewline();
+    }
 }
 
 int main() {
-    vector<int> vi1;
-    vector<int> vi2;
-    int m = 0;
-    int n = 0;
-
-    vi1 = {1, 2, 3, 0, 0, 0};
-    m = 3;
-    vi2 = {2, 5, 6};
-    n = 3;
-    test(vi1, m, vi2, n);
-
-    vi1 = {1};
-    m = 1;
-    vi2 = {};
-    n = 0;
-    test(vi1, m, vi2, n);
-
-    vi1 = {0};
-    m = 0;
-    vi2 = {1};
-    n = 1;
-    test(vi1, m, vi2, n);
+    test({1, 2, 3, 0, 0, 0}, 3, {2, 5, 6}, 3, {1, 2, 2, 3, 5, 6});
+    test({1, 2, 3, 6, 0, 0, 0}, 4, {2, 5, 7}, 3, {1, 2, 2, 3, 5, 6, 7});
+    test({1}, 1, {}, 0, {1});
+    test({0}, 0, {1}, 1, {1});
 
     return 0;
 }

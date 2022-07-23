@@ -2,29 +2,35 @@
 
 class Solution {
    public:
-    ListNode* swapPairs(ListNode* head) {
-    }
+    ListNode* swapPairs(ListNode* head) {}
 };
 
-void test(const std::vector<int>& vi) {
+void test(const std::vector<int>& vi, const vector<int>& expect) {
     ListNode* head = nullptr;
     Solution s;
     ListNode* ret = nullptr;
 
     head = constructList(vi);
-    pLinkedList(head);
     ret = s.swapPairs(head);
-    pLinkedList(ret);
+    auto retvals = list2vals(ret);
+    if (retvals == expect) {
+        praw("ok.");
+    } else {
+        praw("not ok.");
+        pvraw(vi);
+        pvraw(expect);
+        pvraw(retvals);
+    }
     releaseLinkedList(ret);
 }
 
 int main(int argc, char const* argv[]) {
-    test({});
-    test({1});
-    test({1, 2});
-    test({1, 2, 3});
-    test({1, 2, 3, 4});
-    test({1, 2, 3, 4, 5});
+    test({}, {});
+    test({1}, {1});
+    test({1, 2}, {2, 1});
+    test({1, 2, 3}, {2, 1, 3});
+    test({1, 2, 3, 4}, {2, 1, 4, 3});
+    test({1, 2, 3, 4, 5}, {2, 1, 4, 3, 5});
 
     return 0;
 }

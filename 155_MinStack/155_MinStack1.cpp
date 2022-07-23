@@ -13,8 +13,7 @@ class MinStack {
     StackElement<int>* m_etop;
 
    public:
-    MinStack() : m_etop(nullptr) {
-    }
+    MinStack() : m_etop(nullptr) {}
 
     void push(int val) {
         StackElement<int>* e = new StackElement<int>(val);
@@ -29,19 +28,15 @@ class MinStack {
         delete tmp;
     }
 
-    int top() {
-        return m_etop->data;
-    }
+    int top() { return m_etop->data; }
 
-    int getMin() {
-        return m_etop->min;
-    }
+    int getMin() { return m_etop->min; }
 };
 
 MinStack* g_mstack = nullptr;
 
-int test(const string& op, const vector<int>& args) {
-    int ret = INT_MIN;
+ComplexVal test_i(const string& op, const vector<int>& args) {
+    ComplexVal ret = null;
     if (op == "MinStack") {
         g_mstack = new MinStack();
     } else if (op == "push") {
@@ -56,25 +51,44 @@ int test(const string& op, const vector<int>& args) {
     return ret;
 }
 
-int main() {
-    vector<string> oplist;
-    vector<vector<int>> argslist;
-    vector<int> ret;
-
-    oplist = {"MinStack", "push", "push", "push", "getMin", "pop", "top", "getMin"};
-    argslist = {{}, {-2}, {0}, {-3}, {}, {}, {}, {}};
-    ret = {};
+void test(const vector<string>& oplist, const vector<vector<int>>& arglist, const vector<vector<int>>& expect) {
+    vector<ComplexVal> ret;
     for (size_t i = 0; i < oplist.size(); ++i) {
         const string& op = oplist[i];
-        const vector<int>& arg = argslist[i];
-        ret.push_back(test(op, arg));
+        const vector<int>& arg = arglist[i];
+        ComplexVal retcomplex = test_i(op, arg);
+        ret.push_back(retcomplex);
     }
-    pvraw(ret);
+    vector<ComplexVal> expectvec;
+    for (size_t i = 0; i < expect.size(); ++i) {
+        const vector<int>& exp = expect[i];
+        if (exp.empty())
+            expectvec.push_back(null);
+        else
+            expectvec.push_back(exp[0]);
+    }
+
+    if (ret == expectvec) {
+        praw("ok.");
+    } else {
+        praw("not ok.");
+        pvraw(oplist);
+        pvvraw(arglist);
+        pvvraw(expect);
+        pvcomplex(ret);
+        pnewline();
+    }
 
     if (g_mstack != nullptr) {
         delete g_mstack;
         g_mstack = nullptr;
     }
+}
+
+int main() {
+    test({"MinStack", "push", "push", "push", "getMin", "pop", "top", "getMin"}, {{}, {-2}, {0}, {-3}, {}, {}, {}, {}},
+         {{}, {}, {}, {}, {-3}, {}, {0}, {-2}});
+
     return 0;
 }
 

@@ -12,6 +12,7 @@
 			"*.asset": "yaml",
 			"*.mat": "yaml",
 			"*.inc": "cpp",
+			"*.lua.txt": "lua",
 			"vector": "cpp",
 			"ostream": "cpp",
 			"iostream": "cpp",
@@ -72,7 +73,8 @@
 			"stop_token": "cpp",
 			"thread": "cpp",
 			"bitset": "cpp",
-			"forward_list": "cpp"
+			"forward_list": "cpp",
+			"fstream": "cpp"
 		}
 	}
 }

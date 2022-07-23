@@ -11,7 +11,21 @@ bool isBadVersion(int version) {
 
 class Solution {
    public:
-    int firstBadVersion(int n) {}
+    int firstBadVersion(int n) {
+        // []
+        int left = 1;
+        int right = n;
+        int mid = 0;
+        while (left < right) {
+            mid = left + (right - left) / 2;
+            bool isBad = isBadVersion(mid);
+            if (isBad)
+                right = mid;
+            else
+                left = mid + 1;
+        }
+        return left;
+    }
 };
 
 void test(int n, int bad) {

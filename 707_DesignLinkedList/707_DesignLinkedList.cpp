@@ -1,6 +1,7 @@
 #include "../stl.h"
 #include "../complexval.h"
 
+
 class MyLinkedList {
    public:
     MyLinkedList() {}
@@ -11,6 +12,7 @@ class MyLinkedList {
 
     void addAtTail(int val) {}
 
+    // If index is greater than the length, the node will not be inserted
     void addAtIndex(int index, int val) {}
 
     void deleteAtIndex(int index) {}

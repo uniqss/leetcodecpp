@@ -1,61 +1,71 @@
 #include "../stl.h"
 #include "../complexval.h"
 
+
+class MyListNode {
+   public:
+    MyListNode* next;
+    int val;
+    MyListNode() : next(nullptr), val(0) {}
+    MyListNode(MyListNode* n) : next(n), val(0) {}
+    MyListNode(int v) : next(nullptr), val(v) {}
+    MyListNode(MyListNode* n, int v) : next(n), val(v) {}
+};
 class MyLinkedList {
-    struct MyInnerNode {
-        MyInnerNode* next;
-        int val;
-        MyInnerNode() : next(nullptr), val(0) {}
-        MyInnerNode(int _val, MyInnerNode* _next = nullptr) : next(_next), val(_val) {}
-    };
-    MyInnerNode* head;
+    MyListNode fhead;
+    // easier if we save len as a member. but remember to increase and decrease the len.
+    int len;
 
    public:
-    MyLinkedList() : head(new MyInnerNode()) {}
+    MyLinkedList() : len(0) {}
 
     int get(int index) {
-        MyInnerNode* curr = head;
-        while (index-- >= 0 && curr != nullptr) {
-            curr = curr->next;
+        if (index >= len) return -1;
+        MyListNode* tmp = &fhead;
+        for (int i = 0; i <= index; ++i) {
+            tmp = tmp->next;
         }
-        return curr == nullptr ? -1 : curr->val;
+        return tmp->val;
     }
 
     void addAtHead(int val) {
-        MyInnerNode* node = new MyInnerNode(val, head->next);
-        head->next = node;
+        MyListNode* node = new MyListNode(fhead.next, val);
+        fhead.next = node;
+        ++len;
     }
 
     void addAtTail(int val) {
-        MyInnerNode* node = new MyInnerNode(val);
-        MyInnerNode* prev = head;
+        MyListNode* prev = &fhead;
         while (prev->next != nullptr) {
             prev = prev->next;
         }
+        MyListNode* node = new MyListNode(val);
         prev->next = node;
+        ++len;
     }
 
     // If index is greater than the length, the node will not be inserted
     void addAtIndex(int index, int val) {
-        MyInnerNode* node = new MyInnerNode(val);
-        MyInnerNode* prev = head;
+        if (index > len) return;
+        MyListNode* prev = &fhead;
         for (int i = 0; i < index; ++i) {
-            if (prev->next == nullptr) return;
             prev = prev->next;
         }
-
-        node->next = prev->next;
+        MyListNode* node = new MyListNode(prev->next, val);
         prev->next = node;
+        ++len;
     }
 
     void deleteAtIndex(int index) {
-        MyInnerNode* prev = head;
-        while (--index >= 0 && prev->next != nullptr) prev = prev->next;
-        if (prev->next != nullptr) {
-            MyInnerNode* tmp = prev->next;
-            prev->next = prev->next->next;
-            delete tmp;
+        if (index >= len) return;
+        MyListNode* prev = &fhead;
+        for (int i = 0; i < index; ++i) {
+            prev = prev->next;
         }
+        MyListNode* tmp = prev->next;
+        prev->next = prev->next->next;
+        delete tmp;
+        --len;
     }
 };
 

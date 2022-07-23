@@ -33,6 +33,7 @@ class MyLinkedList {
         curr->next = new MyListNode(val);
     }
 
+    // If index is greater than the length, the node will not be inserted
     void addAtIndex(int index, int val) {
         MyListNode* curr = head;
         while (index-- > 0) {

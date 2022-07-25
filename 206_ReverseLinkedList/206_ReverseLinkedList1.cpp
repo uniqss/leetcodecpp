@@ -58,7 +58,7 @@ void test_vi(const vector<int> &vi, const vector<int> &expect) {
 
     head = constructList(vi);
     ret = s.reverseList(head);
-    // pLinkedList(ret);
+    // print(ret);
     auto retval = list2vals(ret);
     if (retval == expect) {
         print("ok");

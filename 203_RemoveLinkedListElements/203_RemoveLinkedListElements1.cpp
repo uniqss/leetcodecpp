@@ -41,8 +41,8 @@ void test(const vector<int>& list_vals, int val, const vector<int>&& expect) {
         print("not ok.");
         print(list_vals);
         print(val);
-        pLinkedList(lexpect);
-        pLinkedList(ret);
+        print(lexpect);
+        print(ret);
         print();
     }
     releaseLinkedList(ret);

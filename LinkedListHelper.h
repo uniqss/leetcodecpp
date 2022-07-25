@@ -21,7 +21,7 @@ ListNode* constructList(const vector<int>& vi) {
     return curr;
 }
 
-void pLinkedList(const ListNode* head) {
+void print(const ListNode* head) {
     while (head != nullptr) {
         cout << head->val << "\t";
         head = head->next;

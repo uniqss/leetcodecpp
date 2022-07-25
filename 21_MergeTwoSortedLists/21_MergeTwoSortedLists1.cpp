@@ -35,9 +35,9 @@ void test(const std::vector<int>& v1, const std::vector<int>& v2, const std::vec
         print("ok.");
     } else {
         print("not ok.");
-        pLinkedList(head1);
-        pLinkedList(head2);
-        pLinkedList(ret);
+        print(head1);
+        print(head2);
+        print(ret);
         print();
     }
     releaseLinkedList(ret);

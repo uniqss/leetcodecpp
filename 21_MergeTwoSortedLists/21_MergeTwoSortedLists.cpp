@@ -16,13 +16,13 @@ void test(const std::vector<int>& v1, const std::vector<int>& v2, const std::vec
     ret = s.mergeTwoLists(head1, head2);
     auto retval = list2vals(ret);
     if (retval == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
+        print("not ok.");
         pLinkedList(head1);
         pLinkedList(head2);
         pLinkedList(ret);
-        pnewline();
+        print();
     }
     releaseLinkedList(ret);
 }

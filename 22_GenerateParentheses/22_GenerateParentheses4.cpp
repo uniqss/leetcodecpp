@@ -41,12 +41,12 @@ void test(int n, vector<string>&& expect) {
     std::sort(ret.begin(), ret.end());
 
     if (ret != expect) {
-        praw("not ok.");
-        praw(n);
-        pvraw(expect);
-        pvraw(ret);
+        print("not ok.");
+        print(n);
+        print(expect);
+        print(ret);
     } else {
-        praw("ok");
+        print("ok");
     }
 }
 

@@ -25,12 +25,12 @@ void test(double x, int n, double expect) {
     Solution so;
     auto ret = so.myPow(x, n);
     if (almost_equal(ret, expect, 2)) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

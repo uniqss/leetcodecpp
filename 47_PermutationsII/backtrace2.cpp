@@ -7,7 +7,7 @@
 vector<int> vis;
 void backtrace(const vector<int>& nums, int start, int len, vector<int>& perm) {
     if (start == len) {
-        pvraw(perm, true);
+        print(perm, true);
         return;
     }
 

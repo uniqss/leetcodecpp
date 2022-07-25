@@ -72,14 +72,14 @@ void test(const vector<string>& oplist, const vector<vector<int>>& arglist, cons
     }
 
     if (ret == expectvec) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(oplist);
-        pvvraw(arglist);
-        pvvraw(expect);
-        pvcomplex(ret);
-        pnewline();
+        print("not ok.");
+        print(oplist);
+        print(arglist);
+        print(expect);
+        print(ret);
+        print();
     }
 
     if (g_mstack != nullptr) {

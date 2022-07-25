@@ -36,14 +36,14 @@ void test(vector<ComplexVal> &&vals, vector<int> &&vals_node, int vexpect) {
     TreeNode *ret = so.lowestCommonAncestor(root, nodes);
     int retval = ret->val;
     if (retval == vexpect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvcomplex(vals);
-        pvraw(vals_node);
-        praw(vexpect);
-        praw(retval);
-        pnewline();
+        print("not ok.");
+        print(vals);
+        print(vals_node);
+        print(vexpect);
+        print(retval);
+        print();
     }
 }
 

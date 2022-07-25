@@ -49,14 +49,14 @@ void test(const vector<ComplexVal>& vals, int targetsum, vector<vector<int>>&& e
     for_each(ret.begin(), ret.end(), [](vector<int>& vi) { sort(vi.begin(), vi.end()); });
     sort(ret.begin(), ret.end());
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        pvcomplex(vals);
-        praw(targetsum);
-        pvvraw(expect);
-        pvvraw(ret);
-        pnewline();
+        print("not ok.");
+        print(vals);
+        print(targetsum);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

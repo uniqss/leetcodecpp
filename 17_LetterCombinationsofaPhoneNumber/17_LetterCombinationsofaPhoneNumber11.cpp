@@ -42,12 +42,12 @@ void test(string&& digits, vector<string>&& expected) {
     std::sort(ret.begin(), ret.end());
     std::sort(expected.begin(), expected.end());
     if (ret == expected) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        praw(digits);
-        pvraw(expected);
-        pvraw(ret);
+        print("not ok.");
+        print(digits);
+        print(expected);
+        print(ret);
     }
 }
 

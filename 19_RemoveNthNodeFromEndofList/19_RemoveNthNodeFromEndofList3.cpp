@@ -33,14 +33,14 @@ void test(const vector<int>& lval, int n, const vector<int>& expect) {
 
     auto retval = list2vals(ret);
     if (retval == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(lval);
-        praw(n);
-        pvraw(expect);
-        pvraw(retval);
-        pnewline();
+        print("not ok.");
+        print(lval);
+        print(n);
+        print(expect);
+        print(retval);
+        print();
     }
 
     releaseLinkedList(ret);

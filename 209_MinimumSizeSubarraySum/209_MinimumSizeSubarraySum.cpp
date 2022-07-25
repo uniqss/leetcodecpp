@@ -9,14 +9,14 @@ void test(int target, vector<int>&& nums, int expect) {
     Solution so;
     auto ret = so.minSubArrayLen(target, nums);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok");
-        praw(target);
-        pvraw(nums);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok");
+        print(target);
+        print(nums);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

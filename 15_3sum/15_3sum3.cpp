@@ -44,12 +44,12 @@ void test(vector<int>&& nums, vector<vector<int>>&& expect) {
     std::for_each(expect.begin(), expect.end(), [](vector<int>& vi) { std::sort(vi.begin(), vi.end()); });
     std::sort(expect.begin(), expect.end());
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(nums);
-        pvvraw(expect);
-        pvvraw(ret);
+        print("not ok.");
+        print(nums);
+        print(expect);
+        print(ret);
     }
 }
 

@@ -30,13 +30,13 @@ void test(const vector<ComplexVal>& vals, bool expect) {
     TreeAutoReleaser _(root);
     auto ret = so.isSymmetric(root);
     if (expect == ret) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        pvcomplex(vals);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(vals);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

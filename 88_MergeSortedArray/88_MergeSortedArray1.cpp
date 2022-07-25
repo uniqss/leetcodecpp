@@ -27,16 +27,16 @@ void test(std::vector<int>&& v1, int m, std::vector<int>&& v2, int n, const vect
     auto pv2 = v2;
 
     if (v1 == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(pv1);
-        praw(m);
-        pvraw(pv2);
-        praw(n);
-        pvraw(expect);
-        pvraw(v1);
-        pnewline();
+        print("not ok.");
+        print(pv1);
+        print(m);
+        print(pv2);
+        print(n);
+        print(expect);
+        print(v1);
+        print();
     }
 }
 

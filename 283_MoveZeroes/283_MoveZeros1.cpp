@@ -28,10 +28,10 @@ int main() {
     vector<int> vi;
     vi = {1, 0, 2, 3, 0, 4};
     s.moveZeroes(vi);
-    pvraw(vi);
+    print(vi);
 
     vi = {0, 1, 0, 0, 5, 0};
     s.moveZeroes(vi);
-    pvraw(vi);
+    print(vi);
     return 0;
 }

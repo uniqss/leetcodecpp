@@ -17,14 +17,14 @@ void test(const vector<ComplexVal>& vals, int targetsum, bool expect) {
     Solution so;
     auto ret = so.hasPathSum(root, targetsum);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        pvcomplex(vals);
-        praw(targetsum);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(vals);
+        print(targetsum);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

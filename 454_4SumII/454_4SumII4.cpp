@@ -28,16 +28,16 @@ void test(vector<int>&& nums1, vector<int>&& nums2, vector<int>&& nums3, vector<
     Solution so;
     auto ret = so.fourSumCount(nums1, nums2, nums3, nums4);
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(nums1);
-        pvraw(nums2);
-        pvraw(nums3);
-        pvraw(nums4);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(nums1);
+        print(nums2);
+        print(nums3);
+        print(nums4);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

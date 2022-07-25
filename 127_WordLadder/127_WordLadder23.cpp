@@ -59,15 +59,15 @@ void test(string&& beginWord, string&& endWord, vector<string>&& wordList, int e
     Solution so;
     auto ret = so.ladderLength(beginWord, endWord, wordList);
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        praw(beginWord);
-        praw(endWord);
-        pvraw(wordList);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(beginWord);
+        print(endWord);
+        print(wordList);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

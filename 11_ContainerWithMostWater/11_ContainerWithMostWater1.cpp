@@ -23,13 +23,13 @@ void test(vector<int> &&height, int expect) {
     Solution so;
     auto ret = so.maxArea(height);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        pvraw(param_height);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(param_height);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

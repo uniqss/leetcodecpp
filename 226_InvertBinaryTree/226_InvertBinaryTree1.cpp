@@ -26,12 +26,12 @@ void test(const vector<int>& vals, const vector<int>& expect) {
     vector<int> ret_vec;
     treeToIntVecLevelOrder(ret, ret_vec);
     if (ret_vec != expect) {
-        praw("not ok.");
-        pvraw(vals);
-        pvraw(expect);
-        pvraw(ret_vec);
+        print("not ok.");
+        print(vals);
+        print(expect);
+        print(ret_vec);
     } else {
-        praw("ok.");
+        print("ok.");
     }
 }
 

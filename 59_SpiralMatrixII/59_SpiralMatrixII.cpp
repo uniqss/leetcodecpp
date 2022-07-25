@@ -9,13 +9,13 @@ void test(int n, vector<vector<int>>&& expect) {
     Solution so;
     auto ret = so.generateMatrix(n);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        praw(n);
-        pvvraw(expect);
-        pvvraw(ret);
-        pnewline();
+        print("not ok.");
+        print(n);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

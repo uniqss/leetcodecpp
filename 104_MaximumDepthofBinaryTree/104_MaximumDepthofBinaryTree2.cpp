@@ -16,12 +16,12 @@ void test(const vector<ComplexVal>& vals, int expected) {
     Solution so;
     auto ret = so.maxDepth(root);
     if (expected == ret) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvcomplex(vals);
-        praw(expected);
-        praw(ret);
+        print("not ok.");
+        print(vals);
+        print(expected);
+        print(ret);
     }
 }
 

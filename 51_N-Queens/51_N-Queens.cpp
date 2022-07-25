@@ -11,13 +11,13 @@ void test(int n, vector<vector<string>>&& expect) {
     std::sort(expect.begin(), expect.end());
     std::sort(ret.begin(), ret.end());
     if (expect == ret) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        praw(n);
-        pvvraw(expect);
-        pvvraw(ret);
-        pnewline();
+        print("not ok.");
+        print(n);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

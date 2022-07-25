@@ -26,12 +26,12 @@ void test(const vector<ComplexVal>& root, const vector<int>& expect) {
 
     auto ret = so.preorderTraversal(tree);
     if (ret != expect) {
-        praw("## not ok.");
-        pvcomplex(root);
-        pvraw(expect);
-        pvraw(ret);
+        print("## not ok.");
+        print(root);
+        print(expect);
+        print(ret);
     } else {
-        praw("ok.");
+        print("ok.");
     }
 }
 

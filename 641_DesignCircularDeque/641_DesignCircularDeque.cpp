@@ -45,8 +45,8 @@ ComplexVal testop(const string& op, const vector<int>& args) {
     } else if (op == "getFront") {
         ret = g_cdq->getFront();
     } else {
-        praw("unknown command!!!");
-        praw(op);
+        print("unknown command!!!");
+        print(op);
     }
     return ret;
 }
@@ -60,12 +60,12 @@ void test(const vector<string>& oplist, const vector<vector<int>>& argslist, con
         ret.push_back(testop(op, arg));
     }
     if (ret != expected) {
-        praw("### not ok");
-        pvraw(oplist);
-        pvcomplex(expected);
-        pvcomplex(ret);
+        print("### not ok");
+        print(oplist);
+        print(expected);
+        print(ret);
     } else {
-        praw("ok");
+        print("ok");
     }
 }
 

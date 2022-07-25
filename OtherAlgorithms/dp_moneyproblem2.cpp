@@ -23,7 +23,7 @@ vector<int> getLeastCountMoney2(int n) {
 int main()
 {
 	vector<int> cost = getLeastCountMoney2(17);
-	pvraw(cost);
+	print(cost);
 
 	return 0;
 }

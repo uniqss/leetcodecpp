@@ -25,13 +25,13 @@ void test(string&& s, bool expect) {
     Solution so;
     auto ret = so.repeatedSubstringPattern(s);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok");
-        praw(s);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok");
+        print(s);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

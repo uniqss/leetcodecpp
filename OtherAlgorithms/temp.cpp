@@ -34,14 +34,14 @@ void test(vector<int>&& nums1, vector<int>&& nums2, double expect) {
     Solution so;
     auto ret = so.findMedianSortedArrays(nums1, nums2);
     if (expect == ret) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(nums1);
-        pvraw(nums2);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(nums1);
+        print(nums2);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

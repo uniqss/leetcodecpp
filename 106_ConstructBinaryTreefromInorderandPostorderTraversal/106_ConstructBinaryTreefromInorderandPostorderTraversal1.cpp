@@ -33,15 +33,15 @@ void test(vector<int>&& inorder, vector<int>&& postorder, const vector<ComplexVa
     vector<int> expect_vec;
     treeToIntVecLevelOrder(etree, expect_vec);
     if (ret_vec == expect_vec) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok");
-        pvraw(inorder);
-        pvraw(postorder);
-        pvcomplex(expect);
+        print("not ok");
+        print(inorder);
+        print(postorder);
+        print(expect);
         pTree(etree);
         pTree(ret);
-        pnewline();
+        print();
     }
 }
 

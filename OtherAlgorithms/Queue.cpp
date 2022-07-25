@@ -81,12 +81,12 @@ int main() {
     qi.pop();
     qi.pop();
     pqi(qi);
-    praw(qi.size());
+    print(qi.size());
     qi.push(1024);
     pqi(qi);
     qi.push(0);
     pqi(qi);
-    praw(qi.size());
+    print(qi.size());
 
     return 0;
 }

@@ -10,14 +10,14 @@ void test(vector<int>&& vi, int expect) {
     Solution s;
     int ret = s.largestRectangleArea(vi);
     if (ret != expect) {
-        praw("###### not ok");
-        pvraw(vi);
-        praw(expect);
-        praw(ret);
+        print("###### not ok");
+        print(vi);
+        print(expect);
+        print(ret);
     } else {
-        praw("ok");
+        print("ok");
     }
-    pnewline();
+    print();
 }
 
 int main() {

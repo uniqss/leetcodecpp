@@ -44,15 +44,15 @@ void test(string&& start, string&& end, vector<string>&& bank, int expected) {
     Solution so;
     auto ret = so.minMutation(start, end, bank);
     if (ret == expected) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        praw(start);
-        praw(end);
-        pvraw(bank);
-        praw(expected);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(start);
+        print(end);
+        print(bank);
+        print(expected);
+        print(ret);
+        print();
     }
 }
 

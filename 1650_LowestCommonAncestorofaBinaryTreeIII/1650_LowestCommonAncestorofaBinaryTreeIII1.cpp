@@ -48,16 +48,16 @@ void test(vector<ComplexVal>&& vals, int vp, int vq, int vexpect) {
     Solution so;
     Node* ret = so.lowestCommonAncestor(p, q);
     if (ret == nullptr || ret->val != vexpect) {
-        praw("not ok");
+        print("not ok");
         if (ret == nullptr) {
-            praw("returned null");
+            print("returned null");
         } else {
-            praw(vexpect);
-            praw(ret->val);
+            print(vexpect);
+            print(ret->val);
         }
-        pnewline();
+        print();
     } else {
-        praw("ok.");
+        print("ok.");
     }
 }
 

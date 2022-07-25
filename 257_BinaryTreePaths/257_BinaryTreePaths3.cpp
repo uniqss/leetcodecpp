@@ -40,12 +40,12 @@ void test(const vector<ComplexVal>& vals, vector<string>&& expect) {
     auto ret = so.binaryTreePaths(root);
     sort(ret.begin(), ret.end());
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        pvcomplex(vals);
-        pvraw(expect);
-        pvraw(ret);
+        print("not ok.");
+        print(vals);
+        print(expect);
+        print(ret);
     }
 }
 

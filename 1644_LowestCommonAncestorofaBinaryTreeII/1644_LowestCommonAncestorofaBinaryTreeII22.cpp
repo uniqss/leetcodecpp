@@ -49,24 +49,24 @@ void test(vector<ComplexVal> &&vals, int vp, int vq, ComplexVal vexpect) {
     TreeNode *ret = so.lowestCommonAncestor(root, p, q);
     if (vexpect.IsNullptr()) {
         if (ret == nullptr) {
-            praw("ok.");
+            print("ok.");
         } else {
-            praw("expected: null");
-            praw(ret->val);
-            pnewline();
+            print("expected: null");
+            print(ret->val);
+            print();
         }
     } else {
         if (ret == nullptr) {
-            praw(vexpect.vali);
-            praw("ret: null");
-            pnewline();
+            print(vexpect.vali);
+            print("ret: null");
+            print();
         } else {
             if (ret->val == vexpect.vali) {
-                praw("ok.");
+                print("ok.");
             } else {
-                praw(vexpect.vali);
-                praw(ret->val);
-                pnewline();
+                print(vexpect.vali);
+                print(ret->val);
+                print();
             }
         }
     }

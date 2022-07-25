@@ -11,13 +11,13 @@ void test(const vector<ComplexVal>& vals, const vector<int>& expect) {
     TreeAutoReleaser _(root);
     auto ret = so.largestValues(root);
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvcomplex(vals);
-        pvraw(expect);
-        pvraw(ret);
-        pnewline();
+        print("not ok.");
+        print(vals);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

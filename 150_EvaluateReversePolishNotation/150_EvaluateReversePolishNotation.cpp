@@ -9,13 +9,13 @@ void test(vector<string>&& tokens, int expect) {
     Solution so;
     auto ret = so.evalRPN(tokens);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok");
-        pvraw(tokens);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok");
+        print(tokens);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

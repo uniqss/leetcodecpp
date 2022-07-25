@@ -21,13 +21,13 @@ void test(int n, int expect) {
     Solution so;
     auto ret = so.climbStairs(n);
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        praw(n);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(n);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

@@ -17,13 +17,13 @@ void test(vector<int>&& nums, int val, int expected) {
     Solution so;
     auto ret = so.removeElement(nums, val);
     if (ret == expected) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        pvraw(nums);
-        praw(val);
-        praw(expected);
-        pnewline();
+        print("not ok.");
+        print(nums);
+        print(val);
+        print(expected);
+        print();
     }
 }
 

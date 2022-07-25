@@ -11,14 +11,14 @@ void test(vector<int>&& nums, const vector<int>& expect) {
     auto ret = so.removeDuplicates(nums);
     nums.resize(ret);
     if (nums == expect && ret == (int)expect.size()) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(pnums);
-        pvraw(expect);
-        pvraw(nums);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(pnums);
+        print(expect);
+        print(nums);
+        print(ret);
+        print();
     }
 }
 

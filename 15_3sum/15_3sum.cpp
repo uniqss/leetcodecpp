@@ -13,16 +13,17 @@ void test(vector<int>&& nums, vector<vector<int>>&& expect) {
     std::for_each(expect.begin(), expect.end(), [](vector<int>& vi) { std::sort(vi.begin(), vi.end()); });
     std::sort(expect.begin(), expect.end());
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(nums);
-        pvvraw(expect);
-        pvvraw(ret);
+        print("not ok.");
+        print(nums);
+        print(expect);
+        print(ret);
     }
 }
 
 int main() {
+    test({-4, 0, 2, 2, 3}, {{-4, 2, 2}});
     test({-2, 0, 0, 2, 2}, {{-2, 0, 2}});
     test({-1, 0, 1, 2, -1, -4}, {{-1, -1, 2}, {-1, 0, 1}});
     test({}, {});

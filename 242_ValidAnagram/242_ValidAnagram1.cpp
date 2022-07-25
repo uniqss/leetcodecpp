@@ -15,13 +15,13 @@ void test(const string& s, const string& t, bool expect) {
     Solution so;
     bool ret = so.isAnagram(s, t);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("##### not ok.");
-        praw(s);
-        praw(t);
-        praw(expect);
-        praw(ret);
+        print("##### not ok.");
+        print(s);
+        print(t);
+        print(expect);
+        print(ret);
     }
 }
 

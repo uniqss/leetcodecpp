@@ -60,14 +60,14 @@ void test(const vector<string>& ops, const vector<vector<int>>& params, const ve
     }
 
     if (expect == ret) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        pvraw(ops);
-        pvvraw(params);
-        pvcomplex(expect);
-        pvcomplex(ret);
-        pnewline();
+        print("not ok.");
+        print(ops);
+        print(params);
+        print(expect);
+        print(ret);
+        print();
     }
 
     if (g_list) {

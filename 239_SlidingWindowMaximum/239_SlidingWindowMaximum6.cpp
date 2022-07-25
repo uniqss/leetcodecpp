@@ -34,14 +34,14 @@ void test(const vector<int>& nums, int k, const vector<int>& expect) {
     Solution s;
     auto ret = s.maxSlidingWindow(nums, k);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("##### not ok");
-        pvraw(nums);
-        praw(k);
-        pvraw(expect);
-        pvraw(ret);
-        pnewline();
+        print("##### not ok");
+        print(nums);
+        print(k);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

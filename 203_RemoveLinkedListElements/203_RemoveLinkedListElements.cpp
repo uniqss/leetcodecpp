@@ -13,14 +13,14 @@ void test(const vector<int>& list_vals, int val, const vector<int>&& expect) {
     auto ret = so.removeElements(list, val);
     auto lexpect = constructList(expect);
     if (listEqual(ret, lexpect)) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        pvraw(list_vals);
-        praw(val);
+        print("not ok.");
+        print(list_vals);
+        print(val);
         pLinkedList(lexpect);
         pLinkedList(ret);
-        pnewline();
+        print();
     }
     releaseLinkedList(ret);
     releaseLinkedList(lexpect);

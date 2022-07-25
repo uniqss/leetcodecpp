@@ -56,14 +56,14 @@ void test(const vector<string>& ops, const vector<vector<int>>& params, const ve
         rets.emplace_back(ret);
     }
     if (rets == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok");
-        pvraw(ops);
-        pvvraw(params);
-        pvcomplex(expect);
-        pvcomplex(rets);
-        pnewline();
+        print("not ok");
+        print(ops);
+        print(params);
+        print(expect);
+        print(rets);
+        print();
     }
 }
 

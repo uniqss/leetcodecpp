@@ -12,13 +12,13 @@ void test(const vector<ComplexVal>& vals, bool expect) {
     Solution so;
     auto ret = so.isBalanced(root);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        pvcomplex(vals);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(vals);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

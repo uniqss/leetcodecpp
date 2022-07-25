@@ -25,18 +25,18 @@
 
 using namespace std;
 
-
+void print() {
+    cout << "###############################################" << endl << endl;
+}
 template <class T>
-void praw(const T& raw) {
+void print(const T& raw) {
     cout << raw << endl;
 }
-
-void praw(const bool& raw) {
+void print(const bool& raw) {
     cout << (raw ? "true" : "false") << endl;
 }
-
 template <class T>
-void pvraw(const vector<T>& vr, bool new_line = true) {
+void print(const vector<T>& vr, bool new_line = true) {
     cout << "[";
     for (size_t i = 0; i < vr.size(); ++i) {
         cout << vr[i];
@@ -45,17 +45,12 @@ void pvraw(const vector<T>& vr, bool new_line = true) {
     cout << "]";
     if (new_line) cout << endl;
 }
-
 template <class T>
-void pvvraw(const vector<vector<T>>& vvr, bool new_line = true) {
+void print(const vector<vector<T>>& vvr, bool new_line = true) {
     cout << "[";
     for (size_t i = 0; i < vvr.size(); ++i) {
-        pvraw(vvr[i], false);
+        print(vvr[i], false);
     }
     cout << "]";
     if (new_line) cout << endl;
-}
-
-void pnewline() {
-    cout << "###############################################" << endl << endl;
 }

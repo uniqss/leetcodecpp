@@ -30,13 +30,13 @@ void test(const string& s, bool expected) {
     Solution so;
     bool ret = so.isValid(s);
     if (expected != ret) {
-        praw("!!!!!!! not ok");
-        praw(s);
-        praw(expected);
-        praw(ret);
-        pnewline();
+        print("!!!!!!! not ok");
+        print(s);
+        print(expected);
+        print(ret);
+        print();
     } else {
-        praw("ok");
+        print("ok");
     }
 }
 

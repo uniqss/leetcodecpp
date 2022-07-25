@@ -36,12 +36,12 @@ void test(vector<int>&& nums, vector<int>&& expect) {
 
     so.nextPermutation(nums);
     if (nums == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(nums_saved);
-        pvraw(expect);
-        pvraw(nums);
+        print("not ok.");
+        print(nums_saved);
+        print(expect);
+        print(nums);
     }
 }
 

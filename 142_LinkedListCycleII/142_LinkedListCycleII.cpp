@@ -10,12 +10,12 @@ void test(ListNode* head, int expected) {
     ListNode* node = s.detectCycle(head);
     int ret = node ? node->val : -1;
     if (ret == expected) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("no ok.");
-        praw(expected);
-        praw(ret);
-        pnewline();
+        print("no ok.");
+        print(expected);
+        print(ret);
+        print();
     }
 }
 

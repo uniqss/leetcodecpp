@@ -57,15 +57,15 @@ void test(string&& beginWord, string&& endWord, vector<string>&& wordList, vecto
     Solution so;
     auto ret = so.findLadders(beginWord, endWord, wordList);
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        praw(beginWord);
-        praw(endWord);
-        pvraw(wordList);
-        pvvraw(expect);
-        pvvraw(ret);
-        pnewline();
+        print("not ok.");
+        print(beginWord);
+        print(endWord);
+        print(wordList);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

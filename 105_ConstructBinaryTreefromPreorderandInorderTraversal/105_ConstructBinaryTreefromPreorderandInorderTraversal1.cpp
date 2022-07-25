@@ -30,12 +30,12 @@ void test(vector<int> &&preorder, vector<int> &&inorder, vector<ComplexVal> &&ex
     treeToIntVecLevelOrder(ret, vret);
     treeToIntVecLevelOrder(expect_tree, vexpect);
     if (vret == vexpect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(preorder);
-        pvraw(inorder);
-        pvcomplex(expect);
+        print("not ok.");
+        print(preorder);
+        print(inorder);
+        print(expect);
         pTree(expect_tree);
         pTree(ret);
     }

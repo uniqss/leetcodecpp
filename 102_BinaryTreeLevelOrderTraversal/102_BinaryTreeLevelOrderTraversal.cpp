@@ -11,13 +11,13 @@ void test(const vector<ComplexVal>& vals, const vector<vector<int>>& expect) {
     Solution so;
     auto ret = so.levelOrder(root);
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvcomplex(vals);
-        pvvraw(expect);
-        pvvraw(ret);
-        pnewline();
+        print("not ok.");
+        print(vals);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

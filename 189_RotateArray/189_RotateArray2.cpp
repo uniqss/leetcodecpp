@@ -18,14 +18,14 @@ void test(vector<int>&& nums, int k, const vector<int>& expect) {
     Solution so;
     so.rotate(nums, k);
     if (nums == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(pnums);
-        praw(k);
-        pvraw(expect);
-        pvraw(nums);
-        pnewline();
+        print("not ok.");
+        print(pnums);
+        print(k);
+        print(expect);
+        print(nums);
+        print();
     }
 }
 

@@ -14,12 +14,12 @@ void test(const std::vector<int>& vi, const vector<int>& expect) {
     ret = s.swapPairs(head);
     auto retvals = list2vals(ret);
     if (retvals == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(vi);
-        pvraw(expect);
-        pvraw(retvals);
+        print("not ok.");
+        print(vi);
+        print(expect);
+        print(retvals);
     }
     releaseLinkedList(ret);
 }

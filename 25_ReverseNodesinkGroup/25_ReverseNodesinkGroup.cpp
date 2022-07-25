@@ -14,14 +14,14 @@ void test(const std::vector<int>& vi, int k, const vector<int>& expect) {
     ret = s.reverseKGroup(head, k);
     auto retval = list2vals(ret);
     if (retval == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(vi);
-        praw(k);
-        pvraw(expect);
-        pvraw(retval);
-        pnewline();
+        print("not ok.");
+        print(vi);
+        print(k);
+        print(expect);
+        print(retval);
+        print();
     }
     releaseLinkedList(ret);
 }

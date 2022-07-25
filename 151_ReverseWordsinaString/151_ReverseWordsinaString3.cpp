@@ -31,13 +31,13 @@ void test(string&& s, string expect) {
     Solution so;
     auto ret = so.reverseWords(s);
     if (expect == ret) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        praw(s);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(s);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

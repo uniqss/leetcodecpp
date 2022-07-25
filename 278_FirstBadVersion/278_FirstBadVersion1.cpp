@@ -37,13 +37,13 @@ void test(int n, int bad) {
 
     int ret = so.firstBadVersion(n);
     if (ret == bad) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        praw(n);
-        praw(bad);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(n);
+        print(bad);
+        print(ret);
+        print();
     }
 }
 

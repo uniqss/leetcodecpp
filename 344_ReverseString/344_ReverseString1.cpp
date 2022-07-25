@@ -14,13 +14,13 @@ void test(vector<char>&& s, const vector<char>& expect) {
     Solution so;
     so.reverseString(s);
     if (s == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        pvraw(s);
-        pvraw(expect);
-        pvraw(s);
-        pnewline();
+        print("not ok.");
+        print(s);
+        print(expect);
+        print(s);
+        print();
     }
 }
 

@@ -20,15 +20,15 @@ void test(int n, int k, vector<vector<int>>&& expect) {
     sortvvrawInnerAndOuter(ret_sorted);
     sortvvrawInnerAndOuter(expect_sorted);
     if (ret_sorted == expect_sorted) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        praw(n);
-        praw(k);
-        pvvraw(expect);
-        pvvraw(ret);
+        print("not ok.");
+        print(n);
+        print(k);
+        print(expect);
+        print(ret);
     }
-    pnewline();
+    print();
 }
 
 /*

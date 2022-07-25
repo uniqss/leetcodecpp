@@ -122,12 +122,12 @@ int main() {
     }
     pqi(dqi);
 
-    praw(dqi.size());
+    print(dqi.size());
     dqi.push_back(1024);
     pqi(dqi);
     dqi.push_back(0);
     pqi(dqi);
-    praw(dqi.size());
+    print(dqi.size());
 
     return 0;
 }

@@ -35,12 +35,12 @@ void test(const vector<ComplexVal>& vals, int expect) {
     Solution so;
     auto ret = so.minDepth(root);
     if (ret != expect) {
-        praw("not ok.");
-        pvcomplex(vals);
-        praw(expect);
-        praw(ret);
+        print("not ok.");
+        print(vals);
+        print(expect);
+        print(ret);
     } else {
-        praw("ok.");
+        print("ok.");
     }
 }
 

@@ -35,13 +35,13 @@ void test(vector<int>&& vi, int expect) {
     Solution s;
     int ret = s.trap(vi);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("### not ok ");
-        pvraw(vi);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("### not ok ");
+        print(vi);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

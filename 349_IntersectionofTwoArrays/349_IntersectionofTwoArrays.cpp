@@ -11,14 +11,14 @@ void test(vector<int>&& num1, vector<int>&& num2, vector<int>&& expect) {
     std::sort(ret.begin(), ret.end());
     std::sort(expect.begin(), expect.end());
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(num1);
-        pvraw(num2);
-        pvraw(expect);
-        pvraw(ret);
-        pnewline();
+        print("not ok.");
+        print(num1);
+        print(num2);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

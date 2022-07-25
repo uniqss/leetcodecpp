@@ -9,14 +9,14 @@ void test(string&& haystack, string&& needle, int expect) {
     Solution so;
     auto ret = so.strStr(haystack, needle);
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        praw(haystack);
-        praw(needle);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(haystack);
+        print(needle);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

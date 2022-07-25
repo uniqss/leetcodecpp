@@ -68,18 +68,18 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, const vector<vector<int>>& expect) {
-    pvcomplex(vals);
+    print(vals);
     Node* root = constructNArrayTree(vals);
     pNArrayTree(root);
     Solution so;
     auto ret = so.levelOrder(root);
     if (ret != expect) {
-        praw("not ok");
-        pvcomplex(vals);
-        pvvraw(expect);
-        pvvraw(ret);
+        print("not ok");
+        print(vals);
+        print(expect);
+        print(ret);
     } else {
-        praw("ok.");
+        print("ok.");
     }
 }
 

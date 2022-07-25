@@ -53,12 +53,12 @@ void test(vector<string>&& strs, const vector<vector<string>>& expect) {
     }
 
     if (mapret != mapexpect) {
-        praw("not ok.");
-        pvraw(strs);
-        pvvraw(expect);
-        pvvraw(ret);
+        print("not ok.");
+        print(strs);
+        print(expect);
+        print(ret);
     } else {
-        praw("ok.");
+        print("ok.");
     }
 }
 

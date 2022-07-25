@@ -70,14 +70,14 @@ void test(int n, vector<vector<int>>&& connections, vector<vector<int>>& expect)
     sortvvrawInnerAndOuter(expect);
     sortvvrawInnerAndOuter(ret);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        praw(n);
-        pvvraw(connections);
-        pvvraw(ret);
-        pvvraw(expect);
-        pnewline();
+        print("not ok.");
+        print(n);
+        print(connections);
+        print(ret);
+        print(expect);
+        print();
     }
 }
 

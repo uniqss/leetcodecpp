@@ -27,15 +27,15 @@ void test(const vector<ComplexVal>& val1, const vector<ComplexVal>& val2, const 
     vector<int> eval;
     treeToIntVecLevelOrder(etree, eval);
     if (rval == eval) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok");
-        pvcomplex(val1);
-        pvcomplex(val2);
-        pvcomplex(expect);
+        print("not ok");
+        print(val1);
+        print(val2);
+        print(expect);
         pTree(etree);
         pTree(ret);
-        pnewline();
+        print();
     }
 }
 

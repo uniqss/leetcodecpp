@@ -49,14 +49,14 @@ void test(vector<int>&& nums, int target, vector<vector<int>>&& expect) {
     sort(ret.begin(), ret.end());
 
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(nums);
-        praw(target);
-        pvvraw(expect);
-        pvvraw(ret);
-        pnewline();
+        print("not ok.");
+        print(nums);
+        print(target);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

@@ -21,13 +21,13 @@ void test_vi(const vector<int> &vi, const vector<int> &expect) {
     // pLinkedList(ret);
     auto retval = list2vals(ret);
     if (retval == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok.");
-        pvraw(vi);
-        pvraw(expect);
-        pvraw(retval);
-        pnewline();
+        print("not ok.");
+        print(vi);
+        print(expect);
+        print(retval);
+        print();
     }
     releaseLinkedList(ret);
 }

@@ -76,15 +76,15 @@ void test(int n, int k, vector<vector<int>>&& expect) {
     std::sort(expect.begin(), expect.end(),
               [](const vector<int>& lhs, const vector<int>& rhs) { return std::accumulate(lhs.begin(), lhs.end(), 0) > std::accumulate(rhs.begin(), rhs.end(), 0); });
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        praw(n);
-        praw(k);
-        pvvraw(expect);
-        pvvraw(ret_raw);
+        print("not ok.");
+        print(n);
+        print(k);
+        print(expect);
+        print(ret_raw);
     }
-    pnewline();
+    print();
 }
 
 /*

@@ -26,13 +26,13 @@ void test(vector<int>&& nums, int target, int expect) {
     Solution so;
     int ret = so.search(nums, target);
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(nums);
-        praw(expect);
-        praw(ret);
-        pnewline();
+        print("not ok.");
+        print(nums);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

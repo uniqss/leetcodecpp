@@ -30,12 +30,12 @@ void test(const vector<ComplexVal>& vals, bool expect) {
     Solution so;
     bool ret = so.isValidBST(root);
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok");
-        pvcomplex(vals);
-        praw(expect);
-        praw(ret);
+        print("not ok");
+        print(vals);
+        print(expect);
+        print(ret);
     }
 }
 

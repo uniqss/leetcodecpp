@@ -7,15 +7,15 @@ class Solution {
 };
 
 void test(vector<vector<int>>&& vvi, int expect) {
-    pvvraw(vvi);
+    print(vvi);
     Solution s;
     int ret = s.trapRainWater(vvi);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("### not ok ");
-        praw(expect);
-        praw(ret);
+        print("### not ok ");
+        print(expect);
+        print(ret);
     }
 }
 

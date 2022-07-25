@@ -25,12 +25,12 @@ void test(vector<int>&& nums, int expected) {
     Solution so;
     auto ret = so.majorityElement(nums);
     if (ret == expected) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvraw(nums);
-        praw(expected);
-        praw(ret);
+        print("not ok.");
+        print(nums);
+        print(expected);
+        print(ret);
     }
 }
 

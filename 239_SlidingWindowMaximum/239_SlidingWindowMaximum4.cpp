@@ -37,18 +37,18 @@ class Solution {
 };
 
 void test(const vector<int>& nums, int k, const vector<int>& expect) {
-    pvraw(nums);
-    praw(k);
+    print(nums);
+    print(k);
     Solution s;
     auto ret = s.maxSlidingWindow(nums, k);
     if (ret == expect) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("##### not ok");
-        pvraw(expect);
-        pvraw(ret);
+        print("##### not ok");
+        print(expect);
+        print(ret);
     }
-    pnewline();
+    print();
 }
 
 int main() {

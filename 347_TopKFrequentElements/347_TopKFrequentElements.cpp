@@ -11,14 +11,14 @@ void test(vector<int>&& nums, int k, vector<int>&& expect) {
     sort(expect.begin(), expect.end());
     sort(ret.begin(), ret.end());
     if (expect == ret) {
-        praw("ok");
+        print("ok");
     } else {
-        praw("not ok");
-        pvraw(nums);
-        praw(k);
-        pvraw(expect);
-        pvraw(ret);
-        pnewline();
+        print("not ok");
+        print(nums);
+        print(k);
+        print(expect);
+        print(ret);
+        print();
     }
 }
 

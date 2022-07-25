@@ -108,14 +108,14 @@ void test(const vector<ComplexVal>& vals, const string& expect) {
     TreeAutoReleaser _(root);
     string ret = co.serialize(root);
     if (ret == expect) {
-        praw("ok.");
+        print("ok.");
     } else {
-        praw("not ok.");
-        pvcomplex(vals);
-        praw(expect);
-        praw(ret);
+        print("not ok.");
+        print(vals);
+        print(expect);
+        print(ret);
         pTreeLevelOrder(root);
-        pnewline();
+        print();
     }
 }
 

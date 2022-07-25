@@ -9,7 +9,7 @@ class Solution {
 void test(const vector<ComplexVal>& vals, const vector<vector<int>>& expect) {
     print(vals);
     Node* root = constructNArrayTree(vals);
-    pNArrayTree(root);
+    print(root);
     Solution so;
     auto ret = so.levelOrder(root);
     if (ret != expect) {

@@ -84,10 +84,10 @@ void NArrayTreeToVector(Node *root, vector<Node *> &ret) {
     }
 }
 
-void pNArrayTree(Node *root) {
-    if (root == nullptr) return;
+ostream& operator<<(ostream& os, const Node* root) {
+    if (root == nullptr) return os;
 
-    queue<pair<Node *, int>> nodes;
+    queue<pair<const Node *, int>> nodes;
     nodes.push({nullptr, 1});
     nodes.push({root, 100});
     nodes.push({nullptr, 2});
@@ -95,16 +95,16 @@ void pNArrayTree(Node *root) {
         auto curr = nodes.front();
         nodes.pop();
         if (curr.second == 1) {
-            cout << "{";
+            os << "{";
             continue;
         } else if (curr.second == 2) {
-            cout << "}";
+            os << "}";
             continue;
         }
 
         if (curr.first == nullptr) continue;
-        cout << curr.first->val;
-        if (curr.second == 0) cout << "\t";
+        os << curr.first->val;
+        if (curr.second == 0) os << "\t";
 
         if (curr.first->children.empty()) continue;
         nodes.push({nullptr, 1});
@@ -115,7 +115,8 @@ void pNArrayTree(Node *root) {
         nodes.push({nullptr, 2});
     }
 
-    cout << endl;
+    os << endl;
+    return os;
 }
 
 void releaseNArrayTree(Node *root) {

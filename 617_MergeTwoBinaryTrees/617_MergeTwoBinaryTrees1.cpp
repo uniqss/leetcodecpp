@@ -33,8 +33,8 @@ void test(const vector<ComplexVal>& val1, const vector<ComplexVal>& val2, const 
         print(val1);
         print(val2);
         print(expect);
-        pTree(etree);
-        pTree(ret);
+        print(etree);
+        print(ret);
         print();
     }
 }

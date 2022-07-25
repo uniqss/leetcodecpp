@@ -22,8 +22,8 @@ void test(vector<int>&& inorder, vector<int>&& postorder, const vector<ComplexVa
         print(inorder);
         print(postorder);
         print(expect);
-        pTree(etree);
-        pTree(ret);
+        print(etree);
+        print(ret);
         print();
     }
 }

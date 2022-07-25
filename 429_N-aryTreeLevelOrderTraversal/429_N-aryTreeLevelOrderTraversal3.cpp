@@ -19,12 +19,8 @@ class AllocedPtrQueue {
         head_ = (head_ + 1) % N;
         return true;
     }
-    size_t size() const {
-        return (tail_ + N - head_) % N;
-    }
-    bool empty() const {
-        return head_ == tail_;
-    }
+    size_t size() const { return (tail_ + N - head_) % N; }
+    bool empty() const { return head_ == tail_; }
     T* front() {
         if (head_ == tail_) return nullptr;
         return ptrs_[head_];
@@ -59,14 +55,13 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, const vector<vector<int>>& expect) {
-    print(vals);
     Node* root = constructNArrayTree(vals);
-    pNArrayTree(root);
     Solution so;
     auto ret = so.levelOrder(root);
     if (ret != expect) {
         print("not ok");
         print(vals);
+        print(root);
         print(expect);
         print(ret);
     } else {
@@ -76,6 +71,8 @@ void test(const vector<ComplexVal>& vals, const vector<vector<int>>& expect) {
 
 int main() {
     test({1, null, 3, 2, 4, null, 5, 6}, {{1}, {3, 2, 4}, {5, 6}});
-    test({1, null, 2, 3, 4, 5, null, null, 6, 7, null, 8, null, 9, 10, null, null, 11, null, 12, null, 13, null, null, 14}, {{1}, {2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13}, {14}});
+    test({1, null, 2,    3,    4,  5,    null, null, 6,  7,    null, 8, null,
+          9, 10,   null, null, 11, null, 12,   null, 13, null, null, 14},
+         {{1}, {2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13}, {14}});
     return 0;
 }

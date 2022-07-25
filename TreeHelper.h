@@ -132,12 +132,13 @@ void treeToVector(const TreeNode *root, vector<const TreeNode *> &ret) {
     }
 }
 
-void pTree(const TreeNode *root) {
+ostream &operator<<(ostream &os, const TreeNode *root) {
     vector<const TreeNode *> vec;
     treeToVector(root, vec);
 
-    std::for_each(vec.begin(), vec.end(), [](const TreeNode *node) { cout << node->val << "\t"; });
-    cout << endl;
+    std::for_each(vec.begin(), vec.end(), [&](const TreeNode *node) { os << node->val << "\t"; });
+    os << endl;
+    return os;
 }
 
 void pTreeLevelOrder(const TreeNode *root, bool printNull = true) {

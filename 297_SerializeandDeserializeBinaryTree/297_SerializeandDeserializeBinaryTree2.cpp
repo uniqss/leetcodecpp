@@ -108,7 +108,7 @@ void test(const vector<ComplexVal>& vals, const string& expect) {
         print(vals);
         print(expect);
         print(ret);
-        pTree(root);
+        print(root);
         print();
     }
 }

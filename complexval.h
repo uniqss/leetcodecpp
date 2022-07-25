@@ -73,60 +73,30 @@ bool operator==(const ComplexVal& lhs, const ComplexVal& rhs) {
     return false;
 }
 
-
-ofstream& operator<<(ofstream& ofs, const ComplexVal& cv) {
+ostream& operator<<(ostream& os, const ComplexVal& cv) {
     switch (cv.valtype) {
         case EComplexValType_nullptr:
-            cout << "null";
+            os << "null";
             break;
         case EComplexValType_int:
-            cout << cv.vali;
+            os << cv.vali;
             break;
         case EComplexValType_bool:
             if (cv.valb)
-                cout << "true";
+                os << "true";
             else
-                cout << "false";
+                os << "false";
             break;
         case EComplexValType_string:
-            cout << cv.vals;
+            os << cv.vals;
             break;
 
         default:
-            cout << "not initialized";
+            os << "not initialized";
             break;
     }
-    return ofs;
+    return os;
 }
-
-void print(const vector<ComplexVal>& vc) {
-    std::for_each(vc.begin(), vc.end(), [](const ComplexVal& cv) {
-        switch (cv.valtype) {
-            case EComplexValType_nullptr:
-                cout << "null";
-                break;
-            case EComplexValType_int:
-                cout << cv.vali;
-                break;
-            case EComplexValType_bool:
-                if (cv.valb)
-                    cout << "true";
-                else
-                    cout << "false";
-                break;
-            case EComplexValType_string:
-                cout << cv.vals;
-                break;
-
-            default:
-                cout << "not initialized";
-                break;
-        }
-        cout << " ";
-    });
-    cout << endl;
-}
-
 
 void vcomplexToString(string& ret, const vector<ComplexVal>& vals) {
     ret = "[";

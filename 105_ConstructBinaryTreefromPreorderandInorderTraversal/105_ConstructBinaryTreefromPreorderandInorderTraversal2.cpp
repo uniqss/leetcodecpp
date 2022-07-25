@@ -50,8 +50,8 @@ void test(vector<int> &&preorder, vector<int> &&inorder, vector<ComplexVal> &&ex
         print(preorder);
         print(inorder);
         print(expect);
-        pTree(expect_tree);
-        pTree(ret);
+        print(expect_tree);
+        print(ret);
     }
 }
 

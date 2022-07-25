@@ -24,7 +24,8 @@ while(!queue.empty()){
     }
 }
 */
-// queue 我想出来的最原始的办法，需要两个queue不停的换来换去，一层换一把，有点浪费。事实上可以记一下queue的数量利用在queue尾加节点同时queue头出节点互不影响的特性
+// queue
+// 我想出来的最原始的办法，需要两个queue不停的换来换去，一层换一把，有点浪费。事实上可以记一下queue的数量利用在queue尾加节点同时queue头出节点互不影响的特性
 class Solution {
    public:
     vector<vector<int>> levelOrder(Node* root) {
@@ -51,14 +52,13 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, const vector<vector<int>>& expect) {
-    print(vals);
     Node* root = constructNArrayTree(vals);
-    pNArrayTree(root);
     Solution so;
     auto ret = so.levelOrder(root);
     if (ret != expect) {
         print("not ok");
         print(vals);
+        print(root);
         print(expect);
         print(ret);
     } else {
@@ -68,6 +68,8 @@ void test(const vector<ComplexVal>& vals, const vector<vector<int>>& expect) {
 
 int main() {
     test({1, null, 3, 2, 4, null, 5, 6}, {{1}, {3, 2, 4}, {5, 6}});
-    test({1, null, 2, 3, 4, 5, null, null, 6, 7, null, 8, null, 9, 10, null, null, 11, null, 12, null, 13, null, null, 14}, {{1}, {2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13}, {14}});
+    test({1, null, 2,    3,    4,  5,    null, null, 6,  7,    null, 8, null,
+          9, 10,   null, null, 11, null, 12,   null, 13, null, null, 14},
+         {{1}, {2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13}, {14}});
     return 0;
 }

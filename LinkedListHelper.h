@@ -21,12 +21,13 @@ ListNode* constructList(const vector<int>& vi) {
     return curr;
 }
 
-void print(const ListNode* head) {
+ostream& operator<<(ostream& os, const ListNode* head) {
     while (head != nullptr) {
-        cout << head->val << "\t";
+        os << head->val << "\t";
         head = head->next;
     }
-    cout << endl;
+    os << endl;
+    return os;
 }
 
 void releaseLinkedList(ListNode* head) {

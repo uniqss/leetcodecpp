@@ -7,7 +7,7 @@ class Solution {
         int top = 1;
         int after = 1;
         int tmp = 0;
-        for (int i = 2;i <= n;++i) {
+        for (int i = 2; i <= n; ++i) {
             tmp = top + after;
             after = top;
             top = tmp;

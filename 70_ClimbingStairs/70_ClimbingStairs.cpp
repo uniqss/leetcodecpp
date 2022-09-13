@@ -2,8 +2,7 @@
 
 class Solution {
    public:
-    int climbStairs(int n) {
-    }
+    int climbStairs(int n) {}
 };
 
 void test(int n, int expect) {

@@ -7,9 +7,10 @@
             ],
             "defines": [],
             // "compilerPath": "/usr/local/bin/gcc",
-            // "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
+            "compilerPath": "C:/msys64/mingw64/bin/g++.exe", 
+            // "compilerPath": "C:/cygwin64/bin/g++.exe",
             // "compilerPath": "D:/cygwin64/bin/g++.exe",
-            "compilerPath": "/usr/bin/g++",
+            // "compilerPath": "/usr/bin/g++",
             "cStandard": "gnu17",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "linux-gcc-x64"

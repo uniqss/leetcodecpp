@@ -7,9 +7,9 @@ class Solution {
 
 void test(std::vector<int>&& v1, int m, std::vector<int>&& v2, int n, const vector<int>& expect) {
     Solution s;
-    s.merge(v1, m, v2, n);
     auto pv1 = v1;
     auto pv2 = v2;
+    s.merge(v1, m, v2, n);
 
     if (v1 == expect) {
         print("ok.");
@@ -26,6 +26,7 @@ void test(std::vector<int>&& v1, int m, std::vector<int>&& v2, int n, const vect
 }
 
 int main() {
+    test({2, 0}, 1, {1}, 1, {1, 2});
     test({1, 2, 3, 0, 0, 0}, 3, {2, 5, 6}, 3, {1, 2, 2, 3, 5, 6});
     test({1, 2, 3, 6, 0, 0, 0}, 4, {2, 5, 7}, 3, {1, 2, 2, 3, 5, 6, 7});
     test({1}, 1, {}, 0, {1});

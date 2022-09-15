@@ -2,19 +2,7 @@
 
 class Solution {
    public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        if (list1->val > list2->val) {
-            swap(list1, list2);
-        }
-        ListNode* ret = list1;
-        ListNode* l1 = list1;
-        ListNode* l2 = list2;
-        while (l1 != nullptr && l2 != nullptr) {
-            if (l1->val < l2->val);
-        }
-
-        return ret;
-    }
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {}
 };
 
 void test(const std::vector<int>& v1, const std::vector<int>& v2, const std::vector<int>& expect) {
@@ -31,9 +19,10 @@ void test(const std::vector<int>& v1, const std::vector<int>& v2, const std::vec
         print("ok.");
     } else {
         print("not ok.");
-        print(head1);
-        print(head2);
-        print(ret);
+        print(v1);
+        print(v2);
+        print(expect);
+        print(retval);
         print();
     }
     releaseLinkedList(ret);

@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 /*
 这个算法果然牛逼，反向走，遍历每一个位置从a到z，而不是去dict里面循环

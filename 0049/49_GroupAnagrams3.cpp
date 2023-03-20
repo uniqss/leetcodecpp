@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // sort 2
 class Solution {

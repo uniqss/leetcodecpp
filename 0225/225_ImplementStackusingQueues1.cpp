@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 class MyStack {
     queue<int> q;

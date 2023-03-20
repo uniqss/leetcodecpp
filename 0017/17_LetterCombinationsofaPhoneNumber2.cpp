@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 /*
 这样写似乎更好看一点点

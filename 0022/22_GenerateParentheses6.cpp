@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 /*
 这个算法极为完美，backtrace的经典体验。中文官方站上看到的。

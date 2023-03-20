@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // 自己写的，略显冗长
 class Solution {

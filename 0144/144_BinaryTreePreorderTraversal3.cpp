@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // threaded binary tree ---- 不建议，会破坏树结构，非标准 morris 解法
 class Solution {

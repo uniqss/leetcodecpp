@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 /*
 虽然建议是bfs，但是dfs也能做，而且很精炼

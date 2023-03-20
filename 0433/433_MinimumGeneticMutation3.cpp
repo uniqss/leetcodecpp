@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 /*
 双向搜索，确实性能会高很多：

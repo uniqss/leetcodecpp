@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 class Solution {
     std::unordered_map<char, vector<char>> dict;

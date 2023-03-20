@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // 这其实才是最原始版本， 1 和 2 都是对它的优化
 

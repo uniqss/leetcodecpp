@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // 非常暴力非常粗糙的解法
 class Solution {

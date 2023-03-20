@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // 不用reverse，思路和二叉树的postorder类似，先压头节点，再循环栈，【叶节点】或【上次结算节点的父节点】则结算出栈保存上次三步曲，否则逆序压所有子节点
 class Solution {

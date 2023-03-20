@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 /*
 这里两个queue，实则不是根据depth来了，因为每个节点的分叉可能是不一样的。例如：

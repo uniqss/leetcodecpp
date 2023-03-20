@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 /*
 Boyer-Moore投票算法，这个方法取巧有点过，不推荐，项目中用到建议还是hash的方法，不过思路很新奇，思路是把最多值和非最多值区分开

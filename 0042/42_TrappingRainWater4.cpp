@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 /*
 推箱子留阴影解法，本质上还是一维dp

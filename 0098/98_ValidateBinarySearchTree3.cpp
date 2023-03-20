@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // morris traverse.  This solution will break the tree's structure, left some tree node's right point to some ancestor(lead to infinite loop).
 // 3.1 is better.

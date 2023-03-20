@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 /*
 我们甚至可以更激进一点直接栈不递归的dfs

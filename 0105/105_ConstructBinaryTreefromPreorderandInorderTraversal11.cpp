@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // 对1的性能优化， 采用中文官方解法里面的hash来存储一下避免多次在数组里找
 class Solution {

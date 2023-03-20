@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 /*
 基本差不多，只是在backtrace之前就已经把节点的值加进去了，另外不一样的是判空的处理，这样少掉n次函数调用

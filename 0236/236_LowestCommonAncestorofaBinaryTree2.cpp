@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // recursive 这是中文站上看到的，非常经典。但是这里有很多取巧
 class Solution {

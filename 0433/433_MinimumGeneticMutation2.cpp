@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 /*
 用层的思想做，有点绕。本质上还是bfs

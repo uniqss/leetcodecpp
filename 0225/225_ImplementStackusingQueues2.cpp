@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // 对1的性能优化，使用两个引用，不用实际交换队列的内存
 class MyStack {

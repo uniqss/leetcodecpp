@@ -13,7 +13,7 @@ Follow up: Can you find the LCA traversing the tree, without checking nodes exis
 这个破网站给出的解，注意这个解法要遍历整棵树，，，  当pq均出现在左的子树中时，有很大的优化空间(不用搜索右子树)，详见21的解
 */
 
-#include "../inc.h"
+#include "../inc/inc.h"
 
 class Solution {
    public:

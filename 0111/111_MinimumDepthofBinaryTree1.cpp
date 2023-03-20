@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // recursive 性能应该也还行，不会重复计算
 class Solution {

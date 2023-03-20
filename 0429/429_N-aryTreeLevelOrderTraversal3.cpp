@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 template <class T, std::size_t N>
 class AllocedPtrQueue {

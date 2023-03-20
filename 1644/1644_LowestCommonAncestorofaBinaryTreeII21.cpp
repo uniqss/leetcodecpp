@@ -14,7 +14,7 @@ Follow up: Can you find the LCA traversing the tree, without checking nodes exis
 右子树也一样
 */
 
-#include "../inc.h"
+#include "../inc/inc.h"
 
 class Solution {
    public:

@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // 就是中文官方解法，只不过写法稍微优化了一下
 class Solution {

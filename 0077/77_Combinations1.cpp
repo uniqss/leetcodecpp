@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // 这个算法没问题，但会超时，剪枝策略不足
 /*

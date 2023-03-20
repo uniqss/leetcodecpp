@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // 相对4性能有明显提升，说明vector的size()频繁调用性能是比较差的
 

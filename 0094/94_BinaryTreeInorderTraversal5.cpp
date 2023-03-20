@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // threaded-binary-tree (morris) 中文官方解法，非常完美，不破坏树结构
 class Solution {

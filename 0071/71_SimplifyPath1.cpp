@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 void splitStr(const string& str, vector<string>& ret, string delim = "/") {
     std::size_t start = 0;

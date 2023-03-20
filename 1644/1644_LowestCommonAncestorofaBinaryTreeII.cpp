@@ -9,7 +9,7 @@ Constraints:
 Follow up: Can you find the LCA traversing the tree, without checking nodes existence?
 */
 
-#include "../inc.h"
+#include "../inc/inc.h"
 
 class Solution {
    public:

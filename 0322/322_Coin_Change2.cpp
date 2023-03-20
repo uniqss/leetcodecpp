@@ -1,4 +1,4 @@
-#include "../inc.h"
+#include "../inc/inc.h"
 
 // 参考官方的那个js代码，初始化成 infinity， 一个 for 循环，最后返回才判定一下
 class Solution {

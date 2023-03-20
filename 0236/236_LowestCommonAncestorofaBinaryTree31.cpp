@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // dfs的优化
 class Solution {

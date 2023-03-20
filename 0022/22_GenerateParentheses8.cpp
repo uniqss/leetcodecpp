@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 /*
 dfs不递归的做法，略显繁琐，这里只记了left和right，并没有记它们的顺序，所以str不能省，否则在  curr = stk.top(); 的时候，就没法恢复了

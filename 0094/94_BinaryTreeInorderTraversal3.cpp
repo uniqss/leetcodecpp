@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // stack 对2的优化，这个写法太经典！
 class Solution {

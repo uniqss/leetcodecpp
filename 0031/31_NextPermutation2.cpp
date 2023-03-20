@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 /*
 官方题解，细节还是挺多的

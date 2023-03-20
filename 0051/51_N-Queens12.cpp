@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 class Solution {
     std::unordered_set<int> columns;

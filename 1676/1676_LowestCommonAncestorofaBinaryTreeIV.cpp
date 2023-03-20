@@ -17,7 +17,7 @@ Constraints:
     而且这个算法推演一下就会发现，性能非常高，如果搜索列表中节点足够多分布足够均匀的话，很快就会剪枝，而且幅度可观
 */
 
-#include "../inc/inc.h"
+#include "../inc.h"
 
 class Solution {
    public:

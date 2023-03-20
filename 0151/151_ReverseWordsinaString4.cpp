@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // 仔细体味与中文经典算法的区别
 /*

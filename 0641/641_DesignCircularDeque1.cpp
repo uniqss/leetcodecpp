@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 class MyCircularDeque {
     vector<int> val;

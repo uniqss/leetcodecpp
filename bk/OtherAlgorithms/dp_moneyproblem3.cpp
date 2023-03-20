@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 
 vector<int> getLeastCountMoney3(const vector<unsigned>& moneys, int n) {

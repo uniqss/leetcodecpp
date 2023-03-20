@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // 中文站官方解法 这个做法思路也很清晰，但不推荐。因为要遍历整棵树，随便dfs 还是bfs在树非常巨大的情况下，数学平均都是50%，而这里是100%，CPU内存都很差
 class Solution {

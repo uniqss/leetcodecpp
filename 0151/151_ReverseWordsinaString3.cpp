@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // 中文算法的另一种写法，port到其他语言会方便一点，某些语言不能在for循环中改变for初始化的参数
 class Solution {

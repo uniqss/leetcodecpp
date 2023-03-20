@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // 还是bfs思路，稍微简洁了那么一丝丝
 class Codec {

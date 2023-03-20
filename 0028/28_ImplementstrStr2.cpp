@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // carl的做法，本质上是一样的，偏c一点，vector下标超了一样崩。单封一个 genNext 函数要稍微清晰一点点
 

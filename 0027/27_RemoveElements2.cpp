@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 /*
 slow / fast 命名会更容易理解，更接近人的思维，比我写的 curr / valid 要好

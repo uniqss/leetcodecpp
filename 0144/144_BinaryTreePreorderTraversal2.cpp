@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // stack 这个写法很经典，但不太好想出来，有点往回退着走路的感觉
 class Solution {

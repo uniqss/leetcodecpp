@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 /*
 backtrace和dfs看看的角度，其实有时候是一样的

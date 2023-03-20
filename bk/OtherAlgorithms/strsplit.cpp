@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 int split_str(const char *str, int str_len, char delim, vector<Slice> &ret, int max_part_num) {
     int cur_part_num = 0;

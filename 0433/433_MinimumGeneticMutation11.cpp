@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 /*
 没有本质的区别，只是稍稍优化了一丢丢，少搜索一层

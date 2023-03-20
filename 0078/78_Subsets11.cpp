@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 /*
 稍微优化一下，注意长度的范围是[0,n]双闭区间

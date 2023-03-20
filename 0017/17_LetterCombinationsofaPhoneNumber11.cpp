@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 /*
 参考中文官方，存 unordered_map<char, string> 似乎要方便一点点

@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // 一维dp的解法  这题应该也可以递归，但性能比较差
 class Solution {

@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // 中文官方题解1 据说cpp会超，太不科学了，java和go不会超
 

@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // 貌似两边靠近速度还比一边靠近慢，另外两边靠近的话，五数之和无法两边了，必有一边两个起点
 class Solution {

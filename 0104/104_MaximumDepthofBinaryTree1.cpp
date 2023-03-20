@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // recursive 明明 两行代码我写成了五六行。。。
 class Solution {

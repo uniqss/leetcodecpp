@@ -9,7 +9,7 @@ Constraints:
 Follow up: Can you find the LCA traversing the tree, without checking nodes existence?
 */
 
-#include "../inc/inc.h"
+#include "../inc.h"
 
 class Solution {
     std::unordered_map<TreeNode *, TreeNode *> fa_;

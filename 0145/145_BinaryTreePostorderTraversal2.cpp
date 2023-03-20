@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // stack 不推荐，会完全破坏树结构 这个算法也很好，就是有个缺点，会破坏原本树的结构。做题可以，实际用的话不太适合，包括threaded-binary-tree也不太适合。
 // 不过threaded以后树还是一棵树，只是顺序改变了，相对而言threaded更好（至少内存回收比较方便，不用在前面存个快照）

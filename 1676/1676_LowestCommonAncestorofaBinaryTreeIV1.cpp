@@ -9,7 +9,7 @@ Constraints:
     All nodes[i] are distinct.
 */
 
-#include "../inc/inc.h"
+#include "../inc.h"
 
 class Solution {
    public:

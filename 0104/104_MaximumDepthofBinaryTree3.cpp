@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // 广度优先 Breadth-First-Search bfs
 class Solution {

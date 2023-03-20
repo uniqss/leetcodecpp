@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // 英文官方解法 java 版本port过来，简单一百倍，减少错误率50%+
 

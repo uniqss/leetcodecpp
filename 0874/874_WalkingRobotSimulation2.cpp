@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 struct PairHash {
     size_t operator()(const pair<int, int>& p) const {

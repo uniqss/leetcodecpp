@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // 中文经典on o1算法，有一点点快慢指针的焦糊味在里面，最重要是对erase的调用只有一次，太经典
 class Solution {

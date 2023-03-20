@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 /* 对1的优化
 o o o o o o x x x x x

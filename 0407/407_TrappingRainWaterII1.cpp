@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // 效仿I里面推模型，往四个方向推----静态模型推动的形式这里行不通，因为水会拐弯
 class Solution {

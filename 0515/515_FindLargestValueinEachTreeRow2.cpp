@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 /*
 这是不是应该叫backtrace更贴切？？？但是确实又是dfs

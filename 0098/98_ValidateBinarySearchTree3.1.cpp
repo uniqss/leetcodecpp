@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // morris traverse. This is ok, the tree will not be broken.
 class Solution {

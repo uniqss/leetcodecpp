@@ -1,4 +1,4 @@
-#include "../inc/inc.h"
+#include "../inc.h"
 
 // bfs 其实很简单，也不用递归。就是代码有点长
 class Codec {

@@ -14,6 +14,7 @@ void test(vector<vector<int>>&& matrix, const vector<vector<int>>& expect) {
     } else {
         print("not ok");
         print(param);
+        print(expect);
         print(matrix);
         print();
     }

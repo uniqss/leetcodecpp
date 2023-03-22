@@ -26,7 +26,7 @@ class Solution {
             preSlow = preSlow->next;
             fast = fast->next->next;
         }
-        ListNode *next = preSlow->next->next;
+        ListNode* next = preSlow->next->next;
         delete preSlow->next;
         preSlow->next = next;
     }
@@ -34,6 +34,7 @@ class Solution {
 
 void test(const vector<int>& vi, const vector<int>& expect) {
     auto l = constructList(vi);
+    ListAutoReleaser _(l);
     Solution so;
     so.deleteNode(l);
     auto ret = list2vals(l);
@@ -46,7 +47,6 @@ void test(const vector<int>& vi, const vector<int>& expect) {
         print(ret);
         print();
     }
-    releaseLinkedList(l);
 }
 
 int main() {

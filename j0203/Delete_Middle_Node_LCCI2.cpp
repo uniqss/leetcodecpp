@@ -3,7 +3,12 @@
 // 这个题目是shit，可以不用做，直接next
 class Solution {
    public:
-    void deleteNode(ListNode* node) {}
+    void deleteNode(ListNode* node) {
+        if (node->next != nullptr) {
+            node->val = node->next->val;
+            node->next = node->next->next;
+        }
+    }
 };
 
 void test(const vector<int>& vi, const vector<int>& expect) {

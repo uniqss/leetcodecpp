@@ -57,3 +57,19 @@ bool listEqual(const ListNode* lhs, const ListNode* rhs) {
     }
     return lhs == nullptr && rhs == nullptr;
 }
+
+struct ListAutoReleaser {
+    ListAutoReleaser(ListNode* head) {
+        while (head != nullptr) {
+            nodes.emplace_back(head);
+            head = head->next;
+        }
+    }
+    ~ListAutoReleaser() {
+        for (auto it : nodes) {
+            delete it;
+        }
+        nodes.clear();
+    }
+    std::vector<ListNode*> nodes;
+};

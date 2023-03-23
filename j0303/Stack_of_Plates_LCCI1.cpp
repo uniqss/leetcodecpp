@@ -1,14 +1,63 @@
 #include "../inc.h"
 
 class StackOfPlates {
+    struct StackNode {
+        int val;
+        StackNode* next;
+        StackNode(int _val, StackNode* _next) : val(_val), next(_next) {}
+    };
+    int m_cap;
+    vector<pair<StackNode*, int>> m_stacks;
+
    public:
-    StackOfPlates(int cap) {}
+    StackOfPlates(int cap) : m_cap(cap) {}
 
-    void push(int val) {}
+    void push(int val) {
+        if (m_cap <= 0) return;
+        if (m_stacks.empty() || m_stacks[m_stacks.size() - 1].second >= m_cap) {
+            StackNode* node = new StackNode(val, nullptr);
+            m_stacks.push_back({node, 1});
+        } else {
+            auto& it = m_stacks[m_stacks.size() - 1];
+            ++it.second;
+            it.first = new StackNode(val, it.first);
+        }
+    }
 
-    int pop() {}
+    int pop() {
+        if (m_stacks.empty()) return -1;
+        for (int i = (int)m_stacks.size() - 1; i >= 0; --i) {
+            auto& it = m_stacks[i];
+            if (it.second == 0) {
+                m_stacks.pop_back();
+                continue;
+            } else {
+                auto ret = it.first->val;
+                auto node = it.first;
+                it.first = it.first->next;
+                if (--it.second == 0) {
+                    m_stacks.pop_back();
+                }
+                delete node;
+                return ret;
+            }
+        }
+        return -1;
+    }
 
-    int popAt(int index) {}
+    int popAt(int index) {
+        if (m_stacks.empty()) return -1;
+        if (index >= m_stacks.size()) return -1;
+        auto& it = m_stacks[index];
+        auto ret = it.first->val;
+        auto node = it.first;
+        it.first = it.first->next;
+        delete node;
+        if (--it.second == 0) {
+            m_stacks.erase(m_stacks.begin() + index);
+        }
+        return ret;
+    }
 };
 
 void test(const vector<string>& ops, const vector<vector<int>>& params, const vector<ComplexVal>& expect) {

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "StringHelper.h"
+#include <cassert>
 
 enum EComplexValType {
     EComplexValType_Invalid = -1,
@@ -8,6 +9,7 @@ enum EComplexValType {
     EComplexValType_int,
     EComplexValType_bool,
     EComplexValType_string,
+    EComplexValType_pairint,
 };
 
 class ComplexVal {
@@ -16,12 +18,23 @@ class ComplexVal {
     int vali;
     bool valb;
     string vals;
+    pair<int, int> valpint;
     // ptr must be nullptr
     ComplexVal() : valtype(EComplexValType_Invalid) {}
     ComplexVal(void* ptr) : valtype(EComplexValType_nullptr) {}
     ComplexVal(int val) : valtype(EComplexValType_int), vali(val) {}
     ComplexVal(bool val) : valtype(EComplexValType_bool), valb(val) {}
     ComplexVal(const string& str) : valtype(EComplexValType_string), vals(str) {}
+    ComplexVal(const std::initializer_list<int>& pii) : valtype(EComplexValType_pairint) {
+        assert(pii.size() == 2);
+        valpint.first = *pii.begin();
+        valpint.second = *(pii.begin() + 1);
+    }
+    ComplexVal(const vector<int>& vi) : valtype(EComplexValType_pairint) {
+        assert(vi.size() == 2);
+        valpint.first = *vi.begin();
+        valpint.second = *(vi.begin() + 1);
+    }
 
     bool IsNullptr() const { return valtype == EComplexValType_nullptr; }
     std::string ToString() const {
@@ -31,11 +44,13 @@ class ComplexVal {
             case EComplexValType_int:
                 return std::to_string(vali);
             case EComplexValType_bool:
-                return std::to_string(valb);
+                return valb ? "true" : "false";
             case EComplexValType_string:
                 return vals;
             case EComplexValType_Invalid:
                 return "invalid";
+            case EComplexValType_pairint:
+                return std::to_string(valpint.first) + "|" + std::to_string(valpint.second);
 
             default:
                 break;
@@ -45,10 +60,17 @@ class ComplexVal {
     void FromString(const std::string& s) {
         if (s == "null") {
             valtype = EComplexValType_nullptr;
-        } else {
-            // 目前只有int
+            return;
+        }
+
+        auto pos = s.find("|");
+        if (pos == string::npos) {
             valtype = EComplexValType_int;
             vali = atoi(s.c_str());
+        } else {
+            valtype = EComplexValType_pairint;
+            valpint.first = atoi(s.substr(0, pos).c_str());
+            valpint.second = atoi(s.substr(pos + 1).c_str());
         }
     }
 };
@@ -66,6 +88,8 @@ bool operator==(const ComplexVal& lhs, const ComplexVal& rhs) {
             return lhs.vals == rhs.vals;
         case EComplexValType_Invalid:
             return true;
+        case EComplexValType_pairint:
+            return lhs.valpint.first == rhs.valpint.first && lhs.valpint.second == rhs.valpint.second;
 
         default:
             return false;
@@ -74,27 +98,7 @@ bool operator==(const ComplexVal& lhs, const ComplexVal& rhs) {
 }
 
 ostream& operator<<(ostream& os, const ComplexVal& cv) {
-    switch (cv.valtype) {
-        case EComplexValType_nullptr:
-            os << "null";
-            break;
-        case EComplexValType_int:
-            os << cv.vali;
-            break;
-        case EComplexValType_bool:
-            if (cv.valb)
-                os << "true";
-            else
-                os << "false";
-            break;
-        case EComplexValType_string:
-            os << cv.vals;
-            break;
-
-        default:
-            os << "not initialized";
-            break;
-    }
+    os << cv.ToString();
     return os;
 }
 

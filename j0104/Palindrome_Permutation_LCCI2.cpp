@@ -32,6 +32,7 @@ void test(std::string&& s, bool expect) {
 }
 
 int main() {
+    test("code", false);
     test("aab", true);
     test("tactcoa", true);
     return 0;

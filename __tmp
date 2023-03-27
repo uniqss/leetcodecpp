@@ -1,8 +1,1 @@
-{"AnimalShelf", "enqueue", "enqueue", "dequeueCat", "dequeueDog", "dequeueAny"},
-{{}, {{0, 0}}, {{1, 0}}, {}, {}, {}},
-{null,null,null,{0,0},{-1,-1},{1,0}}
-
-
-{"AnimalShelf", "enqueue", "enqueue", "enqueue", "dequeueDog", "dequeueCat", "dequeueAny"},
-{{}, {{0, 0}}, {{1, 0}}, {{2, 1}}, {}, {}, {}},
-{null,null,null,null,{2,1},{0,0},{1,0}}
+null,-1,-1,-1,-1,-1,null,null,null,null,44,null,null,-1,42,24,null,-1,42,null,29,44,10,40,null,56,-1,-1,null,-1,-1,null,-1,-1,null,63,-1,-1,-1,52,-1,-1,null,-1,null,null,52,-1,-1,null,-1,null,17,20,null,null,null,-1,-1,30,-1,6,43,null,null

@@ -14,6 +14,30 @@ class AnimalShelf {
     MyQueue* m_head;
     MyQueue* m_tail;
 
+    vector<int> dequeueType(int type) {
+        if (m_head == nullptr) return {-1, -1};
+        vector<int> ret;
+        MyQueue fake(0, 0, m_head);
+        MyQueue* prev = &fake;
+        while (prev->next != nullptr && prev->next->type != type) prev = prev->next;
+        if (prev->next == nullptr || prev->next->type != type) return {-1, -1};
+        if (m_head == m_tail) {
+            m_tail = nullptr;
+            m_head = nullptr;
+        } else if (prev->next == m_tail) {
+            m_tail = prev;
+        }
+        ret.emplace_back(prev->next->val);
+        ret.emplace_back(prev->next->type);
+        auto next = prev->next->next;
+        delete prev->next;
+        if (next != nullptr) {
+            prev->next = prev->next->next;
+        }
+
+        return ret;
+    }
+
    public:
     AnimalShelf() : m_head(nullptr), m_tail(nullptr) {}
 
@@ -30,19 +54,24 @@ class AnimalShelf {
 
     vector<int> dequeueAny() {
         vector<int> ret;
+        if (m_head == nullptr) {
+            return {-1, -1};
+        }
+        auto curr = m_head;
+        if (m_head == m_tail) {
+            m_tail = nullptr;
+        }
+        m_head = m_head->next;
+        ret.emplace_back(curr->val);
+        ret.emplace_back(curr->type);
+        delete curr;
 
         return ret;
     }
 
-    vector<int> dequeueDog() {
-        vector<int> ret;
-        return ret;
-    }
+    vector<int> dequeueDog() { return dequeueType(1); }
 
-    vector<int> dequeueCat() {
-        vector<int> ret;
-        return ret;
-    }
+    vector<int> dequeueCat() { return dequeueType(0); }
 };
 
 void test(const vector<string>& ops, const vector<vector<int>>& params, const vector<ComplexVal>& expect) {

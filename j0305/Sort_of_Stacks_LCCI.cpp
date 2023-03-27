@@ -1,44 +1,16 @@
 #include "../inc.h"
 
 class SortedStack {
-    struct MStackNode {
-        int val;
-        MStackNode* next;
-        MStackNode(int _val, MStackNode* _next) : val(_val), next(_next) {}
-    };
-    MStackNode* m_stk;
-
    public:
     SortedStack() {}
 
-    void push(int val) {
-        if (m_stk == nullptr) {
-            m_stk = new MStackNode(val, nullptr);
-            return;
-        }
+    void push(int val) {}
 
-        MStackNode fake(0, m_stk);
-        MStackNode* prev = &fake;
-        while (prev->next != nullptr && prev->next->val < val) {
-            prev = prev->next;
-        }
-        auto next = prev->next;
-        auto curr = new MStackNode(val, next);
-        prev->next = curr;
+    void pop() {}
 
-        m_stk = fake.next;
-    }
+    int peek() {}
 
-    void pop() {
-        if (m_stk == nullptr) return;
-        auto top = m_stk;
-        m_stk = m_stk->next;
-        delete top;
-    }
-
-    int peek() { return m_stk != nullptr ? m_stk->val : -1; }
-
-    bool isEmpty() { return m_stk == nullptr; }
+    bool isEmpty() {}
 };
 
 void test(const vector<string>& ops, const vector<vector<int>>& params, const vector<ComplexVal>& expect) {

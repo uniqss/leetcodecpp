@@ -1,77 +1,16 @@
 #include "../inc.h"
 
 class AnimalShelf {
-    struct MyQueue {
-        int val;
-        int type;
-        int seq;
-        MyQueue* next;
-        MyQueue(int _val, int _type, MyQueue* _next = nullptr) : val(_val), type(_type), next(_next) {
-            static int m_nextseq = 0;
-            seq = ++m_nextseq;
-        }
-    };
-    MyQueue* m_head;
-    MyQueue* m_tail;
-
-    vector<int> dequeueType(int type) {
-        if (m_head == nullptr) return {-1, -1};
-        vector<int> ret;
-        MyQueue fake(0, 0, m_head);
-        MyQueue* prev = &fake;
-        while (prev->next != nullptr && prev->next->type != type) prev = prev->next;
-        if (prev->next == nullptr || prev->next->type != type) return {-1, -1};
-        if (m_head == m_tail) {
-            m_tail = nullptr;
-            m_head = nullptr;
-        } else if (prev->next == m_tail) {
-            m_tail = prev;
-        }
-        ret.emplace_back(prev->next->val);
-        ret.emplace_back(prev->next->type);
-        auto next = prev->next->next;
-        delete prev->next;
-        if (next != nullptr) {
-            prev->next = prev->next->next;
-        }
-
-        return ret;
-    }
-
    public:
-    AnimalShelf() : m_head(nullptr), m_tail(nullptr) {}
+    AnimalShelf() {}
 
-    void enqueue(vector<int> animal) {
-        MyQueue* curr = new MyQueue(animal[0], animal[1]);
-        if (m_tail == nullptr) {
-            m_head = curr;
-            m_tail = curr;
-        } else {
-            m_tail->next = curr;
-            m_tail = curr;
-        }
-    }
+    void enqueue(vector<int> animal) {}
 
-    vector<int> dequeueAny() {
-        vector<int> ret;
-        if (m_head == nullptr) {
-            return {-1, -1};
-        }
-        auto curr = m_head;
-        if (m_head == m_tail) {
-            m_tail = nullptr;
-        }
-        m_head = m_head->next;
-        ret.emplace_back(curr->val);
-        ret.emplace_back(curr->type);
-        delete curr;
+    vector<int> dequeueAny() {}
 
-        return ret;
-    }
+    vector<int> dequeueDog() {}
 
-    vector<int> dequeueDog() { return dequeueType(1); }
-
-    vector<int> dequeueCat() { return dequeueType(0); }
+    vector<int> dequeueCat() {}
 };
 
 void test(const vector<string>& ops, const vector<vector<int>>& params, const vector<ComplexVal>& expect) {
@@ -96,6 +35,16 @@ void test(const vector<string>& ops, const vector<vector<int>>& params, const ve
             auto curr = q->dequeueCat();
             ret.emplace_back(curr);
         }
+    }
+    if (ret == expect) {
+        print("ok");
+    } else {
+        print("not ok");
+        print(ops);
+        print(params);
+        print(expect);
+        print(ret);
+        print();
     }
     delete q;
 }

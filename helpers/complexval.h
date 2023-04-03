@@ -25,6 +25,7 @@ class ComplexVal {
     ComplexVal(int val) : valtype(EComplexValType_int), vali(val) {}
     ComplexVal(bool val) : valtype(EComplexValType_bool), valb(val) {}
     ComplexVal(const string& str) : valtype(EComplexValType_string), vals(str) {}
+    ComplexVal(const std::pair<int, int>& pii) : valtype(EComplexValType_pairint), valpint(pii) {}
     ComplexVal(const std::initializer_list<int>& pii) : valtype(EComplexValType_pairint) {
         assert(pii.size() == 2);
         valpint.first = *pii.begin();

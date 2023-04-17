@@ -22,6 +22,7 @@
 #include <forward_list>
 #include <sstream>
 #include <limits.h>
+#include <tuple>
 
 using namespace std;
 
@@ -32,9 +33,11 @@ template <class T>
 void print(const T& raw) {
     cout << raw << endl;
 }
+
 void print(const bool& raw) {
     cout << (raw ? "true" : "false") << endl;
 }
+
 template <class T>
 void print(const vector<T>& vr, bool new_line = true) {
     cout << "[";

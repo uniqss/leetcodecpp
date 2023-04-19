@@ -78,8 +78,28 @@ class Solution {
                     }
 
                     // move larger, keep bits count
-                    
+                    size_t firstzero = sizel + sizer;
+                    size_t zerocount = 0;
+                    while (val[firstzero] == 0) {
+                        ++zerocount;
+                        --firstzero;
+                    }
+                    size_t nzerocount = 0;
+
+                    while (val[firstzero] == 1) {
+                        ++nzerocount;
+                        --firstzero;
+                    }
                     // if not valid, break
+                    if (firstzero == 0) break;
+                    val[firstzero] = 1;
+                    for (size_t i = 0; i < zerocount; ++i) {
+                        val[firstzero + i] = 0;
+                    }
+                    firstzero += zerocount;
+                    for (size_t i = 0; i < nzerocount; ++i) {
+                        val[firstzero + i] = 1;
+                    }
                 }
             }
         }

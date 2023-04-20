@@ -2,34 +2,8 @@
 
 
 class Solution {
-    vector<vector<int>> ret;
-
    public:
-    vector<vector<int>> BSTSequences(TreeNode* root) {
-        if (root == nullptr) return ret;
-        queue<TreeNode*> q;
-        vector<int> path;
-        path.push_back(root->val);
-        helper(root, q, path);
-        return ret;
-    }
-    void helper(TreeNode* curr, queue<TreeNode*> q, vector<int>& path) {
-        if (curr->left) q.push(curr->left);
-        if (curr->right) q.push(curr->right);
-        if (q.empty()) {
-            ret.push_back(path);
-            return;
-        }
-        auto qsize = q.size();
-        for (size_t i = 0; i < qsize; ++i) {
-            TreeNode* n = q.front();
-            q.pop();
-            path.push_back(n->val);
-            helper(n, q, path);
-            path.pop_back();
-            q.push(n);
-        }
-    }
+    vector<vector<int>> BSTSequences(TreeNode* root) {}
 };
 
 void test(const vector<ComplexVal>& vals, vector<vector<int>>&& expect) {

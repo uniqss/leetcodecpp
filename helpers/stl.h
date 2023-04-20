@@ -40,20 +40,21 @@ void print(const bool& raw) {
 
 template <class T>
 void print(const vector<T>& vr, bool new_line = true) {
-    cout << "[";
+    cout << "{";
     for (size_t i = 0; i < vr.size(); ++i) {
         cout << vr[i];
-        if (i < vr.size() - 1) cout << " ";
+        if (i < vr.size() - 1) cout << ",";
     }
-    cout << "]";
+    cout << "}";
     if (new_line) cout << endl;
 }
 template <class T>
 void print(const vector<vector<T>>& vvr, bool new_line = true) {
-    cout << "[";
+    cout << "{";
     for (size_t i = 0; i < vvr.size(); ++i) {
         print(vvr[i], false);
+        if (i < vvr.size() - 1) cout << ",";
     }
-    cout << "]";
+    cout << "}";
     if (new_line) cout << endl;
 }

@@ -28,6 +28,7 @@ void test(const vector<ComplexVal>& vals, vector<vector<int>>&& expect) {
 }
 
 int main() {
+    test({}, {{}});
     test({2, 1, 3}, {{2, 1, 3}, {2, 3, 1}});
     test({4, 2, 6, 1, 3, 5, 7},
          {{4, 2, 6, 1, 3, 5, 7}, {4, 2, 6, 1, 3, 7, 5}, {4, 2, 6, 1, 5, 7, 3}, {4, 2, 6, 1, 5, 3, 7},

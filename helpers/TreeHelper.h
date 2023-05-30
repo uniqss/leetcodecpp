@@ -117,7 +117,7 @@ void treeToIntVecLevelOrder(const TreeNode *root, vector<int> &ret) {
     }
 }
 
-void treeToComplexValLevelOrder(const TreeNode *root, vector<ComplexVal> &ret) {
+void treeToComplexValLevelOrder(const TreeNode *root, vector<ComplexVal> &ret, bool append_null_middle = false) {
     if (root == nullptr) return;
     queue<const TreeNode *> q;
     q.emplace(root);
@@ -125,6 +125,7 @@ void treeToComplexValLevelOrder(const TreeNode *root, vector<ComplexVal> &ret) {
         auto qsize = q.size();
         vector<ComplexVal> currLayer;
         bool haveValid = false;
+        bool haveChildren = false;
         for (size_t i = 0; i < qsize; ++i) {
             const TreeNode *curr = q.front();
             q.pop();
@@ -133,11 +134,13 @@ void treeToComplexValLevelOrder(const TreeNode *root, vector<ComplexVal> &ret) {
                 currLayer.emplace_back(curr->val);
                 if (curr->left != nullptr) {
                     q.push(curr->left);
+                    haveChildren = true;
                 } else {
                     q.push(nullptr);
                 }
                 if (curr->right != nullptr) {
                     q.push(curr->right);
+                    haveChildren = true;
                 } else {
                     q.push(nullptr);
                 }
@@ -152,6 +155,10 @@ void treeToComplexValLevelOrder(const TreeNode *root, vector<ComplexVal> &ret) {
                     ++nullTail;
                 } else
                     break;
+            }
+
+            if (nullTail > 0 && append_null_middle && haveChildren) {
+                --nullTail;
             }
 
             for (int i = 0; i < currLayer.size() - nullTail; ++i) {

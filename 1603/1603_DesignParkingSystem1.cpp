@@ -1,8 +1,23 @@
 #include "../inc.h"
 
 class ParkingSystem {
+    array<int, 3> m_capacity;
+    array<int, 3> m_curr;
+
    public:
-    ParkingSystem(int big, int medium, int small) {}
+    ParkingSystem(int big, int medium, int small) {
+        m_capacity.fill(0);
+        m_curr.fill(0);
+        m_capacity[0] = big;
+        m_capacity[1] = medium;
+        m_capacity[2] = small;
+    }
+
+    bool addCar(int carType) {
+        bool ret = m_curr[carType - 1] < m_capacity[carType - 1];
+        if (ret) ++m_curr[carType - 1];
+        return ret;
+    }
 };
 
 void test(const vector<std::string>& ops, const vector<vector<int>>&& params, const vector<ComplexVal>& expects) {

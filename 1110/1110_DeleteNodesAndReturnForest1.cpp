@@ -3,7 +3,40 @@
 
 class Solution {
    public:
-    vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) {}
+    vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) {
+        vector<TreeNode*> ret;
+        unordered_set<int> deldict;
+        deldict.insert(to_delete.begin(), to_delete.end());
+
+        queue<TreeNode*> q;
+        q.emplace(root);
+        if (deldict.count(root->val) == 0) ret.emplace_back(root);
+        while (!q.empty()) {
+            auto qsize = q.size();
+            for (size_t i = 0; i < qsize; i++) {
+                TreeNode* curr = q.front();
+                q.pop();
+                bool currdel = false;
+                if (deldict.count(curr->val) > 0) currdel = true;
+                if (curr->left != nullptr) {
+                    q.emplace(curr->left);
+                    if (deldict.count(curr->left->val) > 0)
+                        curr->left = nullptr;
+                    else if (currdel)
+                        ret.emplace_back(curr->left);
+                }
+                if (curr->right != nullptr) {
+                    q.emplace(curr->right);
+                    if (deldict.count(curr->right->val) > 0)
+                        curr->right = nullptr;
+                    else if (currdel)
+                        ret.emplace_back(curr->right);
+                }
+            }
+        }
+
+        return ret;
+    }
 };
 
 void test(const vector<ComplexVal>& rootvals, const vector<int>& to_delete, vector<vector<ComplexVal>>&& expect) {

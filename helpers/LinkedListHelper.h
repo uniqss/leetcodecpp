@@ -61,7 +61,7 @@ bool listEqual(const ListNode* lhs, const ListNode* rhs) {
 struct ListAutoReleaser {
     ListAutoReleaser(ListNode* head) {
         while (head != nullptr) {
-            nodes.emplace_back(head);
+            nodes.insert(head);
             head = head->next;
         }
     }
@@ -71,5 +71,5 @@ struct ListAutoReleaser {
         }
         nodes.clear();
     }
-    std::vector<ListNode*> nodes;
+    std::unordered_set<ListNode*> nodes;
 };

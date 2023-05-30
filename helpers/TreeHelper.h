@@ -183,6 +183,21 @@ void treeToVector(const TreeNode *root, vector<const TreeNode *> &ret) {
     }
 }
 
+void treeToSet(TreeNode *root, unordered_set<TreeNode *> &ret) {
+    if (root == nullptr) return;
+
+    queue<TreeNode *> nodes;
+    nodes.push(root);
+    while (!nodes.empty()) {
+        auto curr = nodes.front();
+        nodes.pop();
+        if (curr == nullptr) continue;
+        ret.insert(curr);
+        if (curr->left != nullptr) nodes.push(curr->left);
+        if (curr->right != nullptr) nodes.push(curr->right);
+    }
+}
+
 ostream &operator<<(ostream &os, const TreeNode *root) {
     vector<const TreeNode *> vec;
     treeToVector(root, vec);
@@ -232,16 +247,21 @@ void releaseTree(TreeNode *root) {
     cout << endl;
 }
 
-void releaseAllTreeNodes(vector<TreeNode *> &vec) {
-    std::for_each(vec.begin(), vec.end(), [](TreeNode *node) { delete node; });
-    vec.clear();
+void releaseAllTreeNodes(vector<TreeNode *> &nodes) {
+    std::for_each(nodes.begin(), nodes.end(), [](TreeNode *node) { delete node; });
+    nodes.clear();
+}
+
+void releaseAllTreeNodes(unordered_set<TreeNode *> &nodes) {
+    std::for_each(nodes.begin(), nodes.end(), [](TreeNode *node) { delete node; });
+    nodes.clear();
 }
 
 class TreeAutoReleaser {
     TreeNode *root_;
-    vector<TreeNode *> all_nodes_;
+    unordered_set<TreeNode *> all_nodes_;
 
    public:
-    TreeAutoReleaser(TreeNode *root) : root_(root) { treeToVector(root, all_nodes_); }
+    TreeAutoReleaser(TreeNode *root) : root_(root) { treeToSet(root, all_nodes_); }
     ~TreeAutoReleaser() { releaseAllTreeNodes(all_nodes_); }
 };

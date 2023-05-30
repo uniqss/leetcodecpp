@@ -2,7 +2,20 @@
 
 class Solution {
    public:
-    vector<vector<int>> generate(int numRows) {}
+    vector<vector<int>> generate(int numRows) {
+        vector<vector<int>> ret(numRows);
+        ret[0].push_back(1);
+        for (int i = 1; i < numRows; i++) {
+            auto& prev = ret[i - 1];
+            auto& curr = ret[i];
+            curr.resize(i + 1, 1);
+            for (size_t j = 1; j < i; j++) {
+                curr[j] = prev[j - 1] + prev[j];
+            }
+        }
+
+        return ret;
+    }
 };
 
 void test(int numRows, const vector<vector<int>>& expect) {

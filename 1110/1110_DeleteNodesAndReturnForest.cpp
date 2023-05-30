@@ -49,7 +49,7 @@ void test(const vector<ComplexVal>& rootvals, const vector<int>& to_delete, vect
     retvals.resize(ret.size());
     for (int i = 0; i < ret.size(); i++) {
         TreeNode* node = ret[i];
-        treeToComplexValLevelOrder(node, retvals[i], true);
+        treeToComplexValLevelOrder(node, retvals[i]);
     }
 
     auto sort = [](vector<vector<ComplexVal>>&& expect) {

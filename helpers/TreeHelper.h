@@ -117,7 +117,7 @@ void treeToIntVecLevelOrder(const TreeNode *root, vector<int> &ret) {
     }
 }
 
-void treeToComplexValLevelOrder(const TreeNode *root, vector<ComplexVal> &ret, bool append_null_middle = false) {
+void treeToComplexValLevelOrder(const TreeNode *root, vector<ComplexVal> &ret, bool append_null_middle = true) {
     if (root == nullptr) return;
     queue<const TreeNode *> q;
     q.emplace(root);

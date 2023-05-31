@@ -74,7 +74,8 @@
 			"thread": "cpp",
 			"bitset": "cpp",
 			"forward_list": "cpp",
-			"fstream": "cpp"
+			"fstream": "cpp",
+			"complex": "cpp"
 		}
 	}
 }

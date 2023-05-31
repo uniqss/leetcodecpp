@@ -23,6 +23,7 @@
 #include <sstream>
 #include <limits.h>
 #include <tuple>
+#include <bit>
 
 using namespace std;
 

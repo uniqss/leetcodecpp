@@ -22,7 +22,7 @@ void test(const vector<int>& vala, const vector<int>& valb, int skipa, int skipb
     Solution so;
     ListNode* heada = constructList(vala);
     ListNode* headb = constructList(valb);
-    ListAutoReleaser _a(heada), _b(headb);
+    ListAutoReleaser _(heada, headb);
 
     if (expect > 0) {
         ListNode *preva = heada, *prevb = headb;

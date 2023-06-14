@@ -19,7 +19,7 @@ class Solution {
 void test(const vector<int> &va, const vector<int> &vb, int expect) {
     auto la = constructList(va);
     auto lb = constructList(vb);
-    ListAutoReleaser _a(la), _b(lb);
+    ListAutoReleaser _(la, lb);
     ListNode *pa = la, *pb = lb;
     while (pa != nullptr && pa->next != nullptr && pa->next->val != expect) pa = pa->next;
     while (pb != nullptr && pb->next != nullptr && pb->next->val != expect) pb = pb->next;

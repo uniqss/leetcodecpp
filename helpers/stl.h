@@ -24,6 +24,7 @@
 #include <limits.h>
 #include <tuple>
 #include <bit>
+#include <cstdarg>
 
 using namespace std;
 

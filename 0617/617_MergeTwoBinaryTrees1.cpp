@@ -17,7 +17,7 @@ void test(const vector<ComplexVal>& val1, const vector<ComplexVal>& val2, const 
     Solution so;
     auto root1 = constructIntTree(val1);
     auto root2 = constructIntTree(val2);
-    TreeAutoReleaser _1(root1), _2(root2);
+    TreeAutoReleaser _(root1, root2);
 
     auto ret = so.mergeTrees(root1, root2);
     auto etree = constructIntTree(expect);

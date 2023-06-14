@@ -103,7 +103,7 @@ void treeToIntVecLevelOrder(const Node *root, vector<int> &ret) {
     }
 }
 
-void treeToVector(Node *root, vector<Node *> &ret) {
+void treeAppendAllNodesToVector(Node *root, vector<Node *> &ret) {
     if (root == nullptr) return;
 
     queue<Node *> nodes;

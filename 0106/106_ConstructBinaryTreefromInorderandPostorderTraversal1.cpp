@@ -25,9 +25,8 @@ class Solution {
 void test(vector<int>&& inorder, vector<int>&& postorder, const vector<ComplexVal>& expect) {
     Solution so;
     auto ret = so.buildTree(inorder, postorder);
-    TreeAutoReleaser _1(ret);
     auto etree = constructIntTree(expect);
-    TreeAutoReleaser _2(etree);
+    TreeAutoReleaser _(ret, etree);
     vector<int> ret_vec;
     treeToIntVecLevelOrder(ret, ret_vec);
     vector<int> expect_vec;

@@ -13,9 +13,8 @@ class Solution {
 
 void test(const vector<ComplexVal>& vp, const vector<ComplexVal>& vq, bool expect) {
     TreeNode* p = constructIntTree(vp);
-    TreeAutoReleaser _p(p);
     TreeNode* q = constructIntTree(vq);
-    TreeAutoReleaser _q(q);
+    TreeAutoReleaser _(p, q);
     Solution so;
     auto ret = so.isSameTree(p, q);
     if (ret == expect) {

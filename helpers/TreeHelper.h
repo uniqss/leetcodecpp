@@ -86,7 +86,7 @@ TreeNode *treeFindUniqueNodeByVal(TreeNode *root, int val) {
     return nullptr;
 }
 
-void treeToVector(TreeNode *root, vector<TreeNode *> &ret) {
+void treeAppendAllNodesToVector(TreeNode *root, vector<TreeNode *> &ret) {
     if (root == nullptr) return;
 
     queue<TreeNode *> nodes;
@@ -168,7 +168,7 @@ void treeToComplexValLevelOrder(const TreeNode *root, vector<ComplexVal> &ret, b
     }
 }
 
-void treeToVector(const TreeNode *root, vector<const TreeNode *> &ret) {
+void treeAppendAllNodesToVector(const TreeNode *root, vector<const TreeNode *> &ret) {
     if (root == nullptr) return;
 
     queue<const TreeNode *> nodes;
@@ -183,7 +183,7 @@ void treeToVector(const TreeNode *root, vector<const TreeNode *> &ret) {
     }
 }
 
-void treeToSet(TreeNode *root, unordered_set<TreeNode *> &ret) {
+void treeAppendAllNodesToSet(TreeNode *root, unordered_set<TreeNode *> &ret) {
     if (root == nullptr) return;
 
     queue<TreeNode *> nodes;
@@ -200,7 +200,7 @@ void treeToSet(TreeNode *root, unordered_set<TreeNode *> &ret) {
 
 ostream &operator<<(ostream &os, const TreeNode *root) {
     vector<const TreeNode *> vec;
-    treeToVector(root, vec);
+    treeAppendAllNodesToVector(root, vec);
 
     std::for_each(vec.begin(), vec.end(), [&](const TreeNode *node) { os << node->val << "\t"; });
     os << endl;
@@ -240,7 +240,7 @@ void pTreeLevelOrder(const TreeNode *root, bool printNull = true) {
 
 void releaseTree(TreeNode *root) {
     vector<TreeNode *> vec;
-    treeToVector(root, vec);
+    treeAppendAllNodesToVector(root, vec);
 
     std::for_each(vec.begin(), vec.end(), [](TreeNode *node) { delete node; });
 
@@ -258,10 +258,15 @@ void releaseAllTreeNodes(unordered_set<TreeNode *> &nodes) {
 }
 
 class TreeAutoReleaser {
-    TreeNode *root_;
     unordered_set<TreeNode *> all_nodes_;
 
    public:
-    TreeAutoReleaser(TreeNode *root) : root_(root) { treeToSet(root, all_nodes_); }
+    TreeAutoReleaser(TreeNode *root, ...) {
+        std::va_list args;
+        va_start(args, root);
+        TreeNode *curr_root = va_arg(args, TreeNode *);
+        treeAppendAllNodesToSet(curr_root, all_nodes_);
+        va_end(args);
+    }
     ~TreeAutoReleaser() { releaseAllTreeNodes(all_nodes_); }
 };

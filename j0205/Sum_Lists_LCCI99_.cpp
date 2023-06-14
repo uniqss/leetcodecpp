@@ -8,7 +8,7 @@ class Solution {
 void test(const vector<int>& v1, const vector<int>& v2, const vector<int>& expect) {
     auto l1 = constructList(v1);
     auto l2 = constructList(v2);
-    ListAutoReleaser _1(l1), _2(l2);
+    ListAutoReleaser _(l1, l2);
     Solution so;
     auto ret = so.addTwoNumbers(l1, l2);
     auto retval = list2vals(ret);

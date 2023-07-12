@@ -19,14 +19,9 @@ class Solution {
 void test(int n, int expect) {
     Solution so;
     auto ret = so.alternateDigitSum(n);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(n);
-        print(expect);
-        print(ret);
-    }
+
+    assert_eq_ret(expect, ret);
+    print(n);
 }
 
 int main() {

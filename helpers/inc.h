@@ -8,6 +8,8 @@
 #include "TreeHelper.h"
 #include "NArrayTreeHelper.h"
 
+#include "uassert.h"
+
 #define null nullptr
 
 

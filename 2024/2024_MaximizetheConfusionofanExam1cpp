@@ -1,0 +1,42 @@
+#include "../inc.h"
+
+class Solution {
+   public:
+    int maxConsecutiveAnswers(string answerKey, int k) {
+        return std::max(helper(answerKey, k, 'T'), helper(answerKey, k, 'F'));
+    }
+    int helper(string answerKey, int k, char ch) {
+        int left = 0, sum = 0, nsize = answerKey.size(), ret = 0;
+        for (int right = 0; right < nsize; ++right) {
+            if (answerKey[right] != ch) ++sum;
+            while (sum > k) {
+                if (answerKey[left] != ch) --sum;
+                ++left;
+            }
+            ret = max(ret, right - left + 1);
+        }
+        return ret;
+    }
+};
+
+void test(string answerKey, int k, int expect) {
+    Solution so;
+    auto ret = so.maxConsecutiveAnswers(answerKey, k);
+    if (ret == expect) {
+        print("ok");
+    } else {
+        print("not ok");
+        print(answerKey);
+        print(k);
+        print(expect);
+        print(ret);
+        print();
+    }
+}
+
+int main() {
+    test("TTFF", 2, 4);
+    test("TFFT", 1, 3);
+    test("TTFTTFTT", 1, 5);
+    return 0;
+}

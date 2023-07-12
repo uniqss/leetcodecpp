@@ -75,7 +75,12 @@
 			"bitset": "cpp",
 			"forward_list": "cpp",
 			"fstream": "cpp",
-			"complex": "cpp"
+			"complex": "cpp",
+			"charconv": "cpp",
+			"optional": "cpp",
+			"format": "cpp",
+			"span": "cpp",
+			"variant": "cpp"
 		}
 	}
 }

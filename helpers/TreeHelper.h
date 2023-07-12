@@ -261,12 +261,12 @@ class TreeAutoReleaser {
     unordered_set<TreeNode *> all_nodes_;
 
    public:
-    TreeAutoReleaser(TreeNode *root, ...) {
-        std::va_list args;
-        va_start(args, root);
-        TreeNode *curr_root = va_arg(args, TreeNode *);
-        treeAppendAllNodesToSet(curr_root, all_nodes_);
-        va_end(args);
+    TreeAutoReleaser(TreeNode *root) {
+        treeAppendAllNodesToSet(root, all_nodes_);
+    }
+    TreeAutoReleaser(TreeNode *root1, TreeNode *root2) {
+        treeAppendAllNodesToSet(root1, all_nodes_);
+        treeAppendAllNodesToSet(root2, all_nodes_);
     }
     ~TreeAutoReleaser() { releaseAllTreeNodes(all_nodes_); }
 };

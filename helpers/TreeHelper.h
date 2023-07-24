@@ -257,16 +257,18 @@ void releaseAllTreeNodes(unordered_set<TreeNode *> &nodes) {
     nodes.clear();
 }
 
-class TreeAutoReleaser {
+struct TreeNodesMemHolder {
     unordered_set<TreeNode *> all_nodes_;
+    ~TreeNodesMemHolder() { releaseAllTreeNodes(all_nodes_); }
+};
 
+static TreeNodesMemHolder gs_tree_nodes_mem_holder;
+
+class TreeAutoReleaser {
    public:
-    TreeAutoReleaser(TreeNode *root) {
-        treeAppendAllNodesToSet(root, all_nodes_);
-    }
+    TreeAutoReleaser(TreeNode *root) { treeAppendAllNodesToSet(root, gs_tree_nodes_mem_holder.all_nodes_); }
     TreeAutoReleaser(TreeNode *root1, TreeNode *root2) {
-        treeAppendAllNodesToSet(root1, all_nodes_);
-        treeAppendAllNodesToSet(root2, all_nodes_);
+        treeAppendAllNodesToSet(root1, gs_tree_nodes_mem_holder.all_nodes_);
+        treeAppendAllNodesToSet(root2, gs_tree_nodes_mem_holder.all_nodes_);
     }
-    ~TreeAutoReleaser() { releaseAllTreeNodes(all_nodes_); }
 };

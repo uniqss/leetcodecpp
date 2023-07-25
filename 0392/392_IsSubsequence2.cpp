@@ -2,7 +2,18 @@
 
 class Solution {
    public:
-    bool isSubsequence(string s, string t) {}
+    bool isSubsequence(string s, string t) {
+        if (s.empty()) return true;
+        int ssize = s.size(), tsize = t.size(), i = 0, j = 0;
+        while (j < tsize) {
+            if (t[j] == s[i]) {
+                ++i;
+                if (i == ssize) return true;
+            }
+            ++j;
+        }
+        return false;
+    }
 };
 
 void test(string s, string t, bool expect) {

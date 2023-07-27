@@ -3,12 +3,9 @@
 class Solution {
    public:
     void moveZeroes(vector<int>& nums) {
-        size_t valid = 0;
-        for (size_t i = 0; i < nums.size(); ++i) {
-            if (nums[i] != 0) {
-                swap(nums[valid], nums[i]);
-                ++valid;
-            }
+        int nsize = nums.size(), valid = 0;
+        for (int& n : nums) {
+            if (n != 0) swap(nums[valid++], n);
         }
     }
 };

@@ -20,6 +20,7 @@ void test(vector<int>&& nums, int expect) {
 }
 
 int main() {
+    test({1, 1, 0, 0, 1, 1, 1, 0, 1}, 4);
     test({1, 1, 0, 1}, 3);
     test({0, 1, 1, 1, 0, 1, 1, 0, 1}, 5);
     test({1, 1, 1}, 2);

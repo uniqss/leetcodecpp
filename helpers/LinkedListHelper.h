@@ -59,25 +59,23 @@ bool listEqual(const ListNode* lhs, const ListNode* rhs) {
 }
 
 struct ListAutoReleaser {
-    ListAutoReleaser(ListNode* heads, ...) {
-        std::va_list args;
-        va_start(args, heads);
-        ListNode* head = va_arg(args, ListNode*);
-        while (head != nullptr) {
-            nodes.insert(head);
-            head = head->next;
-        }
-        va_end(args);
+    ListAutoReleaser(ListNode* head) {
+        Append(head);
     }
-    void Append(ListNode* heads, ...) {
-        std::va_list args;
-        va_start(args, heads);
-        ListNode* head = va_arg(args, ListNode*);
+    ListAutoReleaser(ListNode* head, ListNode* head1) {
+        Append(head);
+        Append(head1);
+    }
+    ListAutoReleaser(ListNode* head, ListNode* head1, ListNode* head2) {
+        Append(head);
+        Append(head1);
+        Append(head2);
+    }
+    void Append(ListNode* head) {
         while (head != nullptr) {
             nodes.insert(head);
             head = head->next;
         }
-        va_end(args);
     }
     ~ListAutoReleaser() {
         for (auto it : nodes) {

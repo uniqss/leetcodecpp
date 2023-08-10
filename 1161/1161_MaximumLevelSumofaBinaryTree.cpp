@@ -2,30 +2,7 @@
 
 class Solution {
    public:
-    int maxLevelSum(TreeNode* root) {
-        int64_t smax = INT64_MIN, curr;
-        int ret = 0, level = 0;
-        queue<TreeNode*> q;
-        q.emplace(root);
-        while (!q.empty()) {
-            auto qsize = q.size();
-            ++level;
-            curr = 0;
-            for (size_t i = 0; i < qsize; ++i) {
-                root = q.front();
-                q.pop();
-                curr += root->val;
-                if (root->left) q.emplace(root->left);
-                if (root->right) q.emplace(root->right);
-            }
-            if (curr > smax) {
-                smax = curr;
-                ret = level;
-            }
-        }
-
-        return ret;
-    }
+    int maxLevelSum(TreeNode* root) {}
 };
 
 void test(const vector<ComplexVal>& vals, int expect) {

@@ -2,15 +2,7 @@
 
 class Solution {
    public:
-    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
-        if (root == nullptr) return root;
-        if (root == p || root == q) return root;
-        auto l = lowestCommonAncestor(root->left, p, q);
-        auto r = lowestCommonAncestor(root->right, p, q);
-        if (!l) return r;
-        if (!r) return l;
-        return root;
-    }
+    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {}
 };
 
 void test(vector<ComplexVal> &&vals, int vp, int vq, int vexpect) {

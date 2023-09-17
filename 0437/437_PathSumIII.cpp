@@ -1,8 +1,26 @@
 #include "../inc.h"
 
 class Solution {
+    unordered_map<int64_t, int> sum2count;
+
    public:
-    int pathSum(TreeNode* root, int targetSum) {}
+    int pathSum(TreeNode* root, int targetSum) {
+        if (root == nullptr) return 0;
+        sum2count[0] = 1;
+        int ret = helper(root, 0, targetSum);
+        return ret;
+    }
+    int helper(TreeNode* root, int64_t currSum, int targetSum) {
+        int ret = 0;
+        currSum += root->val;
+        if (sum2count.count(currSum - targetSum) > 0) ret = sum2count[currSum - targetSum];
+        ++sum2count[currSum];
+        if (root->left) ret += helper(root->left, currSum, targetSum);
+        if (root->right) ret += helper(root->right, currSum, targetSum);
+        --sum2count[currSum];
+
+        return ret;
+    }
 };
 
 void test(const vector<ComplexVal>& vals, int targetSum, int expect) {

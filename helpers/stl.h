@@ -28,35 +28,87 @@
 
 using namespace std;
 
-void print() {
-    cout << "###############################################" << endl << endl;
+inline void __print() {}
+template <typename T>
+void __print(const T& raw) {
+    cout << raw;
 }
-template <class T>
-void print(const T& raw) {
-    cout << raw << endl;
+inline void __print(const bool& raw) {
+    cout << (raw ? "true" : "false");
 }
-
-void print(const bool& raw) {
-    cout << (raw ? "true" : "false") << endl;
+template <typename T1, typename T2>
+inline void __print(const std::pair<T1, T2>& p) {
+    cout << "{" << p.first << "|" << p.second << "}";
 }
-
-template <class T>
-void print(const vector<T>& vr, bool new_line = true) {
+template <typename T>
+void __print(const vector<T>& vr) {
     cout << "{";
-    for (size_t i = 0; i < vr.size(); ++i) {
-        cout << vr[i];
-        if (i < vr.size() - 1) cout << ",";
+    int n = vr.size(), idx = 0;
+    for (const auto& v : vr) {
+        __print(v);
+        if (++idx < n) cout << ",";
     }
     cout << "}";
-    if (new_line) cout << endl;
 }
-template <class T>
-void print(const vector<vector<T>>& vvr, bool new_line = true) {
+template <typename T>
+void __print(const list<T>& vr) {
     cout << "{";
-    for (size_t i = 0; i < vvr.size(); ++i) {
-        print(vvr[i], false);
-        if (i < vvr.size() - 1) cout << ",";
+    int n = vr.size(), idx = 0;
+    for (const auto& v : vr) {
+        __print(v);
+        if (++idx < n) cout << ",";
     }
     cout << "}";
-    if (new_line) cout << endl;
+}
+template <typename T>
+void __print(const set<T>& vr) {
+    cout << "{";
+    int n = vr.size(), idx = 0;
+    for (const auto& v : vr) {
+        __print(v);
+        if (++idx < n) cout << ",";
+    }
+    cout << "}";
+}
+template <typename T>
+void __print(const unordered_set<T>& vr) {
+    cout << "{";
+    int n = vr.size(), idx = 0;
+    for (const auto& v : vr) {
+        __print(v);
+        if (++idx < n) cout << ",";
+    }
+    cout << "}";
+}
+template <typename K, typename V>
+void __print(const map<K, V>& m) {
+    cout << "{";
+    int n = m.size(), idx = 0;
+    for (const auto& [k, v] : m) {
+        __print(k);
+        cout << "=>";
+        __print(v);
+        if (++idx < n) cout << ",";
+        cout << endl;
+    }
+    cout << "}";
+}
+template <typename K, typename V>
+void __print(const unordered_map<K, V>& m) {
+    cout << "{";
+    int n = m.size(), idx = 0;
+    for (const auto& [k, v] : m) {
+        __print(k);
+        cout << "=>";
+        __print(v);
+        if (++idx < n) cout << ",";
+        cout << endl;
+    }
+    cout << "}";
+}
+
+template <typename... Args>
+void print(Args&&... args) {
+    (__print(args), ...);
+    cout << endl;
 }

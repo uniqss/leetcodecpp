@@ -2,7 +2,61 @@
 
 class Solution {
    public:
-    int nearestExit(vector<vector<char>>& maze, vector<int>& entrance) {}
+    int nearestExit(vector<vector<char>>& maze, vector<int>& entrance) {
+        int m = maze.size(), n = maze[0].size(), level = 0;
+        queue<pair<int, int>> q;
+        q.emplace(entrance[0], entrance[1]);
+        maze[entrance[0]][entrance[1]] = '+';
+
+        auto trans_exit = [](char& c) {
+            if (c == '.') c = 'o';
+        };
+        for (int i = 0; i < m; ++i) {
+            trans_exit(maze[i][0]);
+            trans_exit(maze[i][n - 1]);
+        }
+        for (int j = 0; j < n; ++j) {
+            trans_exit(maze[0][j]);
+            trans_exit(maze[m - 1][j]);
+        }
+
+        unordered_set<int> visited;
+        auto vis = [&visited](int x, int y) { return visited.count(x * 1000 + y) > 0; };
+        auto set_vis = [&visited](int x, int y) { visited.insert(x * 1000 + y); };
+        set_vis(entrance[0], entrance[1]);
+
+        vector<bool> valid(256);
+        valid['.'] = true;
+        valid['o'] = true;
+        while (!q.empty()) {
+            int qsize = q.size();
+            for (int qi = 0; qi < qsize; ++qi) {
+                auto [x, y] = q.front();
+                if (maze[x][y] == 'o') return level;
+                maze[x][y] = '+';
+                q.pop();
+                if (x > 0 && !vis(x - 1, y) && valid[maze[x - 1][y]]) {
+                    q.emplace(x - 1, y);
+                    set_vis(x - 1, y);
+                }
+                if (x < m - 1 && !vis(x + 1, y) && valid[maze[x + 1][y]]) {
+                    q.emplace(x + 1, y);
+                    set_vis(x + 1, y);
+                }
+                if (y > 0 && !vis(x, y - 1) && valid[maze[x][y - 1]]) {
+                    q.emplace(x, y - 1);
+                    set_vis(x, y - 1);
+                }
+                if (y < n - 1 && !vis(x, y + 1) && valid[maze[x][y + 1]]) {
+                    q.emplace(x, y + 1);
+                    set_vis(x, y + 1);
+                }
+            }
+            ++level;
+        }
+
+        return -1;
+    }
 };
 
 void test(vector<vector<char>>&& maze, vector<int>&& entrance, int expect) {

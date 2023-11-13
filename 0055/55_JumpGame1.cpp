@@ -14,18 +14,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, bool expect) {
-    auto nums_param = nums;
-    Solution so;
-    auto ret = so.canJump(nums);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(nums_param);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(nums);
+    assert_eq_ret(expect, Solution().canJump(nums));
 }
 
 int main() {

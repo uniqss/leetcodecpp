@@ -26,18 +26,8 @@ class Solution {
 };
 
 void test(int target, vector<int>&& nums, int expect) {
-    Solution so;
-    auto ret = so.minSubArrayLen(target, nums);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(target);
-        print(nums);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(target, nums);
+    assert_eq_ret(expect, Solution().minSubArrayLen(target, nums));
 }
 
 int main() {

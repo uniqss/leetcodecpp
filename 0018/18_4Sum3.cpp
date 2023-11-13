@@ -33,24 +33,11 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int target, vector<vector<int>>&& expect) {
-    Solution so;
-    auto ret = so.fourSum(nums, target);
-    for_each(expect.begin(), expect.end(), [](vector<int>& arr) { sort(arr.begin(), arr.end()); });
-    std::sort(expect.begin(), expect.end());
-
-    for_each(ret.begin(), ret.end(), [](vector<int>& arr) { sort(arr.begin(), arr.end()); });
-    sort(ret.begin(), ret.end());
-
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(nums);
-        print(target);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(nums, target);
+    auto ret = Solution().fourSum(nums, target);
+    sortvvrawInnerAndOuter(expect);
+    sortvvrawInnerAndOuter(ret);
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

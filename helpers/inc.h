@@ -10,7 +10,9 @@
 
 #include "uassert.h"
 
+#ifndef null
 #define null nullptr
+#endif
 
 
 template <class T>
@@ -33,4 +35,15 @@ template <class T>
 void sortvvrawInnerAndOuter(vector<vector<T>>& vals) {
     sortvvrawInner(vals);
     sortvvrawOuter(vals);
+}
+template <class T1, class T2>
+void sortvvrawInnerAndOuter(vector<vector<T1>>& vals1, vector<vector<T2>>& vals2) {
+    sortvvrawInnerAndOuter(vals1);
+    sortvvrawInnerAndOuter(vals2);
+}
+template <class T1, class T2, class T3>
+void sortvvrawInnerAndOuter(vector<vector<T1>>& vals1, vector<vector<T2>>& vals2, vector<vector<T2>>& vals3) {
+    sortvvrawInnerAndOuter(vals1);
+    sortvvrawInnerAndOuter(vals2);
+    sortvvrawInnerAndOuter(vals3);
 }

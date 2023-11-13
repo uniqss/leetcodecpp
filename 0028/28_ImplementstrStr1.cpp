@@ -19,7 +19,6 @@ class Solution {
             }
             next[i] = j;
         }
-        print(next);
         for (int i = 0, j = 0; i < n; ++i) {
             while (j > 0 && haystack[i] != needle[j]) {
                 j = next[j - 1];
@@ -37,18 +36,8 @@ class Solution {
 };
 
 void test(string&& haystack, string&& needle, int expect) {
-    Solution so;
-    auto ret = so.strStr(haystack, needle);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(haystack);
-        print(needle);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(haystack, needle);
+    assert_eq_ret(expect, Solution().strStr(haystack, needle));
 }
 
 int main() {

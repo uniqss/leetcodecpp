@@ -34,24 +34,14 @@ class Solution {
 };
 
 void test(vector<int> &&preorder, vector<int> &&inorder, vector<ComplexVal> &&expect) {
-    Solution so;
-    TreeNode *ret = so.buildTree(preorder, inorder);
-    TreeNode *expect_tree = constructIntTree(expect);
-    TreeAutoReleaser _(ret, expect_tree);
-    vector<int> vret;
-    vector<int> vexpect;
+    save4print(preorder, inorder);
+    TreeNode* ret = Solution().buildTree(preorder, inorder);
+    TreeNode* expect_tree = constructIntTree(expect);
+    TreeAutoReleaser _2(ret, expect_tree);
+    vector<int> vret, vexpect;
     treeToIntVecLevelOrder(ret, vret);
     treeToIntVecLevelOrder(expect_tree, vexpect);
-    if (vret == vexpect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(preorder);
-        print(inorder);
-        print(expect);
-        print(expect_tree);
-        print(ret);
-    }
+    assert_eq_ret(vexpect, vret);
 }
 
 int main() {

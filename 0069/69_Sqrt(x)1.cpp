@@ -20,16 +20,8 @@ class Solution {
 };
 
 void test(int x, int expect) {
-    Solution so;
-    auto ret = so.mySqrt(x);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(x);
-        print(expect);
-        print(ret);
-    }
+    save4print(x);
+    assert_eq_ret(expect, Solution().mySqrt(x));
 }
 
 int main() {

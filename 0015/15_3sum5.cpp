@@ -37,20 +37,14 @@ class Solution {
 };
 
 void test(vector<int>&& nums, vector<vector<int>>&& expect) {
+    save4print(nums);
     Solution so;
     auto ret = so.threeSum(nums);
     std::for_each(ret.begin(), ret.end(), [](vector<int>& vi) { std::sort(vi.begin(), vi.end()); });
     std::sort(ret.begin(), ret.end());
     std::for_each(expect.begin(), expect.end(), [](vector<int>& vi) { std::sort(vi.begin(), vi.end()); });
     std::sort(expect.begin(), expect.end());
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(nums);
-        print(expect);
-        print(ret);
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

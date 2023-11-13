@@ -74,19 +74,10 @@ class Solution {
 };
 
 void test(string&& start, string&& end, vector<string>&& bank, int expected) {
-    Solution so;
-    auto ret = so.minMutation(start, end, bank);
-    if (ret == expected) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(start);
-        print(end);
-        print(bank);
-        print(expected);
-        print(ret);
-        print();
-    }
+    save4print(start);
+    save4print(end);
+    save4print(bank);
+    assert_eq_ret(expected, Solution().minMutation(start, end, bank));
 }
 
 int main() {

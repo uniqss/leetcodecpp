@@ -1,5 +1,7 @@
 #pragma once
 
+#include "stl.h"
+
 // Copyright (c) 2011 The LevelDB Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
@@ -50,4 +52,25 @@ int splitStr(const char* str, int str_len, char delim, std::vector<Slice>& ret, 
     }
 
     return 0;
+}
+
+bool isStrPalindrome(const string& s) {
+    int l = 0, r = s.size() - 1;
+    while (l < r) {
+        if (s[l] != s[r]) return false;
+        ++l, --r;
+    }
+    return true;
+}
+
+vector<vector<char>> vvs2vvc(const vector<vector<string>>& vvs) {
+    vector<vector<char>> ret;
+    for (int i = 0; i < vvs.size(); ++i) {
+        ret.resize(ret.size() + 1);
+        vector<char>& curr = ret[ret.size() - 1];
+        for (int j = 0; j < vvs[i].size(); ++j) {
+            if (vvs[i][j].size() == 1) curr.emplace_back(vvs[i][j][0]);
+        }
+    }
+    return ret;
 }

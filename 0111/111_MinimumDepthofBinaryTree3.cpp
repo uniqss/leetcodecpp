@@ -29,19 +29,10 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, int expect) {
+    save4print(vals);
     TreeNode* root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-
-    Solution so;
-    auto ret = so.minDepth(root);
-    if (ret != expect) {
-        print("not ok.");
-        print(vals);
-        print(expect);
-        print(ret);
-    } else {
-        print("ok.");
-    }
+    assert_eq_ret(expect, Solution().minDepth(root));
 }
 
 int main() {

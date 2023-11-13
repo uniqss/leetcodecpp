@@ -28,16 +28,10 @@ class Solution {
 };
 
 void test(const std::string& path, const string& expect) {
+    save4print(path);
     Solution so;
     auto ret = so.simplifyPath(path);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(path);
-        print(expect);
-        print(ret);
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

@@ -37,24 +37,13 @@ class Solution {
 };
 
 void test(const std::vector<int>& vi, int k, const vector<int>& expect) {
-    ListNode* head = nullptr;
-    Solution s;
-    ListNode* ret = nullptr;
-
+    save4print(vi, k);
+    ListNode *head = nullptr, *ret = nullptr;
     head = constructList(vi);
-    ret = s.reverseKGroup(head, k);
-    auto retval = list2vals(ret);
-    if (retval == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(vi);
-        print(k);
-        print(expect);
-        print(retval);
-        print();
-    }
-    releaseLinkedList(ret);
+    ListAutoReleaser _(head);
+    ret = Solution().reverseKGroup(head, k);
+    _.Append(ret);
+    assert_eq_ret(expect, list2vals(ret));
 }
 
 int main(int argc, char const* argv[]) {

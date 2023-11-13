@@ -22,19 +22,11 @@ class Solution {
 };
 
 void test(string s, string t, bool expect) {
-    auto sparam = s;
-    auto tparam = t;
+    save4print(s);
+    save4print(t);
     Solution so;
     auto ret = so.isIsomorphic(s, t);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(sparam);
-        print(tparam);
-        print(expect);
-        print(ret);
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

@@ -27,20 +27,13 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, int targetsum, bool expect) {
+    save4print(vals);
+    save4print(targetsum);
     TreeNode* root = constructIntTree(vals);
     TreeAutoReleaser _(root);
     Solution so;
     auto ret = so.hasPathSum(root, targetsum);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(vals);
-        print(targetsum);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

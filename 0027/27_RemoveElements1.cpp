@@ -14,17 +14,9 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int val, int expected) {
-    Solution so;
-    auto ret = so.removeElement(nums, val);
-    if (ret == expected) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(nums);
-        print(val);
-        print(expected);
-        print();
-    }
+    save4print(nums, val);
+    auto ret = Solution().removeElement(nums, val);
+    assert_eq_ret(expected, ret);
 }
 
 int main() {

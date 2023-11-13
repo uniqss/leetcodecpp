@@ -7,7 +7,9 @@ enum EComplexValType {
     EComplexValType_Invalid = -1,
     EComplexValType_nullptr,
     EComplexValType_int,
+    EComplexValType_double,
     EComplexValType_bool,
+    EComplexValType_char,
     EComplexValType_string,
     EComplexValType_pairint,
 };
@@ -16,14 +18,18 @@ class ComplexVal {
    public:
     EComplexValType valtype;
     int vali;
+    double vald;
     bool valb;
+    char valc;
     string vals;
     pair<int, int> valpint;
     // ptr must be nullptr
     ComplexVal() : valtype(EComplexValType_Invalid) {}
     ComplexVal(void* ptr) : valtype(EComplexValType_nullptr) {}
     ComplexVal(int val) : valtype(EComplexValType_int), vali(val) {}
+    ComplexVal(double val) : valtype(EComplexValType_double), vald(val) {}
     ComplexVal(bool val) : valtype(EComplexValType_bool), valb(val) {}
+    ComplexVal(char c) : valtype(EComplexValType_char), valc(c) {}
     ComplexVal(const string& str) : valtype(EComplexValType_string), vals(str) {}
     ComplexVal(const std::pair<int, int>& pii) : valtype(EComplexValType_pairint), valpint(pii) {}
     ComplexVal(const std::initializer_list<int>& pii) : valtype(EComplexValType_pairint) {
@@ -44,8 +50,12 @@ class ComplexVal {
                 return "null";
             case EComplexValType_int:
                 return std::to_string(vali);
+            case EComplexValType_double:
+                return std::to_string(vald);
             case EComplexValType_bool:
                 return valb ? "true" : "false";
+            case EComplexValType_char:
+                return std::string(1, valc);
             case EComplexValType_string:
                 return vals;
             case EComplexValType_Invalid:
@@ -66,6 +76,7 @@ class ComplexVal {
 
         auto pos = s.find("|");
         if (pos == string::npos) {
+            // todo@uniqs 这里没处理好double
             valtype = EComplexValType_int;
             vali = atoi(s.c_str());
         } else {
@@ -83,10 +94,14 @@ bool operator==(const ComplexVal& lhs, const ComplexVal& rhs) {
             return true;
         case EComplexValType_int:
             return lhs.vali == rhs.vali;
+        case EComplexValType_double:
+            return lhs.vald == rhs.vald;
         case EComplexValType_bool:
             return lhs.valb == rhs.valb;
         case EComplexValType_string:
             return lhs.vals == rhs.vals;
+        case EComplexValType_char:
+            return lhs.valc == rhs.valc;
         case EComplexValType_Invalid:
             return true;
         case EComplexValType_pairint:
@@ -111,6 +126,13 @@ void vcomplexToString(string& ret, const vector<ComplexVal>& vals) {
         ret += val.ToString();
     }
     ret += "]";
+}
+
+void vcomplexFilterInt(const vector<ComplexVal>& vals, vector<int>& ret) {
+    for (auto val : vals) {
+        if (val.IsNullptr()) continue;
+        ret.emplace_back(val.vali);
+    }
 }
 
 void vcomplexFromString(vector<ComplexVal>& vals, const std::string& str) {

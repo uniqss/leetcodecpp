@@ -30,17 +30,10 @@ class Solution {
 };
 
 void test(vector<string>&& tokens, int expect) {
+    save4print(tokens);
     Solution so;
     auto ret = so.evalRPN(tokens);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(tokens);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

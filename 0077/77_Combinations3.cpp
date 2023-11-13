@@ -25,22 +25,9 @@ class Solution {
 };
 
 void test(int n, int k, vector<vector<int>>&& expect) {
-    Solution s;
-    auto ret = s.combine(n, k);
-    auto ret_sorted = ret;
-    auto expect_sorted = expect;
-    sortvvrawInnerAndOuter(ret_sorted);
-    sortvvrawInnerAndOuter(expect_sorted);
-    if (ret_sorted == expect_sorted) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(n);
-        print(k);
-        print(expect);
-        print(ret);
-    }
-    print();
+    auto ret = Solution().combine(n, k);
+    sortvvrawInnerAndOuter(expect, ret);
+    assert_eq_ret(expect, ret);
 }
 
 /*

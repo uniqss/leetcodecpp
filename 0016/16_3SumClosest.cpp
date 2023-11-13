@@ -6,19 +6,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int target, int expect) {
-    auto nums_param = nums;
-    Solution so;
-    auto ret = so.threeSumClosest(nums, target);
-    if (expect == ret) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(nums_param);
-        print(target);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(nums, target);
+    assert_eq_ret(expect, Solution().threeSumClosest(nums, target));
 }
 
 int main() {

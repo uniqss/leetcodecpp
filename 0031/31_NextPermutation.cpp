@@ -6,21 +6,13 @@ class Solution {
 };
 
 void test(vector<int>&& nums, vector<int>&& expect) {
-    Solution so;
-    vector<int> nums_saved = nums;
-
-    so.nextPermutation(nums);
-    if (nums == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(nums_saved);
-        print(expect);
-        print(nums);
-    }
+    save4print(nums);
+    Solution().nextPermutation(nums);
+    assert_eq_ret(expect, nums);
 }
 
 int main() {
+    test({2, 3, 1, 3, 3}, {2, 3, 3, 1, 3});
     test({1, 1}, {1, 1});
     test({1, 5, 1}, {5, 1, 1});
     test({3, 2, 1}, {1, 2, 3});

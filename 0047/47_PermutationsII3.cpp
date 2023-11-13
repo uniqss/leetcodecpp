@@ -36,18 +36,11 @@ class Solution {
 };
 
 void test(vector<int>&& nums, vector<vector<int>>&& expect) {
-    Solution so;
-    auto ret = so.permuteUnique(nums);
+    save4print(nums);
+    auto ret = Solution().permuteUnique(nums);
     std::sort(expect.begin(), expect.end());
     std::sort(ret.begin(), ret.end());
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(nums);
-        print(expect);
-        print(ret);
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

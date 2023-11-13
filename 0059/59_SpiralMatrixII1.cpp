@@ -33,17 +33,8 @@ class Solution {
 };
 
 void test(int n, const vector<vector<int>>& expect) {
-    Solution so;
-    auto ret = so.generateMatrix(n);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(n);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(n);
+    assert_eq_ret(expect, Solution().generateMatrix(n));
 }
 
 int main() {

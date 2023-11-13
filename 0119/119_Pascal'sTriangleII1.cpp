@@ -18,16 +18,8 @@ class Solution {
 };
 
 void test(int rowIndex, const vector<int>& expect) {
-    Solution so;
-    auto ret = so.getRow(rowIndex);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(rowIndex);
-        print(expect);
-        print(ret);
-    }
+    save4print(rowIndex);
+    assert_eq_ret(expect, Solution().getRow(rowIndex));
 }
 
 int main() {

@@ -6,17 +6,9 @@ class Solution {
 };
 
 void test(ListNode* head, int expected) {
-    Solution s;
-    ListNode* node = s.detectCycle(head);
+    ListNode* node = Solution().detectCycle(head);
     int ret = node ? node->val : -1;
-    if (ret == expected) {
-        print("ok.");
-    } else {
-        print("no ok.");
-        print(expected);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expected, ret);
 }
 
 int main(int argc, char const* argv[]) {

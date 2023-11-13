@@ -40,22 +40,12 @@ class Solution {
 };
 
 void test(const std::vector<int>& vi, const vector<int>& expect) {
-    ListNode* head = nullptr;
-    Solution s;
-    ListNode* ret = nullptr;
-
+    save4print(vi);
+    ListNode *head = nullptr, *ret = nullptr;
     head = constructList(vi);
-    ret = s.swapPairs(head);
-    auto retvals = list2vals(ret);
-    if (retvals == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(vi);
-        print(expect);
-        print(retvals);
-    }
-    releaseLinkedList(ret);
+    ret = Solution().swapPairs(head);
+    ListAutoReleaser _(head, ret);
+    assert_eq_ret(expect, list2vals(ret));
 }
 
 int main(int argc, char const* argv[]) {

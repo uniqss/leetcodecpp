@@ -6,20 +6,8 @@ class Solution {
 };
 
 void test(vector<int>&& commands, vector<vector<int>>&& obstacles, int expect) {
-    auto commands_param = commands;
-    auto obstacles_param = obstacles;
-    Solution so;
-    auto ret = so.robotSim(commands, obstacles);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(commands_param);
-        print(obstacles_param);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(commands, obstacles);
+    assert_eq_ret(expect, Solution().robotSim(commands, obstacles));
 }
 
 int main() {

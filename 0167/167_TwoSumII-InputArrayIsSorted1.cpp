@@ -25,21 +25,13 @@ class Solution {
 };
 
 void test(vector<int>&& numbers, int target, vector<int>&& expect) {
-    auto numbers_param = numbers;
+    save4print(numbers);
+    save4print(target);
     Solution so;
     auto ret = so.twoSum(numbers, target);
     std::sort(ret.begin(), ret.end());
     std::sort(expect.begin(), expect.end());
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(numbers_param);
-        print(target);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

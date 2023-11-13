@@ -21,17 +21,8 @@ class Solution {
 };
 
 void test(string a, string b, string expect) {
-    Solution so;
-    auto ret = so.addBinary(a, b);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(a);
-        print(b);
-        print(expect);
-        print(ret);
-    }
+    save4print(a, b);
+    assert_eq_ret(expect, Solution().addBinary(a, b));
 }
 
 int main() {

@@ -26,16 +26,8 @@ typename std::enable_if<!std::numeric_limits<T>::is_integer, bool>::type almost_
 }
 
 void test(double x, int n, double expect) {
-    Solution so;
-    auto ret = so.myPow(x, n);
-    if (almost_equal(ret, expect, 2)) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(x, n);
+    assert_eq_ret(expect, Solution().myPow(x, n));
 }
 
 int main() {

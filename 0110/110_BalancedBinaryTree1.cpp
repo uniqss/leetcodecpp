@@ -19,19 +19,10 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, bool expect) {
+    save4print(vals);
     auto root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-    Solution so;
-    auto ret = so.isBalanced(root);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(vals);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, Solution().isBalanced(root));
 }
 
 int main() {

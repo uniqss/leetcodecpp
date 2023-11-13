@@ -6,16 +6,8 @@ class Solution {
 };
 
 void test(int numRows, const vector<vector<int>>& expect) {
-    Solution so;
-    auto ret = so.generate(numRows);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(numRows);
-        print(expect);
-        print(ret);
-    }
+    save4print(numRows);
+    assert_eq_ret(expect, Solution().generate(numRows));
 }
 
 int main() {

@@ -16,16 +16,8 @@ class Solution {
 };
 
 void test(string&& s, int expect) {
-    Solution so;
-    auto ret = so.lengthOfLastWord(s);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(s);
-        print(expect);
-        print(ret);
-    }
+    save4print(s);
+    assert_eq_ret(expect, Solution().lengthOfLastWord(s));
 }
 
 int main() {

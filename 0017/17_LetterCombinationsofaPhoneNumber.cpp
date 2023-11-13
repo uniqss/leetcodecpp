@@ -6,18 +6,11 @@ class Solution {
 };
 
 void test(string&& digits, vector<string>&& expected) {
-    Solution so;
-    auto ret = so.letterCombinations(digits);
+    save4print(digits);
+    auto ret = Solution().letterCombinations(digits);
     std::sort(ret.begin(), ret.end());
     std::sort(expected.begin(), expected.end());
-    if (ret == expected) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(digits);
-        print(expected);
-        print(ret);
-    }
+    assert_eq_ret(expected, ret);
 }
 
 int main() {

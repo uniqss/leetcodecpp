@@ -15,14 +15,15 @@ class Solution {
 };
 
 void test(string s, string t, bool expect) {
+    save4print(s);
+    save4print(t);
     Solution so;
     auto ret = so.isSubsequence(s, t);
     assert_eq_ret(expect, ret);
-    print(s);
-    print(t);
 }
 
 int main() {
+    test("", "ahbgdc", true);
     test("abc", "ahbgdc", true);
     test("axc", "ahbgdc", false);
     return 0;

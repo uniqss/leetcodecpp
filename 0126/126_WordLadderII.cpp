@@ -1,16 +1,17 @@
 #include "../inc.h"
 
 class Solution {
-    struct Helper{
+    struct Helper {
         string word;
         vector<string> road;
         unordered_set<string> used;
-        Helper(const string& _word)     {
+        Helper(const string& _word) {
             word = _word;
             road = {_word};
             used = {_word};
         }
     };
+
    public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
         vector<vector<string>> ret;
@@ -54,26 +55,16 @@ class Solution {
 };
 
 void test(string&& beginWord, string&& endWord, vector<string>&& wordList, vector<vector<string>>&& expect) {
-    Solution so;
-    auto ret = so.findLadders(beginWord, endWord, wordList);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(beginWord);
-        print(endWord);
-        print(wordList);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(beginWord, endWord, wordList);
+    assert_eq_ret(expect, Solution().findLadders(beginWord, endWord, wordList));
 }
 
 int main() {
     test("red", "tax", {"ted", "tex", "red", "tax", "tad", "den", "rex", "pee"},
          {{"red", "ted", "tad", "tax"}, {"red", "ted", "tex", "tax"}, {"red", "rex", "tex", "tax"}});
     test("a", "c", {"a", "b", "c"}, {{"a", "c"}});
-    test("hit", "cog", {"hot", "dot", "dog", "lot", "log", "cog"}, {{"hit", "hot", "dot", "dog", "cog"}, {"hit", "hot", "lot", "log", "cog"}});
+    test("hit", "cog", {"hot", "dot", "dog", "lot", "log", "cog"},
+         {{"hit", "hot", "dot", "dog", "cog"}, {"hit", "hot", "lot", "log", "cog"}});
     test("hit", "cog", {"hot", "dot", "dog", "lot", "log"}, {});
     return 0;
 }

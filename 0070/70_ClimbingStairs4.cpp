@@ -18,17 +18,8 @@ class Solution {
 };
 
 void test(int n, int expect) {
-    Solution so;
-    auto ret = so.climbStairs(n);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(n);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(n);
+    assert_eq_ret(expect, Solution().climbStairs(n));
 }
 
 int main() {

@@ -6,20 +6,13 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int target, int expect) {
-    Solution so;
-    auto ret = so.searchInsert(nums, target);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(nums);
-        print(target);
-        print(expect);
-        print(ret);
-    }
+    save4print(nums, target);
+    assert_eq_ret(expect, Solution().searchInsert(nums, target));
 }
 
 int main() {
+    test({1}, 1, 0);
+    test({1, 3, 5, 6}, 1, 0);
     test({1, 3, 5, 6}, 5, 2);
     test({1, 3, 5, 6}, 2, 1);
     test({1, 3, 5, 6}, 7, 4);

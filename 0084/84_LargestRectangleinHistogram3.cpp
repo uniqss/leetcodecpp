@@ -14,7 +14,7 @@ class Solution {
             while (!si.empty() && heights[idx] < heights[si.top()]) {
                 int maxidx = si.top();
                 si.pop();
-                int width = idx; // idx - (-1) - 1. if stack is empty, [0, idx).
+                int width = idx;  // idx - (-1) - 1. if stack is empty, [0, idx).
                 if (!si.empty()) width = idx - si.top() - 1;
                 ret = max(ret, width * heights[maxidx]);
             }
@@ -26,26 +26,15 @@ class Solution {
 };
 
 void test(vector<int>&& vi, int expect) {
-    Solution s;
-    int ret = s.largestRectangleArea(vi);
-    if (ret != expect) {
-        print("###### not ok");
-        print(expect);
-        print(ret);
-    } else {
-        print("ok");
-    }
-    print();
+    save4print(vi);
+    assert_eq_ret(expect, Solution().largestRectangleArea(vi));
 }
 
 int main() {
+    test({2, 0, 2}, 2);
     test({2, 1, 5, 6, 2, 3}, 10);
     test({2, 4}, 4);
     test({2, 1, 2}, 3);
+    test({5}, 5);
     return 0;
 }
-
-/*
-[2,1,5,6,2,3]
-[2,4]
-*/

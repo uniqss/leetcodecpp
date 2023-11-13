@@ -22,19 +22,16 @@ class Solution {
     }
 };
 
-void test(vector<int>&& vi) {
-    print(vi);
-    Solution s;
-    auto ret = s.plusOne(vi);
-    print(ret);
-    print();
+void test(vector<int>&& vi, const vector<int>& expect) {
+    save4print(vi);
+    assert_eq_ret(expect, Solution().plusOne(vi));
 }
 
 int main() {
-    test({1, 2, 3});
-    test({4, 3, 2, 1});
-    test({0});
-    test({9});
+    test({1, 2, 3}, {1, 2, 4});
+    test({4, 3, 2, 1}, {4, 3, 2, 2});
+    test({0}, {1});
+    test({9}, {1, 0});
 }
 /*
 [1,2,3]

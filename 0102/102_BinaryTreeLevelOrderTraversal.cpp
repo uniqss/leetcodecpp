@@ -6,19 +6,10 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, const vector<vector<int>>& expect) {
+    save4print(vals);
     TreeNode* root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-    Solution so;
-    auto ret = so.levelOrder(root);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(vals);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, Solution().levelOrder(root));
 }
 
 int main() {

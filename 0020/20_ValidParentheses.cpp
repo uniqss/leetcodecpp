@@ -6,20 +6,14 @@ class Solution {
 };
 
 void test(const string& s, bool expected) {
+    save4print(s);
     Solution so;
     bool ret = so.isValid(s);
-    if (expected != ret) {
-        print("!!!!!!! not ok");
-        print(s);
-        print(expected);
-        print(ret);
-        print();
-    } else {
-        print("ok");
-    }
+    assert_eq_ret(expected, ret);
 }
 
 int main() {
+    test("]", false);
     test("()", true);
     test("()[]{}", true);
     test("(]", false);

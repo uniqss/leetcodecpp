@@ -6,19 +6,14 @@ class Solution {
 };
 
 void test(string s, bool expect) {
+    save4print(s);
     Solution so;
     auto ret = so.isPalindrome(s);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(s);
-        print(expect);
-        print(ret);
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {
+    test("0P", false);
     test("A man, a plan, a canal: Panama", true);
     test("race a car", false);
     test(" ", true);

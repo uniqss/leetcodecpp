@@ -6,6 +6,9 @@ class Solution {
 };
 
 void test(vector<ComplexVal> &&vals, int vp, int vq, int vexpect) {
+    save4print(vals);
+    save4print(vp);
+    save4print(vq);
     TreeNode *root = constructIntTree(vals);
     TreeAutoReleaser _(root);
     TreeNode *p = treeFindUniqueNodeByVal(root, vp);
@@ -13,17 +16,7 @@ void test(vector<ComplexVal> &&vals, int vp, int vq, int vexpect) {
     Solution so;
     TreeNode *ret = so.lowestCommonAncestor(root, p, q);
     int retval = ret->val;
-    if (retval == vexpect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(vals);
-        print(vp);
-        print(vq);
-        print(vexpect);
-        print(retval);
-        print();
-    }
+    assert_eq_ret(vexpect, retval);
 }
 
 int main() {

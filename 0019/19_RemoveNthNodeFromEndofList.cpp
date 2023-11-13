@@ -6,23 +6,14 @@ class Solution {
 };
 
 void test(const vector<int>& lval, int n, const vector<int>& expect) {
+    save4print(lval);
+    save4print(n);
     Solution so;
     auto list = constructList(lval);
     auto ret = so.removeNthFromEnd(list, n);
-
     auto retval = list2vals(ret);
-    if (retval == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(lval);
-        print(n);
-        print(expect);
-        print(retval);
-        print();
-    }
-
-    releaseLinkedList(ret);
+    ListAutoReleaser _(ret);
+    assert_eq_ret(expect, retval);
 }
 
 int main() {

@@ -16,20 +16,11 @@ class Solution {
 };
 
 void test(vector<int>&& nums, const vector<int>& expect) {
+    save4print(nums);
     vector<int> pnums = nums;
-    Solution so;
-    auto ret = so.removeDuplicates(nums);
+    auto ret = Solution().removeDuplicates(nums);
     nums.resize(ret);
-    if (nums == expect && ret == (int)expect.size()) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(pnums);
-        print(expect);
-        print(nums);
-        print(ret);
-        print();
-    }
+    assert_retnone(nums == expect && ret == (int)expect.size());
 }
 
 int main() {

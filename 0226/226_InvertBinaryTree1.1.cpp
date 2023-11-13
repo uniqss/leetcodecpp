@@ -13,21 +13,14 @@ class Solution {
 };
 
 void test(const vector<int>& vals, const vector<int>& expect) {
-    TreeNode* root = constructIntBinaryTreeLayerOrder(vals);
+    save4print(vals);
+    TreeNode* root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-
     Solution so;
     TreeNode* ret = so.invertTree(root);
     vector<int> ret_vec;
     treeToIntVecLevelOrder(ret, ret_vec);
-    if (ret_vec != expect) {
-        print("not ok.");
-        print(vals);
-        print(expect);
-        print(ret_vec);
-    } else {
-        print("ok.");
-    }
+    assert_eq_ret(expect, ret_vec);
 }
 
 int main() {

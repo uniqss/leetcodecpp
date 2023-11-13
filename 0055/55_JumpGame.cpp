@@ -6,21 +6,13 @@ class Solution {
 };
 
 void test(vector<int>&& nums, bool expect) {
-    auto nums_param = nums;
-    Solution so;
-    auto ret = so.canJump(nums);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(nums_param);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(nums);
+    assert_eq_ret(expect, Solution().canJump(nums));
 }
 
 int main() {
+    test({0}, true);
+    test({0, 2, 3}, false);
     test({1, 2}, true);
     test({2, 3, 1, 1, 4}, true);
     test({3, 2, 1, 0, 4}, false);

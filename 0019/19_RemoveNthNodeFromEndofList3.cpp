@@ -2,7 +2,8 @@
 
 /*
 中文官方 题解
-这样写代码至少不是个好习惯，这里利用了 1 <= n <= sz 工程中更推荐写出即使 n=0 或者 n > sz 时也不会崩溃的代码，或者至少在进来的时候 check 一下 n
+这样写代码至少不是个好习惯，这里利用了 1 <= n <= sz 工程中更推荐写出即使 n=0 或者 n > sz
+时也不会崩溃的代码，或者至少在进来的时候 check 一下 n
 */
 
 class Solution {
@@ -27,23 +28,14 @@ class Solution {
 };
 
 void test(const vector<int>& lval, int n, const vector<int>& expect) {
+    save4print(lval);
+    save4print(n);
     Solution so;
     auto list = constructList(lval);
     auto ret = so.removeNthFromEnd(list, n);
-
     auto retval = list2vals(ret);
-    if (retval == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(lval);
-        print(n);
-        print(expect);
-        print(retval);
-        print();
-    }
-
-    releaseLinkedList(ret);
+    ListAutoReleaser _(ret);
+    assert_eq_ret(expect, retval);
 }
 
 int main() {

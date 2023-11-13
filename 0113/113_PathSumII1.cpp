@@ -31,24 +31,12 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, int targetsum, vector<vector<int>>&& expect) {
+    save4print(vals, targetsum);
     TreeNode* root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-    Solution so;
-    auto ret = so.pathSum(root, targetsum);
-    for_each(expect.begin(), expect.end(), [](vector<int>& vi) { sort(vi.begin(), vi.end()); });
-    sort(expect.begin(), expect.end());
-    for_each(ret.begin(), ret.end(), [](vector<int>& vi) { sort(vi.begin(), vi.end()); });
-    sort(ret.begin(), ret.end());
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(vals);
-        print(targetsum);
-        print(expect);
-        print(ret);
-        print();
-    }
+    auto ret = Solution().pathSum(root, targetsum);
+    sortvvrawInnerAndOuter(expect, ret);
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

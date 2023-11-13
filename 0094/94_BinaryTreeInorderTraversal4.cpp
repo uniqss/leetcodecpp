@@ -29,19 +29,10 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& root, const vector<int>& expect) {
-    Solution so;
+    save4print(root);
     TreeNode* tree = constructIntTree(root);
     TreeAutoReleaser _(tree);
-
-    auto ret = so.inorderTraversal(tree);
-    if (ret != expect) {
-        print("## not ok.");
-        print(root);
-        print(expect);
-        print(ret);
-    } else {
-        print("ok.");
-    }
+    assert_eq_ret(expect, Solution().inorderTraversal(tree));
 }
 
 int main() {

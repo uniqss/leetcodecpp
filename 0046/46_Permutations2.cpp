@@ -28,29 +28,10 @@ class Solution {
 };
 
 void test(vector<int>&& nums, vector<vector<int>>&& expect) {
-    Solution so;
-    auto ret = so.permute(nums);
-
-    auto _sort = [](vector<vector<int>>& vvi) {
-        std::sort(vvi.begin(), vvi.end()), [](const vector<int>& lhs, const vector<int>& rhs) {
-            size_t len = std::min(lhs.size(), rhs.size());
-            for (size_t i = 0; i < len; ++i) {
-                if (lhs[i] < rhs[i]) return true;
-            }
-            return false;
-        };
-    };
-    _sort(expect);
-    _sort(ret);
-
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(nums);
-        print(expect);
-        print(ret);
-    }
+    save4print(nums);
+    auto ret = Solution().permute(nums);
+    sortvvrawInnerAndOuter(expect, ret);
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

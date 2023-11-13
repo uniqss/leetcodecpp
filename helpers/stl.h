@@ -25,90 +25,67 @@
 #include <tuple>
 #include <bit>
 #include <cstdarg>
+#include <memory>
 
 using namespace std;
 
-inline void __print() {}
-template <typename T>
-void __print(const T& raw) {
-    cout << raw;
+template <class T>
+void __print(const T& raw, const std::string& delimiter = "\t") {
+    cout << raw << delimiter;
 }
-inline void __print(const bool& raw) {
-    cout << (raw ? "true" : "false");
+void __print(const bool& raw, const string& delimiter = "\t") {
+    cout << (raw ? "true" : "false") << delimiter;
 }
-template <typename T1, typename T2>
-inline void __print(const std::pair<T1, T2>& p) {
-    cout << "{" << p.first << "|" << p.second << "}";
-}
-template <typename T>
-void __print(const vector<T>& vr) {
+template <class T>
+void __print(const vector<T>& vr, const string& delimiter = "\t") {
     cout << "{";
-    int n = vr.size(), idx = 0;
-    for (const auto& v : vr) {
-        __print(v);
-        if (++idx < n) cout << ",";
+    for (size_t i = 0; i < vr.size(); ++i) {
+        if (i < vr.size() - 1)
+            __print(vr[i], ",");
+        else
+            __print(vr[i], "");
     }
-    cout << "}";
+    cout << "}" << delimiter;
 }
-template <typename T>
-void __print(const list<T>& vr) {
-    cout << "{";
-    int n = vr.size(), idx = 0;
-    for (const auto& v : vr) {
-        __print(v);
-        if (++idx < n) cout << ",";
+template <class T>
+void __print(const vector<vector<T>>& vvr, const string& delimiter = "\t") {
+    cout << "{\n";
+    for (size_t i = 0; i < vvr.size(); ++i) {
+        __print(vvr[i], "");
+        if (i < vvr.size() - 1) cout << "\n";
     }
-    cout << "}";
-}
-template <typename T>
-void __print(const set<T>& vr) {
-    cout << "{";
-    int n = vr.size(), idx = 0;
-    for (const auto& v : vr) {
-        __print(v);
-        if (++idx < n) cout << ",";
-    }
-    cout << "}";
-}
-template <typename T>
-void __print(const unordered_set<T>& vr) {
-    cout << "{";
-    int n = vr.size(), idx = 0;
-    for (const auto& v : vr) {
-        __print(v);
-        if (++idx < n) cout << ",";
-    }
-    cout << "}";
-}
-template <typename K, typename V>
-void __print(const map<K, V>& m) {
-    cout << "{";
-    int n = m.size(), idx = 0;
-    for (const auto& [k, v] : m) {
-        __print(k);
-        cout << "=>";
-        __print(v);
-        if (++idx < n) cout << ",";
-        cout << endl;
-    }
-    cout << "}";
-}
-template <typename K, typename V>
-void __print(const unordered_map<K, V>& m) {
-    cout << "{";
-    int n = m.size(), idx = 0;
-    for (const auto& [k, v] : m) {
-        __print(k);
-        cout << "=>";
-        __print(v);
-        if (++idx < n) cout << ",";
-        cout << endl;
-    }
-    cout << "}";
+    cout << "}" << delimiter;
 }
 
 template <typename... Args>
 void print(Args&&... args) {
     (__print(args), ...);
     cout << endl;
+}
+
+template <typename T>
+void deleteAndClearPtrContainer(T& c) {
+    for (auto p : c) delete p;
+    c.clear();
+}
+template <typename T>
+void deleteAndClearPtrContainer(queue<T*>& c) {
+    while (!c.empty()) {
+        delete c.front();
+        c.pop();
+    }
+}
+template <typename T>
+void deleteAndClearPtrContainer(deque<T*>& c) {
+    while (!c.empty()) {
+        delete c.front();
+        c.pop_front();
+    }
+}
+template <typename T>
+void deleteAndClearPtrContainer(stack<T*>& c) {
+    while (!c.empty()) {
+        delete c.top();
+        c.pop();
+    }
 }

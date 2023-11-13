@@ -20,20 +20,10 @@ class Solution {
 };
 
 void test(const vector<int>& headvals, const vector<int>& expect) {
-    Solution so;
     ListNode* head = constructList(headvals);
-    // ListAutoReleaser _(head);
-    auto ret = so.deleteDuplicates(head);
+    auto ret = Solution().deleteDuplicates(head);
     ListAutoReleaser _(ret);
-    auto retvals = list2vals(ret);
-    if (retvals == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(headvals);
-        print(expect);
-        print(retvals);
-    }
+    assert_eq_ret(expect, list2vals(ret));
 }
 
 int main() {

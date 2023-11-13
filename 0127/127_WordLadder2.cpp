@@ -10,7 +10,8 @@ class Solution {
         if (std::find(wordList.begin(), wordList.end(), endWord) == wordList.end()) return 0;
         wordList.push_back(beginWord);
         queue<string> queue1, queue2, &q1 = queue1, &q2 = queue2;
-        unordered_set<string> visited1 = {beginWord}, visited2 = {endWord}, &v1 = visited1, &v2 = visited2, allWordSet(wordList.begin(), wordList.end());
+        unordered_set<string> visited1 = {beginWord}, visited2 = {endWord}, &v1 = visited1, &v2 = visited2,
+                              allWordSet(wordList.begin(), wordList.end());
         queue1.emplace(beginWord);
         queue2.emplace(endWord);
         int count = 0;
@@ -44,19 +45,8 @@ class Solution {
 };
 
 void test(string&& beginWord, string&& endWord, vector<string>&& wordList, int expect) {
-    Solution so;
-    auto ret = so.ladderLength(beginWord, endWord, wordList);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(beginWord);
-        print(endWord);
-        print(wordList);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(beginWord, endWord, wordList);
+    assert_eq_ret(expect, Solution().ladderLength(beginWord, endWord, wordList));
 }
 
 int main() {

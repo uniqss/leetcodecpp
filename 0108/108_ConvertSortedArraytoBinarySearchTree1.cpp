@@ -15,20 +15,17 @@ class Solution {
 };
 
 void test(vector<int>&& nums, const vector<ComplexVal>& expect) {
-    Solution so;
-    auto nums_param = nums;
-    auto ret = so.sortedArrayToBST(nums);
+    save4print(nums, expect);
+    auto p1 = nums;
+    auto ret = Solution().sortedArrayToBST(nums);
     TreeAutoReleaser _(ret);
     vector<ComplexVal> retvals;
     treeToComplexValLevelOrder(ret, retvals);
-    if (retvals == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(nums);
-        print(expect);
-        print(ret);
-    }
+    vector<int> retvalsi;
+    vcomplexFilterInt(retvals, retvalsi);
+    sort(retvalsi.begin(), retvalsi.end());
+    bool isbst = treeIsBST(ret);
+    assert_retnone(p1 == retvalsi && isbst);
 }
 
 int main() {

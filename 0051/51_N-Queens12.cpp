@@ -44,19 +44,11 @@ class Solution {
 };
 
 void test(int n, vector<vector<string>>&& expect) {
-    Solution so;
-    auto ret = so.solveNQueens(n);
+    save4print(n);
+    auto ret = Solution().solveNQueens(n);
     std::sort(expect.begin(), expect.end());
     std::sort(ret.begin(), ret.end());
-    if (expect == ret) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(n);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

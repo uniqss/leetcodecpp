@@ -39,17 +39,10 @@ class Solution {
 };
 
 void test(string&& s, string expect) {
+    save4print(s);
     Solution so;
     auto ret = so.reverseWords(s);
-    if (expect == ret) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(s);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

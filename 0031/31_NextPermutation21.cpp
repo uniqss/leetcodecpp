@@ -17,18 +17,9 @@ class Solution {
 };
 
 void test(vector<int>&& nums, vector<int>&& expect) {
-    Solution so;
-    vector<int> nums_saved = nums;
-
-    so.nextPermutation(nums);
-    if (nums == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(nums_saved);
-        print(expect);
-        print(nums);
-    }
+    save4print(nums);
+    Solution().nextPermutation(nums);
+    assert_eq_ret(expect, nums);
 }
 
 int main() {

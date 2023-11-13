@@ -17,17 +17,7 @@ class Solution {
 void test(const vector<ComplexVal>& vals, bool expect) {
     TreeNode* root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-
-    Solution so;
-    bool ret = so.isValidBST(root);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok");
-        print(vals);
-        print(expect);
-        print(ret);
-    }
+    assert_eq_ret(expect, Solution().isValidBST(root));
 }
 
 int main() {

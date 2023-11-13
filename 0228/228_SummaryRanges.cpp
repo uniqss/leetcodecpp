@@ -6,16 +6,10 @@ class Solution {
 };
 
 void test(vector<int>&& nums, const vector<string>& expect) {
+    save4print(nums);
     Solution so;
     auto ret = so.summaryRanges(nums);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(nums);
-        print(expect);
-        print(ret);
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

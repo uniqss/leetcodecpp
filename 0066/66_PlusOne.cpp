@@ -6,17 +6,8 @@ class Solution {
 };
 
 void test(vector<int>&& vi, const vector<int>& expect) {
-    Solution s;
-    auto ret = s.plusOne(vi);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(vi);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(vi);
+    assert_eq_ret(expect, Solution().plusOne(vi));
 }
 
 int main() {

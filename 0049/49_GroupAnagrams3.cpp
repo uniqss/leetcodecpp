@@ -18,34 +18,14 @@ class Solution {
     }
 };
 
-void test(vector<string>&& strs, const vector<vector<string>>& expect) {
+void test(vector<string>&& strs, vector<vector<string>>&& expect) {
+    save4print(strs);
+    save4print(expect);
     Solution s;
     auto ret = s.groupAnagrams(strs);
-    set<set<string>> mapexpect;
-    set<set<string>> mapret;
-    for (const auto& it : expect) {
-        set<string> ss;
-        for (const auto& iti : it) {
-            ss.insert(iti);
-        }
-        mapexpect.insert(ss);
-    }
-    for (const auto& it : ret) {
-        set<string> ss;
-        for (const auto& iti : it) {
-            ss.insert(iti);
-        }
-        mapret.insert(ss);
-    }
-
-    if (mapret != mapexpect) {
-        print("not ok.");
-        print(strs);
-        print(expect);
-        print(ret);
-    } else {
-        print("ok.");
-    }
+    sortvvrawInnerAndOuter(expect);
+    sortvvrawInnerAndOuter(ret);
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

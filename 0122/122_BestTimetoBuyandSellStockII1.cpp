@@ -13,18 +13,8 @@ class Solution {
 };
 
 void test(vector<int>&& prices, int expect) {
-    vector<int> prices_param = prices;
-    Solution so;
-    auto ret = so.maxProfit(prices);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(prices);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(prices);
+    assert_eq_ret(expect, Solution().maxProfit(prices));
 }
 
 int main() {

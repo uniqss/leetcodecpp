@@ -6,28 +6,19 @@ class Solution {
 };
 
 void test(int n, vector<string>&& expect) {
-    Solution so;
-    auto ret = so.generateParenthesis(n);
-
+    save4print(n);
+    auto ret = Solution().generateParenthesis(n);
     std::sort(expect.begin(), expect.end());
     std::sort(ret.begin(), ret.end());
-
-    if (ret != expect) {
-        print("not ok.");
-        print(n);
-        print(expect);
-        print(ret);
-    } else {
-        print("ok");
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {
     test(1, {"()"});
     test(2, {"(())", "()()"});
     test(3, {"((()))", "(()())", "(())()", "()(())", "()()()"});
-    test(4, {"(((())))", "((()()))", "((())())", "((()))()", "(()(()))", "(()()())", "(()())()", "(())(())", "(())()()", "()((()))", "()(()())", "()(())()",
-             "()()(())", "()()()()"});
+    test(4, {"(((())))", "((()()))", "((())())", "((()))()", "(()(()))", "(()()())", "(()())()", "(())(())", "(())()()",
+             "()((()))", "()(()())", "()(())()", "()()(())", "()()()()"});
     return 0;
 }
 

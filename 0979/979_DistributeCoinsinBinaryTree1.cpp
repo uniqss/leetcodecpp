@@ -23,7 +23,7 @@ class Solution {
 };
 
 void test(const vector<int>& vals, int expect) {
-    TreeNode* root = constructIntBinaryTreeLayerOrder(vals);
+    TreeNode* root = constructIntTree(vals);
     TreeAutoReleaser _(root);
     Solution so;
     auto ret = so.distributeCoins(root);

@@ -23,17 +23,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int target, int expect) {
-    Solution so;
-    auto ret = so.searchInsert(nums, target);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(nums);
-        print(target);
-        print(expect);
-        print(ret);
-    }
+    save4print(nums, target);
+    assert_eq_ret(expect, Solution().searchInsert(nums, target));
 }
 
 int main() {

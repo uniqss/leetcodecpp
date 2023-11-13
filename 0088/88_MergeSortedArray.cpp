@@ -6,23 +6,9 @@ class Solution {
 };
 
 void test(std::vector<int>&& v1, int m, std::vector<int>&& v2, int n, const vector<int>& expect) {
-    Solution s;
-    auto pv1 = v1;
-    auto pv2 = v2;
-    s.merge(v1, m, v2, n);
-
-    if (v1 == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(pv1);
-        print(m);
-        print(pv2);
-        print(n);
-        print(expect);
-        print(v1);
-        print();
-    }
+    save4print(v1, m, v2, n);
+    Solution().merge(v1, m, v2, n);
+    assert_eq_ret(expect, v1);
 }
 
 int main() {

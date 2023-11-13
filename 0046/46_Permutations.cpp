@@ -1,4 +1,4 @@
-#include "../stl.h"
+#include "../inc.h"
 
 class Solution {
    public:
@@ -6,26 +6,17 @@ class Solution {
 };
 
 void test(vector<int>&& nums, vector<vector<int>>&& expect) {
-    Solution so;
-    auto ret = so.permute(nums);
-
-    std::sort(expect.begin(), expect.end());
-    std::sort(ret.begin(), ret.end());
-
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(nums);
-        print(expect);
-        print(ret);
-    }
+    save4print(nums);
+    auto ret = Solution().permute(nums);
+    sortvvrawInnerAndOuter(expect, ret);
+    assert_eq_ret(expect, ret);
 }
 
 int main() {
-    test({5, 4, 6, 2}, {{5, 4, 6, 2}, {5, 4, 2, 6}, {5, 6, 4, 2}, {5, 6, 2, 4}, {5, 2, 4, 6}, {5, 2, 6, 4}, {4, 5, 6, 2}, {4, 5, 2, 6},
-                        {4, 6, 5, 2}, {4, 6, 2, 5}, {4, 2, 5, 6}, {4, 2, 6, 5}, {6, 5, 4, 2}, {6, 5, 2, 4}, {6, 4, 5, 2}, {6, 4, 2, 5},
-                        {6, 2, 5, 4}, {6, 2, 4, 5}, {2, 5, 4, 6}, {2, 5, 6, 4}, {2, 4, 5, 6}, {2, 4, 6, 5}, {2, 6, 5, 4}, {2, 6, 4, 5}});
+    test({5, 4, 6, 2}, {{5, 4, 6, 2}, {5, 4, 2, 6}, {5, 6, 4, 2}, {5, 6, 2, 4}, {5, 2, 4, 6}, {5, 2, 6, 4},
+                        {4, 5, 6, 2}, {4, 5, 2, 6}, {4, 6, 5, 2}, {4, 6, 2, 5}, {4, 2, 5, 6}, {4, 2, 6, 5},
+                        {6, 5, 4, 2}, {6, 5, 2, 4}, {6, 4, 5, 2}, {6, 4, 2, 5}, {6, 2, 5, 4}, {6, 2, 4, 5},
+                        {2, 5, 4, 6}, {2, 5, 6, 4}, {2, 4, 5, 6}, {2, 4, 6, 5}, {2, 6, 5, 4}, {2, 6, 4, 5}});
     test({1, 2, 3}, {{1, 2, 3}, {1, 3, 2}, {2, 1, 3}, {2, 3, 1}, {3, 1, 2}, {3, 2, 1}});
     test({0, 1}, {{0, 1}, {1, 0}});
     test({1}, {{1}});

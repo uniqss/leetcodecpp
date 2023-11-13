@@ -16,19 +16,11 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int target, vector<int>&& expect) {
-    Solution so;
-    auto ret = so.twoSum(nums, target);
+    save4print(nums, target);
+    auto ret = Solution().twoSum(nums, target);
     std::sort(expect.begin(), expect.end());
     std::sort(ret.begin(), ret.end());
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("#not ok.");
-        print(nums);
-        print(target);
-        print(expect);
-        print(ret);
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

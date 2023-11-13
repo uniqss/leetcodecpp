@@ -67,25 +67,9 @@ class Solution {
 };
 
 void test(int n, int k, vector<vector<int>>&& expect) {
-    Solution s;
-    auto ret_raw = s.combine(n, k);
-    auto ret = ret_raw;
-    std::for_each(ret.begin(), ret.end(), [](vector<int>& v) { std::sort(v.begin(), v.end()); });
-    std::sort(ret.begin(), ret.end(),
-              [](const vector<int>& lhs, const vector<int>& rhs) { return std::accumulate(lhs.begin(), lhs.end(), 0) > std::accumulate(rhs.begin(), rhs.end(), 0); });
-    std::for_each(expect.begin(), expect.end(), [](vector<int>& v) { std::sort(v.begin(), v.end()); });
-    std::sort(expect.begin(), expect.end(),
-              [](const vector<int>& lhs, const vector<int>& rhs) { return std::accumulate(lhs.begin(), lhs.end(), 0) > std::accumulate(rhs.begin(), rhs.end(), 0); });
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(n);
-        print(k);
-        print(expect);
-        print(ret_raw);
-    }
-    print();
+    auto ret = Solution().combine(n, k);
+    sortvvrawInnerAndOuter(expect, ret);
+    assert_eq_ret(expect, ret);
 }
 
 /*

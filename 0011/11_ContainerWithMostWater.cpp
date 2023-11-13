@@ -6,18 +6,8 @@ class Solution {
 };
 
 void test(vector<int> &&height, int expect) {
-    const vector<int> param_height = height;
-    Solution so;
-    auto ret = so.maxArea(height);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(param_height);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(height);
+    assert_eq_ret(expect, Solution().maxArea(height));
 }
 
 int main(int argc, char const *argv[]) {

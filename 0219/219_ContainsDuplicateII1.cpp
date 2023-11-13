@@ -14,18 +14,11 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int k, bool expect) {
-    auto nums_param = nums;
+    save4print(nums);
+    save4print(k);
     Solution so;
     auto ret = so.containsNearbyDuplicate(nums, k);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(nums_param);
-        print(k);
-        print(expect);
-        print(ret);
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

@@ -59,9 +59,8 @@ bool listEqual(const ListNode* lhs, const ListNode* rhs) {
 }
 
 struct ListAutoReleaser {
-    ListAutoReleaser(ListNode* head) {
-        Append(head);
-    }
+    ListAutoReleaser() {}
+    ListAutoReleaser(ListNode* head) { Append(head); }
     ListAutoReleaser(ListNode* head, ListNode* head1) {
         Append(head);
         Append(head1);
@@ -76,6 +75,9 @@ struct ListAutoReleaser {
             nodes.insert(head);
             head = head->next;
         }
+    }
+    void Append(vector<ListNode*>& nodes) {
+        for (auto head : nodes) Append(head);
     }
     ~ListAutoReleaser() {
         for (auto it : nodes) {

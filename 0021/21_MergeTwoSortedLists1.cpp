@@ -22,25 +22,14 @@ class Solution {
 };
 
 void test(const std::vector<int>& v1, const std::vector<int>& v2, const std::vector<int>& expect) {
-    ListNode* head1 = nullptr;
-    ListNode* head2 = nullptr;
+    save4print(v1);
+    save4print(v2);
+    ListNode *head1 = constructList(v1), *head2 = constructList(v2);
     Solution s;
-    ListNode* ret = nullptr;
-
-    head1 = constructList(v1);
-    head2 = constructList(v2);
-    ret = s.mergeTwoLists(head1, head2);
+    ListNode* ret = s.mergeTwoLists(head1, head2);
     auto retval = list2vals(ret);
-    if (retval == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(head1);
-        print(head2);
-        print(ret);
-        print();
-    }
-    releaseLinkedList(ret);
+    assert_eq_ret(expect, retval);
+    ListAutoReleaser _(head1, head2, ret);
 }
 
 int main() {

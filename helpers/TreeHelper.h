@@ -1,5 +1,8 @@
 #pragma once
 
+#include "stl.h"
+#include "complexval.h"
+
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -9,7 +12,7 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-TreeNode *constructIntBinaryTreeLayerOrder(const vector<int> &vi) {
+TreeNode *constructIntTree(const vector<int> &vi) {
     if (vi.empty()) {
         return nullptr;
     }
@@ -86,19 +89,13 @@ TreeNode *treeFindUniqueNodeByVal(TreeNode *root, int val) {
     return nullptr;
 }
 
-void treeAppendAllNodesToVector(TreeNode *root, vector<TreeNode *> &ret) {
-    if (root == nullptr) return;
-
-    queue<TreeNode *> nodes;
-    nodes.push(root);
-    while (!nodes.empty()) {
-        TreeNode *curr = nodes.front();
-        nodes.pop();
-        if (curr == nullptr) continue;
-        ret.push_back(curr);
-        if (curr->left != nullptr) nodes.push(curr->left);
-        if (curr->right != nullptr) nodes.push(curr->right);
-    }
+bool __treeIsBST(TreeNode *root, int64_t vmin, int64_t vmax) {
+    if (root == nullptr) return true;
+    if (root->val <= vmin || root->val >= vmax) return false;
+    return __treeIsBST(root->left, vmin, root->val) && __treeIsBST(root->right, root->val, vmax);
+}
+bool treeIsBST(TreeNode *root) {
+    return __treeIsBST(root, (int64_t)INT_MIN - 1, (int64_t)INT_MAX + 1);
 }
 
 void treeToIntVecLevelOrder(const TreeNode *root, vector<int> &ret) {
@@ -168,51 +165,50 @@ void treeToComplexValLevelOrder(const TreeNode *root, vector<ComplexVal> &ret, b
     }
 }
 
-void treeAppendAllNodesToVector(const TreeNode *root, vector<const TreeNode *> &ret) {
+void treeBFS(const TreeNode *root, std::function<void(const TreeNode *)> fn) {
     if (root == nullptr) return;
-
     queue<const TreeNode *> nodes;
-    nodes.push(root);
+    nodes.emplace(root);
     while (!nodes.empty()) {
-        const TreeNode *curr = nodes.front();
-        nodes.pop();
-        if (curr == nullptr) continue;
-        ret.push_back(curr);
-        if (curr->left != nullptr) nodes.push(curr->left);
-        if (curr->right != nullptr) nodes.push(curr->right);
+        root = nodes.front(), nodes.pop();
+        fn(root);
+        if (root->left != nullptr) nodes.emplace(root->left);
+        if (root->right != nullptr) nodes.emplace(root->right);
+    }
+}
+void treeBFS(TreeNode *root, std::function<void(TreeNode *)> fn) {
+    if (root == nullptr) return;
+    queue<TreeNode *> nodes;
+    nodes.emplace(root);
+    while (!nodes.empty()) {
+        root = nodes.front(), nodes.pop();
+        if (root->left != nullptr) nodes.emplace(root->left);
+        if (root->right != nullptr) nodes.emplace(root->right);
+        fn(root);
     }
 }
 
-void treeAppendAllNodesToSet(TreeNode *root, unordered_set<TreeNode *> &ret) {
+void treeDFSPreOrder(const TreeNode *root, std::function<void(const TreeNode *)> fn) {
     if (root == nullptr) return;
-
-    queue<TreeNode *> nodes;
-    nodes.push(root);
-    while (!nodes.empty()) {
-        auto curr = nodes.front();
-        nodes.pop();
-        if (curr == nullptr) continue;
-        ret.insert(curr);
-        if (curr->left != nullptr) nodes.push(curr->left);
-        if (curr->right != nullptr) nodes.push(curr->right);
+    stack<const TreeNode *> stk;
+    stk.emplace(root);
+    while (!stk.empty()) {
+        root = stk.top(), stk.pop();
+        if (root->right != nullptr) stk.emplace(root->right);
+        if (root->left != nullptr) stk.emplace(root->left);
+        fn(root);
     }
+}
+
+void treeToIntVecPreOrder(const TreeNode *root, vector<int> &ret) {
+    treeDFSPreOrder(root, [&ret](const TreeNode *curr) { ret.emplace_back(curr->val); });
 }
 
 ostream &operator<<(ostream &os, const TreeNode *root) {
-    vector<const TreeNode *> vec;
-    treeAppendAllNodesToVector(root, vec);
-
-    std::for_each(vec.begin(), vec.end(), [&](const TreeNode *node) { os << node->val << "\t"; });
-    os << endl;
-    return os;
-}
-
-void pTreeLevelOrder(const TreeNode *root, bool printNull = true) {
-    if (root == nullptr) return;
-    cout << "__________ pTreeLevelOrder begin " << endl;
-
+    bool printNull = true;
+    os << " (tree level order):[ " << endl;
     queue<const TreeNode *> q;
-    q.emplace(root);
+    if (root != nullptr) q.emplace(root);
     while (!q.empty()) {
         auto qsize = q.size();
         bool have_valid = false;
@@ -232,43 +228,25 @@ void pTreeLevelOrder(const TreeNode *root, bool printNull = true) {
             if (root->right != nullptr) q.emplace(root->right);
             if (printNull && root->right == nullptr) q.emplace(nullptr);
         }
-        if (have_valid) cout << line << endl;
+        if (have_valid) os << line << endl;
     }
 
-    cout << "__________ pTreeLevelOrder end " << endl;
-}
-
-void releaseTree(TreeNode *root) {
-    vector<TreeNode *> vec;
-    treeAppendAllNodesToVector(root, vec);
-
-    std::for_each(vec.begin(), vec.end(), [](TreeNode *node) { delete node; });
-
-    cout << endl;
-}
-
-void releaseAllTreeNodes(vector<TreeNode *> &nodes) {
-    std::for_each(nodes.begin(), nodes.end(), [](TreeNode *node) { delete node; });
-    nodes.clear();
-}
-
-void releaseAllTreeNodes(unordered_set<TreeNode *> &nodes) {
-    std::for_each(nodes.begin(), nodes.end(), [](TreeNode *node) { delete node; });
-    nodes.clear();
+    os << "]\t";
+    return os;
 }
 
 struct TreeNodesMemHolder {
     unordered_set<TreeNode *> all_nodes_;
-    ~TreeNodesMemHolder() { releaseAllTreeNodes(all_nodes_); }
+    ~TreeNodesMemHolder() { deleteAndClearPtrContainer(all_nodes_); }
 };
 
-static TreeNodesMemHolder gs_tree_nodes_mem_holder;
+inline static TreeNodesMemHolder gs_tree_nodes_mem_holder;
 
 class TreeAutoReleaser {
    public:
-    TreeAutoReleaser(TreeNode *root) { treeAppendAllNodesToSet(root, gs_tree_nodes_mem_holder.all_nodes_); }
-    TreeAutoReleaser(TreeNode *root1, TreeNode *root2) {
-        treeAppendAllNodesToSet(root1, gs_tree_nodes_mem_holder.all_nodes_);
-        treeAppendAllNodesToSet(root2, gs_tree_nodes_mem_holder.all_nodes_);
+    TreeAutoReleaser(TreeNode *root) { Append(root); }
+    TreeAutoReleaser(TreeNode *root1, TreeNode *root2) { Append(root1), Append(root2); }
+    void Append(TreeNode *root) {
+        treeBFS(root, [](TreeNode *curr) { gs_tree_nodes_mem_holder.all_nodes_.emplace(curr); });
     }
 };

@@ -29,17 +29,8 @@ class Solution {
 };
 
 void test(int n, int k, const string& expect) {
-    Solution so;
-    auto ret = so.getPermutation(n, k);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(n);
-        print(k);
-        print(expect);
-        print(ret);
-    }
+    save4print(n, k);
+    assert_eq_ret(expect, Solution().getPermutation(n, k));
 }
 
 int main() {

@@ -6,6 +6,8 @@ class Solution {
 };
 
 void test(vector<int>&& inorder, vector<int>&& postorder, const vector<ComplexVal>& expect) {
+    save4print(inorder);
+    save4print(postorder);
     Solution so;
     auto ret = so.buildTree(inorder, postorder);
     auto etree = constructIntTree(expect);
@@ -14,17 +16,7 @@ void test(vector<int>&& inorder, vector<int>&& postorder, const vector<ComplexVa
     treeToIntVecLevelOrder(ret, ret_vec);
     vector<int> expect_vec;
     treeToIntVecLevelOrder(etree, expect_vec);
-    if (ret_vec == expect_vec) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(inorder);
-        print(postorder);
-        print(expect);
-        print(etree);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect_vec, ret_vec);
 }
 
 int main() {

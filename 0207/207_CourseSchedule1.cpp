@@ -1,5 +1,8 @@
 #include "../inc.h"
 
+/*
+硬刚第一式
+*/
 class Solution {
    public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
@@ -43,12 +46,8 @@ class Solution {
 };
 
 void test(int numCourses, vector<vector<int>>&& prerequisites, bool expect) {
-    auto prerequisites_param = prerequisites;
-    Solution so;
-    auto ret = so.canFinish(numCourses, prerequisites);
-    assert_eq_ret(expect, ret);
-    print(numCourses);
-    print(prerequisites_param);
+    save4print(numCourses, prerequisites);
+    assert_eq_ret(expect, Solution().canFinish(numCourses, prerequisites));
 }
 
 int main() {

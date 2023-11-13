@@ -6,16 +6,10 @@ class Solution {
 };
 
 void test(int n, bool expect) {
+    save4print(n);
     Solution so;
     auto ret = so.isHappy(n);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(n);
-        print(expect);
-        print(ret);
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

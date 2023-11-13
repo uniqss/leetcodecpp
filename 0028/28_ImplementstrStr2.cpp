@@ -40,18 +40,8 @@ class Solution {
 };
 
 void test(string&& haystack, string&& needle, int expect) {
-    Solution so;
-    auto ret = so.strStr(haystack, needle);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(haystack);
-        print(needle);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(haystack, needle);
+    assert_eq_ret(expect, Solution().strStr(haystack, needle));
 }
 
 int main() {

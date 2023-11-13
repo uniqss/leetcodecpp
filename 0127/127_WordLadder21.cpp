@@ -45,19 +45,8 @@ class Solution {
 };
 
 void test(string&& beginWord, string&& endWord, vector<string>&& wordList, int expect) {
-    Solution so;
-    auto ret = so.ladderLength(beginWord, endWord, wordList);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(beginWord);
-        print(endWord);
-        print(wordList);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(beginWord, endWord, wordList);
+    assert_eq_ret(expect, Solution().ladderLength(beginWord, endWord, wordList));
 }
 
 int main() {

@@ -18,25 +18,17 @@ class Solution {
     }
 };
 
+
 void test(vector<int>&& vi, int expect) {
-    Solution s;
-    int ret = s.largestRectangleArea(vi);
-    if (ret != expect) {
-        print("###### not ok");
-    } else {
-        print("ok");
-    }
-    print();
+    save4print(vi);
+    assert_eq_ret(expect, Solution().largestRectangleArea(vi));
 }
 
 int main() {
+    test({2, 0, 2}, 2);
     test({2, 1, 5, 6, 2, 3}, 10);
     test({2, 4}, 4);
     test({2, 1, 2}, 3);
+    test({5}, 5);
     return 0;
 }
-
-/*
-[2,1,5,6,2,3]
-[2,4]
-*/

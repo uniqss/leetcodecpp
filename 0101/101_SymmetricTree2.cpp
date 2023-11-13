@@ -25,19 +25,10 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, bool expect) {
-    Solution so;
+    save4print(vals);
     TreeNode* root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-    auto ret = so.isSymmetric(root);
-    if (expect == ret) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(vals);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, Solution().isSymmetric(root));
 }
 
 int main() {

@@ -6,19 +6,11 @@ class Solution {
 };
 
 void test(vector<int>&& nums1, vector<int>&& nums2, vector<vector<int>> expect) {
-    auto nums1_param = nums1, nums2_param = nums2;
-    Solution so;
-    auto ret = so.findDifference(nums1, nums2);
-    for (auto& v : expect) {
-        sort(v.begin(), v.end());
-    }
-    for (auto& r : ret) {
-        sort(r.begin(), r.end());
-    }
-
+    save4print(nums1, nums2);
+    auto ret = Solution().findDifference(nums1, nums2);
+    for (auto& v : expect) sort(v.begin(), v.end());
+    for (auto& r : ret) sort(r.begin(), r.end());
     assert_eq_ret(expect, ret);
-    print(nums1_param);
-    print(nums2_param);
 }
 
 int main() {

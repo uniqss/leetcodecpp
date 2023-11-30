@@ -6,12 +6,8 @@ class Solution {
 };
 
 void test(vector<int>&& candies, int extraCandies, const vector<bool>& expect) {
-    auto candies_param = candies;
-    Solution so;
-    auto ret = so.kidsWithCandies(candies, extraCandies);
-    assert_eq_ret(expect, ret);
-    print(candies_param);
-    print(extraCandies);
+    save4print(candies, extraCandies);
+    assert_eq_ret(expect, Solution().kidsWithCandies(candies, extraCandies));
 }
 
 int main() {

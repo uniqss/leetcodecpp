@@ -110,7 +110,7 @@ void __clear_save4prints() {
     (__VA_ARGS__)
 
 void psavedargs() {
-    for (int __save4printidx = 0; __save4printidx < __save4printnames.size(); ++__save4printidx) {
+    for (int __save4printidx = 0; __save4printidx < (int)__save4printnames.size(); ++__save4printidx) {
         if (__save4printx.count(__save4printidx) > 0)
             __print(__save4printnames[__save4printidx], ":"), __print(__save4printx[__save4printidx]);
         if (__save4printvx.count(__save4printidx) > 0)

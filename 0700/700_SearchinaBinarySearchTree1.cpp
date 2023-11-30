@@ -13,10 +13,10 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, int val, const vector<ComplexVal>& expect) {
+    save4print(vals, val);
     TreeNode* root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-    Solution so;
-    auto ret = so.searchBST(root, val);
+    auto ret = Solution().searchBST(root, val);
     if (expect.empty()) {
         assert_retnone(null == nullptr);
     } else {
@@ -24,8 +24,6 @@ void test(const vector<ComplexVal>& vals, int val, const vector<ComplexVal>& exp
         treeToComplexValLevelOrder(ret, retvlas);
         assert_eq_ret(expect, retvlas);
     }
-    print(vals);
-    print(val);
 }
 
 int main() {

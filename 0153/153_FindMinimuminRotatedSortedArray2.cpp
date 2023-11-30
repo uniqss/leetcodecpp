@@ -17,11 +17,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int expect) {
-    auto p1 = nums;
-    Solution so;
-    auto ret = so.findMin(nums);
-    assert_eq_ret(expect, ret);
-    print(p1);
+    save4print(nums);
+    assert_eq_ret(expect, Solution().findMin(nums));
 }
 
 int main() {

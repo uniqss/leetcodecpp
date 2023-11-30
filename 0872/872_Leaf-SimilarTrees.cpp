@@ -6,13 +6,11 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& v1, const vector<ComplexVal>& v2, bool expect) {
+    save4print(v1, v2);
     TreeNode *root1 = constructIntTree(v1), *root2 = constructIntTree(v2);
     TreeAutoReleaser _(root1, root2);
-    Solution so;
-    auto ret = so.leafSimilar(root1, root2);
+    auto ret = Solution().leafSimilar(root1, root2);
     assert_eq_ret(expect, ret);
-    print(v1);
-    print(v2);
 }
 
 int main() {

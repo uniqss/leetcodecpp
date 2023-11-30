@@ -6,24 +6,12 @@ class Solution {
 };
 
 void test_vi(const vector<int> &vi, const vector<int> &expect) {
-    Solution s;
-    ListNode *head = nullptr;
-    ListNode *ret = nullptr;
-
-    head = constructList(vi);
-    ret = s.reverseList(head);
-    // print(ret);
+    save4print(vi);
+    auto head = constructList(vi);
+    auto ret = Solution().reverseList(head);
+    ListAutoReleaser _(ret);
     auto retval = list2vals(ret);
-    if (retval == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(vi);
-        print(expect);
-        print(retval);
-        print();
-    }
-    releaseLinkedList(ret);
+    assert_eq_ret(expect, retval);
 }
 
 int main(int argc, char const *argv[]) {

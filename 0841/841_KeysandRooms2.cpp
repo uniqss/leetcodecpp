@@ -23,10 +23,8 @@ class Solution {
 };
 
 void test(vector<vector<int>>&& rooms, bool expect) {
-    Solution so;
-    auto ret = so.canVisitAllRooms(rooms);
-    assert_eq_ret(expect, ret);
-    print(rooms);
+    save4print(rooms);
+    assert_eq_ret(expect, Solution().canVisitAllRooms(rooms));
 }
 
 int main() {

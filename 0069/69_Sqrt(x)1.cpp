@@ -2,21 +2,7 @@
 
 class Solution {
    public:
-    int mySqrt(int x) {
-        int l = 0, r = x, mid = 0;
-        int64_t mid2 = 0;
-        while (l <= r) {
-            mid = (l + r) / 2;
-            mid2 = (int64_t)mid * mid;
-            if (mid2 == x)
-                return mid;
-            else if (mid2 < x)
-                l = mid + 1;
-            else
-                r = mid - 1;
-        }
-        return r;
-    }
+    int mySqrt(int x) {}
 };
 
 void test(int x, int expect) {

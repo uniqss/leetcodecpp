@@ -6,11 +6,8 @@ class Solution {
 };
 
 void test(vector<int>&& gain, int expect) {
-    auto gain_param = gain;
-    Solution so;
-    auto ret = so.largestAltitude(gain);
-    assert_eq_ret(expect, ret);
-    print(gain_param);
+    save4print(gain);
+    assert_eq_ret(expect, Solution().largestAltitude(gain));
 }
 
 int main() {

@@ -14,6 +14,7 @@ class RecentCounter {
 };
 
 void test(const vector<string>& ops, const vector<vector<int>>& params, const vector<ComplexVal>& expect) {
+    save4print(ops, params);
     RecentCounter so;
     vector<ComplexVal> ret;
     for (int i = 0; i < ops.size(); ++i) {
@@ -27,8 +28,6 @@ void test(const vector<string>& ops, const vector<vector<int>>& params, const ve
         }
     }
     assert_eq_ret(expect, ret);
-    print(ops);
-    print(params);
 }
 
 int main() {

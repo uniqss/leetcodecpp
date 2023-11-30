@@ -6,12 +6,11 @@ class Solution {
 };
 
 void test(const vector<int>& vals, int expect) {
-    Solution so;
+    save4print(vals);
     auto head = constructList(vals);
     ListAutoReleaser _(head);
-    auto ret = so.pairSum(head);
+    auto ret = Solution().pairSum(head);
     assert_eq_ret(expect, ret);
-    print(vals);
 }
 
 int main() {

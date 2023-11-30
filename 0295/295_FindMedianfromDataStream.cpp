@@ -8,6 +8,7 @@ class MedianFinder {
 };
 
 void test(vector<string>&& ops, const vector<vector<int>>& params, const vector<ComplexVal>& expect) {
+    save4print(ops, params);
     MedianFinder mf;
     vector<ComplexVal> ret;
     for (int i = 0; i < ops.size(); ++i) {
@@ -26,11 +27,13 @@ void test(vector<string>&& ops, const vector<vector<int>>& params, const vector<
         }
     }
     assert_eq_ret(expect, ret);
-    print(ops);
-    print(params);
 }
 
 int main() {
+    test({"MedianFinder", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian", "addNum",
+          "findMedian", "addNum", "findMedian"},
+         {{}, {-1}, {}, {-2}, {}, {-3}, {}, {-4}, {}, {-5}, {}},
+         {null, null, -1.00000, null, -1.50000, null, -2.00000, null, -2.50000, null, -3.00000});
     test({"MedianFinder", "addNum", "addNum", "findMedian", "addNum", "findMedian"}, {{}, {1}, {2}, {}, {3}, {}},
          {null, null, null, 1.5, null, 2.0});
     return 0;

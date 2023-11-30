@@ -51,11 +51,8 @@ class Solution {
 };
 
 void test(string&& str1, string&& str2, const string& expect) {
-    Solution so;
-    auto ret = so.gcdOfStrings(str1, str2);
-    assert_eq_ret(expect, ret);
-    print(str1);
-    print(str2);
+    save4print(str1, str2);
+    assert_eq_ret(expect, Solution().gcdOfStrings(str1, str2));
 }
 
 int main() {

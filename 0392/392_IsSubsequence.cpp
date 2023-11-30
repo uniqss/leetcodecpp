@@ -6,11 +6,8 @@ class Solution {
 };
 
 void test(string s, string t, bool expect) {
-    save4print(s);
-    save4print(t);
-    Solution so;
-    auto ret = so.isSubsequence(s, t);
-    assert_eq_ret(expect, ret);
+    save4print(s, t);
+    assert_eq_ret(expect, Solution().isSubsequence(s, t));
 }
 
 int main() {

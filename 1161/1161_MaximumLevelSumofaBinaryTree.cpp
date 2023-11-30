@@ -6,12 +6,11 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, int expect) {
+    save4print(vals);
     TreeNode* root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-    Solution so;
-    auto ret = so.maxLevelSum(root);
+    auto ret = Solution().maxLevelSum(root);
     assert_eq_ret(expect, ret);
-    print(vals);
 }
 
 int main() {

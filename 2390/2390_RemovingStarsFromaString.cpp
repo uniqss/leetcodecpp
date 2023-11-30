@@ -6,10 +6,8 @@ class Solution {
 };
 
 void test(string s, string expect) {
-    Solution so;
-    auto ret = so.removeStars(s);
-    assert_eq_ret(expect, ret);
-    print(s);
+    save4print(s);
+    assert_eq_ret(expect, Solution().removeStars(s));
 }
 
 int main() {

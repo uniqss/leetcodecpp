@@ -6,11 +6,8 @@ class Solution {
 };
 
 void test(string&& word1, string&& word2, const string& expect) {
-    Solution so;
-    auto ret = so.mergeAlternately(word1, word2);
-    assert_eq_ret(expect, ret);
-    print(word1);
-    print(word2);
+    save4print(word1, word2);
+    assert_eq_ret(expect, Solution().mergeAlternately(word1, word2));
 }
 
 int main() {

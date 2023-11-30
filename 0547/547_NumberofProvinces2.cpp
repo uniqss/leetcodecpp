@@ -28,11 +28,8 @@ class Solution {
 };
 
 void test(vector<vector<int>>&& isConnected, int expect) {
-    auto isConnected_param = isConnected;
-    Solution so;
-    auto ret = so.findCircleNum(isConnected);
-    assert_eq_ret(expect, ret);
-    print(isConnected_param);
+    save4print(isConnected);
+    assert_eq_ret(expect, Solution().findCircleNum(isConnected));
 }
 
 int main() {

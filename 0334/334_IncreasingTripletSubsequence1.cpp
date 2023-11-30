@@ -20,11 +20,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, bool expect) {
-    auto nums_param = nums;
-    Solution so;
-    auto ret = so.increasingTriplet(nums);
-    assert_eq_ret(expect, ret);
-    print(nums_param);
+    save4print(nums);
+    assert_eq_ret(expect, Solution().increasingTriplet(nums));
 }
 
 int main() {

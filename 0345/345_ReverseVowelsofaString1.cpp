@@ -32,10 +32,8 @@ class Solution {
 };
 
 void test(string s, string expect) {
-    Solution so;
-    auto ret = so.reverseVowels(s);
-    assert_eq_ret(expect, ret);
-    print(s);
+    save4print(s);
+    assert_eq_ret(expect, Solution().reverseVowels(s));
 }
 
 int main() {

@@ -6,12 +6,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int k, double expect) {
-    auto nums_param = nums;
-    Solution so;
-    auto ret = so.findMaxAverage(nums, k);
-    assert_eq_ret(expect, ret);
-    print(nums_param);
-    print(k);
+    save4print(nums, k);
+    assert_eq_ret(expect, Solution().findMaxAverage(nums, k));
 }
 
 int main() {

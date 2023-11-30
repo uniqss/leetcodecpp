@@ -34,12 +34,8 @@ class Solution {
 };
 
 void test(int n, vector<vector<int>>&& connections, int expect) {
-    auto connections_param = connections;
-    Solution so;
-    auto ret = so.minReorder(n, connections);
-    assert_eq_ret(expect, ret);
-    print(n);
-    print(connections_param);
+    save4print(n, connections);
+    assert_eq_ret(expect, Solution().minReorder(n, connections));
 }
 
 int main() {

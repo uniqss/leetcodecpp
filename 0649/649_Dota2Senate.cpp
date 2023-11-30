@@ -6,10 +6,8 @@ class Solution {
 };
 
 void test(string senate, const string& expect) {
-    Solution so;
-    auto ret = so.predictPartyVictory(senate);
-    assert_eq_ret(expect, ret);
-    print(senate);
+    save4print(senate);
+    assert_eq_ret(expect, Solution().predictPartyVictory(senate));
 }
 
 int main() {

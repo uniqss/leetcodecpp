@@ -158,7 +158,7 @@ void treeToComplexValLevelOrder(const TreeNode *root, vector<ComplexVal> &ret, b
                 --nullTail;
             }
 
-            for (int i = 0; i < currLayer.size() - nullTail; ++i) {
+            for (int i = 0; i < (int)currLayer.size() - nullTail; ++i) {
                 ret.emplace_back(currLayer[i]);
             }
         }

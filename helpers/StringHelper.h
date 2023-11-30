@@ -65,10 +65,10 @@ bool isStrPalindrome(const string& s) {
 
 vector<vector<char>> vvs2vvc(const vector<vector<string>>& vvs) {
     vector<vector<char>> ret;
-    for (int i = 0; i < vvs.size(); ++i) {
+    for (int i = 0; i < (int)vvs.size(); ++i) {
         ret.resize(ret.size() + 1);
         vector<char>& curr = ret[ret.size() - 1];
-        for (int j = 0; j < vvs[i].size(); ++j) {
+        for (int j = 0; j < (int)vvs[i].size(); ++j) {
             if (vvs[i][j].size() == 1) curr.emplace_back(vvs[i][j][0]);
         }
     }

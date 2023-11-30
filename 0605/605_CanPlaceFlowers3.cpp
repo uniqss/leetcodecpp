@@ -30,12 +30,8 @@ class Solution {
 };
 
 void test(vector<int>&& flowerbed, int n, bool expect) {
-    auto flowerbed_param = flowerbed;
-    Solution so;
-    auto ret = so.canPlaceFlowers(flowerbed, n);
-    assert_eq_ret(expect, ret);
-    print(flowerbed_param);
-    print(n);
+    save4print(flowerbed, n);
+    assert_eq_ret(expect, Solution().canPlaceFlowers(flowerbed, n));
 }
 
 int main() {

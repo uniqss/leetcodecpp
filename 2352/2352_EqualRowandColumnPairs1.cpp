@@ -22,11 +22,8 @@ class Solution {
 };
 
 void test(vector<vector<int>>&& grid, int expect) {
-    auto grid_param = grid;
-    Solution so;
-    auto ret = so.equalPairs(grid);
-    assert_eq_ret(expect, ret);
-    print(grid_param);
+    save4print(grid);
+    assert_eq_ret(expect, Solution().equalPairs(grid));
 }
 
 int main() {

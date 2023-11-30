@@ -7,9 +7,7 @@ class Solution {
 
 void test(string&& s, string expect) {
     save4print(s);
-    Solution so;
-    auto ret = so.reverseWords(s);
-    assert_eq_ret(expect, ret);
+    assert_eq_ret(expect, Solution().reverseWords(s));
 }
 
 int main() {

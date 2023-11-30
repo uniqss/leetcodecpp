@@ -6,13 +6,8 @@ class Solution {
 };
 
 void test(vector<vector<char>>&& maze, vector<int>&& entrance, int expect) {
-    auto m_param = maze;
-    auto e_param = entrance;
-    Solution so;
-    auto ret = so.nearestExit(maze, entrance);
-    assert_eq_ret(expect, ret);
-    print(m_param);
-    print(e_param);
+    save4print(maze, entrance);
+    assert_eq_ret(expect, Solution().nearestExit(maze, entrance));
 }
 
 int main() {

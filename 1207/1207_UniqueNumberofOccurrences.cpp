@@ -6,11 +6,8 @@ class Solution {
 };
 
 void test(vector<int>&& arr, bool expect) {
-    auto arr_param = arr;
-    Solution so;
-    auto ret = so.uniqueOccurrences(arr);
-    assert_eq_ret(expect, ret);
-    print(arr_param);
+    save4print(arr);
+    assert_eq_ret(expect, Solution().uniqueOccurrences(arr));
 }
 
 int main() {

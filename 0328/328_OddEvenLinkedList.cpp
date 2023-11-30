@@ -6,13 +6,12 @@ class Solution {
 };
 
 void test(const vector<int>& arrin, const vector<int>& expect) {
-    Solution so;
+    save4print(arrin);
     ListNode* head = constructList(arrin);
     ListAutoReleaser _(head);
-    auto ret = so.oddEvenList(head);
+    auto ret = Solution().oddEvenList(head);
     auto retval = list2vals(ret);
     assert_eq_ret(expect, retval);
-    print(arrin);
 }
 
 int main() {

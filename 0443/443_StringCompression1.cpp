@@ -46,11 +46,8 @@ class Solution {
 };
 
 void test(vector<char>&& chars, int expect) {
-    auto chars_param = chars;
-    Solution so;
-    auto ret = so.compress(chars);
-    assert_eq_ret(expect, ret);
-    print(chars_param);
+    save4print(chars);
+    assert_eq_ret(expect, Solution().compress(chars));
 }
 
 int main() {

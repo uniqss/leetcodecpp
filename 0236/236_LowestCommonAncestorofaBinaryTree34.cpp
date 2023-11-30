@@ -41,24 +41,13 @@ class Solution {
 };
 
 void test(vector<ComplexVal> &&vals, int vp, int vq, int vexpect) {
+    save4print(vals, vp, vq);
     TreeNode *root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-    TreeNode *p = treeFindUniqueNodeByVal(root, vp);
-    TreeNode *q = treeFindUniqueNodeByVal(root, vq);
-    Solution so;
-    TreeNode *ret = so.lowestCommonAncestor(root, p, q);
+    TreeNode *p = treeFindUniqueNodeByVal(root, vp), *q = treeFindUniqueNodeByVal(root, vq);
+    TreeNode *ret = Solution().lowestCommonAncestor(root, p, q);
     int retval = ret->val;
-    if (retval == vexpect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(vals);
-        print(vp);
-        print(vq);
-        print(vexpect);
-        print(retval);
-        print();
-    }
+    assert_eq_ret(vexpect, retval);
 }
 
 int main() {

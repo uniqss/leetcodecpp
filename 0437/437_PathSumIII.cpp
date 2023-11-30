@@ -6,15 +6,15 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, int targetSum, int expect) {
+    save4print(vals, targetSum);
     TreeNode* root = constructIntTree(vals);
-    Solution so;
-    auto ret = so.pathSum(root, targetSum);
-    assert_eq_ret(expect, ret);
-    print(vals);
-    print(targetSum);
+    TreeAutoReleaser _(root);
+    assert_eq_ret(expect, Solution().pathSum(root, targetSum));
 }
 
 int main() {
+    test({1, -2, -3}, -1, 1);
+    test({1}, 0, 0);
     test({}, 1, 0);
     test({4, 2, 6}, 6, 2);
     test({10, 5, -3, 3, 2, null, 11, 3, -2, null, 1}, 8, 3);

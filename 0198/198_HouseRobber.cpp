@@ -6,11 +6,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int expect) {
-    auto param1 = nums;
-    Solution so;
-    auto ret = so.rob(nums);
-    assert_eq_ret(expect, ret);
-    print(param1);
+    save4print(nums);
+    assert_eq_ret(expect, Solution().rob(nums));
 }
 
 int main() {

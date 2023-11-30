@@ -6,11 +6,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int expect) {
-    auto nums_param = nums;
-    Solution so;
-    auto ret = so.pivotIndex(nums);
-    assert_eq_ret(expect, ret);
-    print(nums_param);
+    save4print(nums);
+    assert_eq_ret(expect, Solution().pivotIndex(nums));
 }
 
 int main() {

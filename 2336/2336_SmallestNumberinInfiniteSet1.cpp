@@ -25,6 +25,7 @@ class SmallestInfiniteSet {
 };
 
 void test(const vector<string>& ops, const vector<vector<int>>& params, const vector<ComplexVal>& expect) {
+    save4print(ops, params);
     SmallestInfiniteSet s;
     vector<ComplexVal> ret;
     for (int i = 0; i < ops.size(); ++i) {
@@ -41,13 +42,6 @@ void test(const vector<string>& ops, const vector<vector<int>>& params, const ve
         }
     }
     assert_eq_ret(expect, ret);
-    for (int i = 0; i < expect.size(); ++i) {
-        if (!(expect[i] == ret[i])) {
-            cout << i << " :" << expect[i] << " " << ret[i] << endl;
-        }
-    }
-    print(ops);
-    print(params);
 }
 
 int main() {

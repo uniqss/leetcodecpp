@@ -54,11 +54,8 @@ class Solution {
 };
 
 void test(vector<vector<int>>&& grid, int expect) {
-    auto g_param = grid;
-    Solution so;
-    auto ret = so.orangesRotting(grid);
-    assert_eq_ret(expect, ret);
-    print(g_param);
+    save4print(grid);
+    assert_eq_ret(expect, Solution().orangesRotting(grid));
 }
 
 int main() {

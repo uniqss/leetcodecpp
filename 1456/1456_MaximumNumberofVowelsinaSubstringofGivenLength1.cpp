@@ -35,11 +35,8 @@ class Solution {
 };
 
 void test(string s, int k, int expect) {
-    Solution so;
-    auto ret = so.maxVowels(s, k);
-    assert_eq_ret(expect, ret);
-    print(s);
-    print(k);
+    save4print(s, k);
+    assert_eq_ret(expect, Solution().maxVowels(s, k));
 }
 
 int main() {

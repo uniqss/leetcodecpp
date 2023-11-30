@@ -25,17 +25,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int expect) {
-    auto nums_param = nums;
-    Solution so;
-    auto ret = so.longestSubarray(nums);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(nums_param);
-        print(expect);
-        print(ret);
-    }
+    save4print(nums);
+    assert_eq_ret(expect, Solution().longestSubarray(nums));
 }
 
 int main() {

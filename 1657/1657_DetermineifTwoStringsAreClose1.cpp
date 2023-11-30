@@ -15,11 +15,8 @@ class Solution {
 };
 
 void test(string word1, string word2, bool expect) {
-    Solution so;
-    auto ret = so.closeStrings(word1, word2);
-    assert_eq_ret(expect, ret);
-    print(word1);
-    print(word2);
+    save4print(word1, word2);
+    assert_eq_ret(expect, Solution().closeStrings(word1, word2));
 }
 
 int main() {

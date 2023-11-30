@@ -20,12 +20,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int k, int expect) {
-    auto n_param = nums;
-    Solution so;
-    auto ret = so.findKthLargest(nums, k);
-    assert_eq_ret(expect, ret);
-    print(n_param);
-    print(k);
+    save4print(nums, k);
+    assert_eq_ret(expect, Solution().findKthLargest(nums, k));
 }
 
 int main() {

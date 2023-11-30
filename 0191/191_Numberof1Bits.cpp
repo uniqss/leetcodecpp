@@ -6,16 +6,8 @@ class Solution {
 };
 
 void test(uint32_t n, int expect) {
-    Solution so;
-    auto ret = so.hammingWeight(n);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(n);
-        print(expect);
-        print(ret);
-    }
+    save4print((int)n);
+    assert_eq_ret(expect, Solution().hammingWeight(n));
 }
 
 int main() {

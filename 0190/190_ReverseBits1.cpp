@@ -14,16 +14,8 @@ class Solution {
 };
 
 void test(uint32_t n, uint32_t expect) {
-    Solution so;
-    auto ret = so.reverseBits(n);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(n);
-        print(expect);
-        print(ret);
-    }
+    save4print((int)n);
+    assert_eq_ret(expect, Solution().reverseBits(n));
 }
 
 int main() {

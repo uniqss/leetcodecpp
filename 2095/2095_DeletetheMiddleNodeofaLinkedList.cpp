@@ -6,13 +6,12 @@ class Solution {
 };
 
 void test(const vector<int>& inarr, const vector<int>& expect) {
+    save4print(inarr);
     auto head = constructList(inarr);
-    Solution so;
-    auto ret = so.deleteMiddle(head);
+    auto ret = Solution().deleteMiddle(head);
     ListAutoReleaser _(ret);
     auto retvals = list2vals(ret);
     assert_eq_ret(expect, retvals);
-    print(inarr);
 }
 
 int main() {

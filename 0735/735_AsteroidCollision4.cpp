@@ -28,11 +28,8 @@ class Solution {
 };
 
 void test(vector<int>&& asteroids, const vector<int>& expect) {
-    auto p1 = asteroids;
-    Solution so;
-    auto ret = so.asteroidCollision(asteroids);
-    assert_eq_ret(expect, ret);
-    print(p1);
+    save4print(asteroids);
+    assert_eq_ret(expect, Solution().asteroidCollision(asteroids));
 }
 
 int main() {

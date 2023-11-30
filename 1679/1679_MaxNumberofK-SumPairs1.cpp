@@ -23,12 +23,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int k, int expect) {
-    auto nums_param = nums;
-    Solution so;
-    auto ret = so.maxOperations(nums, k);
-    assert_eq_ret(expect, ret);
-    print(nums_param);
-    print(k);
+    save4print(nums, k);
+    assert_eq_ret(expect, Solution().maxOperations(nums, k));
 }
 
 int main() {

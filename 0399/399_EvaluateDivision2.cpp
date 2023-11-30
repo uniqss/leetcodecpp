@@ -48,11 +48,8 @@ class Solution {
 
 void test(vector<vector<string>>&& equations, vector<double>&& values, vector<vector<string>>&& queries,
           const vector<double>& expect) {
-    save4print(equations);
-    save4print(values);
-    save4print(queries);
-    auto ret = Solution().calcEquation(equations, values, queries);
-    assert_eq_ret(expect, ret);
+    save4print(equations, values, queries);
+    assert_eq_ret(expect, Solution().calcEquation(equations, values, queries));
 }
 
 int main() {

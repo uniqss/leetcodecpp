@@ -7,6 +7,7 @@ enum EComplexValType {
     EComplexValType_Invalid = -1,
     EComplexValType_nullptr,
     EComplexValType_int,
+    EComplexValType_int64,
     EComplexValType_double,
     EComplexValType_bool,
     EComplexValType_char,
@@ -18,6 +19,7 @@ class ComplexVal {
    public:
     EComplexValType valtype;
     int vali;
+    int64_t vali64;
     double vald;
     bool valb;
     char valc;
@@ -27,6 +29,7 @@ class ComplexVal {
     ComplexVal() : valtype(EComplexValType_Invalid) {}
     ComplexVal(void* ptr) : valtype(EComplexValType_nullptr) {}
     ComplexVal(int val) : valtype(EComplexValType_int), vali(val) {}
+    ComplexVal(int64_t val) : valtype(EComplexValType_int64), vali64(val) {}
     ComplexVal(double val) : valtype(EComplexValType_double), vald(val) {}
     ComplexVal(bool val) : valtype(EComplexValType_bool), valb(val) {}
     ComplexVal(char c) : valtype(EComplexValType_char), valc(c) {}
@@ -50,6 +53,8 @@ class ComplexVal {
                 return "null";
             case EComplexValType_int:
                 return std::to_string(vali);
+            case EComplexValType_int64:
+                return std::to_string(vali64);
             case EComplexValType_double:
                 return std::to_string(vald);
             case EComplexValType_bool:
@@ -94,6 +99,8 @@ bool operator==(const ComplexVal& lhs, const ComplexVal& rhs) {
             return true;
         case EComplexValType_int:
             return lhs.vali == rhs.vali;
+        case EComplexValType_int64:
+            return lhs.vali64 == rhs.vali64;
         case EComplexValType_double:
             return lhs.vald == rhs.vald;
         case EComplexValType_bool:

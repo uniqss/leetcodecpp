@@ -31,12 +31,8 @@ class Solution {
 };
 
 void test(vector<int>&& piles, int h, int expect) {
-    vector<int> p_param = piles;
-    Solution so;
-    auto ret = so.minEatingSpeed(piles, h);
-    assert_eq_ret(expect, ret);
-    print(p_param);
-    print(h);
+    save4print(piles, h);
+    assert_eq_ret(expect, Solution().minEatingSpeed(piles, h));
 }
 
 int main() {

@@ -6,14 +6,8 @@ class Solution {
 };
 
 void test(vector<int>&& spells, vector<int>&& potions, long long success, const vector<int>& expect) {
-    auto s_param = spells;
-    auto p_param = potions;
-    Solution so;
-    auto ret = so.successfulPairs(spells, potions, success);
-    assert_eq_ret(expect, ret);
-    print(s_param);
-    print(p_param);
-    print(success);
+    save4print(spells, potions, success);
+    assert_eq_ret(expect, Solution().successfulPairs(spells, potions, success));
 }
 
 int main() {

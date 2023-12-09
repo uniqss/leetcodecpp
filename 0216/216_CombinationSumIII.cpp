@@ -6,13 +6,11 @@ class Solution {
 };
 
 void test(int k, int n, vector<vector<int>>&& expect) {
+    save4print(k, n);
     sortvvrawInnerAndOuter(expect);
-    Solution so;
-    auto ret = so.combinationSum3(k, n);
+    auto ret = Solution().combinationSum3(k, n);
     sortvvrawInnerAndOuter(ret);
     assert_eq_ret(expect, ret);
-    print(k);
-    print(n);
 }
 
 int main() {

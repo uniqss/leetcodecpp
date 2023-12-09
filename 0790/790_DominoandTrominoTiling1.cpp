@@ -18,10 +18,8 @@ class Solution {
 };
 
 void test(int n, int expect) {
-    Solution so;
-    auto ret = so.numTilings(n);
-    assert_eq_ret(expect, ret);
-    print(n);
+    save4print(n);
+    assert_eq_ret(expect, Solution().numTilings(n));
 }
 
 int main() {

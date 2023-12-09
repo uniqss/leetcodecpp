@@ -8,6 +8,9 @@ class Solution {
 void test(vector<int>&& nums) {
     save4print(nums);
     auto ret = Solution().findPeakElement(nums);
+    if (ret == -1) {
+        assert_retnone(ret != -1);
+    }
     int64_t vret = nums[ret];
     int64_t vl = ret > 0 ? nums[ret - 1] : (int64_t)INT_MIN - 1;
     int64_t vr = ret < nums.size() - 1 ? nums[ret + 1] : (int64_t)INT_MIN - 1;

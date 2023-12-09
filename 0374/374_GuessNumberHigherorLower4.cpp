@@ -37,11 +37,9 @@ class Solution {
 };
 
 void test(int n, int expect) {
+    save4print(n);
     pick = expect;
-    Solution so;
-    auto ret = so.guessNumber(n);
-    assert_eq_ret(expect, ret);
-    print(n);
+    assert_eq_ret(expect, Solution().guessNumber(n));
 }
 
 int main() {

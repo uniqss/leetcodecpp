@@ -1,6 +1,6 @@
 #include "../inc.h"
 
-// 这是一个 javascript 写法翻译过来的，js 的 lambda 能调自己，太美了，c++相对丑点
+// 这是一个 javascript 写法翻译过来的
 
 class Solution {
     vector<vector<int>> ret;
@@ -18,7 +18,7 @@ class Solution {
         }
         // 不选
         backtrace(idx + 1, sum, k, n);
-        // 不选
+        // 选
         curr.emplace_back(idx);
         sum += idx;
         backtrace(idx + 1, sum, k, n);
@@ -28,13 +28,11 @@ class Solution {
 };
 
 void test(int k, int n, vector<vector<int>>&& expect) {
+    save4print(k, n);
     sortvvrawInnerAndOuter(expect);
-    Solution so;
-    auto ret = so.combinationSum3(k, n);
+    auto ret = Solution().combinationSum3(k, n);
     sortvvrawInnerAndOuter(ret);
     assert_eq_ret(expect, ret);
-    print(k);
-    print(n);
 }
 
 int main() {

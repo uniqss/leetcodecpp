@@ -11,6 +11,7 @@ void test(string s1, string s2, string s3, bool expect) {
 }
 
 int main() {
+    test("", "", "a", false);
     test("aabcc", "dbbca", "aadbbcbcac", true);
     test("aabcc", "dbbca", "aadbbbaccc", false);
     test("", "", "", true);

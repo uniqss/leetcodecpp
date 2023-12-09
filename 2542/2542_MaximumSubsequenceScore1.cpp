@@ -38,14 +38,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums1, vector<int>&& nums2, int k, long long expect) {
-    auto nums1_param = nums1;
-    auto nums2_param = nums2;
-    Solution so;
-    auto ret = so.maxScore(nums1, nums2, k);
-    assert_eq_ret(expect, ret);
-    print(nums1_param);
-    print(nums2_param);
-    print(k);
+    save4print(nums1, nums2, k);
+    assert_eq_ret(expect, Solution().maxScore(nums1, nums2, k));
 }
 
 int main() {

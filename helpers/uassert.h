@@ -152,6 +152,7 @@ void psavedargs() {
         return;                                                                            \
     } else {                                                                               \
         print("not ok.");                                                                  \
+        print((#__expr));                                                                  \
         psavedargs();                                                                      \
         __print("\n##################### testcase ", ""), __print(__g_testcase_count, ""), \
             __print(" end. ##################\n", "");                                     \

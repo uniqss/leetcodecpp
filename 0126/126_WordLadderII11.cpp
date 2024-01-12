@@ -1,8 +1,60 @@
 #include "../inc.h"
 
+// 这个算法有点假，tail只是接引了一层而已。并不是双中心扩展，不是双向bfs，不过代码质量确实上乘
 class Solution {
    public:
+    // 双向广度优先搜索
+    vector<vector<string>> res;
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> dict(wordList.begin(), wordList.end()), head{beginWord},
+            tail{endWord};
+        if (dict.find(endWord) == dict.end()) return res;
+        dict.erase(beginWord);
+        dict.erase(endWord);
+        bool found = false;
+        int wordLen = beginWord.size();
+        unordered_map<string, vector<string>> from;
+        while (!head.empty()) {
+            unordered_set<string> temp;
+            for (const string& node : head) {
+                string nextWord = node;
+                for (size_t j = 0; j < wordLen; j++) {
+                    char origin = nextWord[j];
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        nextWord[j] = c;
+                        if (tail.find(nextWord) != tail.end()) {
+                            from[nextWord].push_back(node);
+                            found = true;
+                        }
+                        if (dict.find(nextWord) != dict.end()) {
+                            from[nextWord].push_back(node);
+                            temp.insert(nextWord);
+                        }
+                    }
+                    nextWord[j] = origin;
+                }
+            }
+            if (found) break;
+            for (const string& node : temp) dict.erase(node);
+            head = temp;
+        }
+        if (found) {
+            vector<string> path = {endWord};
+            backtrack(endWord, beginWord, path, from);
+        }
+        return res;
+    };
+    void backtrack(const string& node1, const string& node2, vector<string>& path,
+                   unordered_map<string, vector<string>>& from) {
+        if (node1 == node2) {
+            res.push_back({path.rbegin(), path.rend()});
+            return;
+        }
+        for (const string& parent : from[node1]) {
+            path.push_back(parent);
+            backtrack(parent, node2, path, from);
+            path.pop_back();
+        }
     }
 };
 

@@ -3,6 +3,60 @@
 class Solution {
    public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> dict(wordList.begin(), wordList.end());
+        vector<vector<string>> ret;
+        if (dict.count(endWord) == 0) return ret;
+        dict.erase(beginWord);
+        unordered_map<string, int> depthi;
+        unordered_map<string, unordered_set<string>> from;
+        int depth = 0, n = beginWord.size();
+        bool found = false;
+        function<void(string, vector<string>&)> backtrack = [&](string word, vector<string>& path) {
+            if (from[word].empty()) {
+                ret.push_back({path.rbegin(), path.rend()});
+            } else {
+                for (string f : from[word]) {
+                    path.emplace_back(f);
+                    backtrack(f, path);
+                    path.pop_back();
+                }
+            }
+        };
+        queue<string> q({beginWord});
+        while (!q.empty()) {
+            ++depth;
+            int qsize = q.size();
+            for (int qi = 0; qi < qsize; ++qi) {
+                auto preword = q.front();
+                q.pop();
+                auto currword = preword;
+                for (int i = 0; i < n; ++i) {
+                    char pre = currword[i];
+                    for (int j = 'a'; j <= 'z'; ++j) {
+                        if (j == pre) continue;
+                        currword[i] = j;
+                        if (depthi[currword] == depth) {
+                            from[currword].insert(preword);
+                        }
+                        if (currword == endWord) {
+                            found = true;
+                        }
+                        if (dict.count(currword) == 0) continue;
+                        q.emplace(currword);
+                        dict.erase(currword);
+                        from[currword].insert(preword);
+                        depthi[currword] = depth;
+                    }
+                    currword[i] = pre;
+                }
+            }
+            if (found) {
+                vector<string> path({endWord});
+                backtrack(endWord, path);
+                return ret;
+            }
+        }
+        return ret;
     }
 };
 
@@ -16,8 +70,6 @@ void test(string&& beginWord, string&& endWord, vector<string>&& wordList,
 }
 
 int main() {
-    test("hit", "cog", {"hot", "dot", "dog", "lot", "log", "cog"},
-         {{"hit", "hot", "dot", "dog", "cog"}, {"hit", "hot", "lot", "log", "cog"}});
     test("hot", "dog", {"hot", "dog"}, {});
     test("cet", "ism",
          {"kid", "tag", "pup", "ail", "tun", "woo", "erg", "luz", "brr", "gay", "sip", "kay", "per",
@@ -99,6 +151,8 @@ int main() {
         "red", "tax", {"ted", "tex", "red", "tax", "tad", "den", "rex", "pee"},
         {{"red", "ted", "tad", "tax"}, {"red", "ted", "tex", "tax"}, {"red", "rex", "tex", "tax"}});
     test("a", "c", {"a", "b", "c"}, {{"a", "c"}});
+    test("hit", "cog", {"hot", "dot", "dog", "lot", "log", "cog"},
+         {{"hit", "hot", "dot", "dog", "cog"}, {"hit", "hot", "lot", "log", "cog"}});
     test("hit", "cog", {"hot", "dot", "dog", "lot", "log"}, {});
     return 0;
 }

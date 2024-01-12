@@ -13,6 +13,7 @@ enum EComplexValType {
     EComplexValType_char,
     EComplexValType_string,
     EComplexValType_pairint,
+    EComplexValType_arr,
 };
 
 class ComplexVal {
@@ -25,6 +26,7 @@ class ComplexVal {
     char valc;
     string vals;
     pair<int, int> valpint;
+    vector<ComplexVal> valarr;
     // ptr must be nullptr
     ComplexVal() : valtype(EComplexValType_Invalid) {}
     ComplexVal(void* ptr) : valtype(EComplexValType_nullptr) {}
@@ -35,15 +37,28 @@ class ComplexVal {
     ComplexVal(char c) : valtype(EComplexValType_char), valc(c) {}
     ComplexVal(const string& str) : valtype(EComplexValType_string), vals(str) {}
     ComplexVal(const std::pair<int, int>& pii) : valtype(EComplexValType_pairint), valpint(pii) {}
-    ComplexVal(const std::initializer_list<int>& pii) : valtype(EComplexValType_pairint) {
-        assert(pii.size() == 2);
-        valpint.first = *pii.begin();
-        valpint.second = *(pii.begin() + 1);
+    ComplexVal(const std::initializer_list<int>& vi) : valtype(EComplexValType_pairint) {
+        if (vi.size() == 2) {
+            valtype = EComplexValType_pairint;
+            valpint.first = *vi.begin();
+            valpint.second = *(vi.begin() + 1);
+        } else {
+            valtype = EComplexValType_arr;
+            for (int i : vi) valarr.emplace_back(i);
+        }
+    }
+    ComplexVal(const std::initializer_list<ComplexVal>& vc) : valtype(EComplexValType_arr) {
+        valarr = vc;
     }
     ComplexVal(const vector<int>& vi) : valtype(EComplexValType_pairint) {
-        assert(vi.size() == 2);
-        valpint.first = *vi.begin();
-        valpint.second = *(vi.begin() + 1);
+        if (vi.size() == 2) {
+            valtype = EComplexValType_pairint;
+            valpint.first = *vi.begin();
+            valpint.second = *(vi.begin() + 1);
+        } else {
+            valtype = EComplexValType_arr;
+            for (int i : vi) valarr.emplace_back(i);
+        }
     }
 
     bool IsNullptr() const { return valtype == EComplexValType_nullptr; }
@@ -67,6 +82,11 @@ class ComplexVal {
                 return "invalid";
             case EComplexValType_pairint:
                 return std::to_string(valpint.first) + "|" + std::to_string(valpint.second);
+            case EComplexValType_arr: {
+                std::string ret = "";
+                for (auto c : valarr) ret += c.ToString();
+                return ret;
+            }
 
             default:
                 break;
@@ -90,6 +110,16 @@ class ComplexVal {
             valpint.second = atoi(s.substr(pos + 1).c_str());
         }
     }
+    vector<int> tovi() const {
+        if (valtype == EComplexValType_pairint) {
+            return {valpint.first, valpint.second};
+        } else if (valtype == EComplexValType_arr) {
+            vector<int> ret;
+            for (auto c : valarr) ret.emplace_back(c.vali);
+            return ret;
+        }
+        return {};
+    }
 };
 
 bool operator==(const ComplexVal& lhs, const ComplexVal& rhs) {
@@ -112,7 +142,10 @@ bool operator==(const ComplexVal& lhs, const ComplexVal& rhs) {
         case EComplexValType_Invalid:
             return true;
         case EComplexValType_pairint:
-            return lhs.valpint.first == rhs.valpint.first && lhs.valpint.second == rhs.valpint.second;
+            return lhs.valpint.first == rhs.valpint.first &&
+                   lhs.valpint.second == rhs.valpint.second;
+        case EComplexValType_arr:
+            return lhs.valarr == rhs.valarr;
 
         default:
             return false;

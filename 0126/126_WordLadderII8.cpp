@@ -3,6 +3,57 @@
 class Solution {
    public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+        vector<vector<string>> ret;
+        unordered_set<string> dict(wordList.begin(), wordList.end());
+        if (dict.count(endWord) == 0) return ret;
+        dict.erase(beginWord);
+        unordered_map<string, unordered_set<string>> from;
+        unordered_map<string, int> depthi;
+        int depth = 0, n = beginWord.size();
+        queue<string> q({beginWord});
+        string currword, nextword;
+        while (!q.empty()) {
+            ++depth;
+            int qsize = q.size();
+            for (int qi = 0; qi < qsize; ++qi) {
+                currword = q.front(), q.pop(), nextword = currword;
+                for (int i = 0; i < n; ++i) {
+                    char cpre = nextword[i];
+                    for (char c = 'a'; c <= 'z'; ++c) {
+                        if (c == cpre) continue;
+                        nextword[i] = c;
+                        if (depthi[nextword] == depth) {
+                            from[nextword].insert(currword);
+                        }
+                        if (dict.count(nextword) == 0) continue;
+                        dict.erase(nextword);
+                        q.emplace(nextword);
+                        from[nextword].insert(currword);
+                        depthi[nextword] = depth;
+                    }
+                    nextword[i] = cpre;
+                }
+            }
+            if (from.count(endWord) > 0) break;
+        }
+
+        if (from[endWord].empty()) return ret;
+        function<void(const string&, vector<string>&)> bt = [&](const string& word,
+                                                                vector<string>& road) {
+            if (from[word].empty()) {
+                ret.push_back({road.rbegin(), road.rend()});
+            } else {
+                for (const string& f : from[word]) {
+                    road.emplace_back(f);
+                    bt(f, road);
+                    road.pop_back();
+                }
+            }
+        };
+        vector<string> road({endWord});
+        bt(endWord, road);
+
+        return ret;
     }
 };
 
@@ -16,8 +67,6 @@ void test(string&& beginWord, string&& endWord, vector<string>&& wordList,
 }
 
 int main() {
-    test("hit", "cog", {"hot", "dot", "dog", "lot", "log", "cog"},
-         {{"hit", "hot", "dot", "dog", "cog"}, {"hit", "hot", "lot", "log", "cog"}});
     test("hot", "dog", {"hot", "dog"}, {});
     test("cet", "ism",
          {"kid", "tag", "pup", "ail", "tun", "woo", "erg", "luz", "brr", "gay", "sip", "kay", "per",
@@ -99,6 +148,8 @@ int main() {
         "red", "tax", {"ted", "tex", "red", "tax", "tad", "den", "rex", "pee"},
         {{"red", "ted", "tad", "tax"}, {"red", "ted", "tex", "tax"}, {"red", "rex", "tex", "tax"}});
     test("a", "c", {"a", "b", "c"}, {{"a", "c"}});
+    test("hit", "cog", {"hot", "dot", "dog", "lot", "log", "cog"},
+         {{"hit", "hot", "dot", "dog", "cog"}, {"hit", "hot", "lot", "log", "cog"}});
     test("hit", "cog", {"hot", "dot", "dog", "lot", "log"}, {});
     return 0;
 }

@@ -3,6 +3,75 @@
 class Solution {
    public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_map<string, int> w2i;
+        if (find(wordList.begin(), wordList.end(), beginWord) == wordList.end())
+            wordList.emplace_back(beginWord);
+        int n = 0, wsize = wordList.size();
+        for (const auto& word : wordList) w2i[word] = n++;
+        if (w2i.count(endWord) == 0) return {};
+        vector<vector<int>> tos(n);
+        auto strfit = [](const string& s1, const string& s2) -> bool {
+            int diff = 0;
+            for (int i = 0; i < s1.size(); ++i)
+                if (s1[i] != s2[i])
+                    if (++diff > 1) return false;
+            return true;
+        };
+        for (int i = 0; i < wsize; ++i) {
+            for (int j = i + 1; j < wsize; ++j) {
+                if (strfit(wordList[i], wordList[j]))
+                    tos[i].emplace_back(j), tos[j].emplace_back(i);
+            }
+        }
+
+        vector<vector<string>> ret;
+        int start = w2i[beginWord];
+        int target = w2i[endWord];
+        // 问题到这里其实非常清晰，无向连通图，找出起始点到终点的所有最短路径。这里难就难在找所有
+        vector<pair<int, vector<int>>> depth_from(n, {0, {}});
+
+        queue<int> q;
+        q.emplace(start);
+        int depth = 0, curr;
+        while (!q.empty() && depth_from[target].first == 0) {
+            ++depth;
+            int qsize = q.size();
+            for (int qi = 0; qi < qsize; ++qi) {
+                curr = q.front(), q.pop();
+                for (int to : tos[curr]) {
+                    if (depth_from[to].first < depth && !depth_from[to].second.empty())
+                        continue;
+                    else if (depth_from[to].first > depth) {
+                        depth_from[to].second = {curr};
+                        depth_from[to].first = depth;
+                    } else {
+                        depth_from[to].second.emplace_back(curr);
+                        depth_from[to].first = depth;
+                    }
+                    if (to == target) {
+                    } else {
+                        q.push(to);
+                    }
+                }
+            }
+        }
+        vector<int> road = {target};
+        function<void(int, vector<int>&)> dfs = [&](int curr, vector<int>& road) {
+            if (curr == start) {
+                ret.resize(ret.size() + 1);
+                for (int i = road.size() - 1; i >= 0; --i) {
+                    ret.back().emplace_back(wordList[road[i]]);
+                }
+                return;
+            }
+            for (int from : depth_from[curr].second) {
+                road.emplace_back(from);
+                dfs(from, road);
+                road.pop_back();
+            }
+        };
+        dfs(target, road);
+        return ret;
     }
 };
 
@@ -16,9 +85,6 @@ void test(string&& beginWord, string&& endWord, vector<string>&& wordList,
 }
 
 int main() {
-    test("hit", "cog", {"hot", "dot", "dog", "lot", "log", "cog"},
-         {{"hit", "hot", "dot", "dog", "cog"}, {"hit", "hot", "lot", "log", "cog"}});
-    test("hot", "dog", {"hot", "dog"}, {});
     test("cet", "ism",
          {"kid", "tag", "pup", "ail", "tun", "woo", "erg", "luz", "brr", "gay", "sip", "kay", "per",
           "val", "mes", "ohs", "now", "boa", "cet", "pal", "bar", "die", "war", "hay", "eco", "pub",
@@ -59,8 +125,7 @@ int main() {
           "stu", "mug", "cad", "nap", "gun", "fop", "tot", "sow", "sal", "sic", "ted", "wot", "del",
           "imp", "cob", "way", "ann", "tan", "mci", "job", "wet", "ism", "err", "him", "all", "pad",
           "hah", "hie", "aim"},
-         {{"cet", "cat", "can", "ian", "inn", "ins", "its", "ito", "ibo", "ibm", "ism"},
-          {"cet", "cot", "con", "ion", "inn", "ins", "its", "ito", "ibo", "ibm", "ism"}});
+         {});
     test("qa", "sq",
          {"si", "go", "se", "cm", "so", "ph", "mt", "db", "mb", "sb", "kr", "ln", "tm", "le",
           "av", "sm", "ar", "ci", "ca", "br", "ti", "ba", "to", "ra", "fa", "yo", "ow", "sn",
@@ -99,6 +164,8 @@ int main() {
         "red", "tax", {"ted", "tex", "red", "tax", "tad", "den", "rex", "pee"},
         {{"red", "ted", "tad", "tax"}, {"red", "ted", "tex", "tax"}, {"red", "rex", "tex", "tax"}});
     test("a", "c", {"a", "b", "c"}, {{"a", "c"}});
+    test("hit", "cog", {"hot", "dot", "dog", "lot", "log", "cog"},
+         {{"hit", "hot", "dot", "dog", "cog"}, {"hit", "hot", "lot", "log", "cog"}});
     test("hit", "cog", {"hot", "dot", "dog", "lot", "log"}, {});
     return 0;
 }

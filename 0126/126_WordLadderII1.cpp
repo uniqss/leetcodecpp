@@ -1,24 +1,56 @@
 #include "../inc.h"
 
+// 搞定了，但是会超出时间限制，必须优化时间
 class Solution {
    public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> dict(wordList.begin(), wordList.end());
+        if (dict.count(endWord) == 0) return {};
+        int n = beginWord.size();
+        vector<vector<string>> ret;
+        unordered_set<string> vis = {beginWord};
+        int mindepth = INT_MAX;
+        vector<string> road = {beginWord};
+        function<void(int, string)> dfs = [&](int depth, string curr) {
+            if (depth >= mindepth) return;
+            for (int i = 0; i < n; ++i) {
+                char before = curr[i];
+                for (char c = 'a'; c <= 'z'; ++c) {
+                    if (c == before) continue;
+                    curr[i] = c;
+                    if (dict.count(curr) == 0) continue;
+                    if (vis.count(curr) > 0) continue;
+                    vis.insert(curr);
+                    road.emplace_back(curr);
+                    if (curr == endWord) {
+                        mindepth = min(depth, mindepth);
+                        ret.emplace_back(road);
+                    } else {
+                        dfs(depth + 1, curr);
+                    }
+                    road.pop_back();
+                    vis.erase(curr);
+                }
+                curr[i] = before;
+            }
+        };
+        dfs(1, beginWord);
+        vector<vector<string>> ret_md;
+        for (const auto& ri : ret) {
+            if (ri.size() == mindepth + 1) ret_md.push_back(ri);
+        }
+        return ret_md;
     }
 };
 
 void test(string&& beginWord, string&& endWord, vector<string>&& wordList,
           vector<vector<string>>&& expect) {
     save4print(beginWord, endWord, wordList);
-    sort(expect.begin(), expect.end());
-    auto ret = Solution().findLadders(beginWord, endWord, wordList);
-    sort(ret.begin(), ret.end());
-    assert_eq_ret(expect, ret);
+    assert_eq_ret(expect, Solution().findLadders(beginWord, endWord, wordList));
 }
 
 int main() {
-    test("hit", "cog", {"hot", "dot", "dog", "lot", "log", "cog"},
-         {{"hit", "hot", "dot", "dog", "cog"}, {"hit", "hot", "lot", "log", "cog"}});
-    test("hot", "dog", {"hot", "dog"}, {});
+    test("a", "c", {"a", "b", "c"}, {{"a", "c"}});
     test("cet", "ism",
          {"kid", "tag", "pup", "ail", "tun", "woo", "erg", "luz", "brr", "gay", "sip", "kay", "per",
           "val", "mes", "ohs", "now", "boa", "cet", "pal", "bar", "die", "war", "hay", "eco", "pub",
@@ -98,7 +130,8 @@ int main() {
     test(
         "red", "tax", {"ted", "tex", "red", "tax", "tad", "den", "rex", "pee"},
         {{"red", "ted", "tad", "tax"}, {"red", "ted", "tex", "tax"}, {"red", "rex", "tex", "tax"}});
-    test("a", "c", {"a", "b", "c"}, {{"a", "c"}});
+    test("hit", "cog", {"hot", "dot", "dog", "lot", "log", "cog"},
+         {{"hit", "hot", "dot", "dog", "cog"}, {"hit", "hot", "lot", "log", "cog"}});
     test("hit", "cog", {"hot", "dot", "dog", "lot", "log"}, {});
     return 0;
 }

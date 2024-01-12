@@ -2,10 +2,12 @@
 
 class Solution {
    public:
-    int minimumTotalPrice(int n, vector<vector<int>>& edges, vector<int>& price, vector<vector<int>>& trips) {}
+    int minimumTotalPrice(int n, vector<vector<int>>& edges, vector<int>& price,
+                          vector<vector<int>>& trips) {}
 };
 
-void test(int n, vector<vector<int>>&& edges, vector<int>&& price, vector<vector<int>>&& trips, int expect) {
+void test(int n, vector<vector<int>>&& edges, vector<int>&& price, vector<vector<int>>&& trips,
+          int expect) {
     save4print(n, edges, price, trips);
     assert_eq_ret(expect, Solution().minimumTotalPrice(n, edges, price, trips));
 }

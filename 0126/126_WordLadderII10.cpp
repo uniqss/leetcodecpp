@@ -3,6 +3,69 @@
 class Solution {
    public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+        vector<vector<string>> ret;
+        unordered_map<string, int> s2i;
+        int wcount = wordList.size(), wsize = beginWord.size();
+        for (int i = 0; i < wcount; ++i) s2i[wordList[i]] = i;
+        if (s2i.count(endWord) == 0) return ret;
+        if (s2i.count(beginWord) == 0) s2i[beginWord] = wcount++, wordList.emplace_back(beginWord);
+        vector<bool> vis(wcount);
+        vector<unordered_set<int>> from(wcount);
+        vector<int> depthi(wcount);
+        int start = s2i[beginWord], end = s2i[endWord], curr;
+        string word = beginWord;
+        vector<vector<int>> tos(wcount);
+        auto strfit = [wsize](const string& str1, const string& str2) {
+            int diff = 0;
+            for (int i = 0; i < wsize; ++i)
+                if (str1[i] != str2[i])
+                    if (++diff > 1) return false;
+            return true;
+        };
+        for (int i = 0; i < wcount; ++i) {
+            for (int j = i + 1; j < wcount; ++j) {
+                if (strfit(wordList[i], wordList[j]))
+                    tos[i].emplace_back(j), tos[j].emplace_back(i);
+            }
+        }
+        vis[start] = true;
+        int depth = 0;
+        queue<int> q({start});
+        while (!q.empty()) {
+            ++depth;
+            int qsize = q.size();
+            for (int qi = 0; qi < qsize; ++qi) {
+                curr = q.front(), q.pop();
+                for (auto next : tos[curr]) {
+                    if (depthi[next] == depth) {
+                        from[next].insert(curr);
+                    }
+                    if (vis[next]) continue;
+                    vis[next] = true;
+                    from[next].insert(curr);
+                    depthi[next] = depth;
+                    q.emplace(next);
+                }
+            }
+            if (!from[end].empty()) break;
+        }
+        if (from[end].empty()) return ret;
+        function<void(int, vector<int>&)> bt = [&](int curr, vector<int>& path) {
+            if (from[curr].empty()) {
+                ret.resize(ret.size() + 1);
+                for (int p : path) ret[ret.size() - 1].emplace_back(wordList[p]);
+                reverse(ret.back().begin(), ret.back().end());
+            } else {
+                for (int f : from[curr]) {
+                    path.emplace_back(f);
+                    bt(f, path);
+                    path.pop_back();
+                }
+            }
+        };
+        vector<int> path = {end};
+        bt(end, path);
+        return ret;
     }
 };
 

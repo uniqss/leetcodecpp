@@ -8,8 +8,7 @@ class Solution {
 void test(const vector<int>& listvals, const vector<int>& expectvals) {
     save4print(listvals);
     ListNode* head = constructList(listvals);
-    Solution so;
-    auto ret = so.deleteDuplicates(head);
+    auto ret = Solution().deleteDuplicates(head);
     ListAutoReleaser _(ret);
     auto retvals = list2vals(ret);
     assert_eq_ret(expectvals, retvals);

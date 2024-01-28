@@ -1,20 +1,22 @@
 #include "../inc.h"
 
+// 时间复杂度：10log(n) = logn
+// 空间复杂度：logn
 class Solution {
    public:
     int atMostNGivenDigitSet(vector<string>& digits, int n) {
         int mask = 0;
-        for (auto& ds : digits) mask |= (1 << (ds[0] - '0'));
+        for (const auto& di : digits) mask |= (1 << (di[0] - '0'));
         string s = to_string(n);
         int m = s.size(), memo[m];
         memset(memo, -1, sizeof(memo));
         function<int(int, bool, bool)> f = [&](int pos, bool limit, bool started) -> int {
             if (pos == m) return started;
-            int ret = 0;
             if (!limit && started && memo[pos] != -1) return memo[pos];
+            int ret = 0;
             if (!started) ret += f(pos + 1, false, false);
             int up = limit ? s[pos] - '0' : 9;
-            for (int d = 0; d <= up; ++d) {
+            for (int d = 1; d <= up; ++d) {
                 if ((mask >> d) & 1) ret += f(pos + 1, limit && d == up, true);
             }
             if (!limit && started) memo[pos] = ret;

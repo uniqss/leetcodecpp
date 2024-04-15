@@ -24,8 +24,7 @@ void test(const vector<int>& vals, int expect) {
     save4print(vals);
     TreeNode* root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-    auto ret = Solution().sumNumbers(root);
-    assert_eq_ret(expect, ret);
+    assert_eq_ret(Solution().sumNumbers(root), expect);
 }
 
 int main() {

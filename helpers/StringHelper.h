@@ -69,8 +69,16 @@ vector<vector<char>> vvs2vvc(const vector<vector<string>>& vvs) {
         ret.resize(ret.size() + 1);
         vector<char>& curr = ret[ret.size() - 1];
         for (int j = 0; j < (int)vvs[i].size(); ++j) {
-            if (vvs[i][j].size() == 1) curr.emplace_back(vvs[i][j][0]);
+            if (vvs[i][j].size() >= 1) curr.emplace_back(vvs[i][j][0]);
         }
+    }
+    return ret;
+}
+
+vector<char> vs2vc(const vector<string>& vs) {
+    vector<char> ret;
+    for (int j = 0; j < (int)vs.size(); ++j) {
+        if (vs[j].size() >= 1) ret.emplace_back(vs[j][0]);
     }
     return ret;
 }

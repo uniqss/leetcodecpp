@@ -28,7 +28,7 @@
             },
             "windows": {
                 "MIMode": "gdb",
-                "program": "${workspaceFolder}/a.exe",
+                "program": "${workspaceFolder}\\a.exe",
                 "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",
                 "xxx":"https://github.com/niXman/mingw-builds-binaries/releases",
                 "setupCommands": [

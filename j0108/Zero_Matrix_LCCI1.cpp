@@ -27,18 +27,9 @@ class Solution {
 };
 
 void test(vector<vector<int>>&& matrix, const vector<vector<int>>& expect) {
-    Solution so;
-    auto param = matrix;
-    so.setZeroes(matrix);
-    if (matrix == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(param);
-        print(expect);
-        print(matrix);
-        print();
-    }
+    save4print(matrix);
+    Solution().setZeroes(matrix);
+    assert_eq_ret(expect, matrix);
 }
 
 int main() {

@@ -11,7 +11,9 @@ class MyQueue {
     bool empty() {}
 };
 
-void test(const vector<string>& ops, const vector<vector<int>>& params, const vector<ComplexVal>& expect) {
+void test(const vector<string>& ops, const vector<vector<int>>& params,
+          const vector<ComplexVal>& expect) {
+    save4print(ops, params);
     MyQueue* q = nullptr;
     vector<ComplexVal> ret;
     for (size_t i = 0; i < ops.size(); ++i) {
@@ -34,18 +36,7 @@ void test(const vector<string>& ops, const vector<vector<int>>& params, const ve
             ret.emplace_back(cret);
         }
     }
-
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(ops);
-        print(params);
-        print(expect);
-        print(ret);
-        print();
-    }
-
+    assert_eq_ret(expect, ret);
     delete q;
 }
 

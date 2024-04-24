@@ -19,16 +19,8 @@ class Solution {
 };
 
 void test(std::string&& s, bool expect) {
-    Solution so;
-    auto ret = so.canPermutePalindrome(s);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(s);
-        print(expect);
-        print(ret);
-    }
+    save4print(s);
+    assert_eq_ret(expect, Solution().canPermutePalindrome(s));
 }
 
 int main() {

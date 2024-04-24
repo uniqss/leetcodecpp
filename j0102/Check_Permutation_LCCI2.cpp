@@ -19,17 +19,8 @@ class Solution {
 };
 
 void test(std::string s1, std::string s2, bool expect) {
-    Solution so;
-    auto ret = so.CheckPermutation(s1, s2);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(s1);
-        print(s2);
-        print(expect);
-        print(ret);
-    }
+    save4print(s1, s2);
+    assert_eq_ret(expect, Solution().CheckPermutation(s1, s2));
 }
 
 int main() {

@@ -41,18 +41,8 @@ class Solution {
 };
 
 void test(int n, vector<int>&& cuts, int expect) {
-    Solution so;
-    auto ret = so.minCost(n, cuts);
-    auto cuts_param = cuts;
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(n);
-        print(cuts_param);
-        print(expect);
-        print(ret);
-    }
+    save4print(n, cuts);
+    assert_eq_ret(expect, Solution().minCost(n, cuts));
 }
 
 int main() {

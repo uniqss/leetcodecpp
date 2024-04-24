@@ -6,18 +6,9 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, bool expect) {
+    save4print(vals);
     TreeNode* root = constructIntTree(vals);
-    Solution so;
-    auto ret = so.isValidBST(root);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(vals);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, Solution().isValidBST(root));
 }
 
 int main() {

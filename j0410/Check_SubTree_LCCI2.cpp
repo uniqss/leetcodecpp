@@ -32,21 +32,11 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& v1, const vector<ComplexVal>& v2, bool expect) {
+    save4print(v1, v2);
     auto t1 = constructIntTree(v1);
     auto t2 = constructIntTree(v2);
     TreeAutoReleaser _(t1, t2);
-    Solution so;
-    auto ret = so.checkSubTree(t1, t2);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(v1);
-        print(v2);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, Solution().checkSubTree(t1, t2));
 }
 
 int main() {

@@ -27,24 +27,16 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, const vector<vector<int>>& expect) {
+    save4print(vals);
     auto tree = constructIntTree(vals);
     TreeAutoReleaser _(tree);
-    Solution so;
-    auto ret = so.listOfDepth(tree);
+    auto ret = Solution().listOfDepth(tree);
     vector<vector<int>> retvals;
     for (size_t i = 0; i < ret.size(); ++i) {
         auto retval = list2vals(ret[i]);
         retvals.push_back(retval);
     }
-    if (retvals == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(vals);
-        print(expect);
-        print(retvals);
-        print();
-    }
+    assert_eq_ret(expect, retvals);
 }
 
 int main() {

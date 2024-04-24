@@ -6,18 +6,8 @@ class Solution {
 };
 
 void test(std::string&& first, std::string&& second, bool expect) {
-    Solution so;
-    auto ret = so.oneEditAway(first, second);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(first);
-        print(second);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(first, second);
+    assert_eq_ret(expect, Solution().oneEditAway(first, second));
 }
 
 int main() {

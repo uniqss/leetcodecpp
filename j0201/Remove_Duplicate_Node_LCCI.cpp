@@ -14,19 +14,12 @@ class Solution {
 };
 
 void test(const vector<int>& vi, const vector<int>& expect) {
+    save4print(vi);
     auto list = constructList(vi);
-    Solution so;
-    auto ret = so.removeDuplicateNodes(list);
+    auto ret = Solution().removeDuplicateNodes(list);
     auto retval = list2vals(ret);
-    if (retval == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(vi);
-        print(expect);
-        print(retval);
-    }
-    delete list;
+    assert_eq_ret(expect, retval);
+    releaseLinkedList(list);
 }
 
 int main() {

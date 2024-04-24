@@ -25,22 +25,12 @@ class Solution {
 };
 
 void test(int n, vector<int>&& cuts, int expect) {
-    Solution so;
-    auto ret = so.minCost(n, cuts);
-    auto cuts_param = cuts;
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(n);
-        print(cuts_param);
-        print(expect);
-        print(ret);
-    }
+    save4print(n, cuts);
+    assert_eq_ret(expect, Solution().minCost(n, cuts));
 }
 
 int main() {
-    test(30, {13,25,16,20,26,5,27,8,23,14,6,15,21,24,29,1,19,9,3}, 127);
+    test(30, {13, 25, 16, 20, 26, 5, 27, 8, 23, 14, 6, 15, 21, 24, 29, 1, 19, 9, 3}, 127);
     test(7, {1, 3, 4, 5}, 16);
     test(9, {5, 6, 1, 4, 2}, 22);
     return 0;

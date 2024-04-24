@@ -27,11 +27,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, bool expect) {
-    auto p1 = nums;
-    Solution so;
-    auto ret = so.canPartition(nums);
-    assert_eq_ret(expect, ret);
-    print(p1);
+    save4print(nums);
+    assert_eq_ret(expect, Solution().canPartition(nums));
 }
 
 int main() {

@@ -21,6 +21,7 @@ class ParkingSystem {
 };
 
 void test(const vector<std::string>& ops, const vector<vector<int>>&& params, const vector<ComplexVal>& expects) {
+    save4print(ops, params);
     if (ops.size() != params.size()) {
         print("param error");
         return;
@@ -38,15 +39,7 @@ void test(const vector<std::string>& ops, const vector<vector<int>>&& params, co
             ret.emplace_back(curr_ret);
         }
     }
-    if (expects == ret) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(ops);
-        print(params);
-        print(expects);
-        print(ret);
-    }
+    assert_eq_ret(expects, ret);
 }
 
 int main() {

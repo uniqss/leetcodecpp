@@ -24,21 +24,9 @@ class Solution {
     }
 };
 
-void test(std::string s, int length, std::string&& expect) {
-    Solution so;
-    auto ret = so.replaceSpaces(s, length);
-    // ret.resize(length);
-    // expect.resize(length);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(s);
-        print(length);
-        print(expect);
-        print(ret);
-        print();
-    }
+void test(std::string s, int length, const std::string& expect) {
+    save4print(s, length);
+    assert_eq_ret(expect, Solution().replaceSpaces(s, length));
 }
 
 int main() {

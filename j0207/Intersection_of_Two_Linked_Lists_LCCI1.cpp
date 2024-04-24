@@ -17,6 +17,7 @@ class Solution {
 };
 
 void test(const vector<int> &va, const vector<int> &vb, int expect) {
+    save4print(va, vb);
     auto la = constructList(va);
     auto lb = constructList(vb);
     ListAutoReleaser _(la, lb);
@@ -25,18 +26,7 @@ void test(const vector<int> &va, const vector<int> &vb, int expect) {
     while (pb != nullptr && pb->next != nullptr && pb->next->val != expect) pb = pb->next;
     pb->next = pa->next;
 
-    Solution so;
-    auto ret = so.getIntersectionNode(la, lb);
-    if (ret != nullptr && ret->val == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(va);
-        print(vb);
-        print(expect);
-        print(ret->val);
-        print();
-    }
+    assert_eq_ret((ComplexVal)expect, (ComplexVal)Solution().getIntersectionNode(la, lb));
 }
 
 int main() {

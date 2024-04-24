@@ -26,23 +26,13 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, int pv, int qv, int expect) {
+    save4print(vals, pv, qv, expect);
     auto root = constructIntTree(vals);
     TreeAutoReleaser _(root);
     auto p = treeFindUniqueNodeByVal(root, pv);
     auto q = treeFindUniqueNodeByVal(root, qv);
-    Solution so;
-    auto ret = so.lowestCommonAncestor(root, p, q);
-    if (ret == nullptr || ret->val != expect) {
-        print("not ok");
-        print(vals);
-        print(pv);
-        print(qv);
-        print(expect);
-        print(ret);
-        print();
-    } else {
-        print("ok");
-    }
+    auto ret = Solution().lowestCommonAncestor(root, p, q);
+    assert_retnone(ret != nullptr && ret->val == expect);
 }
 
 int main() {

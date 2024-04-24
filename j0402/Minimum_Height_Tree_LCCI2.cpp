@@ -14,20 +14,12 @@ class Solution {
 };
 
 void test(vector<int>&& nums, const vector<ComplexVal>& expect) {
-    Solution so;
-    auto ret = so.sortedArrayToBST(nums);
+    save4print(nums);
+    auto ret = Solution().sortedArrayToBST(nums);
     TreeAutoReleaser _(ret);
     vector<ComplexVal> retval;
     treeToComplexValLevelOrder(ret, retval);
-    if (retval == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(nums);
-        print(expect);
-        print(retval);
-        print();
-    }
+    assert_eq_ret(expect, retval);
 }
 
 int main() {

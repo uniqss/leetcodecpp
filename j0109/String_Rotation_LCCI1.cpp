@@ -16,18 +16,9 @@ class Solution {
 };
 
 void test(string&& s1, string&& s2, bool expect) {
-    Solution so;
-    auto ret = so.isFlipedString(s1, s2);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(s1);
-        print(s2);
-        print(expect);
-        print(ret);
-        print();
-    }
+    save4print(s1, s2);
+    auto ret = Solution().isFlipedString(s1, s2);
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

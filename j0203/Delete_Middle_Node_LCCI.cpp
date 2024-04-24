@@ -7,22 +7,14 @@ class Solution {
 };
 
 void test(const vector<int>& vi, const vector<int>& expect) {
+    save4print(vi);
     auto l = constructList(vi);
     ListAutoReleaser _(l);
-    Solution so;
     if (vi.size() >= 2) {
-        so.deleteNode(l->next);
+        Solution().deleteNode(l->next);
     }
     auto ret = list2vals(l);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(vi);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

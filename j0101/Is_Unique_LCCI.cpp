@@ -6,16 +6,8 @@ class Solution {
 };
 
 void test(const std::string& s, bool expect) {
-    Solution so;
-    auto ret = so.isUnique(s);
-    if (ret == expect) {
-        print("ok.");
-    } else {
-        print("not ok");
-        print(s);
-        print(expect);
-        print(ret);
-    }
+    save4print(s);
+    assert_eq_ret(expect, Solution().isUnique(s));
 }
 
 int main() {

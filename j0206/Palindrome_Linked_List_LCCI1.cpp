@@ -18,19 +18,10 @@ class Solution {
 };
 
 void test(const vector<int>& vi, bool expect) {
+    save4print(vi);
     auto list = constructList(vi);
     ListAutoReleaser _(list);
-    Solution so;
-    auto ret = so.isPalindrome(list);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(vi);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, Solution().isPalindrome(list));
 }
 
 int main() {

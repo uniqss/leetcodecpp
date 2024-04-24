@@ -31,19 +31,10 @@ class Solution {
 };
 
 void test(const vector<int>& vi, int k, int expect) {
+    save4print(vi, k);
     auto list = constructList(vi);
-    Solution so;
-    auto ret = so.kthToLast(list, k);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok.");
-        print(vi);
-        print(k);
-        print(expect);
-        print(ret);
-        print();
-    }
+    auto ret = Solution().kthToLast(list, k);
+    assert_eq_ret(expect, ret);
     releaseLinkedList(list);
 }
 

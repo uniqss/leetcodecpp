@@ -110,24 +110,13 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, vector<vector<int>>&& expect) {
+    save4print(vals);
     auto root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-
-    Solution so;
-    auto ret = so.BSTSequences(root);
-    auto ret_bk = ret;
+    auto ret = Solution().BSTSequences(root);
     std::sort(ret.begin(), ret.end());
     std::sort(expect.begin(), expect.end());
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(vals);
-        print(expect);
-        print(ret_bk);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, ret);
 }
 
 int main() {

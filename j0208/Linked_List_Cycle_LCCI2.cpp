@@ -26,6 +26,7 @@ class Solution {
 };
 
 void test(const vector<int> &vi, int pos, int expect) {
+   save4print(vi, pos);
     auto l = constructList(vi);
     ListAutoReleaser _(l);
     ListNode *curr = l, *tail = l;
@@ -45,16 +46,7 @@ void test(const vector<int> &vi, int pos, int expect) {
         ++posret;
         if (posret > vi.size()) break;
     }
-    if (posret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(vi);
-        print(pos);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, posret);
 }
 
 int main() {

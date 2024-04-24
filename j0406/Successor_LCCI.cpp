@@ -6,23 +6,14 @@ class Solution {
 };
 
 void test(const vector<ComplexVal>& vals, int pv, ComplexVal expect) {
+    save4print(vals, pv);
     auto root = constructIntTree(vals);
     TreeAutoReleaser _(root);
-    Solution so;
     auto p = treeFindUniqueNodeByVal(root, pv);
-    auto ret = so.inorderSuccessor(root, p);
+    auto ret = Solution().inorderSuccessor(root, p);
     ComplexVal retval = null;
     if (ret != nullptr) retval = ret->val;
-    if (retval == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(vals);
-        print(pv);
-        print(expect);
-        print(retval);
-        print();
-    }
+    assert_eq_ret(expect, retval);
 }
 
 int main() {

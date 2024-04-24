@@ -39,7 +39,9 @@ class AnimalShelf {
     }
 };
 
-void test(const vector<string>& ops, const vector<vector<int>>& params, const vector<ComplexVal>& expect) {
+void test(const vector<string>& ops, const vector<vector<int>>& params,
+          const vector<ComplexVal>& expect) {
+    save4print(ops, params);
     AnimalShelf* q = nullptr;
     vector<ComplexVal> ret;
     for (size_t i = 0; i < ops.size(); ++i) {
@@ -62,16 +64,7 @@ void test(const vector<string>& ops, const vector<vector<int>>& params, const ve
             ret.emplace_back(curr);
         }
     }
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(ops);
-        print(params);
-        print(expect);
-        print(ret);
-        print();
-    }
+    assert_eq_ret(expect, ret);
     delete q;
 }
 
@@ -79,6 +72,7 @@ int main() {
     test({"AnimalShelf", "enqueue", "enqueue", "dequeueCat", "dequeueDog", "dequeueAny"},
          {{}, {{0, 0}}, {{1, 0}}, {}, {}, {}}, {null, null, null, {0, 0}, {-1, -1}, {1, 0}});
     test({"AnimalShelf", "enqueue", "enqueue", "enqueue", "dequeueDog", "dequeueCat", "dequeueAny"},
-         {{}, {{0, 0}}, {{1, 0}}, {{2, 1}}, {}, {}, {}}, {null, null, null, null, {2, 1}, {0, 0}, {1, 0}});
+         {{}, {{0, 0}}, {{1, 0}}, {{2, 1}}, {}, {}, {}},
+         {null, null, null, null, {2, 1}, {0, 0}, {1, 0}});
     return 0;
 }

@@ -36,9 +36,10 @@ class Solution {
 
 void test(const vector<int>& vi, int x) {
     auto l = constructList(vi);
-    Solution so;
-    auto ret = so.partition(l, x);
+    auto ret = Solution().partition(l, x);
+    ListAutoReleaser _(ret);
     auto retval = list2vals(ret);
+    save4print(vi, x, retval);
 
     bool bok = true;
     do {
@@ -63,16 +64,7 @@ void test(const vector<int>& vi, int x) {
         }
     } while (false);
 
-    if (bok) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(vi);
-        print(x);
-        print(retval);
-    }
-
-    releaseLinkedList(ret);
+    assert_retnone(bok);
 }
 
 int main() {

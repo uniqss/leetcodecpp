@@ -19,17 +19,16 @@ class Solution {
 };
 
 void test(vector<string>&& strs, vector<vector<string>>&& expect) {
-    save4print(strs);
-    save4print(expect);
-    Solution s;
-    auto ret = s.groupAnagrams(strs);
+    save4print(strs, expect);
+    auto ret = Solution().groupAnagrams(strs);
     sortvvrawInnerAndOuter(expect);
     sortvvrawInnerAndOuter(ret);
     assert_eq_ret(expect, ret);
 }
 
 int main() {
-    test({"eat", "tea", "tan", "ate", "nat", "bat"}, {{"bat"}, {"nat", "tan"}, {"ate", "eat", "tea"}});
+    test({"eat", "tea", "tan", "ate", "nat", "bat"},
+         {{"bat"}, {"nat", "tan"}, {"ate", "eat", "tea"}});
     test({""}, {{""}});
     test({"a"}, {{"a"}});
     return 0;

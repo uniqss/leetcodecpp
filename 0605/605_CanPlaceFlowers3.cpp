@@ -41,5 +41,6 @@ int main() {
     test({1, 0, 0, 0, 0, 1}, 2, false);
     test({1, 0, 0, 0, 1}, 1, true);
     test({1, 0, 0, 0, 1}, 2, false);
+    test({1, 0, 1, 0, 1, 0, 1}, 0, true);
     return 0;
 }

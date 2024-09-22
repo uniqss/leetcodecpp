@@ -7,9 +7,7 @@ class Solution {
 
 void test(vector<string>&& strs, string expect) {
     save4print(strs);
-    Solution so;
-    auto ret = so.longestCommonPrefix(strs);
-    assert_eq_ret(expect, ret);
+    assert_eq_ret(expect, Solution().longestCommonPrefix(strs));
 }
 
 int main() {

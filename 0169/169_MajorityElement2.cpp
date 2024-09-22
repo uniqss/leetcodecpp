@@ -21,16 +21,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, int expected) {
-    Solution so;
-    auto ret = so.majorityElement(nums);
-    if (ret == expected) {
-        print("ok.");
-    } else {
-        print("not ok.");
-        print(nums);
-        print(expected);
-        print(ret);
-    }
+    save4print(nums);
+    assert_eq_ret(expected, Solution().majorityElement(nums));
 }
 
 int main() {

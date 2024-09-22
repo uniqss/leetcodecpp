@@ -15,8 +15,7 @@ class Solution {
 
 void test(vector<int>&& nums, int val, int expected) {
     save4print(nums, val);
-    auto ret = Solution().removeElement(nums, val);
-    assert_eq_ret(expected, ret);
+    assert_eq_ret(expected, Solution().removeElement(nums, val));
 }
 
 int main() {

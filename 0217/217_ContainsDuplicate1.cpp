@@ -13,16 +13,8 @@ class Solution {
 };
 
 void test(vector<int>&& nums, bool expect) {
-    Solution so;
-    auto ret = so.containsDuplicate(nums);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("not ok");
-        print(nums);
-        print(expect);
-        print(ret);
-    }
+    save4print(nums);
+    assert_eq_ret(expect, Solution().containsDuplicate(nums));
 }
 
 int main() {

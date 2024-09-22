@@ -12,17 +12,8 @@ class Solution {
 };
 
 void test(const string& s, const string& t, bool expect) {
-    Solution so;
-    bool ret = so.isAnagram(s, t);
-    if (ret == expect) {
-        print("ok");
-    } else {
-        print("##### not ok.");
-        print(s);
-        print(t);
-        print(expect);
-        print(ret);
-    }
+    save4print(s, t);
+    assert_eq_ret(expect, Solution().isAnagram(s, t));
 }
 
 int main() {

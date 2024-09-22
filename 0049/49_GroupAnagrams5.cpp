@@ -2,7 +2,17 @@
 
 class Solution {
    public:
-    vector<vector<string>> groupAnagrams(vector<string>& strs) {}
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string, vector<string>> dict;
+        for (const auto& s : strs) {
+            auto k = s;
+            sort(k.begin(), k.end());
+            dict[k].emplace_back(s);
+        }
+        vector<vector<string>> ret;
+        for (const auto& [_, v] : dict) ret.emplace_back(v);
+        return ret;
+    }
 };
 
 void test(vector<string>&& strs, vector<vector<string>>&& expect) {

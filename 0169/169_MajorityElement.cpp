@@ -2,13 +2,7 @@
 
 class Solution {
    public:
-    int majorityElement(vector<int>& nums) {
-        unordered_map<int, int> n2c;
-        int cmax = 0, ret = 0;
-        for (int n : nums)
-            if (++n2c[n] > cmax) ret = n, cmax = n2c[n];
-        return ret;
-    }
+    int majorityElement(vector<int>& nums) {}
 };
 
 void test(vector<int>&& nums, int expected) {

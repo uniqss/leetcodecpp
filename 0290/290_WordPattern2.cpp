@@ -26,11 +26,8 @@ class Solution {
 };
 
 void test(string pattern, string s, bool expect) {
-    save4print(pattern);
-    save4print(s);
-    Solution so;
-    auto ret = so.wordPattern(pattern, s);
-    assert_eq_ret(expect, ret);
+    save4print(pattern, s);
+    assert_eq_ret(expect, Solution().wordPattern(pattern, s));
 }
 
 int main() {
